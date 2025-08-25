@@ -8,69 +8,7 @@ import { Input } from "@/app/components/ui/input";
 import { Card, CardContent } from "@/app/components/ui/card";
 import { Badge } from "@/app/components/ui/badge";
 import { getCategoryBadgeClasses } from "@/app/lib/category-colors";
-
-const mockArticles = [
-  {
-    id: "1",
-    title: "Breaking: Major Climate Summit Reaches Historic Agreement",
-    excerpt:
-      "World leaders unite on unprecedented climate action plan that could reshape global environmental policy for decades to come.",
-    category: "Environment",
-    imageUrl: "/climate-summit-leaders.png",
-    source: "Global News Network",
-    sourceUrl: "https://globalnews.com",
-    publishedAt: "2 hours ago",
-    readTime: "3 min read",
-  },
-  {
-    id: "2",
-    title: "Tech Giants Announce New AI Safety Standards",
-    excerpt:
-      "Leading technology companies collaborate on establishing industry-wide artificial intelligence safety protocols.",
-    category: "Technology",
-    imageUrl: "/ai-technology-safety-meeting.png",
-    source: "Tech Today",
-    sourceUrl: "https://techtoday.com",
-    publishedAt: "4 hours ago",
-    readTime: "5 min read",
-  },
-  {
-    id: "3",
-    title: "Global Markets Show Strong Recovery Signs",
-    excerpt:
-      "International financial markets demonstrate resilience with positive growth indicators across major economies.",
-    category: "Business",
-    imageUrl: "/stock-market-trading-floor.png",
-    source: "Financial Times",
-    sourceUrl: "https://ft.com",
-    publishedAt: "1 hour ago",
-    readTime: "4 min read",
-  },
-  {
-    id: "4",
-    title: "Revolutionary Medical Breakthrough in Cancer Treatment",
-    excerpt:
-      "Scientists develop new immunotherapy approach showing remarkable success rates in clinical trials.",
-    category: "Health",
-    imageUrl: "/medical-research-lab.png",
-    source: "Medical Journal",
-    sourceUrl: "https://medjournal.com",
-    publishedAt: "6 hours ago",
-    readTime: "7 min read",
-  },
-  {
-    id: "5",
-    title: "Space Mission Discovers Potential Signs of Life",
-    excerpt:
-      "NASA's latest Mars rover findings suggest possible microbial activity beneath the planet's surface.",
-    category: "Science",
-    imageUrl: "/mars-rover-space-exploration.png",
-    source: "Space News",
-    sourceUrl: "https://spacenews.com",
-    publishedAt: "3 hours ago",
-    readTime: "6 min read",
-  },
-];
+import { mockArticles } from "@/app/data/mock-article";
 
 interface SearchPreviewProps {
   className?: string;

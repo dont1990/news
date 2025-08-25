@@ -4,6 +4,7 @@ import { NewsGrid } from "@/app/components/news-grid";
 import { Sidebar } from "@/app/components/sidebar";
 import { Footer } from "@/app/components/footer";
 import { mockArticles } from "../data/mock-article";
+import SectionTitle from "../components/section-title";
 
 export default function HomePage() {
   return (
@@ -28,12 +29,8 @@ export default function HomePage() {
         <div className="grid grid-cols-1 xl:grid-cols-4 gap-12">
           <div className="xl:col-span-3 space-y-12">
             <section>
-              <div className="flex items-center mb-8">
-                <h3 className="news-heading text-2xl text-foreground">
-                  Featured Story
-                </h3>
-                <div className="flex-1 h-px bg-border ml-4"></div>
-              </div>
+           
+                <SectionTitle title={"Featured Story"}/>
               <ArticleCard article={mockArticles[0]} />
             </section>
 

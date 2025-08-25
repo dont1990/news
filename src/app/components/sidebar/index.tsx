@@ -108,7 +108,7 @@ export function Sidebar() {
       {/* Newsletter Signup */}
       <Card className="bg-primary/5 border-primary/20">
         <CardContent className="p-4 text-center">
-          <h3 className="newspaper-heading text-lg mb-2">Stay Informed</h3>
+          <p className="newspaper-heading text-lg mb-2">Stay Informed</p>
           <p className="newspaper-body text-sm text-muted-foreground mb-3">
             Get daily news updates delivered to your inbox
           </p>

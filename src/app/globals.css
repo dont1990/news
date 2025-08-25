@@ -125,18 +125,4 @@
   body {
     @apply bg-background text-foreground font-sans;
   }
-  /* Updated typography styles for modern aesthetic */
-  .news-heading {
-    @apply font-serif font-bold leading-tight;
-  }
-  .news-body {
-    @apply font-sans leading-relaxed;
-  }
-  /* Added modern card styles */
-  .news-card {
-    @apply bg-card border border-border rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200;
-  }
-  .news-card-hover {
-    @apply hover:bg-muted/50 transition-colors duration-200;
-  }
 }

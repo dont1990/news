@@ -5,7 +5,7 @@ import { Badge } from "@/app/components/ui/badge";
 import { Clock, User } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { getCategoryBadgeClasses } from "@/app/lib/category-colors";
+import CategoryBadge from "../category-badge";
 
 export interface Article {
   id: string;
@@ -25,7 +25,7 @@ interface ArticleCardProps {
 
 export function ArticleCard({ article }: ArticleCardProps) {
   return (
-    <Card className={`news-card group h-full xl:col-span-1 p-0`}>
+    <Card className={`news-card group h-full xl:col-span-1 p-0 hover:shadow-2xs`}>
       {/* Image with overlay + badge */}
       <div className="relative aspect-video overflow-hidden rounded-t-lg">
         <Link href={`/article/${article.id}`}>
@@ -39,7 +39,7 @@ export function ArticleCard({ article }: ArticleCardProps) {
         </Link>
 
         {/* Badge over image */}
-        <div className="absolute top-4 left-4">
+        {/* <div className="absolute top-4 left-4">
           <Badge
             asChild
             variant="secondary"
@@ -51,11 +51,12 @@ export function ArticleCard({ article }: ArticleCardProps) {
               {article.category}
             </Link>
           </Badge>
-        </div>
+        </div> */}
       </div>
 
       <CardContent className="p-6">
         <div className="flex items-center gap-3 mb-3">
+          <CategoryBadge title={article.category} />
           <span className="text-xs text-muted-foreground font-medium">
             {article.source}
           </span>

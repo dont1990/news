@@ -11,106 +11,8 @@ import {
   getCategoryColors,
   getCategoryBadgeClasses,
 } from "@/app/lib/category-colors";
-
-// Mock articles data with more variety for categories
-const mockArticles = [
-  {
-    id: "1",
-    title: "Breaking: Major Climate Summit Reaches Historic Agreement",
-    excerpt:
-      "World leaders unite on unprecedented climate action plan that could reshape global environmental policy for decades to come.",
-    author: "Sarah Johnson",
-    publishedAt: "2024-01-15T10:30:00Z",
-    category: "world",
-    imageUrl: "/climate-summit-leaders.png",
-    source: "Global News Network",
-    readTime: "5 min read",
-  },
-  {
-    id: "2",
-    title: "Tech Giants Announce New AI Safety Standards",
-    excerpt:
-      "Leading technology companies collaborate on establishing industry-wide artificial intelligence safety protocols.",
-    author: "Michael Chen",
-    publishedAt: "2024-01-15T09:15:00Z",
-    category: "technology",
-    imageUrl: "/ai-technology-safety-meeting.png",
-    source: "Tech Today",
-    readTime: "3 min read",
-  },
-  {
-    id: "3",
-    title: "Global Markets Show Strong Recovery Signs",
-    excerpt:
-      "International financial markets demonstrate resilience with positive growth indicators across major economies.",
-    author: "Emma Rodriguez",
-    publishedAt: "2024-01-15T08:45:00Z",
-    category: "business",
-    imageUrl: "/stock-market-trading-floor.png",
-    source: "Financial Times",
-    readTime: "4 min read",
-  },
-  {
-    id: "4",
-    title: "Revolutionary Medical Breakthrough in Cancer Treatment",
-    excerpt:
-      "Scientists develop new immunotherapy approach showing remarkable success rates in clinical trials.",
-    author: "Dr. James Wilson",
-    publishedAt: "2024-01-15T07:30:00Z",
-    category: "health",
-    imageUrl: "/medical-research-lab.png",
-    source: "Medical Journal",
-    readTime: "6 min read",
-  },
-  {
-    id: "5",
-    title: "Space Mission Discovers Potential Signs of Life",
-    excerpt:
-      "NASA's latest Mars rover findings suggest possible microbial activity beneath the planet's surface.",
-    author: "Lisa Park",
-    publishedAt: "2024-01-15T06:00:00Z",
-    category: "science",
-    imageUrl: "/mars-rover-space-exploration.png",
-    source: "Space News",
-    readTime: "4 min read",
-  },
-  {
-    id: "6",
-    title: "International Sports Championship Breaks Viewership Records",
-    excerpt:
-      "Global audience reaches unprecedented numbers as athletes compete in thrilling championship finals.",
-    author: "Tom Anderson",
-    publishedAt: "2024-01-15T05:15:00Z",
-    category: "sports",
-    imageUrl: "/sports-championship-stadium-crowd.png",
-    source: "Sports Central",
-    readTime: "2 min read",
-  },
-  {
-    id: "7",
-    title: "Election Results Shape New Political Landscape",
-    excerpt:
-      "Voters across multiple regions deliver decisive outcomes that will influence policy direction for years to come.",
-    author: "Rachel Green",
-    publishedAt: "2024-01-14T22:30:00Z",
-    category: "politics",
-    imageUrl: "/election-voting-booth.png",
-    source: "Political Weekly",
-    readTime: "5 min read",
-  },
-  {
-    id: "8",
-    title: "Hollywood Blockbuster Breaks Opening Weekend Records",
-    excerpt:
-      "Latest superhero film shatters box office expectations with unprecedented global audience turnout.",
-    author: "David Kim",
-    publishedAt: "2024-01-14T20:15:00Z",
-    category: "entertainment",
-    imageUrl: "/classic-movie-theater.png",
-    source: "Entertainment Today",
-    readTime: "3 min read",
-  },
-];
+import { mockArticles } from "@/app/data/mock-article";
+import { ArticleCard } from "@/app/components/article-card";
 
 const categoryDescriptions = {
   world:
@@ -144,7 +46,7 @@ export default function CategoryPage({
 
   // Filter articles by category
   const categoryArticles = mockArticles.filter(
-    (article) => article.category === slug.toLowerCase()
+    (article) => article.category.toLowerCase() === slug.toLowerCase()
   );
 
   // Capitalize category name for display
@@ -199,63 +101,8 @@ export default function CategoryPage({
       <main className="container mx-auto px-4 py-12">
         {categoryArticles.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-            {categoryArticles.map((article, index) => (
-              <Link key={article.id} href={`/article/${article.id}`}>
-                <Card
-                  className={`news-card group h-full ${
-                    index === 0 ? "md:col-span-2 xl:col-span-1" : ""
-                  }`}
-                >
-                  <div className="aspect-video relative overflow-hidden rounded-t-lg">
-                    <img
-                      src={article.imageUrl || "/placeholder.svg"}
-                      alt={article.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  </div>
-                  <CardContent className="p-6">
-                    <div className="flex items-center gap-3 mb-3">
-                      <Badge
-                        variant="secondary"
-                        className={`text-xs px-2 py-1 ${getCategoryBadgeClasses(
-                          article.category
-                        )}`}
-                      >
-                        {categoryName}
-                      </Badge>
-                      <span className="text-xs text-muted-foreground font-medium">
-                        {article.source}
-                      </span>
-                    </div>
-
-                    <h3
-                      className={`news-heading text-xl mb-3 line-clamp-2 group-hover:${categoryColors.primaryText} transition-colors`}
-                    >
-                      {article.title}
-                    </h3>
-
-                    <p className="text-sm text-muted-foreground mb-4 line-clamp-2 leading-relaxed">
-                      {article.excerpt}
-                    </p>
-
-                    <div className="flex items-center justify-between text-xs text-muted-foreground pt-4 border-t border-border">
-                      <div className="flex items-center gap-2">
-                        <User
-                          className={`h-3 w-3 ${categoryColors.primaryText}`}
-                        />
-                        <span className="font-medium">{article.author}</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Clock
-                          className={`h-3 w-3 ${categoryColors.primaryText}`}
-                        />
-                        <span>{article.readTime}</span>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </Link>
+            {categoryArticles.map((article) => (
+              <ArticleCard key={article.id} article={article} />
             ))}
           </div>
         ) : (

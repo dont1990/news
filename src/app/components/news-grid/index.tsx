@@ -1,6 +1,7 @@
 "use client";
 
 import { Article, ArticleCard } from "../article-card";
+import SectionTitle from "../section-title";
 
 interface NewsGridProps {
   articles: Article[];
@@ -9,9 +10,7 @@ interface NewsGridProps {
 export function NewsGrid({ articles }: NewsGridProps) {
   return (
     <section>
-      <h2 className="newspaper-heading text-2xl mb-6 border-b border-border pb-2">
-        Latest News
-      </h2>
+      <SectionTitle title={"Latest News"} />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {articles.map((article) => (
