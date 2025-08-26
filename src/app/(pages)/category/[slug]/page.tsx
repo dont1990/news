@@ -3,10 +3,8 @@
 import { use } from "react";
 import { Header } from "@/app/components/header";
 import { Footer } from "@/app/components/footer";
-import { Card, CardContent } from "@/app/components/ui/card";
 import { Badge } from "@/app/components/ui/badge";
-import { Clock, User, TrendingUp } from "lucide-react";
-import Link from "next/link";
+import { TrendingUp } from "lucide-react";
 import {
   getCategoryColors,
   getCategoryBadgeClasses,
@@ -16,21 +14,21 @@ import { ArticleCard } from "@/app/components/article-card";
 
 const categoryDescriptions = {
   world:
-    "Stay informed with the latest global news, international affairs, and world events shaping our planet.",
+    "با آخرین اخبار جهانی، رویدادهای بین‌المللی و تغییرات جهان به‌روز بمانید.",
   politics:
-    "Follow political developments, elections, policy changes, and government affairs from around the world.",
+    "تحولات سیاسی، انتخابات، تغییرات سیاست‌ها و امور دولت‌ها در سراسر جهان را دنبال کنید.",
   business:
-    "Get insights into market trends, corporate news, economic indicators, and financial developments.",
+    "با روندهای بازار، اخبار شرکت‌ها، شاخص‌های اقتصادی و تحولات مالی آشنا شوید.",
   technology:
-    "Discover the latest in tech innovation, digital transformation, and emerging technologies.",
+    "آخرین نوآوری‌ها در فناوری، تحول دیجیتال و تکنولوژی‌های نوظهور را کشف کنید.",
   science:
-    "Explore scientific breakthroughs, research findings, and discoveries that advance human knowledge.",
+    "با دستاوردهای علمی، یافته‌های پژوهشی و اکتشافاتی که دانش بشر را پیش می‌برند آشنا شوید.",
   health:
-    "Stay updated on medical advances, health trends, and wellness information that matters to you.",
+    "با پیشرفت‌های پزشکی، روندهای سلامت و اطلاعات رفاه و بهداشت به‌روز بمانید.",
   sports:
-    "Follow your favorite teams, athletes, and sporting events with comprehensive sports coverage.",
+    "تیم‌ها، ورزشکاران و رویدادهای ورزشی مورد علاقه خود را دنبال کنید.",
   entertainment:
-    "Get the latest on movies, music, celebrities, and entertainment industry news.",
+    "آخرین اخبار فیلم، موسیقی، سلبریتی‌ها و صنعت سرگرمی را دریافت کنید.",
 };
 
 export default function CategoryPage({
@@ -59,7 +57,7 @@ export default function CategoryPage({
   const categoryColors = getCategoryColors(slug);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background" dir="rtl">
       <Header />
 
       <section
@@ -73,7 +71,7 @@ export default function CategoryPage({
                 variant="outline"
                 className={`bg-background/50 border-current ${categoryColors.primaryText}`}
               >
-                Category
+                دسته‌بندی
               </Badge>
             </div>
             <h1
@@ -91,7 +89,7 @@ export default function CategoryPage({
                 variant="secondary"
                 className={`px-4 py-2 ${getCategoryBadgeClasses(slug)}`}
               >
-                {categoryArticles.length} articles available
+                {categoryArticles.length} مقاله موجود
               </Badge>
             </div>
           </div>
@@ -113,9 +111,11 @@ export default function CategoryPage({
               >
                 <TrendingUp className={`h-12 w-12 ${categoryColors.text}`} />
               </div>
-              <h2 className="news-heading text-2xl mb-3">No articles found</h2>
+              <h2 className="news-heading text-2xl mb-3">
+                مقاله‌ای یافت نشد
+              </h2>
               <p className="text-muted-foreground">
-                Check back later for new {categoryName.toLowerCase()} articles
+                بعداً برای مقالات جدید {categoryName.toLowerCase()} مراجعه کنید
               </p>
             </div>
           </div>

@@ -15,11 +15,10 @@ export default function HomePage() {
         <div className="container mx-auto px-4 py-12">
           <div className="text-center mb-8">
             <h2 className="news-heading text-4xl md:text-5xl text-foreground mb-4">
-              Stay Informed with Global News
+              با اخبار جهانی همراه باشید
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Get the latest breaking news, in-depth analysis, and trending
-              stories from around the world
+              آخرین اخبار فوری، تحلیل‌های عمیق و داستان‌های پرطرفدار از سراسر جهان
             </p>
           </div>
         </div>
@@ -29,8 +28,7 @@ export default function HomePage() {
         <div className="grid grid-cols-1 xl:grid-cols-4 gap-12">
           <div className="xl:col-span-3 space-y-12">
             <section>
-           
-                <SectionTitle title={"Featured Story"}/>
+              <SectionTitle title="داستان ویژه" />
               <ArticleCard article={mockArticles[0]} />
             </section>
 

@@ -3,13 +3,15 @@
 import type React from "react";
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
-import { Search, X, TrendingUp, Clock } from "lucide-react";
+import { Search, X, TrendingUp, Clock, ArrowLeft } from "lucide-react";
 import { Input } from "@/app/components/ui/input";
 import { Card, CardContent } from "@/app/components/ui/card";
 import { Badge } from "@/app/components/ui/badge";
 import { getCategoryBadgeClasses } from "@/app/lib/category-colors";
 import { mockArticles } from "@/app/data/mock-article";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
+import { Button } from "../ui/button";
 
 interface SearchPreviewProps {
   className?: string;
@@ -81,10 +83,23 @@ export function SearchPreview({ className }: SearchPreviewProps) {
     <div ref={searchRef} className={`relative ${className}`}>
       <form onSubmit={handleSearch} className="relative">
         <div className="relative group">
-          <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground h-5 w-5 group-focus-within:text-primary transition-colors" />
+          <motion.div
+            onClick={() => {
+              if (filteredArticles.length > 0) {
+                router.push(`/article/${filteredArticles[0].id}`);
+                handleArticleClick();
+              }
+            }}
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 z-[1] cursor-pointer"
+            whileHover={{ scale: 1.2, rotate: 15 }}
+            whileTap={{ scale: 0.95, rotate: 0 }}
+            transition={{ type: "spring", stiffness: 300, damping: 15 }}
+          >
+            <Search className="h-4 w-4 text-muted-foreground group-focus-within:text-primary transition-colors" />
+          </motion.div>
           <Input
-            placeholder="Search breaking news, articles, topics..."
-            className="pl-12 pr-12 h-12 w-80 bg-background/95 backdrop-blur-sm border-2 border-border hover:border-primary/30 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-200 rounded-xl shadow-sm"
+            placeholder="جستجوی اخبار، مقالات و موضوعات..."
+            className="px-10 h-12 bg-background/95 backdrop-blur-sm border-2 border-border hover:border-primary/30 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-200 rounded-xl shadow-sm w-full lg:min-w-[400px]"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             onFocus={() => searchQuery.trim() && setIsOpen(true)}
@@ -109,9 +124,9 @@ export function SearchPreview({ className }: SearchPreviewProps) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.98 }}
             transition={{ duration: 0.25, ease: "easeInOut" }}
-            className="absolute top-full left-0 right-0 mt-3 z-50"
+            className="absolute top-full left-0 right-0 mt-2 z-50"
           >
-            <Card className="shadow-2xl border-2 border-border/50 backdrop-blur-sm bg-background/95 rounded-xl overflow-hidden">
+            <Card className="shadow-2xl border-2 border-border/50 rounded-xl overflow-hidden p-0">
               <CardContent className="p-0">
                 {filteredArticles.length > 0 ? (
                   <>
@@ -119,13 +134,12 @@ export function SearchPreview({ className }: SearchPreviewProps) {
                       <div className="flex items-center gap-2">
                         <TrendingUp className="h-4 w-4 text-primary" />
                         <span className="text-sm font-semibold text-foreground">
-                          {filteredArticles.length} result
-                          {filteredArticles.length !== 1 ? "s" : ""} found
+                          {filteredArticles.length} نتیجه یافت شد
                         </span>
                       </div>
                     </div>
 
-                    <div className="max-h-96 overflow-y-auto">
+                    <div className="max-h-96 overflow-y-auto text-start">
                       {filteredArticles.map((article) => (
                         <div
                           key={article.id}
@@ -137,11 +151,12 @@ export function SearchPreview({ className }: SearchPreviewProps) {
                         >
                           <div className="p-5">
                             <div className="flex gap-4">
-                              <div className="relative overflow-hidden rounded-lg flex-shrink-0">
-                                <img
+                              <div className="relative overflow-hidden rounded-lg flex-shrink-0 w-20 h-16">
+                                <Image
                                   src={article.imageUrl || "/placeholder.svg"}
                                   alt={article.title}
-                                  className="w-20 h-16 object-cover group-hover:scale-105 transition-transform duration-300"
+                                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                                  fill
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                               </div>
@@ -161,7 +176,15 @@ export function SearchPreview({ className }: SearchPreviewProps) {
                                   </Badge>
                                   <div className="flex items-center gap-1 text-xs text-muted-foreground">
                                     <Clock className="h-3 w-3" />
-                                    <span>{article.publishedAt}</span>
+                                    <span>
+                                      {new Date(
+                                        article.publishedAt
+                                      ).toLocaleDateString("fa-IR", {
+                                        year: "numeric",
+                                        month: "long",
+                                        day: "numeric",
+                                      })}
+                                    </span>{" "}
                                   </div>
                                 </div>
 
@@ -183,12 +206,13 @@ export function SearchPreview({ className }: SearchPreviewProps) {
                     </div>
 
                     <div className="p-4 bg-gradient-to-r from-muted/30 to-muted/10 border-t border-border">
-                      <button
+                      <Button
                         onClick={handleSearch}
-                        className="w-full text-center py-3 px-4 text-sm font-medium text-primary hover:text-primary-foreground hover:bg-primary transition-all duration-200 rounded-lg border border-primary/20 hover:border-primary"
+                        className="w-full flex items-center justify-center gap-2"
                       >
-                        View all {filteredArticles.length} results →
-                      </button>
+                        مشاهده تمام {filteredArticles.length} نتیجه
+                        <ArrowLeft className="h-4 w-4" />
+                      </Button>
                     </div>
                   </>
                 ) : (
@@ -200,7 +224,8 @@ export function SearchPreview({ className }: SearchPreviewProps) {
                       No results found
                     </p>
                     <p className="text-xs text-muted-foreground">
-                      Try different keywords or browse categories
+                      کلمات کلیدی دیگر را امتحان کنید یا دسته‌بندی‌ها را مرور
+                      کنید
                     </p>
                   </div>
                 )}

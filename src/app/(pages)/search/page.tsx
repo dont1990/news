@@ -44,16 +44,16 @@ export default function SearchPage() {
                 variant="outline"
                 className="bg-background/50 text-primary border-primary/20"
               >
-                Search Results
+                نتایج جستجو
               </Badge>
             </div>
             <h1 className="news-heading text-4xl md:text-5xl mb-6 text-foreground">
-              {query ? `Results for "${query}"` : "Search News"}
+              {query ? `نتایج برای "${query}"` : "جستجوی اخبار"}
             </h1>
             {query && (
               <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                Found {filteredArticles.length} article
-                {filteredArticles.length !== 1 ? "s" : ""} matching your search
+                {filteredArticles.length} مقاله یافت شد
+                {filteredArticles.length !== 1 ? "" : ""} که با جستجوی شما مطابقت دارد
               </p>
             )}
           </div>
@@ -70,7 +70,7 @@ export default function SearchPage() {
                 className="gap-2 bg-transparent"
               >
                 <Filter className="h-4 w-4" />
-                Filter
+                فیلتر
               </Button>
               <Button
                 variant="outline"
@@ -78,11 +78,11 @@ export default function SearchPage() {
                 className="gap-2 bg-transparent"
               >
                 <SortAsc className="h-4 w-4" />
-                Sort by Date
+                مرتب‌سازی بر اساس تاریخ
               </Button>
             </div>
             <p className="text-sm text-muted-foreground">
-              {filteredArticles.length} of {mockArticles.length} articles
+              {filteredArticles.length} از {mockArticles.length} مقاله
             </p>
           </div>
         )}
@@ -99,14 +99,14 @@ export default function SearchPage() {
               <div className="w-24 h-24 bg-muted rounded-full flex items-center justify-center mx-auto mb-6">
                 <Search className="h-12 w-12 text-muted-foreground" />
               </div>
-              <h2 className="news-heading text-2xl mb-3">No results found</h2>
+              <h2 className="news-heading text-2xl mb-3">موردی یافت نشد</h2>
               <p className="text-muted-foreground mb-6">
-                We couldn&apos;t find any articles matching &quot;{query}&quot;.
-                Try different keywords or browse our categories.
+                هیچ مقاله‌ای مطابق با &quot;{query}&quot; پیدا نشد.
+                از کلیدواژه‌های متفاوت استفاده کنید یا دسته‌بندی‌ها را مرور کنید.
               </p>
               <Link href="/">
                 <Button className="bg-primary hover:bg-primary/90">
-                  Browse All News
+                  مشاهده تمام اخبار
                 </Button>
               </Link>
             </div>
@@ -117,10 +117,9 @@ export default function SearchPage() {
               <div className="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Search className="h-12 w-12 text-primary" />
               </div>
-              <h2 className="news-heading text-2xl mb-3">Start Your Search</h2>
+              <h2 className="news-heading text-2xl mb-3">جستجوی خود را آغاز کنید</h2>
               <p className="text-muted-foreground">
-                Use the search bar above to find articles, topics, or browse by
-                category.
+                از نوار جستجو در بالا برای پیدا کردن مقالات و موضوعات استفاده کنید یا بر اساس دسته‌بندی مرور کنید.
               </p>
             </div>
           </div>

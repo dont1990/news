@@ -9,7 +9,7 @@ import Logo from "./logo";
 import NotificationsButton from "./notification-button";
 import DesktopNav from "./desktop-nav";
 import MobileNav from "./mobile-nav";
-import { AnimatePresence, motion } from "framer-motion";
+import SearchBar from "./search-bar";
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -43,21 +43,7 @@ export function Header() {
           </div>
         </div>
 
-        {/* ✅ Animated mobile search */}
-        <AnimatePresence>
-          {isMobileSearchOpen && (
-            <motion.div
-              key="mobile-search"
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="mt-4 lg:hidden"
-            >
-              <SearchPreview className="w-full relative" />
-            </motion.div>
-          )}
-        </AnimatePresence>
+        <SearchBar isMobileSearchOpen={isMobileSearchOpen} />
       </div>
 
       <div className="bg-muted/30 border-t border-border">

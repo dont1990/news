@@ -1,17 +1,5 @@
-"use client";
-
+import { categories } from "@/app/data/mock-article";
 import Link from "next/link";
-
-const categories = [
-  "World",
-  "Politics",
-  "Business",
-  "Technology",
-  "Science",
-  "Health",
-  "Sports",
-  "Entertainment",
-];
 
 interface MobileNavProps {
   isOpen: boolean;
@@ -26,12 +14,12 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
       <div className="grid grid-cols-2 gap-2">
         {categories.map((category) => (
           <Link
-            key={category}
-            href={`/category/${category.toLowerCase()}`}
+            key={category.slug}
+            href={`/category/${category.slug}`}
             className="px-4 py-3 text-sm font-medium rounded-md hover:bg-primary/10 hover:text-primary transition-colors text-center"
             onClick={onClose}
           >
-            {category}
+            {category.name}
           </Link>
         ))}
       </div>
