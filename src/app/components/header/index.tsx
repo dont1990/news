@@ -19,19 +19,9 @@ export function Header() {
     <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border shadow-sm">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <Logo />
-
-          <div className="flex items-center space-x-4">
-            <SearchPreview className="hidden lg:block" />
-            <SearchToggle
-              isOpen={isMobileSearchOpen}
-              onToggle={() => setIsMobileSearchOpen(!isMobileSearchOpen)}
-            />
-            <NotificationsButton />
-            <Button
-              variant="ghost"
-              size="icon"
-              className="md:hidden hover:bg-muted"
+          <div className="flex gap-3 items-center">
+            <div
+              className="md:hidden"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? (
@@ -39,7 +29,17 @@ export function Header() {
               ) : (
                 <Menu className="h-5 w-5" />
               )}
-            </Button>
+            </div>
+            <Logo />
+          </div>
+
+          <div className="flex items-center gap-x-4">
+            <SearchPreview className="hidden lg:block" />
+            <SearchToggle
+              isOpen={isMobileSearchOpen}
+              onToggle={() => setIsMobileSearchOpen(!isMobileSearchOpen)}
+            />
+            <NotificationsButton />
           </div>
         </div>
 

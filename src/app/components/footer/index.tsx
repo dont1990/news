@@ -1,5 +1,5 @@
 import { Separator } from "@/app/components/ui/separator";
-import { footerLinks } from "@/app/data/mock-article";
+import { footerLinks } from "@/app/data/footer-links";
 import Link from "next/link";
 
 export function Footer() {

@@ -47,7 +47,7 @@ export default function ArticlePage({
         <Header />
         <main className="container mx-auto px-4 py-8">
           <div className="text-center py-12">
-            <h1 className="news-heading text-3xl mb-4">مقاله یافت نشد</h1>
+            <p className="news-heading text-3xl mb-4">مقاله یافت نشد</p>
             <p className="text-muted-foreground mb-6">
               مقاله‌ای که دنبال آن هستید وجود ندارد.
             </p>
@@ -120,9 +120,9 @@ export default function ArticlePage({
                 )}
               </div>
 
-              <h1 className="news-heading text-4xl md:text-5xl mb-6 leading-tight text-foreground">
+              <p className="news-heading text-4xl md:text-5xl mb-6 leading-tight text-foreground">
                 {article.title}
-              </h1>
+              </p>
 
               <p className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed">
                 {article.excerpt}
@@ -188,9 +188,9 @@ export default function ArticlePage({
                   <User className="h-8 w-8 text-primary" />
                 </div>
                 <div>
-                  <h3 className="news-heading text-xl mb-2">
+                  <p className="news-heading text-xl mb-2">
                     درباره {article.author}
-                  </h3>
+                  </p>
                   <p className="text-muted-foreground leading-relaxed">
                     {article.author} خبرنگار ارشد {article.source} است و بیش از
                     ۱۰ سال تجربه در پوشش خبری حوزه{" "}
@@ -204,9 +204,9 @@ export default function ArticlePage({
           <aside className="xl:col-span-1">
             <div className="sticky top-24">
               <div className="bg-card border border-border rounded-xl p-6">
-                <h2 className="news-heading text-xl mb-6 text-foreground">
+                <p className="news-heading text-xl mb-6 text-foreground">
                   مقالات مرتبط
-                </h2>
+                </p>
                 <div className="space-y-6">
                   {relatedArticles.map((relatedArticle) => (
                     <Link
@@ -227,9 +227,9 @@ export default function ArticlePage({
                             />
                           </div>
 
-                          <h3 className="font-semibold text-sm mb-2 line-clamp-2 leading-tight">
+                          <p className="font-semibold text-sm mb-2 line-clamp-2 leading-tight">
                             {relatedArticle.title}
-                          </h3>
+                          </p>
                           <div className="flex items-center justify-between text-xs text-muted-foreground">
                             <span className="font-medium">
                               {relatedArticle.author}

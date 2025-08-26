@@ -86,9 +86,9 @@ export function Sidebar() {
               key={index}
               className="space-y-2 pb-3 border-b border-border last:border-b-0"
             >
-              <h4 className="newspaper-body text-sm font-medium leading-tight line-clamp-2">
+              <p className="newspaper-body text-sm font-medium leading-tight line-clamp-2">
                 {update.title}
-              </h4>
+              </p>
               <div className="flex items-center justify-between">
                 <Link href={`/category/${update.slug}`}>
                   <Badge

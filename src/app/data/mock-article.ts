@@ -1,23 +1,3 @@
-// categories.ts
-export const categories = [
-  { persian: "جهان", english: "world" },
-  { persian: "سیاست", english: "politics" },
-  { persian: "تجارت", english: "business" },
-  { persian: "فناوری", english: "technology" },
-  { persian: "علم", english: "science" },
-  { persian: "سلامت", english: "health" },
-  { persian: "ورزش", english: "sports" },
-  { persian: "سرگرمی", english: "entertainment" },
-  { persian: "محیط زیست", english: "Environment" },
-];
-
-export const footerLinks = {
-  درباره: ["درباره ما", "تیم ما", "فرصت‌های شغلی", "تماس با ما"],
-  اخبار: ["جهان", "سیاست", "کسب‌وکار", "فناوری"],
-  پشتیبانی: ["مرکز راهنما", "حریم خصوصی", "شرایط خدمات", "RSS"],
-  "دنبال کنید": ["توییتر", "فیسبوک", "لینکدین", "خبرنامه"],
-};
-
 export const mockArticles = [
   {
     id: "1",

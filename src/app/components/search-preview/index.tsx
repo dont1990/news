@@ -231,9 +231,9 @@ export function SearchPreview({ className }: SearchPreviewProps) {
                                   </div>
                                 </div>
 
-                                <h4 className="font-semibold text-sm line-clamp-2 mb-2 leading-tight group-hover:text-primary transition-colors">
+                                <p className="font-semibold text-sm line-clamp-2 mb-2 leading-tight group-hover:text-primary transition-colors">
                                   {article.title}
-                                </h4>
+                                </p>
                                 <p className="text-xs text-muted-foreground line-clamp-2 leading-relaxed">
                                   {article.excerpt}
                                 </p>

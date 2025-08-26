@@ -74,11 +74,11 @@ export default function CategoryPage({
                 دسته‌بندی
               </Badge>
             </div>
-            <h1
+            <p
               className={`news-heading text-5xl md:text-6xl mb-6 ${categoryColors.primaryText}`}
             >
               {categoryName}
-            </h1>
+            </p>
             {categoryDescription && (
               <p className="text-xl text-muted-foreground leading-relaxed mb-6">
                 {categoryDescription}
@@ -111,9 +111,9 @@ export default function CategoryPage({
               >
                 <TrendingUp className={`h-12 w-12 ${categoryColors.text}`} />
               </div>
-              <h2 className="news-heading text-2xl mb-3">
+              <p className="news-heading text-2xl mb-3">
                 مقاله‌ای یافت نشد
-              </h2>
+              </p>
               <p className="text-muted-foreground">
                 بعداً برای مقالات جدید {categoryName.toLowerCase()} مراجعه کنید
               </p>

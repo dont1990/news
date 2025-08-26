@@ -14,9 +14,9 @@ export default function HomePage() {
       <section className="bg-gradient-to-br from-primary/5 to-secondary/5 border-b border-border">
         <div className="container mx-auto px-4 py-12">
           <div className="text-center mb-8">
-            <h2 className="news-heading text-4xl md:text-5xl text-foreground mb-4">
+            <p className="news-heading text-4xl md:text-5xl text-foreground mb-4">
               با اخبار جهانی همراه باشید
-            </h2>
+            </p>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               آخرین اخبار فوری، تحلیل‌های عمیق و داستان‌های پرطرفدار از سراسر جهان
             </p>

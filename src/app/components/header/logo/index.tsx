@@ -13,9 +13,9 @@ export default function Logo() {
 
         {/* متن لوگو */}
         <div className="text-right">
-          <h1 className="news-heading text-2xl text-foreground group-hover:text-primary transition-colors">
+          <p className="news-heading text-2xl text-foreground group-hover:text-primary transition-colors">
             نیوزهاب
-          </h1>
+          </p>
           <p className="text-xs text-muted-foreground hidden sm:block">
             خبرخوان جهانی
           </p>
