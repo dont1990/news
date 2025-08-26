@@ -10,6 +10,7 @@ import NotificationsButton from "./notification-button";
 import DesktopNav from "./desktop-nav";
 import MobileNav from "./mobile-nav";
 import SearchBar from "./search-bar";
+import Hamburger from "./hamburger";
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -20,16 +21,11 @@ export function Header() {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <div className="flex gap-3 items-center">
-            <div
-              className="md:hidden"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            >
-              {isMobileMenuOpen ? (
-                <X className="h-5 w-5" />
-              ) : (
-                <Menu className="h-5 w-5" />
-              )}
-            </div>
+            <Hamburger
+              isOpen={isMobileMenuOpen}
+              toggle={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            />
+
             <Logo />
           </div>
 

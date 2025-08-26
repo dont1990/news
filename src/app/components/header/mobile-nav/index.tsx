@@ -29,11 +29,12 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
             <Link
               href={`/category/${category.english}`}
               onClick={onClose}
-              className="block px-4 py-3 text-sm font-medium rounded-xl text-center 
-                        bg-muted/50 hover:bg-primary/10 hover:text-primary 
-                        transition-all duration-200 shadow-sm hover:shadow-md"
+              className="group/nav flex flex-col items-center justify-center gap-1 px-4 py-3 text-sm font-medium rounded-xl
+                         bg-muted/50 hover:bg-primary/10 hover:text-primary 
+                         transition-all duration-200 shadow-sm hover:shadow-md"
             >
-              {category.persian}
+              <category.icon className="w-6 h-6 text-gray-500 group-hover/nav:text-primary transition-colors" />
+              <span>{category.persian}</span>
             </Link>
           </motion.div>
         ))}
