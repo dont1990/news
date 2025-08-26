@@ -9,6 +9,7 @@ import { Card, CardContent } from "@/app/components/ui/card";
 import { Badge } from "@/app/components/ui/badge";
 import { getCategoryBadgeClasses } from "@/app/lib/category-colors";
 import { mockArticles } from "@/app/data/mock-article";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface SearchPreviewProps {
   className?: string;
@@ -32,7 +33,7 @@ export function SearchPreview({ className }: SearchPreviewProps) {
             article.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
             article.category.toLowerCase().includes(searchQuery.toLowerCase())
         )
-        .slice(0, 5); // Increased to 5 results for better coverage
+        .slice(0, 5);
       setFilteredArticles(filtered);
       setIsOpen(true);
     } else {
@@ -50,7 +51,6 @@ export function SearchPreview({ className }: SearchPreviewProps) {
         setIsOpen(false);
       }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
@@ -63,9 +63,7 @@ export function SearchPreview({ className }: SearchPreviewProps) {
     }
   };
 
-  const handleArticleClick = () => {
-    setIsOpen(false);
-  };
+  const handleArticleClick = () => setIsOpen(false);
 
   const handleCategoryClick = (e: React.MouseEvent, category: string) => {
     e.preventDefault();
@@ -103,103 +101,114 @@ export function SearchPreview({ className }: SearchPreviewProps) {
         </div>
       </form>
 
-      {isOpen && (
-        <Card className="absolute top-full left-0 right-0 mt-3 z-50 shadow-2xl border-2 border-border/50 backdrop-blur-sm bg-background/95 rounded-xl overflow-hidden">
-          <CardContent className="p-0">
-            {filteredArticles.length > 0 ? (
-              <>
-                <div className="px-6 py-4 bg-gradient-to-r from-primary/5 to-secondary/5 border-b border-border">
-                  <div className="flex items-center gap-2">
-                    <TrendingUp className="h-4 w-4 text-primary" />
-                    <span className="text-sm font-semibold text-foreground">
-                      {filteredArticles.length} result
-                      {filteredArticles.length !== 1 ? "s" : ""} found
-                    </span>
-                  </div>
-                </div>
+      {/* ✅ Animated Dropdown */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -10, scale: 0.98 }}
+            transition={{ duration: 0.25, ease: "easeInOut" }}
+            className="absolute top-full left-0 right-0 mt-3 z-50"
+          >
+            <Card className="shadow-2xl border-2 border-border/50 backdrop-blur-sm bg-background/95 rounded-xl overflow-hidden">
+              <CardContent className="p-0">
+                {filteredArticles.length > 0 ? (
+                  <>
+                    <div className="px-6 py-4 bg-gradient-to-r from-primary/5 to-secondary/5 border-b border-border">
+                      <div className="flex items-center gap-2">
+                        <TrendingUp className="h-4 w-4 text-primary" />
+                        <span className="text-sm font-semibold text-foreground">
+                          {filteredArticles.length} result
+                          {filteredArticles.length !== 1 ? "s" : ""} found
+                        </span>
+                      </div>
+                    </div>
 
-                <div className="max-h-96 overflow-y-auto">
-                  {filteredArticles.map((article, index) => (
-                    <div
-                      key={article.id}
-                      onClick={() => {
-                        router.push(`/article/${article.id}`);
-                        handleArticleClick();
-                      }}
-                      className="hover:bg-gradient-to-r hover:from-primary/5 hover:to-secondary/5 transition-all duration-200 cursor-pointer border-b border-border/50 last:border-b-0 group"
-                    >
-                      <div className="p-5">
-                        <div className="flex gap-4">
-                          <div className="relative overflow-hidden rounded-lg flex-shrink-0">
-                            <img
-                              src={article.imageUrl || "/placeholder.svg"}
-                              alt={article.title}
-                              className="w-20 h-16 object-cover group-hover:scale-105 transition-transform duration-300"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                          </div>
-
-                          <div className="flex-1 min-w-0">
-                            <div className="flex items-center gap-3 mb-2">
-                              <Badge
-                                variant="secondary"
-                                className={`cursor-pointer transition-all duration-200 text-xs px-2 py-1 ${getCategoryBadgeClasses(
-                                  article.category
-                                )}`}
-                                onClick={(e) =>
-                                  handleCategoryClick(e, article.category)
-                                }
-                              >
-                                {article.category}
-                              </Badge>
-                              <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                                <Clock className="h-3 w-3" />
-                                <span>{article.publishedAt}</span>
+                    <div className="max-h-96 overflow-y-auto">
+                      {filteredArticles.map((article) => (
+                        <div
+                          key={article.id}
+                          onClick={() => {
+                            router.push(`/article/${article.id}`);
+                            handleArticleClick();
+                          }}
+                          className="hover:bg-gradient-to-r hover:from-primary/5 hover:to-secondary/5 transition-all duration-200 cursor-pointer border-b border-border/50 last:border-b-0 group"
+                        >
+                          <div className="p-5">
+                            <div className="flex gap-4">
+                              <div className="relative overflow-hidden rounded-lg flex-shrink-0">
+                                <img
+                                  src={article.imageUrl || "/placeholder.svg"}
+                                  alt={article.title}
+                                  className="w-20 h-16 object-cover group-hover:scale-105 transition-transform duration-300"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                               </div>
-                            </div>
 
-                            <h4 className="font-semibold text-sm line-clamp-2 mb-2 leading-tight group-hover:text-primary transition-colors">
-                              {article.title}
-                            </h4>
-                            <p className="text-xs text-muted-foreground line-clamp-2 leading-relaxed">
-                              {article.excerpt}
-                            </p>
+                              <div className="flex-1 min-w-0">
+                                <div className="flex items-center gap-3 mb-2">
+                                  <Badge
+                                    variant="secondary"
+                                    className={`cursor-pointer transition-all duration-200 text-xs px-2 py-1 ${getCategoryBadgeClasses(
+                                      article.category
+                                    )}`}
+                                    onClick={(e) =>
+                                      handleCategoryClick(e, article.category)
+                                    }
+                                  >
+                                    {article.category}
+                                  </Badge>
+                                  <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                                    <Clock className="h-3 w-3" />
+                                    <span>{article.publishedAt}</span>
+                                  </div>
+                                </div>
 
-                            <div className="mt-2 text-xs text-muted-foreground font-medium">
-                              {article.source} • {article.readTime}
+                                <h4 className="font-semibold text-sm line-clamp-2 mb-2 leading-tight group-hover:text-primary transition-colors">
+                                  {article.title}
+                                </h4>
+                                <p className="text-xs text-muted-foreground line-clamp-2 leading-relaxed">
+                                  {article.excerpt}
+                                </p>
+
+                                <div className="mt-2 text-xs text-muted-foreground font-medium">
+                                  {article.source} • {article.readTime}
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
 
-                <div className="p-4 bg-gradient-to-r from-muted/30 to-muted/10 border-t border-border">
-                  <button
-                    onClick={handleSearch}
-                    className="w-full text-center py-3 px-4 text-sm font-medium text-primary hover:text-primary-foreground hover:bg-primary transition-all duration-200 rounded-lg border border-primary/20 hover:border-primary"
-                  >
-                    View all {filteredArticles.length} results →
-                  </button>
-                </div>
-              </>
-            ) : (
-              <div className="p-8 text-center">
-                <div className="w-16 h-16 bg-muted/50 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Search className="h-8 w-8 text-muted-foreground" />
-                </div>
-                <p className="text-sm font-medium text-foreground mb-1">
-                  No results found
-                </p>
-                <p className="text-xs text-muted-foreground">
-                  Try different keywords or browse categories
-                </p>
-              </div>
-            )}
-          </CardContent>
-        </Card>
-      )}
+                    <div className="p-4 bg-gradient-to-r from-muted/30 to-muted/10 border-t border-border">
+                      <button
+                        onClick={handleSearch}
+                        className="w-full text-center py-3 px-4 text-sm font-medium text-primary hover:text-primary-foreground hover:bg-primary transition-all duration-200 rounded-lg border border-primary/20 hover:border-primary"
+                      >
+                        View all {filteredArticles.length} results →
+                      </button>
+                    </div>
+                  </>
+                ) : (
+                  <div className="p-8 text-center">
+                    <div className="w-16 h-16 bg-muted/50 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Search className="h-8 w-8 text-muted-foreground" />
+                    </div>
+                    <p className="text-sm font-medium text-foreground mb-1">
+                      No results found
+                    </p>
+                    <p className="text-xs text-muted-foreground">
+                      Try different keywords or browse categories
+                    </p>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
