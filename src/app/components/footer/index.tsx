@@ -1,11 +1,6 @@
 import { Separator } from "@/app/components/ui/separator";
-
-const footerLinks = {
-  About: ["About Us", "Our Team", "Careers", "Contact"],
-  News: ["World", "Politics", "Business", "Technology"],
-  Support: ["Help Center", "Privacy Policy", "Terms of Service", "RSS Feeds"],
-  Follow: ["Twitter", "Facebook", "LinkedIn", "Newsletter"],
-};
+import { footerLinks } from "@/app/data/mock-article";
+import Link from "next/link";
 
 export function Footer() {
   return (
@@ -20,12 +15,13 @@ export function Footer() {
               <ul className="space-y-2">
                 {links.map((link) => (
                   <li key={link}>
-                    <a
+                    <Link
                       href="#"
                       className="newspaper-body text-sm text-muted-foreground hover:text-foreground transition-colors"
+                      aria-label={link}
                     >
                       {link}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -36,15 +32,15 @@ export function Footer() {
         <Separator className="my-6" />
 
         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-          <div className="flex items-center space-x-4">
-            <p className="newspaper-heading text-xl text-primary">NewsHub</p>
-            <p className="newspaper-body text-sm text-muted-foreground">
-              Trusted news since 2024
+          <div className="flex items-center gap-x-4">
+            <p className="text-xl text-primary">نیوزهاب</p>
+            <p className="text-sm text-muted-foreground">
+              منبع معتبر اخبار از سال ۲۰۲۴
             </p>
           </div>
 
-          <p className="newspaper-body text-sm text-muted-foreground">
-            © 2024 NewsHub. All rights reserved.
+          <p className="text-sm text-muted-foreground">
+            © 2024 NewsHub. تمامی حقوق محفوظ است.
           </p>
         </div>
       </div>

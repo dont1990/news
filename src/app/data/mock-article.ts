@@ -1,16 +1,22 @@
 // categories.ts
 export const categories = [
-  { name: "جهان", slug: "world" },
-  { name: "سیاست", slug: "politics" },
-  { name: "تجارت", slug: "business" },
-  { name: "فناوری", slug: "technology" },
-  { name: "علم", slug: "science" },
-  { name: "سلامت", slug: "health" },
-  { name: "ورزش", slug: "sports" },
-  { name: "سرگرمی", slug: "entertainment" },
+  { persian: "جهان", english: "world" },
+  { persian: "سیاست", english: "politics" },
+  { persian: "تجارت", english: "business" },
+  { persian: "فناوری", english: "technology" },
+  { persian: "علم", english: "science" },
+  { persian: "سلامت", english: "health" },
+  { persian: "ورزش", english: "sports" },
+  { persian: "سرگرمی", english: "entertainment" },
+  { persian: "محیط زیست", english: "Environment" },
 ];
 
-
+export const footerLinks = {
+  درباره: ["درباره ما", "تیم ما", "فرصت‌های شغلی", "تماس با ما"],
+  اخبار: ["جهان", "سیاست", "کسب‌وکار", "فناوری"],
+  پشتیبانی: ["مرکز راهنما", "حریم خصوصی", "شرایط خدمات", "RSS"],
+  "دنبال کنید": ["توییتر", "فیسبوک", "لینکدین", "خبرنامه"],
+};
 
 export const mockArticles = [
   {
@@ -45,7 +51,8 @@ export const mockArticles = [
   },
   {
     id: "2",
-    title: "شرکت‌های بزرگ فناوری استانداردهای ایمنی جدید هوش مصنوعی را اعلام کردند",
+    title:
+      "شرکت‌های بزرگ فناوری استانداردهای ایمنی جدید هوش مصنوعی را اعلام کردند",
     excerpt:
       "شرکت‌های پیشرو در فناوری برای ایجاد پروتکل‌های ایمنی سراسری هوش مصنوعی همکاری کردند.",
     content: `

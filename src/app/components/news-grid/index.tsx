@@ -10,7 +10,7 @@ interface NewsGridProps {
 export function NewsGrid({ articles }: NewsGridProps) {
   return (
     <section>
-      <SectionTitle title={"Latest News"} />
+      <SectionTitle title={"آخرین اخبار"} />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {articles.map((article) => (

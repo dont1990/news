@@ -14,12 +14,12 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
       <div className="grid grid-cols-2 gap-2">
         {categories.map((category) => (
           <Link
-            key={category.slug}
-            href={`/category/${category.slug}`}
+            key={category.english}
+            href={`/category/${category.english}`}
             className="px-4 py-3 text-sm font-medium rounded-md hover:bg-primary/10 hover:text-primary transition-colors text-center"
             onClick={onClose}
           >
-            {category.name}
+            {category.persian}
           </Link>
         ))}
       </div>

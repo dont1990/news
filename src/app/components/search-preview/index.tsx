@@ -18,6 +18,8 @@ interface SearchPreviewProps {
 }
 
 export function SearchPreview({ className }: SearchPreviewProps) {
+  const [isInputVisible, setIsInputVisible] = useState(false);
+
   const [searchQuery, setSearchQuery] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [filteredArticles, setFilteredArticles] = useState<typeof mockArticles>(
@@ -79,41 +81,82 @@ export function SearchPreview({ className }: SearchPreviewProps) {
     setIsOpen(false);
   };
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        searchRef.current &&
+        !searchRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+        setIsInputVisible(false); // hide input on lg+
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   return (
     <div ref={searchRef} className={`relative ${className}`}>
-      <form onSubmit={handleSearch} className="relative">
-        <div className="relative group">
+      <form onSubmit={handleSearch} className="relative flex items-center">
+        {/* Search Icon for lg+ */}
+        <div className="relative">
           <motion.div
-            onClick={() => {
-              if (filteredArticles.length > 0) {
-                router.push(`/article/${filteredArticles[0].id}`);
-                handleArticleClick();
-              }
-            }}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 z-[1] cursor-pointer"
-            whileHover={{ scale: 1.2, rotate: 15 }}
-            whileTap={{ scale: 0.95, rotate: 0 }}
-            transition={{ type: "spring", stiffness: 300, damping: 15 }}
+            onClick={() => setIsInputVisible((prev) => !prev)}
+            className="cursor-pointer lg:flex hidden items-center justify-center p-2"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
           >
-            <Search className="h-4 w-4 text-muted-foreground group-focus-within:text-primary transition-colors" />
+            {isInputVisible ? (
+              <motion.div
+                className="cursor-pointer"
+                whileHover={{ rotate: [0, -15, 15, -10, 10, 0] }}
+                transition={{ duration: 0.5 }}
+              >
+                <X className="h-5 w-5" />
+              </motion.div>
+            ) : (
+              <motion.div
+                className="cursor-pointer"
+                whileHover={{ scale: 1.2, rotate: 15 }}
+                whileTap={{ scale: 0.95, rotate: 0 }}
+                transition={{ type: "spring", stiffness: 300, damping: 15 }}
+              >
+                <Search className="h-5 w-5" />
+              </motion.div>
+            )}
           </motion.div>
-          <Input
-            placeholder="جستجوی اخبار، مقالات و موضوعات..."
-            className="px-10 h-12 bg-background/95 backdrop-blur-sm border-2 border-border hover:border-primary/30 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-200 rounded-xl shadow-sm w-full lg:min-w-[400px]"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            onFocus={() => searchQuery.trim() && setIsOpen(true)}
-          />
-          {searchQuery && (
-            <button
-              type="button"
-              onClick={clearSearch}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors p-1 rounded-full hover:bg-muted"
-            >
-              <X className="h-4 w-4" />
-            </button>
-          )}
         </div>
+
+        {/* Input: always visible on <lg, animated on lg+ */}
+        <AnimatePresence>
+          {(isInputVisible || window.innerWidth < 1024) && (
+            <motion.div
+              initial={{ width: 0, opacity: 0 }}
+              animate={{ width: "auto", opacity: 1 }}
+              exit={{ width: 0, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="relative flex-1 lg:ml-2"
+            >
+              <Input
+                placeholder="جستجوی اخبار، مقالات و موضوعات..."
+                className="px-4 h-12 bg-background/95 backdrop-blur-sm border-2 border-border hover:border-primary/30 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-200 rounded-xl shadow-sm w-full lg:min-w-[400px]"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onFocus={() => searchQuery.trim() && setIsOpen(true)}
+              />
+              {searchQuery && (
+                <Button
+                  variant={"ghost"}
+                  type="button"
+                  onClick={clearSearch}
+                  className="absolute left-2 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors p-1 rounded-full cursor-pointer"
+                >
+                  <X className="h-4 w-4" />
+                </Button>
+              )}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </form>
 
       {/* ✅ Animated Dropdown */}
@@ -217,11 +260,11 @@ export function SearchPreview({ className }: SearchPreviewProps) {
                   </>
                 ) : (
                   <div className="p-8 text-center">
-                    <div className="w-16 h-16 bg-muted/50 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <div className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-2">
                       <Search className="h-8 w-8 text-muted-foreground" />
                     </div>
-                    <p className="text-sm font-medium text-foreground mb-1">
-                      No results found
+                    <p className="text-sm font-medium text-foreground mb-2">
+                      نتیجه ای یافت نشد
                     </p>
                     <p className="text-xs text-muted-foreground">
                       کلمات کلیدی دیگر را امتحان کنید یا دسته‌بندی‌ها را مرور

@@ -37,21 +37,6 @@ export function ArticleCard({ article }: ArticleCardProps) {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         </Link>
-
-        {/* Badge over image */}
-        {/* <div className="absolute top-4 left-4">
-          <Badge
-            asChild
-            variant="secondary"
-            className={`shadow-md text-xs px-2 py-1 cursor-pointer transition-colors ${getCategoryBadgeClasses(
-              article.category
-            )}`}
-          >
-            <Link href={`/category/${article.category.toLowerCase()}`}>
-              {article.category}
-            </Link>
-          </Badge>
-        </div> */}
       </div>
 
       <CardContent className="p-6">
@@ -64,9 +49,9 @@ export function ArticleCard({ article }: ArticleCardProps) {
 
         {/* Title links to article */}
         <Link href={`/article/${article.id}`}>
-          <h3 className="news-heading text-xl mb-3 line-clamp-2 group-hover:text-primary transition-colors">
+          <p className="news-heading text-xl mb-3 line-clamp-2 group-hover:text-primary transition-colors">
             {article.title}
-          </h3>
+          </p>
         </Link>
 
         <p className="text-sm text-muted-foreground mb-4 line-clamp-2 leading-relaxed">
@@ -75,12 +60,12 @@ export function ArticleCard({ article }: ArticleCardProps) {
 
         <div className="flex items-center justify-between text-xs text-muted-foreground pt-4 border-t border-border">
           <div className="flex items-center gap-2">
-            <User className="h-3 w-3 text-primary" />
-            <span className="font-medium">{article.author}</span>
+            <User className="h-4 w-4 text-primary" />
+            <span className="mt-1">{article.author}</span>
           </div>
           <div className="flex items-center gap-2">
-            <Clock className="h-3 w-3 text-primary" />
-            <span>{article.readTime}</span>
+            <Clock className="h-4 w-4 text-primary" />
+            <span className="mt-0.5">{article.readTime}</span>
           </div>
         </div>
       </CardContent>
