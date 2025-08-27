@@ -12,14 +12,17 @@ export default function Logo() {
         </div>
 
         {/* متن لوگو */}
-        <div className="text-right">
+        {/* <div className="text-right">
           <p className="news-heading text-2xl text-foreground group-hover:text-primary transition-colors">
             نیوزهاب
           </p>
           <p className="text-xs text-muted-foreground hidden sm:block">
             خبرخوان جهانی
           </p>
-        </div>
+        </div> */}
+        <h1 className="text-3xl font-bold bg-gradient-to-r from-secondary-400 via-primary-200 to-primary-500 bg-clip-text text-transparent">
+          نیوزهاب
+        </h1>
       </div>
     </Link>
   );

@@ -199,7 +199,7 @@ export default function ArticlePage({
         </article>
 
         <aside className="xl:col-span-1">
-          <div className="sticky top-24">
+          <div className="sticky top-48">
             <div className="bg-card border border-border rounded-xl p-6">
               <p className="news-heading text-xl mb-6 text-foreground">
                 مقالات مرتبط
