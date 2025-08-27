@@ -3,7 +3,14 @@
 import type React from "react";
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
-import { Search, X, TrendingUp, Clock, ArrowLeft } from "lucide-react";
+import {
+  Search,
+  X,
+  TrendingUp,
+  Clock,
+  ArrowLeft,
+  SearchIcon,
+} from "lucide-react";
 import { Input } from "@/app/components/ui/input";
 import { Card, CardContent } from "@/app/components/ui/card";
 import { Badge } from "@/app/components/ui/badge";
@@ -12,6 +19,7 @@ import { mockArticles } from "@/app/data/mock-article";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { Button } from "../ui/button";
+import { useMediaQuery } from "@/app/hooks/useMediaQuery";
 
 interface SearchPreviewProps {
   className?: string;
@@ -19,23 +27,37 @@ interface SearchPreviewProps {
 
 export function SearchPreview({ className }: SearchPreviewProps) {
   const [isInputVisible, setIsInputVisible] = useState(false);
-
   const [searchQuery, setSearchQuery] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [filteredArticles, setFilteredArticles] = useState<typeof mockArticles>(
     []
   );
   const router = useRouter();
-  const searchRef = useRef<HTMLDivElement>(null);
+  const searchRef = useRef<HTMLDivElement | null>(null);
 
+  // small/tablet and large breakpoints
+  const isMobileOrTablet = useMediaQuery("(max-width: 1023px)");
+  const isLargeUp = useMediaQuery("(min-width: 1024px)");
+
+  // Ensure input is open by default on large screens (only on initial mount)
+  const initializedRef = useRef(false);
+  useEffect(() => {
+    if (!initializedRef.current) {
+      if (isLargeUp) setIsInputVisible(true);
+      initializedRef.current = true;
+    }
+  }, [isLargeUp]);
+
+  // Filter articles
   useEffect(() => {
     if (searchQuery.trim()) {
+      const q = searchQuery.toLowerCase();
       const filtered = mockArticles
         .filter(
           (article) =>
-            article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            article.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            article.category.toLowerCase().includes(searchQuery.toLowerCase())
+            article.title.toLowerCase().includes(q) ||
+            article.excerpt.toLowerCase().includes(q) ||
+            article.category.toLowerCase().includes(q)
         )
         .slice(0, 5);
       setFilteredArticles(filtered);
@@ -46,6 +68,7 @@ export function SearchPreview({ className }: SearchPreviewProps) {
     }
   }, [searchQuery]);
 
+  // Click outside => close dropdown and hide input (keeps behavior compact)
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -53,11 +76,23 @@ export function SearchPreview({ className }: SearchPreviewProps) {
         !searchRef.current.contains(event.target as Node)
       ) {
         setIsOpen(false);
+        setIsInputVisible(false);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  // Reusable clear/close helper:
+  const clearAll = () => {
+    setSearchQuery("");
+    setIsOpen(false);
+    // Keep input visible on large screens by default only when clearing via the input button?
+    // If you prefer clearing to also hide input on large screens, remove the if-check.
+    if (!isLargeUp) {
+      setIsInputVisible(false);
+    }
+  };
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -76,60 +111,12 @@ export function SearchPreview({ className }: SearchPreviewProps) {
     setIsOpen(false);
   };
 
-  const clearSearch = () => {
-    setSearchQuery("");
-    setIsOpen(false);
-  };
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        searchRef.current &&
-        !searchRef.current.contains(event.target as Node)
-      ) {
-        setIsOpen(false);
-        setIsInputVisible(false); // hide input on lg+
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
   return (
     <div ref={searchRef} className={`relative ${className}`}>
       <form onSubmit={handleSearch} className="relative flex items-center">
-        {/* Search Icon for lg+ */}
-        <div className="relative">
-          <motion.div
-            onClick={() => setIsInputVisible((prev) => !prev)}
-            className="cursor-pointer lg:flex hidden items-center justify-center p-2"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            {isInputVisible ? (
-              <motion.div
-                className="cursor-pointer"
-                whileHover={{ rotate: [0, -15, 15, -10, 10, 0] }}
-                transition={{ duration: 0.5 }}
-              >
-                <X className="h-5 w-5" />
-              </motion.div>
-            ) : (
-              <motion.div
-                className="cursor-pointer"
-                whileHover={{ scale: 1.2, rotate: 15 }}
-                whileTap={{ scale: 0.95, rotate: 0 }}
-                transition={{ type: "spring", stiffness: 300, damping: 15 }}
-              >
-                <Search className="h-5 w-5" />
-              </motion.div>
-            )}
-          </motion.div>
-        </div>
-
-        {/* Input: always visible on <lg, animated on lg+ */}
+        {/* Input: visible on mobile, large (initially), or when toggled open */}
         <AnimatePresence>
-          {(isInputVisible || window.innerWidth < 1024) && (
+          {(isInputVisible || isMobileOrTablet || isLargeUp) && (
             <motion.div
               initial={{ width: 0, opacity: 0 }}
               animate={{ width: "auto", opacity: 1 }}
@@ -138,8 +125,8 @@ export function SearchPreview({ className }: SearchPreviewProps) {
               className="relative flex-1 lg:ml-2"
             >
               <Input
-                placeholder="جستجوی اخبار، مقالات و موضوعات..."
-                className="px-4 h-12 bg-background/95 backdrop-blur-sm border-2 border-border hover:border-primary/30 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-200 rounded-xl shadow-sm w-full lg:min-w-[400px]"
+                placeholder={`جستجوی اخبار، مقالات و موضوعات ...`}
+                className="px-4 h-12 bg-background/95 backdrop-blur-sm border-2 border-border hover:border-primary/30 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-200 rounded-xl shadow-sm w-full lg:min-w-[400px] ps-8"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 onFocus={() => searchQuery.trim() && setIsOpen(true)}
@@ -148,18 +135,26 @@ export function SearchPreview({ className }: SearchPreviewProps) {
                 <Button
                   variant={"ghost"}
                   type="button"
-                  onClick={clearSearch}
+                  onClick={clearAll}
                   className="absolute left-2 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors p-1 rounded-full cursor-pointer"
                 >
                   <X className="h-4 w-4" />
                 </Button>
               )}
+              <Button
+                variant={"ghost"}
+                type="button"
+                onClick={clearAll}
+                className="absolute right-0 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors p-1 rounded-full cursor-pointer"
+              >
+                <SearchIcon className="h-4 w-4" />
+              </Button>
             </motion.div>
           )}
         </AnimatePresence>
       </form>
 
-      {/* ✅ Animated Dropdown */}
+      {/* Animated Dropdown */}
       <AnimatePresence>
         {isOpen && (
           <motion.div

@@ -1,16 +1,12 @@
-import { Header } from "@/app/components/header";
 import { ArticleCard } from "@/app/components/article-card";
 import { NewsGrid } from "@/app/components/news-grid";
 import { Sidebar } from "@/app/components/sidebar";
-import { Footer } from "@/app/components/footer";
-import { mockArticles } from "../data/mock-article";
-import SectionTitle from "../components/section-title";
+import { mockArticles } from "../../data/mock-article";
+import SectionTitle from "../../components/section-title";
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-background">
-      <Header />
-
+    <>
       <section className="bg-gradient-to-br from-primary/5 to-secondary/5 border-b border-border">
         <div className="container mx-auto px-4 py-12">
           <div className="text-center mb-8">
@@ -18,7 +14,8 @@ export default function HomePage() {
               با اخبار جهانی همراه باشید
             </p>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              آخرین اخبار فوری، تحلیل‌های عمیق و داستان‌های پرطرفدار از سراسر جهان
+              آخرین اخبار فوری، تحلیل‌های عمیق و داستان‌های پرطرفدار از سراسر
+              جهان
             </p>
           </div>
         </div>
@@ -42,8 +39,6 @@ export default function HomePage() {
           </div>
         </div>
       </main>
-
-      <Footer />
-    </div>
+    </>
   );
 }

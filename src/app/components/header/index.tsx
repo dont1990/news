@@ -20,7 +20,7 @@ export function Header() {
     <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border shadow-sm">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <div className="flex gap-3 items-center">
+          <div className="flex gap-4 items-center">
             <Hamburger
               isOpen={isMobileMenuOpen}
               toggle={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -31,10 +31,12 @@ export function Header() {
 
           <div className="flex items-center gap-x-4">
             <SearchPreview className="hidden lg:block" />
-            <SearchToggle
-              isOpen={isMobileSearchOpen}
-              onToggle={() => setIsMobileSearchOpen(!isMobileSearchOpen)}
-            />
+            <div className="lg:hidden">
+              <SearchToggle
+                isOpen={isMobileSearchOpen}
+                onToggle={() => setIsMobileSearchOpen(!isMobileSearchOpen)}
+              />
+            </div>
             <NotificationsButton />
           </div>
         </div>

@@ -8,7 +8,7 @@ export default function Hamburger({
   toggle: () => void;
 }) {
   const lineProps = {
-    className: "h-0.5 w-5 bg-primary rounded-full", // shorter lines
+    className: "h-0.5 w-5 bg-foreground rounded-full", 
     transition: { duration: 0.3 },
   };
 
@@ -22,8 +22,7 @@ export default function Hamburger({
         {...lineProps}
         animate={{
           rotate: isOpen ? 45 : 0,
-          y: isOpen ? 1.5 : 0, // smaller shift
-          scale: 0.8,
+          y: isOpen ? 8 : 0, // smaller shift
         }}
       />
       {/* Middle Line */}
@@ -39,8 +38,7 @@ export default function Hamburger({
         {...lineProps}
         animate={{
           rotate: isOpen ? -45 : 0,
-          y: isOpen ? -1.5 : 0, // smaller shift
-          scale: 0.8,
+          y: isOpen ? -10 : 0, // smaller shift
         }}
       />
     </div>

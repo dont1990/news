@@ -1,6 +1,6 @@
 import { Separator } from "@/app/components/ui/separator";
 import { footerLinks } from "@/app/data/footer-links";
-import Link from "next/link";
+import { AnimatedLink } from "@/app/components/animated-link";
 
 export function Footer() {
   return (
@@ -15,13 +15,13 @@ export function Footer() {
               <ul className="space-y-2">
                 {links.map((link) => (
                   <li key={link}>
-                    <Link
+                    <AnimatedLink
                       href="#"
-                      className="newspaper-body text-sm text-muted-foreground hover:text-foreground transition-colors"
+                      className="newspaper-body text-sm text-muted-foreground hover:text-foreground"
                       aria-label={link}
                     >
                       {link}
-                    </Link>
+                    </AnimatedLink>
                   </li>
                 ))}
               </ul>

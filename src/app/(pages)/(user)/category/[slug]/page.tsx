@@ -25,8 +25,7 @@ const categoryDescriptions = {
     "با دستاوردهای علمی، یافته‌های پژوهشی و اکتشافاتی که دانش بشر را پیش می‌برند آشنا شوید.",
   health:
     "با پیشرفت‌های پزشکی، روندهای سلامت و اطلاعات رفاه و بهداشت به‌روز بمانید.",
-  sports:
-    "تیم‌ها، ورزشکاران و رویدادهای ورزشی مورد علاقه خود را دنبال کنید.",
+  sports: "تیم‌ها، ورزشکاران و رویدادهای ورزشی مورد علاقه خود را دنبال کنید.",
   entertainment:
     "آخرین اخبار فیلم، موسیقی، سلبریتی‌ها و صنعت سرگرمی را دریافت کنید.",
 };
@@ -57,9 +56,7 @@ export default function CategoryPage({
   const categoryColors = getCategoryColors(slug);
 
   return (
-    <div className="min-h-screen bg-background" dir="rtl">
-      <Header />
-
+    <>
       <section
         className={`bg-gradient-to-br from-primary/10 via-primary/5 to-secondary/10 border-b border-border ${categoryColors.bg}/20`}
       >
@@ -95,7 +92,6 @@ export default function CategoryPage({
           </div>
         </div>
       </section>
-
       <main className="container mx-auto px-4 py-12">
         {categoryArticles.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
@@ -111,9 +107,7 @@ export default function CategoryPage({
               >
                 <TrendingUp className={`h-12 w-12 ${categoryColors.text}`} />
               </div>
-              <p className="news-heading text-2xl mb-3">
-                مقاله‌ای یافت نشد
-              </p>
+              <p className="news-heading text-2xl mb-3">مقاله‌ای یافت نشد</p>
               <p className="text-muted-foreground">
                 بعداً برای مقالات جدید {categoryName.toLowerCase()} مراجعه کنید
               </p>
@@ -121,8 +115,6 @@ export default function CategoryPage({
           </div>
         )}
       </main>
-
-      <Footer />
-    </div>
+    </>
   );
 }

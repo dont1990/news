@@ -32,9 +32,7 @@ export default function SearchPage() {
   }, [query]);
 
   return (
-    <div className="min-h-screen bg-background">
-      <Header />
-
+    <>
       <section className="bg-gradient-to-br from-primary/10 via-primary/5 to-secondary/10 border-b border-border">
         <div className="container mx-auto px-4 py-16">
           <div className="text-center max-w-4xl mx-auto">
@@ -53,7 +51,8 @@ export default function SearchPage() {
             {query && (
               <p className="text-xl text-muted-foreground leading-relaxed mb-6">
                 {filteredArticles.length} مقاله یافت شد
-                {filteredArticles.length !== 1 ? "" : ""} که با جستجوی شما مطابقت دارد
+                {filteredArticles.length !== 1 ? "" : ""} که با جستجوی شما
+                مطابقت دارد
               </p>
             )}
           </div>
@@ -101,8 +100,8 @@ export default function SearchPage() {
               </div>
               <p className="news-heading text-2xl mb-3">موردی یافت نشد</p>
               <p className="text-muted-foreground mb-6">
-                هیچ مقاله‌ای مطابق با &quot;{query}&quot; پیدا نشد.
-                از کلیدواژه‌های متفاوت استفاده کنید یا دسته‌بندی‌ها را مرور کنید.
+                هیچ مقاله‌ای مطابق با &quot;{query}&quot; پیدا نشد. از
+                کلیدواژه‌های متفاوت استفاده کنید یا دسته‌بندی‌ها را مرور کنید.
               </p>
               <Link href="/">
                 <Button className="bg-primary hover:bg-primary/90">
@@ -117,16 +116,17 @@ export default function SearchPage() {
               <div className="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Search className="h-12 w-12 text-primary" />
               </div>
-              <p className="news-heading text-2xl mb-3">جستجوی خود را آغاز کنید</p>
+              <p className="news-heading text-2xl mb-3">
+                جستجوی خود را آغاز کنید
+              </p>
               <p className="text-muted-foreground">
-                از نوار جستجو در بالا برای پیدا کردن مقالات و موضوعات استفاده کنید یا بر اساس دسته‌بندی مرور کنید.
+                از نوار جستجو در بالا برای پیدا کردن مقالات و موضوعات استفاده
+                کنید یا بر اساس دسته‌بندی مرور کنید.
               </p>
             </div>
           </div>
         )}
       </main>
-
-      <Footer />
-    </div>
+    </>
   );
 }
