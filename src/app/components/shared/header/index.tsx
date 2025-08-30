@@ -1,7 +1,5 @@
 "use client";
 
-import { Menu, X } from "lucide-react";
-import { Button } from "@/app/components/ui/button";
 import { useState } from "react";
 import { SearchPreview } from "@/app/components/search-preview";
 import SearchToggle from "./search-toggle";
@@ -11,25 +9,48 @@ import DesktopNav from "./desktop-nav";
 import MobileNav from "./mobile-nav";
 import SearchBar from "./search-bar";
 import Hamburger from "./hamburger";
+import { motion, Variants } from "framer-motion";
+
+const containerVariants: Variants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: -10 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+};
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border shadow-sm">
-      <div className="container mx-auto px-4 py-4">
+    <motion.header
+      className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border shadow-sm"
+      initial="hidden"
+      animate="show"
+      variants={containerVariants}
+    >
+      <motion.div
+        className="container mx-auto px-4 py-4"
+        variants={itemVariants}
+      >
         <div className="flex items-center justify-between">
-          <div className="flex gap-4 items-center">
+          <motion.div className="flex gap-4 items-center" variants={itemVariants}>
             <Hamburger
               isOpen={isMobileMenuOpen}
               toggle={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             />
-
             <Logo />
-          </div>
+          </motion.div>
 
-          <div className="flex items-center gap-x-4">
+          <motion.div className="flex items-center gap-x-4" variants={itemVariants}>
             <SearchPreview className="hidden lg:block" />
             <div className="lg:hidden">
               <SearchToggle
@@ -38,13 +59,13 @@ export function Header() {
               />
             </div>
             <NotificationsButton />
-          </div>
+          </motion.div>
         </div>
 
         <SearchBar isMobileSearchOpen={isMobileSearchOpen} />
-      </div>
+      </motion.div>
 
-      <div className="bg-muted/30 border-t border-border">
+      <motion.div className="bg-muted/30 border-t border-border" variants={itemVariants}>
         <div className="container mx-auto px-4">
           <DesktopNav />
           <MobileNav
@@ -52,7 +73,7 @@ export function Header() {
             onClose={() => setIsMobileMenuOpen(false)}
           />
         </div>
-      </div>
-    </header>
+      </motion.div>
+    </motion.header>
   );
 }

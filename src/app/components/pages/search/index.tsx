@@ -19,7 +19,7 @@ export default function SearchPage() {
       const filtered = mockArticles.filter(
         (article) =>
           article.title.toLowerCase().includes(query.toLowerCase()) ||
-          article.excerpt.toLowerCase().includes(query.toLowerCase()) ||
+          article.description.toLowerCase().includes(query.toLowerCase()) ||
           article.category.toLowerCase().includes(query.toLowerCase()) ||
           article.author.toLowerCase().includes(query.toLowerCase())
       );

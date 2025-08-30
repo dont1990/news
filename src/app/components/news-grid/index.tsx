@@ -1,9 +1,5 @@
-"use client";
-
-import { Article, ArticleCard } from "../shared/article-card";
-import SectionTitle from "../shared/section-title";
-
-
+import { Article } from "@/app/types/types";
+import { ArticleCard } from "../shared/article-card";
 
 interface NewsGridProps {
   articles: Article[];
@@ -11,14 +7,10 @@ interface NewsGridProps {
 
 export function NewsGrid({ articles }: NewsGridProps) {
   return (
-    <section>
-      <SectionTitle title={"آخرین اخبار"} />
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {articles.map((article) => (
-          <ArticleCard key={article.id} article={article} />
-        ))}
-      </div>
-    </section>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {articles.map((article) => (
+        <ArticleCard key={article.id} article={article} />
+      ))}
+    </div>
   );
 }

@@ -1,4 +1,6 @@
-export default function ArticlePage({
+import ArticlePage from "@/app/components/pages/article";
+
+export default function page({
   params,
 }: {
   params: Promise<{ id: string }> | { id: string };

@@ -163,7 +163,7 @@
 /* ---------- Base Styles ---------- */
 html[dir="rtl"] {
   direction: rtl; /* ensures layout flows right-to-left */
-  font-family: "iran-sans";
+  font-family: "Roboto", "iran-sans";
 }
 
 body {

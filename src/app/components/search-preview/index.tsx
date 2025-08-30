@@ -56,7 +56,7 @@ export function SearchPreview({ className }: SearchPreviewProps) {
         .filter(
           (article) =>
             article.title.toLowerCase().includes(q) ||
-            article.excerpt.toLowerCase().includes(q) ||
+            article.description.toLowerCase().includes(q) ||
             article.category.toLowerCase().includes(q)
         )
         .slice(0, 5);
@@ -230,7 +230,7 @@ export function SearchPreview({ className }: SearchPreviewProps) {
                                   {article.title}
                                 </p>
                                 <p className="text-xs text-muted-foreground line-clamp-2 leading-relaxed">
-                                  {article.excerpt}
+                                  {article.description}
                                 </p>
 
                                 <div className="mt-2 text-xs text-muted-foreground font-medium">

@@ -1,15 +1,15 @@
+"use client";
 
-
-"use client"
-
-import { Clock, User } from "lucide-react"
-import { Button } from "@/app/components/ui/button"
-import { mockArticles } from "@/app/data/mock-article"
-import Image from "next/image"
+import { Clock, User } from "lucide-react";
+import { Button } from "@/app/components/ui/button";
+import { mockArticles } from "@/app/data/mock-article";
+import Image from "next/image";
 
 export function HeroGrid() {
-  const featuredStory = mockArticles[0]
-  const otherStories = mockArticles.filter((story) => story.id !== featuredStory.id)
+  const featuredStory = mockArticles[0];
+  const otherStories = mockArticles.filter(
+    (story) => story.id !== featuredStory.id
+  );
 
   return (
     <section className="py-12 px-4 container mx-auto" dir="rtl">
@@ -48,9 +48,14 @@ export function HeroGrid() {
                 {featuredStory.title}
               </h1>
 
-              <p className="text-lg text-gray-200 mb-6 line-clamp-3">{featuredStory.excerpt}</p>
+              <p className="text-lg text-gray-200 mb-6 line-clamp-3">
+                {featuredStory.description}
+              </p>
 
-              <Button size="lg" className="bg-white text-black hover:bg-gray-100 font-semibold px-8 py-3 w-fit">
+              <Button
+                size="lg"
+                className="bg-white text-black hover:bg-gray-100 font-semibold px-8 py-3 w-fit"
+              >
                 ادامه مطلب
               </Button>
             </div>
@@ -102,5 +107,5 @@ export function HeroGrid() {
         </div>
       </div>
     </section>
-  )
+  );
 }

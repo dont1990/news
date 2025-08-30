@@ -1,25 +1,29 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { ChevronLeft, ChevronRight, Play } from "lucide-react"
-import Image from "next/image"
-import { mockArticles } from "@/app/data/mock-article"
-import { Button } from "@/app/components/ui/button"
+import { useState, useEffect } from "react";
+import { ChevronLeft, ChevronRight, Play } from "lucide-react";
+import Image from "next/image";
+import { mockArticles } from "@/app/data/mock-article";
+import { Button } from "@/app/components/ui/button";
 
 export function HeroSlider() {
-  const [currentStory, setCurrentStory] = useState(0)
+  const [currentStory, setCurrentStory] = useState(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentStory((prev) => (prev + 1) % mockArticles.length)
-    }, 6000)
-    return () => clearInterval(timer)
-  }, [])
+      setCurrentStory((prev) => (prev + 1) % mockArticles.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
 
-  const nextStory = () => setCurrentStory((prev) => (prev + 1) % mockArticles.length)
-  const prevStory = () => setCurrentStory((prev) => (prev - 1 + mockArticles.length) % mockArticles.length)
+  const nextStory = () =>
+    setCurrentStory((prev) => (prev + 1) % mockArticles.length);
+  const prevStory = () =>
+    setCurrentStory(
+      (prev) => (prev - 1 + mockArticles.length) % mockArticles.length
+    );
 
-  const story = mockArticles[currentStory]
+  const story = mockArticles[currentStory];
 
   return (
     <section className="relative h-[80vh] overflow-hidden">
@@ -51,11 +55,14 @@ export function HeroSlider() {
           </h1>
 
           <p className="text-lg md:text-xl text-gray-200 mb-8 animate-in slide-in-from-left duration-1000 delay-200">
-            {story.excerpt}
+            {story.description}
           </p>
 
           <div className="flex items-center justify-start gap-x-4 animate-in slide-in-from-left duration-1000 delay-400">
-            <Button size="lg" className="bg-white text-black hover:bg-gray-100 font-semibold px-8 py-3">
+            <Button
+              size="lg"
+              className="bg-white text-black hover:bg-gray-100 font-semibold px-8 py-3"
+            >
               ادامه مطلب
             </Button>
             <Button
@@ -85,7 +92,9 @@ export function HeroSlider() {
               key={index}
               onClick={() => setCurrentStory(index)}
               className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                index === currentStory ? "bg-white scale-125" : "bg-white/50 hover:bg-white/75"
+                index === currentStory
+                  ? "bg-white scale-125"
+                  : "bg-white/50 hover:bg-white/75"
               }`}
             />
           ))}
@@ -99,5 +108,5 @@ export function HeroSlider() {
         </button>
       </div>
     </section>
-  )
+  );
 }

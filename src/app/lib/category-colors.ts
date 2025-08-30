@@ -63,26 +63,36 @@ export const categoryColors = {
     primary: "bg-violet-600",
     primaryText: "text-violet-600",
   },
-} as const
+  all: {
+    bg: "bg-gray-100",
+    text: "text-gray-800",
+    border: "border-gray-200",
+    hover: "hover:bg-gray-200",
+    primary: "bg-gray-600",
+    primaryText: "text-gray-600",
+  },
+} as const;
 
-export type CategorySlug = keyof typeof categoryColors
+export type CategorySlug = keyof typeof categoryColors;
 
-export function getCategoryColors(category: string): (typeof categoryColors)[CategorySlug] {
-  const normalizedCategory = category.toLowerCase() as CategorySlug
-  return categoryColors[normalizedCategory] || categoryColors.world
+export function getCategoryColors(
+  category: string
+): (typeof categoryColors)[CategorySlug] {
+  const normalizedCategory = category.toLowerCase() as CategorySlug;
+  return categoryColors[normalizedCategory] || categoryColors.world;
 }
 
 export function getCategoryBadgeClasses(category: string): string {
-  const colors = getCategoryColors(category)
-  return `${colors.bg} ${colors.text} ${colors.border} ${colors.hover} border`
+  const colors = getCategoryColors(category);
+  return `${colors.bg} ${colors.text} ${colors.border} ${colors.hover} border`;
 }
 
 export function getCategoryPrimaryColor(category: string): string {
-  const colors = getCategoryColors(category)
-  return colors.primary
+  const colors = getCategoryColors(category);
+  return colors.primary;
 }
 
 export function getCategoryTextColor(category: string): string {
-  const colors = getCategoryColors(category)
-  return colors.primaryText
+  const colors = getCategoryColors(category);
+  return colors.primaryText;
 }

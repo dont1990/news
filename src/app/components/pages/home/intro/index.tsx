@@ -1,0 +1,20 @@
+import React from "react";
+
+const HomePageIntro = () => {
+  return (
+    <section className="bg-gradient-to-br from-primary/5 to-secondary/5 border-b border-border">
+      <div className="container mx-auto px-4 py-12">
+        <div className="text-center mb-8">
+          <p className="news-heading text-4xl md:text-5xl text-foreground mb-4">
+            با اخبار جهانی همراه باشید
+          </p>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            آخرین اخبار فوری، تحلیل‌های عمیق و داستان‌های پرطرفدار از سراسر جهان
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default HomePageIntro;

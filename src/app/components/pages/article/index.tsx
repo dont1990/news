@@ -19,6 +19,7 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import { mockArticles } from "@/app/data/mock-article";
+import notFound from "./not-found";
 
 // Related articles function
 const getRelatedArticles = (currentArticle: (typeof mockArticles)[0]) => {
@@ -42,25 +43,7 @@ export default function ArticlePage({
   const article = mockArticles.find((a) => a.id === id);
 
   if (!article) {
-    return (
-      <div className="min-h-screen bg-background" dir="rtl">
-        <Header />
-        <main className="container mx-auto px-4 py-8">
-          <div className="text-center py-12">
-            <p className="news-heading text-3xl mb-4">مقاله یافت نشد</p>
-            <p className="text-muted-foreground mb-6">
-              مقاله‌ای که دنبال آن هستید وجود ندارد.
-            </p>
-            <Link href="/">
-              <Button className="bg-primary hover:bg-primary/90">
-                بازگشت به صفحه اصلی
-              </Button>
-            </Link>
-          </div>
-        </main>
-        <Footer />
-      </div>
-    );
+    return notFound();
   }
 
   const relatedArticles = getRelatedArticles(article);
@@ -122,7 +105,7 @@ export default function ArticlePage({
             </p>
 
             <p className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed">
-              {article.excerpt}
+              {article.description}
             </p>
 
             <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground mb-8 pb-6 border-b border-border">
