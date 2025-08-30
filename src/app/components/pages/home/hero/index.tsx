@@ -11,7 +11,7 @@ const Hero = () => {
 
       <HeroGrid />
       {/* <InteractiveTimeline/> */}
-      {/* <BreakingNews/> */}
+      <BreakingNews />
     </>
   );
 };
