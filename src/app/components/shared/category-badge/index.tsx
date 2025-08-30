@@ -2,9 +2,13 @@
 
 import React from "react";
 import { Badge } from "../../ui/badge";
-import { getCategoryBadgeClasses } from "@/app/lib/category-colors";
+import {
+  getCategoryBadgeClasses,
+  getCategoryPrimaryColor,
+} from "@/app/lib/category-colors";
 import { categories } from "@/app/data/categories/categories";
 import Link from "next/link";
+import { cn } from "@/app/lib/utils";
 
 type Props = {
   title: string;
@@ -34,7 +38,7 @@ const CategoryBadge = ({ title, className = "" }: Props) => {
       </Badge>
     </Link>
 
-    //  <Link
+    // <Link
     //   href={href}
     //   onClick={(e) => e.stopPropagation()} // ⛔ stop parent card click
     //   className={`flex gap-1 items-center`}
@@ -43,7 +47,7 @@ const CategoryBadge = ({ title, className = "" }: Props) => {
     //     className={cn("size-4 rounded-full", getCategoryPrimaryColor(title))}
     //   ></div>
     //   {categoryName}
-    //   </Link>
+    // </Link>
   );
 };
 

@@ -1,11 +1,11 @@
 import { Article } from "@/app/types/types";
-import { ArticleCard } from "../shared/article-card";
+import { ArticleCard } from "../../../../shared/article-card";
 
-interface NewsGridProps {
+interface LatestNewsGridProps {
   articles: Article[];
 }
 
-export function NewsGrid({ articles }: NewsGridProps) {
+export function LatestNewsGrid({ articles }: LatestNewsGridProps) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
       {articles.map((article) => (

@@ -3,6 +3,7 @@ import Hero from "./hero";
 import LatestNews from "./latest-news";
 import HomePageIntro from "./intro";
 import Container from "../../shared/container";
+import TechNews from "./tech-news";
 
 export default function HomePage() {
   return (
@@ -15,6 +16,7 @@ export default function HomePage() {
           <div className="xl:col-span-3 space-y-12">
             {/* <FeaturedNews /> */}
             <LatestNews />
+            <TechNews />
           </div>
 
           <HomePageSidebar />
