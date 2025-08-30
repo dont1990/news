@@ -5,6 +5,7 @@ import { ChevronLeft, ChevronRight, Play } from "lucide-react";
 import Image from "next/image";
 import { mockArticles } from "@/app/data/mock-article";
 import { Button } from "@/app/components/ui/button";
+import Container from "../../shared/container";
 
 export function HeroSlider() {
   const [currentStory, setCurrentStory] = useState(0);
@@ -41,7 +42,7 @@ export function HeroSlider() {
       </div>
 
       {/* Content (Right aligned) */}
-      <div className="relative z-10 container mx-auto px-4 h-full flex items-center justify-start text-start pointer-events-auto">
+      <Container className="relative z-10 h-full flex items-center justify-start text-start pointer-events-auto">
         <div className="max-w-2xl text-white">
           <div className="mb-4 flex items-center justify-start gap-x-4">
             <span className="px-3 py-1 bg-purple-600 text-white text-sm font-semibold rounded-full">
@@ -75,7 +76,7 @@ export function HeroSlider() {
             </Button>
           </div>
         </div>
-      </div>
+      </Container>
 
       {/* Navigation */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-x-4 z-20 pointer-events-auto">

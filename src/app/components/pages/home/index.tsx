@@ -3,6 +3,7 @@ import Hero from "./hero";
 import LatestNews from "./latest-news";
 import HomePageIntro from "./intro";
 import FeaturedNews from "./featured-news";
+import Container from "../../shared/container";
 
 export default function HomePage() {
   return (
@@ -10,7 +11,7 @@ export default function HomePage() {
       <Hero />
       <HomePageIntro />
 
-      <main className="container mx-auto px-4 py-12">
+      <Container>
         <div className="grid grid-cols-1 xl:grid-cols-4 gap-12">
           <div className="xl:col-span-3 space-y-12">
             <FeaturedNews />
@@ -19,7 +20,7 @@ export default function HomePage() {
 
           <HomePageSidebar />
         </div>
-      </main>
+      </Container>
     </>
   );
 }

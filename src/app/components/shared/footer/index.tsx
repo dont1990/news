@@ -1,11 +1,12 @@
 import { Separator } from "@/app/components/ui/separator";
 import { footerLinks } from "@/app/data/footer-links";
 import { AnimatedLink } from "@/app/components/shared/animated-link";
+import Container from "../container";
 
 export function Footer() {
   return (
     <footer className="bg-muted/30 border-t border-border mt-12">
-      <div className="container mx-auto px-4 py-8">
+      <Container>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
@@ -43,7 +44,7 @@ export function Footer() {
             © 2024 NewsHub. تمامی حقوق محفوظ است.
           </p>
         </div>
-      </div>
+      </Container>
     </footer>
   );
 }

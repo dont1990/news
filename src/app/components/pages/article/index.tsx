@@ -1,8 +1,6 @@
 "use client";
 
 import { use } from "react";
-import { Header } from "@/app/components/shared/header";
-import { Footer } from "@/app/components/shared/footer";
 import { Card, CardContent } from "@/app/components/ui/card";
 import { Badge } from "@/app/components/ui/badge";
 import { Button } from "@/app/components/ui/button";
@@ -20,6 +18,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { mockArticles } from "@/app/data/mock-article";
 import notFound from "./not-found";
+import Container from "../../shared/container";
+import { AnimatedLink } from "../../shared/animated-link";
 
 // Related articles function
 const getRelatedArticles = (currentArticle: (typeof mockArticles)[0]) => {
@@ -57,17 +57,12 @@ export default function ArticlePage({
   );
 
   return (
-    <main className="container mx-auto px-4 py-12">
+    <Container>
       <div className="mb-8">
-        <Link href="/">
-          <Button
-            variant="ghost"
-            className="gap-2 hover:bg-muted text-muted-foreground hover:text-foreground"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            بازگشت به اخبار
-          </Button>
-        </Link>
+        <AnimatedLink href="/" className="flex gap-2 items-center">
+          بازگشت به اخبار
+          <ArrowLeft className="h-4 w-4" />
+        </AnimatedLink>
       </div>
 
       <div className="grid grid-cols-1 xl:grid-cols-4 gap-12">
@@ -223,6 +218,6 @@ export default function ArticlePage({
           </div>
         </aside>
       </div>
-    </main>
+    </Container>
   );
-}
+} 

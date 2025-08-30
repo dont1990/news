@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight, Zap } from "lucide-react";
 import { Button } from "@/app/components/ui/button";
 import { AnimatePresence, motion } from "framer-motion";
+import Container from "../../shared/container";
 
 const breakingNews = [
   "فوری: نشست تاریخی اقلیمی به توافقی بی‌سابقه رسید",
@@ -41,7 +42,7 @@ export function BreakingNews() {
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent animate-pulse"></div>
       </div>
 
-      <div className="container mx-auto px-3 sm:px-4 relative z-10">
+      <Container className="relative z-10">
         <div className="flex items-center justify-between gap-2 sm:gap-4">
           {/* Badge + News */}
           <div className="flex items-center gap-2 sm:gap-3 flex-1 min-w-0">
@@ -93,7 +94,7 @@ export function BreakingNews() {
             </Button>
           </div>
         </div>
-      </div>
+      </Container>
     </div>
   );
 }

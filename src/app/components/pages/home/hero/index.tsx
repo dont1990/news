@@ -7,9 +7,9 @@ import { HeroGrid } from "@/app/components/test/hero-grid";
 const Hero = () => {
   return (
     <>
-      <HeroSlider />
+      {/* <HeroSlider /> */}
 
-      {/* <HeroGrid /> */}
+      <HeroGrid />
       {/* <InteractiveTimeline/> */}
       {/* <BreakingNews/> */}
     </>

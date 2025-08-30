@@ -7,6 +7,7 @@ import { CategoryContent } from "./content";
 import { CategoryHeaderSkeleton } from "./category-header/skeleton";
 import { ArticleCardSkeleton } from "../../shared/article-card/skeleton";
 import CategorySkeleton from "./skeleton";
+import Container from "../../shared/container";
 
 export const categoryDescriptions = {
   world:
@@ -60,13 +61,13 @@ export function CategoryPage({
         slug={slug}
         articlesCount={categoryArticles.length}
       />
-      <section className="container mx-auto px-4 py-12">
+      <Container>
         <CategoryContent
           articles={categoryArticles}
           slug={slug}
           categoryName={categoryName}
         />
-      </section>
+      </Container>
     </>
   );
 }

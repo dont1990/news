@@ -8,6 +8,7 @@ import { Search, Filter, SortAsc } from "lucide-react";
 import Link from "next/link";
 import { ArticleCard } from "@/app/components/shared/article-card";
 import { mockArticles } from "@/app/data/mock-article";
+import Container from "../../shared/container";
 
 export default function SearchPage() {
   const searchParams = useSearchParams();
@@ -32,7 +33,7 @@ export default function SearchPage() {
   return (
     <>
       <section className="bg-gradient-to-br from-primary/10 via-primary/5 to-secondary/10 border-b border-border">
-        <div className="container mx-auto px-4 py-16">
+        <Container>
           <div className="text-center max-w-4xl mx-auto">
             <div className="flex items-center justify-center gap-2 mb-4">
               <Search className="h-6 w-6 text-primary" />
@@ -54,10 +55,10 @@ export default function SearchPage() {
               </p>
             )}
           </div>
-        </div>
+        </Container>
       </section>
 
-      <main className="container mx-auto px-4 py-12">
+      <Container>
         {query && (
           <div className="flex items-center justify-between mb-8 pb-6 border-b border-border">
             <div className="flex items-center gap-4">
@@ -124,7 +125,7 @@ export default function SearchPage() {
             </div>
           </div>
         )}
-      </main>
+      </Container>
     </>
   );
 }

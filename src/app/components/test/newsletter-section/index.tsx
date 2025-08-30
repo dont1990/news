@@ -6,6 +6,7 @@ import { useState } from "react"
 import { Button } from "@/app/components/ui/button"
 import { Input } from "@/app/components/ui/input"
 import { Mail, CheckCircle, Sparkles } from "lucide-react"
+import Container from "../../shared/container"
 
 export function NewsletterSection() {
   const [email, setEmail] = useState("")
@@ -31,7 +32,7 @@ export function NewsletterSection() {
         <div className="absolute top-1/3 right-1/4 w-64 h-64 bg-pink-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      <Container className="relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           {/* Header */}
           <div className="mb-8">
@@ -85,7 +86,7 @@ export function NewsletterSection() {
             <p className="text-sm text-gray-400 mt-4">Join 50,000+ readers. Unsubscribe anytime.</p>
           </div>
         </div>
-      </div>
+      </Container>
     </section>
   )
 }

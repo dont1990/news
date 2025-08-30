@@ -10,6 +10,7 @@ import MobileNav from "./mobile-nav";
 import SearchBar from "./search-bar";
 import Hamburger from "./hamburger";
 import { motion, Variants } from "framer-motion";
+import Container from "@/app/components/shared/container"; // ✅ import our custom Container
 
 const containerVariants: Variants = {
   hidden: {},
@@ -37,11 +38,9 @@ export function Header() {
       animate="show"
       variants={containerVariants}
     >
-      <motion.div
-        className="container mx-auto px-4 py-4"
-        variants={itemVariants}
-      >
-        <div className="flex items-center justify-between">
+      {/* Top Header */}
+      <Container paddingY="py-4" className="flex flex-col gap-4" maxWidth="2xl">
+        <motion.div className="flex items-center justify-between" variants={itemVariants}>
           <motion.div className="flex gap-4 items-center" variants={itemVariants}>
             <Hamburger
               isOpen={isMobileMenuOpen}
@@ -60,20 +59,22 @@ export function Header() {
             </div>
             <NotificationsButton />
           </motion.div>
-        </div>
+        </motion.div>
 
         <SearchBar isMobileSearchOpen={isMobileSearchOpen} />
-      </motion.div>
+      </Container>
 
-      <motion.div className="bg-muted/30 border-t border-border" variants={itemVariants}>
-        <div className="container mx-auto px-4">
+      {/* Navigation */}
+      <div className="bg-muted/30 border-t border-border">
+        <Container paddingY="py-0" maxWidth="2xl">
           <DesktopNav />
           <MobileNav
             isOpen={isMobileMenuOpen}
             onClose={() => setIsMobileMenuOpen(false)}
           />
-        </div>
-      </motion.div>
+        </Container>
+      </div>
     </motion.header>
   );
 }
+  

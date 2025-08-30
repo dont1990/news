@@ -126,7 +126,7 @@ export function SearchPreview({ className }: SearchPreviewProps) {
             >
               <Input
                 placeholder={`جستجوی اخبار، مقالات و موضوعات ...`}
-                className="px-4 h-12 bg-background/95 backdrop-blur-sm border-2 border-border hover:border-primary/30 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-200 rounded-xl shadow-sm w-full lg:min-w-[400px] ps-8"
+                className="px-8 pe-12 h-12 bg-background/95 backdrop-blur-sm border-2 border-border hover:border-primary/30 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-200 rounded-xl shadow-sm w-full lg:min-w-[400px]"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 onFocus={() => searchQuery.trim() && setIsOpen(true)}
@@ -141,14 +141,8 @@ export function SearchPreview({ className }: SearchPreviewProps) {
                   <X className="h-4 w-4" />
                 </Button>
               )}
-              <Button
-                variant={"ghost"}
-                type="button"
-                onClick={clearAll}
-                className="absolute right-0 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors p-1 rounded-full cursor-pointer"
-              >
-                <SearchIcon className="h-4 w-4" />
-              </Button>
+
+              <SearchIcon className="h-4 w-4 absolute right-3 top-1/2 transform -translate-y-1/2" />
             </motion.div>
           )}
         </AnimatePresence>

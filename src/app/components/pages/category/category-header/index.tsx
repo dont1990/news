@@ -3,6 +3,7 @@
 import { Badge } from "@/app/components/ui/badge";
 import { TrendingUp } from "lucide-react";
 import { getCategoryColors, getCategoryBadgeClasses } from "@/app/lib/category-colors";
+import Container from "@/app/components/shared/container";
 
 interface CategoryHeaderProps {
   name: string;
@@ -18,7 +19,7 @@ export function CategoryHeader({ name, description, slug, articlesCount }: Categ
     <section
       className={`bg-gradient-to-br from-primary/10 via-primary/5 to-secondary/10 border-b border-border ${categoryColors.bg}/20`}
     >
-      <div className="container mx-auto px-4 py-16 text-center max-w-4xl">
+      <Container className="text-center">
         <div className="flex items-center justify-center gap-2 mb-4">
           <TrendingUp className={`h-6 w-6 ${categoryColors.primaryText}`} />
           <Badge
@@ -46,7 +47,7 @@ export function CategoryHeader({ name, description, slug, articlesCount }: Categ
             {articlesCount} مقاله موجود
           </Badge>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }
