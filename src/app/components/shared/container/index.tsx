@@ -25,7 +25,7 @@ export default function Container({
   children,
   className,
   center = true,
-  paddingX = "px-4 sm:px-6 lg:px-8",
+  paddingX = "px-4 sm:px-6 xl:px-8",
   paddingY = "py-8 sm:py-12 lg:py-16",
   maxWidth = "2xl",
   fullWidth = false,
