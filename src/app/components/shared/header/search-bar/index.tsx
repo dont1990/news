@@ -1,5 +1,5 @@
 import React from "react";
-import { SearchPreview } from "../../search-preview";
+import { SearchPreview } from "../../../search-preview";
 import { AnimatePresence, motion } from "framer-motion";
 
 type Props = {

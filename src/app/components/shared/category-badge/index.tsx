@@ -1,5 +1,5 @@
 import React from "react";
-import { Badge } from "../ui/badge";
+import { Badge } from "../../ui/badge";
 import { getCategoryBadgeClasses } from "@/app/lib/category-colors";
 import { categories } from "@/app/data/categories/categories";
 

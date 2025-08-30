@@ -1,6 +1,6 @@
 import { Separator } from "@/app/components/ui/separator";
 import { footerLinks } from "@/app/data/footer-links";
-import { AnimatedLink } from "@/app/components/animated-link";
+import { AnimatedLink } from "@/app/components/shared/animated-link";
 
 export function Footer() {
   return (

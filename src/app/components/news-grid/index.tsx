@@ -1,7 +1,9 @@
 "use client";
 
-import { Article, ArticleCard } from "../article-card";
-import SectionTitle from "../section-title";
+import { Article, ArticleCard } from "../shared/article-card";
+import SectionTitle from "../shared/section-title";
+
+
 
 interface NewsGridProps {
   articles: Article[];
