@@ -6,6 +6,7 @@ export const categoryColors = {
     hover: "hover:bg-blue-200",
     primary: "bg-blue-600",
     primaryText: "text-blue-600",
+    textHover: "hover:text-blue-600", // ✅ add this
   },
   politics: {
     bg: "bg-red-100",
@@ -14,6 +15,7 @@ export const categoryColors = {
     hover: "hover:bg-red-200",
     primary: "bg-red-600",
     primaryText: "text-red-600",
+    textHover: "hover:text-red-600",
   },
   business: {
     bg: "bg-green-100",
@@ -22,6 +24,7 @@ export const categoryColors = {
     hover: "hover:bg-green-200",
     primary: "bg-green-600",
     primaryText: "text-green-600",
+    textHover: "hover:text-green-600",
   },
   technology: {
     bg: "bg-purple-100",
@@ -30,6 +33,7 @@ export const categoryColors = {
     hover: "hover:bg-purple-200",
     primary: "bg-purple-600",
     primaryText: "text-purple-600",
+    textHover: "hover:text-purple-600",
   },
   science: {
     bg: "bg-cyan-100",
@@ -38,6 +42,7 @@ export const categoryColors = {
     hover: "hover:bg-cyan-200",
     primary: "bg-cyan-600",
     primaryText: "text-cyan-600",
+    textHover: "hover:text-cyan-600",
   },
   health: {
     bg: "bg-pink-100",
@@ -46,6 +51,7 @@ export const categoryColors = {
     hover: "hover:bg-pink-200",
     primary: "bg-pink-600",
     primaryText: "text-pink-600",
+    textHover: "hover:text-pink-600",
   },
   sports: {
     bg: "bg-orange-100",
@@ -54,6 +60,7 @@ export const categoryColors = {
     hover: "hover:bg-orange-200",
     primary: "bg-orange-600",
     primaryText: "text-orange-600",
+    textHover: "hover:text-orange-600",
   },
   entertainment: {
     bg: "bg-violet-100",
@@ -62,6 +69,7 @@ export const categoryColors = {
     hover: "hover:bg-violet-200",
     primary: "bg-violet-600",
     primaryText: "text-violet-600",
+    textHover: "hover:text-violet-600",
   },
   all: {
     bg: "bg-gray-100",
@@ -70,8 +78,10 @@ export const categoryColors = {
     hover: "hover:bg-gray-200",
     primary: "bg-gray-600",
     primaryText: "text-gray-600",
+    textHover: "hover:text-gray-600",
   },
 } as const;
+
 
 export type CategorySlug = keyof typeof categoryColors;
 
@@ -95,4 +105,9 @@ export function getCategoryPrimaryColor(category: string): string {
 export function getCategoryTextColor(category: string): string {
   const colors = getCategoryColors(category);
   return colors.primaryText;
+}
+
+export function getCategoryTextHover(category: string): string {
+  const colors = getCategoryColors(category);
+  return colors.textHover;
 }

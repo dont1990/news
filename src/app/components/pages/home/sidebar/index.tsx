@@ -9,6 +9,7 @@ import { TrendingUp, Clock } from "lucide-react";
 import Link from "next/link";
 import { getCategoryBadgeClasses } from "@/app/lib/category-colors";
 import { Newsletter } from "@/app/components/pages/home/sidebar/newsletter";
+import CategoryBadge from "@/app/components/shared/category-badge";
 
 const trendingTopics = [
   { topic: "نشست اقلیمی", count: 1247 },
@@ -22,25 +23,25 @@ const recentUpdates = [
   {
     title: "فوری: برگزاری نشست اضطراری تغییرات اقلیمی",
     time: "۵ دقیقه پیش",
-    category: "محیط زیست",
+    category: "environment",
     slug: "environment",
   },
   {
     title: "رشد سهام فناوری پس از اعلامیه هوش مصنوعی",
     time: "۱۲ دقیقه پیش",
-    category: "تجارت",
+    category: "business",
     slug: "business",
   },
   {
     title: "شناسایی سویه جدید کرونا در اروپا",
     time: "۲۵ دقیقه پیش",
-    category: "سلامت",
+    category: "health",
     slug: "health",
   },
   {
     title: "رکوردشکنی در شنای المپیک",
     time: "۱ ساعت پیش",
-    category: "ورزش",
+    category: "sports",
     slug: "sports",
   },
 ];
@@ -93,16 +94,7 @@ export function HomePageSidebar() {
                     {update.title}
                   </p>
                   <div className="flex items-center justify-between">
-                    <Link href={`/category/${update.slug}`}>
-                      <Badge
-                        variant="outline"
-                        className={`text-xs transition-colors cursor-pointer ${getCategoryBadgeClasses(
-                          update.slug
-                        )}`}
-                      >
-                        {update.category}
-                      </Badge>
-                    </Link>
+                    <CategoryBadge title={update.category} />
                     <span className="text-xs text-muted-foreground">
                       {update.time}
                     </span>

@@ -13,10 +13,7 @@ interface ArticleCardProps {
   type?: "default" | "overlay" | "bottomOverlay";
 }
 
-export function ArticleCard({
-  article,
-  type = "default",
-}: ArticleCardProps) {
+export function ArticleCard({ article, type = "default" }: ArticleCardProps) {
   if (type === "overlay") {
     return (
       <Card className="news-card group relative h-full overflow-hidden rounded-2xl cursor-pointer hover:shadow-2xs">
@@ -77,7 +74,10 @@ export function ArticleCard({
 
         {/* Bottom overlay content */}
         <CardContent className="min-h-36 absolute -bottom-[40%] left-1/2 -translate-x-1/2 z-10 w-[85%] bg-card backdrop-blur-md p-4 rounded-xl shadow-lg flex flex-col gap-2 text-center">
-          <CategoryBadge title={article.category} className="mb-1" />
+          <CategoryBadge
+            title={article.category}
+            className="mb-1 mx-auto"
+          />
           <Link
             href={`/article/${article.id}`}
             className="text-lg sm:text-xl font-bold line-clamp-1 hover:text-primary transition-colors duration-300"
@@ -128,9 +128,6 @@ export function ArticleCard({
         <div>
           <div className="flex items-center gap-3 mb-3">
             <CategoryBadge title={article.category} />
-            <span className="text-xs text-muted-foreground font-medium">
-              {article.source}
-            </span>
           </div>
           <Link href={`/article/${article.id}`}>
             <p className="news-heading text-xl mb-3 line-clamp-2 group-hover:text-primary transition-colors">
@@ -149,9 +146,8 @@ export function ArticleCard({
             onClick={(e) => e.stopPropagation()}
             className="flex items-center gap-1"
             icon={LinkIcon}
-            tooltip={article.source}
           >
-            <span>منبع</span>
+            <span>{article.source}</span>
           </AnimatedLink>
           <div className="flex items-center gap-1">
             <Clock className="h-4 w-4 text-primary" />

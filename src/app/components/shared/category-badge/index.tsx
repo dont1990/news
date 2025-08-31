@@ -5,6 +5,8 @@ import { Badge } from "../../ui/badge";
 import {
   getCategoryBadgeClasses,
   getCategoryPrimaryColor,
+  getCategoryTextColor,
+  getCategoryTextHover,
 } from "@/app/lib/category-colors";
 import { categories } from "@/app/data/categories/categories";
 import Link from "next/link";
@@ -25,29 +27,26 @@ const CategoryBadge = ({ title, className = "" }: Props) => {
   return (
     <Link
       href={href}
-      onClick={(e) => e.stopPropagation()} // ⛔ stop parent card click
-      className="inline-block"
+      onClick={(e) => e.stopPropagation()}
+      className={cn(
+        "flex gap-1.5 items-center group",
+        getCategoryTextHover(title),
+        className
+      )} // ✅ add 'group'
     >
-      <Badge
-        variant="secondary"
-        className={`text-xs px-2 py-1 cursor-pointer ${getCategoryBadgeClasses(
-          title
-        )} ${className}`}
-      >
-        {categoryName}
-      </Badge>
-    </Link>
+      {/* Circle */}
+      <div
+        className={cn(
+          "size-4 rounded-full transition-colors duration-300",
+          getCategoryPrimaryColor(title)
+        )}
+      ></div>
 
-    // <Link
-    //   href={href}
-    //   onClick={(e) => e.stopPropagation()} // ⛔ stop parent card click
-    //   className={`flex gap-1 items-center`}
-    // >
-    //   <div
-    //     className={cn("size-4 rounded-full", getCategoryPrimaryColor(title))}
-    //   ></div>
-    //   {categoryName}
-    // </Link>
+      {/* Text */}
+      <span className={cn("transition-colors duration-300")}>
+        {categoryName}
+      </span>
+    </Link>
   );
 };
 
