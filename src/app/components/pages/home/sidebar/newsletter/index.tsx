@@ -1,30 +1,22 @@
 "use client";
 
-import type React from "react";
-import { useState } from "react";
+import { Mail, CheckCircle, Sparkles } from "lucide-react";
 import { Button } from "@/app/components/ui/button";
 import { Input } from "@/app/components/ui/input";
-import { Mail, CheckCircle, Sparkles } from "lucide-react";
 import Container from "../../../../shared/container";
+import { useNewsletter } from "./hooks/useNewsletter"; 
+
 
 export function Newsletter() {
-  const [email, setEmail] = useState("");
-  const [isSubscribed, setIsSubscribed] = useState(false);
+  const { email, setEmail, isSubscribed, loading, error, subscribe } = useNewsletter();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
-      setIsSubscribed(true);
-      setTimeout(() => {
-        setIsSubscribed(false);
-        setEmail("");
-      }, 3000);
-    }
+    subscribe();
   };
 
   return (
     <section className="py-6 relative overflow-hidden rounded-xl" dir="rtl">
-      {/* Light neutral gradient background */}
       <div className="absolute inset-0 bg-secondary/5"></div>
 
       <Container className="relative z-10">
@@ -40,7 +32,7 @@ export function Newsletter() {
               هرگز خبری را از دست ندهید
             </h2>
 
-            <p className="text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
               آخرین اخبار فوری، مصاحبه‌های اختصاصی و تحلیل‌های عمیق را مستقیماً
               هر صبح در ایمیل خود دریافت کنید.
             </p>
@@ -60,29 +52,31 @@ export function Newsletter() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4 relative">
-                {/* Main icon on the left side */}
-
+                {/* Input with icon */}
                 <div className="relative">
-                  <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-secondary w-6 h-6 z-[1]">
-                    <Mail className="w-6 h-6" />
+                  <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-secondary w-5 h-5 z-[1]">
+                    <Mail className="w-5 h-5" />
                   </div>
                   <Input
                     type="email"
                     placeholder="ایمیل خود را وارد کنید"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="ps-12 pr-4 py-4 text-lg bg-transparent border border-secondary  text-gray-700 placeholder:text-gray-500 rounded-xl focus:!ring-secondary"
+                    className="ps-10 pr-4 py-4 text-lg bg-transparent border border-secondary text-gray-700 ring ring-secondary placeholder:text-gray-500 rounded-xl focus:!ring-secondary"
                     required
                   />
                 </div>
+
+                {error && <p className="text-red-500 text-sm">{error}</p>}
 
                 <Button
                   variant={"secondary"}
                   type="submit"
                   size="lg"
-                  className="w-full py-4 text-lg font-semibold  hover:from-secondary-600 hover:to-secondary-600 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-secondary-500/25"
+                  disabled={loading}
+                  className="w-full py-4 text-lg font-semibold hover:from-secondary-600 hover:to-secondary-600 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-secondary-500/25"
                 >
-                  ثبت‌نام در خبرنامه
+                  {loading ? "در حال ثبت..." : "ثبت‌نام در خبرنامه"}
                 </Button>
               </form>
             )}

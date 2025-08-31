@@ -18,7 +18,7 @@ export function Footer() {
                   <li key={link}>
                     <AnimatedLink
                       href="#"
-                      className="newspaper-body text-sm text-muted-foreground hover:text-foreground"
+                      className="newspaper-body text-sm text-muted-foreground"
                       aria-label={link}
                     >
                       {link}
