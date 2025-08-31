@@ -5,6 +5,7 @@ import HomePageIntro from "./intro";
 import Container from "../../shared/container";
 import TechNews from "./tech-news";
 import { BreakingNews } from "./breaking-news";
+import { LiveRates } from "./live-rates";
 
 export default function HomePage() {
   return (
@@ -16,6 +17,7 @@ export default function HomePage() {
         <div className="grid grid-cols-1 xl:grid-cols-4 gap-12 mb-40">
           <div className="xl:col-span-3 space-y-12">
             {/* <FeaturedNews /> */}
+            <LiveRates />
             <LatestNews />
             <BreakingNews />
             <TechNews />

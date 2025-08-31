@@ -1,11 +1,8 @@
 "use client";
 
 import React from "react";
-import { Badge } from "../../ui/badge";
 import {
-  getCategoryBadgeClasses,
   getCategoryPrimaryColor,
-  getCategoryTextColor,
   getCategoryTextHover,
 } from "@/app/lib/category-colors";
 import { categories } from "@/app/data/categories/categories";

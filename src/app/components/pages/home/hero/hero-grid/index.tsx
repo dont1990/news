@@ -6,8 +6,8 @@ import { mockArticles } from "@/app/data/mock-article";
 import Image from "next/image";
 import Container from "../../../../shared/container";
 import CategoryBadge from "../../../../shared/category-badge";
-import Link from "next/link";
 import { AnimatedLink } from "../../../../shared/animated-link";
+import { ArticleCard } from "@/app/components/shared/article-card";
 
 export function HeroGrid() {
   const featuredStory = mockArticles[0];
@@ -55,50 +55,7 @@ export function HeroGrid() {
         {/* Other Stories Column */}
         <div className="flex flex-col gap-4 xl:gap-8 h-full">
           {otherStories.slice(0, 3).map((story) => (
-            <div
-              key={story.id}
-              className="relative group cursor-pointer overflow-hidden rounded-xl bg-card border border-white/10 hover:border-purple-500/30 transition-all duration-300 flex min-h-[140px] sm:min-h-[160px] md:min-h-[180px] lg:min-h-[170px] xl:min-h-[180px]"
-            >
-              <div className="flex h-full w-full">
-                <div className="w-2/3 p-3 sm:p-4 flex flex-col justify-between text-right">
-                  <div>
-                    <CategoryBadge title={story.category} />
-                    <h3 className="text-card-foreground font-bold text-sm sm:text-base mt-2 line-clamp-3">
-                      {story.title}
-                    </h3>
-                  </div>
-
-                  <div className="flex items-center justify-between text-card-foreground text-xs sm:text-sm gap-3">
-                    <AnimatedLink
-                      href={story.sourceLink ?? "/"}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                      className="flex items-center gap-1"
-                      icon={LinkIcon} // 👈 optional shortcut
-                      tooltip={story.source} // ✅ Tooltip with source name
-                    >
-                      <span>منبع</span>
-                    </AnimatedLink>
-
-                    <div className="flex items-center gap-1">
-                      <Clock className="w-3 h-3 sm:w-4 sm:h-4" />
-                      <span>{story.readTime}</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="w-1/3 relative">
-                  <Image
-                    src={story.imageUrl || "/placeholder.svg"}
-                    alt={story.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    fill
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-l from-transparent to-gray-900/20"></div>
-                </div>
-              </div>
-            </div>
+            <ArticleCard key={story.id} article={story} type="horizontal" />
           ))}
         </div>
       </div>

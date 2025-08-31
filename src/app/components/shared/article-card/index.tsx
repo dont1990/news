@@ -10,10 +10,54 @@ import { AnimatedLink } from "../animated-link";
 
 interface ArticleCardProps {
   article: Article;
-  type?: "default" | "overlay" | "bottomOverlay";
+  type?: "default" | "overlay" | "bottomOverlay" | "horizontal";
 }
 
 export function ArticleCard({ article, type = "default" }: ArticleCardProps) {
+  if (type === "horizontal") {
+    return (
+      <div className="relative group cursor-pointer overflow-hidden rounded-xl bg-card border border-white/10 hover:border-purple-500/30 transition-all duration-300 flex min-h-[140px] sm:min-h-[160px] md:min-h-[180px] lg:min-h-[170px] xl:min-h-[180px]">
+        <div className="flex h-full w-full">
+          <div className="w-2/3 p-3 sm:p-4 flex flex-col justify-between text-right">
+            <div>
+              <CategoryBadge title={article.category} />
+              <h3 className="text-card-foreground font-bold text-sm sm:text-base mt-2 line-clamp-3">
+                {article.title}
+              </h3>
+            </div>
+
+            <div className="flex items-center justify-between text-card-foreground text-xs sm:text-sm gap-3">
+              <AnimatedLink
+                href={article.sourceLink ?? "/"}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="flex items-center gap-1"
+                icon={LinkIcon}
+              >
+                <span>{article.source}</span>
+              </AnimatedLink>
+
+              <div className="flex items-center gap-1">
+                <Clock className="w-3 h-3 sm:w-4 sm:h-4 text-primary" />
+                <span>{article.readTime}</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="w-1/3 relative">
+            <Image
+              src={article.imageUrl || "/placeholder.svg"}
+              alt={article.title}
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              fill
+            />
+            <div className="absolute inset-0 bg-gradient-to-l from-transparent to-gray-900/20"></div>
+          </div>
+        </div>
+      </div>
+    );
+  }
   if (type === "overlay") {
     return (
       <Card className="news-card group relative h-full overflow-hidden rounded-2xl cursor-pointer hover:shadow-2xs">
@@ -43,9 +87,8 @@ export function ArticleCard({ article, type = "default" }: ArticleCardProps) {
               onClick={(e) => e.stopPropagation()}
               className="flex items-center gap-1 text-gray-200"
               icon={LinkIcon}
-              tooltip={article.source}
             >
-              <span>منبع</span>
+              <span>{article.source}</span>
             </AnimatedLink>
             <div className="flex items-center gap-1">
               <Clock className="h-4 w-4 text-primary" />
@@ -74,10 +117,7 @@ export function ArticleCard({ article, type = "default" }: ArticleCardProps) {
 
         {/* Bottom overlay content */}
         <CardContent className="min-h-36 absolute -bottom-[40%] left-1/2 -translate-x-1/2 z-10 w-[85%] bg-card backdrop-blur-md p-4 rounded-xl shadow-lg flex flex-col gap-2 text-center">
-          <CategoryBadge
-            title={article.category}
-            className="mb-1 mx-auto"
-          />
+          <CategoryBadge title={article.category} className="mb-1 mx-auto" />
           <Link
             href={`/article/${article.id}`}
             className="text-lg sm:text-xl font-bold line-clamp-1 hover:text-primary transition-colors duration-300"
@@ -96,9 +136,8 @@ export function ArticleCard({ article, type = "default" }: ArticleCardProps) {
               onClick={(e) => e.stopPropagation()}
               className="flex items-center gap-1"
               icon={LinkIcon}
-              tooltip={article.source}
             >
-              <span>منبع</span>
+              {article.source}
             </AnimatedLink>
             <div className="flex items-center gap-1">
               <Clock className="h-4 w-4 text-primary" />

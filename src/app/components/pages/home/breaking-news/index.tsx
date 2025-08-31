@@ -48,7 +48,7 @@ export function BreakingNews() {
 
             {/* animated news text */}
             <div className="flex-1 overflow-hidden">
-              <div className="relative min-h-[1.5rem] sm:min-h-[1.75rem]">
+              <div className="relative">
                 <AnimatePresence mode="wait">
                   <motion.p
                     key={currentIndex}
@@ -56,7 +56,7 @@ export function BreakingNews() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.4 }}
-                    className="absolute w-full text-white font-medium text-xs sm:text-sm md:text-base leading-snug text-right break-words"
+                    className="w-full text-white font-medium text-xs sm:text-sm md:text-base leading-snug text-right break-words"
                   >
                     {breakingNews[currentIndex]}
                   </motion.p>
