@@ -180,3 +180,83 @@ input,
 textarea {
   text-align: right;
 }
+
+.gradient-primary {
+  background: linear-gradient(
+    135deg,
+    var(--primary-400) 0%,
+    var(--primary-600) 100%
+  );
+}
+
+.gradient-primary-light {
+  background: linear-gradient(
+    135deg,
+    var(--primary-200) 0%,
+    var(--primary-400) 100%
+  );
+}
+
+.gradient-primary-dark {
+  background: linear-gradient(
+    135deg,
+    var(--primary-600) 0%,
+    var(--primary-800) 100%
+  );
+}
+
+.gradient-secondary {
+  background: linear-gradient(
+    135deg,
+    var(--secondary-400) 0%,
+    var(--secondary-600) 100%
+  );
+}
+
+.gradient-secondary-light {
+  background: linear-gradient(
+    135deg,
+    var(--secondary-200) 0%,
+    var(--secondary-400) 100%
+  );
+}
+
+.gradient-secondary-warm {
+  background: linear-gradient(
+    135deg,
+    var(--secondary-300) 0%,
+    var(--secondary-500) 100%
+  );
+}
+
+.gradient-muted {
+  background: linear-gradient(135deg, var(--muted) 0%, var(--gray-100) 100%);
+}
+
+.gradient-muted-subtle {
+  background: linear-gradient(135deg, var(--gray-50) 0%, var(--muted) 100%);
+}
+
+.gradient-teal-orange {
+  background: linear-gradient(
+    135deg,
+    var(--primary-400) 0%,
+    var(--secondary-400) 100%
+  );
+}
+
+.gradient-orange-teal {
+  background: linear-gradient(
+    135deg,
+    var(--secondary-400) 0%,
+    var(--primary-400) 100%
+  );
+}
+
+.gradient-background-subtle {
+  background: linear-gradient(135deg, var(--background) 0%, var(--muted) 100%);
+}
+
+.gradient-card-subtle {
+  background: linear-gradient(135deg, var(--card) 0%, var(--gray-50) 100%);
+}

@@ -8,6 +8,7 @@ import { Badge } from "@/app/components/ui/badge";
 import { TrendingUp, Clock } from "lucide-react";
 import Link from "next/link";
 import { getCategoryBadgeClasses } from "@/app/lib/category-colors";
+import { Newsletter } from "@/app/components/pages/home/sidebar/newsletter";
 
 const trendingTopics = [
   { topic: "نشست اقلیمی", count: 1247 },
@@ -110,19 +111,7 @@ export function HomePageSidebar() {
               ))}
             </CardContent>
           </Card>
-
-          {/* خبرنامه */}
-          <Card className="bg-primary/5 border-primary/20">
-            <CardContent className="p-4 text-center">
-              <p className="newspaper-heading text-lg mb-2">باخبر بمانید</p>
-              <p className="newspaper-body text-sm text-muted-foreground mb-3">
-                خبرهای روزانه را در ایمیل خود دریافت کنید
-              </p>
-              <button className="w-full bg-primary text-primary-foreground px-4 py-2 rounded-md text-sm font-medium hover:bg-primary/90 transition-colors">
-                عضویت در خبرنامه
-              </button>
-            </CardContent>
-          </Card>
+          <Newsletter />
         </div>
       </div>
     </div>

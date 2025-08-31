@@ -4,10 +4,10 @@ import { Clock, Link as LinkIcon } from "lucide-react";
 import { Button } from "@/app/components/ui/button";
 import { mockArticles } from "@/app/data/mock-article";
 import Image from "next/image";
-import Container from "../../shared/container";
-import CategoryBadge from "../../shared/category-badge";
+import Container from "../../../../shared/container";
+import CategoryBadge from "../../../../shared/category-badge";
 import Link from "next/link";
-import { AnimatedLink } from "../../shared/animated-link";
+import { AnimatedLink } from "../../../../shared/animated-link";
 
 export function HeroGrid() {
   const featuredStory = mockArticles[0];

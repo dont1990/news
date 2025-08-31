@@ -5,7 +5,7 @@ import { ChevronLeft, ChevronRight, Play } from "lucide-react";
 import Image from "next/image";
 import { mockArticles } from "@/app/data/mock-article";
 import { Button } from "@/app/components/ui/button";
-import Container from "../../shared/container";
+import Container from "../../../../shared/container";
 
 export function HeroSlider() {
   const [currentStory, setCurrentStory] = useState(0);

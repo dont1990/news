@@ -5,7 +5,7 @@ import TechNewsGrid from "./tech-news-grid";
 
 const TechNews = () => {
   return (
-    <section>
+    <section className=" mb-48">
       <SectionTitle title={"اخبار تکنولوژی"} />
       <TechNewsGrid articles={mockArticles} />
     </section>
