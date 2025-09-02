@@ -26,7 +26,7 @@ const CategoryBadge = ({ title, className = "" }: Props) => {
       href={href}
       onClick={(e) => e.stopPropagation()}
       className={cn(
-        "flex gap-1.5 items-center group",
+        "flex gap-1.5 items-center group w-fit",
         getCategoryTextHover(title),
         className
       )} // ✅ add 'group'

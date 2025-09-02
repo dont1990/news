@@ -6,8 +6,6 @@ import {
 } from "@/app/components/ui/card";
 import { Badge } from "@/app/components/ui/badge";
 import { TrendingUp, Clock } from "lucide-react";
-import Link from "next/link";
-import { getCategoryBadgeClasses } from "@/app/lib/category-colors";
 import { Newsletter } from "@/app/components/pages/home/sidebar/newsletter";
 import CategoryBadge from "@/app/components/shared/category-badge";
 

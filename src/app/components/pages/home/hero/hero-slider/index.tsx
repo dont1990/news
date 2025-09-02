@@ -51,9 +51,9 @@ export function HeroSlider() {
             <span className="text-gray-300 text-sm">{story.readTime}</span>
           </div>
 
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight animate-in slide-in-from-left duration-1000">
+          <p className="text-4xl md:text-6xl font-bold mb-6 leading-tight animate-in slide-in-from-left duration-1000">
             {story.title}
-          </h1>
+          </p>
 
           <p className="text-lg md:text-xl text-gray-200 mb-8 animate-in slide-in-from-left duration-1000 delay-200">
             {story.description}

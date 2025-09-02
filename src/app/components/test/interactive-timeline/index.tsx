@@ -46,7 +46,7 @@ export function InteractiveTimeline() {
   return (
     <section className="py-20 px-4 max-w-7xl mx-auto">
       <div className="text-center mb-16">
-        <h2 className="text-4xl font-bold text-white mb-4 text-balance">Live News Timeline</h2>
+        <p className="text-4xl font-bold text-white mb-4 text-balance">Live News Timeline</p>
         <p className="text-xl text-gray-300 text-balance">Follow breaking stories as they unfold in real-time</p>
       </div>
 
@@ -87,7 +87,7 @@ export function InteractiveTimeline() {
                         {event.impact} Impact
                       </Badge>
                     </div>
-                    <h3 className="text-white font-semibold mb-1 text-balance">{event.title}</h3>
+                    <p className="text-white font-semibold mb-1 text-balance">{event.title}</p>
                     <Badge variant="outline" className="text-xs text-purple-300 border-purple-300/30">
                       {event.category}
                     </Badge>
@@ -106,7 +106,7 @@ export function InteractiveTimeline() {
               <span className="text-purple-300 font-medium">{selectedEvent.time}</span>
             </div>
 
-            <h3 className="text-2xl font-bold text-white mb-4 text-balance">{selectedEvent.title}</h3>
+            <p className="text-2xl font-bold text-white mb-4 text-balance">{selectedEvent.title}</p>
 
             <p className="text-gray-300 text-lg leading-relaxed mb-6">{selectedEvent.description}</p>
 

@@ -1,13 +1,12 @@
 "use client";
 
-import { Clock, Link as LinkIcon } from "lucide-react";
 import { Button } from "@/app/components/ui/button";
 import { mockArticles } from "@/app/data/mock-article";
 import Image from "next/image";
 import Container from "../../../../shared/container";
 import CategoryBadge from "../../../../shared/category-badge";
-import { AnimatedLink } from "../../../../shared/animated-link";
 import { ArticleCard } from "@/app/components/shared/article-card";
+import Link from "next/link";
 
 export function HeroGrid() {
   const featuredStory = mockArticles[0];
@@ -34,20 +33,24 @@ export function HeroGrid() {
             <div className="relative z-10 p-6 sm:p-8 lg:p-12 h-full flex flex-col justify-end text-right">
               <CategoryBadge title={featuredStory.category} className="mb-4" />
 
-              <p className="text-xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-3 sm:mb-4 leading-tight text-white text-balance">
+              <Link
+                href={`/article/${featuredStory.id}`}
+                className="text-xl sm:text-3xl lg:text-4xl  font-bold mb-3 sm:mb-4 leading-tight text-white text-balance hover:text-primary transition-colors w-fit"
+              >
                 {featuredStory.title}
-              </p>
+              </Link>
 
               <p className="text-sm sm:text-base md:text-lg text-gray-200 mb-4 sm:mb-6 line-clamp-2 sm:line-clamp-3">
                 {featuredStory.description}
               </p>
-
-              <Button
-                size="lg"
-                className="bg-white text-black hover:bg-gray-100 font-semibold px-6 sm:px-8 py-2 sm:py-3 w-fit"
-              >
-                ادامه مطلب
-              </Button>
+              <Link href={`/article/${featuredStory.id}`}>
+                <Button
+                  size="default"
+                  className="bg-white text-black hover:bg-gray-100 font-semibold px-6 sm:px-8 py-2 sm:py-3 w-fit"
+                >
+                  ادامه مطلب
+                </Button>
+              </Link>
             </div>
           </div>
         )}

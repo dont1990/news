@@ -2,7 +2,10 @@
 
 import { Badge } from "@/app/components/ui/badge";
 import { TrendingUp } from "lucide-react";
-import { getCategoryColors, getCategoryBadgeClasses } from "@/app/lib/category-colors";
+import {
+  getCategoryColors,
+  getCategoryBadgeClasses,
+} from "@/app/lib/category-colors";
 import Container from "@/app/components/shared/container";
 import { categories } from "@/app/data/categories/categories";
 
@@ -13,12 +16,17 @@ interface CategoryHeaderProps {
   articlesCount: number;
 }
 
-export function CategoryHeader({ name, description, slug, articlesCount }: CategoryHeaderProps) {
+export function CategoryHeader({
+  name,
+  description,
+  slug,
+  articlesCount,
+}: CategoryHeaderProps) {
   const categoryColors = getCategoryColors(slug);
 
-   const categoryName =
-      categories.find((cat) => cat.english === name.toLocaleLowerCase())
-        ?.persian || name;
+  const categoryName =
+    categories.find((cat) => cat.english === name.toLocaleLowerCase())
+      ?.persian || name;
 
   return (
     <section
@@ -35,7 +43,7 @@ export function CategoryHeader({ name, description, slug, articlesCount }: Categ
           </Badge>
         </div>
         <p
-          className={`news-heading text-5xl md:text-6xl mb-6 ${categoryColors.primaryText}`}
+          className={`text-5xl md:text-6xl mb-6 ${categoryColors.primaryText}`}
         >
           {categoryName}
         </p>

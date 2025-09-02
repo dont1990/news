@@ -23,9 +23,9 @@ export default function NotFound() {
           </div>
         </div>
 
-        <h1 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+        <p className="text-2xl md:text-3xl font-bold text-foreground mb-4">
           مقاله یافت نشد
-        </h1>
+        </p>
 
         <p className="text-muted-foreground leading-relaxed mb-8">
           مقاله‌ای که به دنبال آن هستید وجود ندارد، حذف شده یا آدرس آن تغییر

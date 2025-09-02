@@ -2,7 +2,14 @@
 
 import { Card } from "@/app/components/ui/card";
 import { Badge } from "@/app/components/ui/badge";
-import { TrendingUp, TrendingDown, DollarSign, PoundSterling, Coins, Zap } from "lucide-react";
+import {
+  TrendingUp,
+  TrendingDown,
+  DollarSign,
+  PoundSterling,
+  Coins,
+  Zap,
+} from "lucide-react";
 import { cn } from "@/app/lib/utils";
 
 type Trend = "up" | "down";
@@ -23,7 +30,10 @@ const gradientMap: Record<LiveStat["type"], string> = {
   gold: "from-pink-100 to-pink-200 dark:from-pink-950/50 dark:to-pink-900/40",
 };
 
-const iconMap: Record<LiveStat["type"], React.ComponentType<{ className?: string }>> = {
+const iconMap: Record<
+  LiveStat["type"],
+  React.ComponentType<{ className?: string }>
+> = {
   usd: DollarSign,
   gbp: PoundSterling,
   coin: Coins,
@@ -64,9 +74,9 @@ export default function LiveStatCard({ stat }: { stat: LiveStat }) {
 
       {/* Content */}
       <div className="space-y-2">
-        <h3 className="text-sm font-medium text-muted-foreground">
+        <p className="text-sm font-medium text-muted-foreground">
           {stat.title}
-        </h3>
+        </p>
         <span className="text-xl xl:text-2xl font-bold text-foreground">
           {stat.value}
         </span>
@@ -76,13 +86,13 @@ export default function LiveStatCard({ stat }: { stat: LiveStat }) {
       <div className="absolute left-3 -bottom-6 bg-background p-1.5 rounded-full">
         <Badge
           variant="outline"
-          className="flex items-center gap-1.5 text-xs font-medium border-transparent bg-rose-500/10 text-rose-500 px-2.5 py-1 rounded-full"
+          className="flex items-center gap-1.5 text-xs font-medium border-transparent bg-rose-500/10 text-rose-700 px-2.5 py-1 rounded-full"
         >
           <span className="relative flex size-2">
             <span className="absolute inline-flex w-full h-full rounded-full bg-rose-500 opacity-75 animate-ping"></span>
             <span className="relative inline-flex size-2 rounded-full bg-rose-500"></span>
           </span>
-          لحظه‌ای
+          لحظه‌ ای
         </Badge>
       </div>
     </Card>

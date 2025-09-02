@@ -17,7 +17,7 @@ export function EmptyCategory({
             className={`h-12 w-12 ${categoryColors.text} animate-bounce`}
           />
         </div>
-        <p className="news-heading text-2xl mb-3">مقاله‌ای یافت نشد</p>
+        <p className="text-2xl mb-3">مقاله‌ای یافت نشد</p>
         <p className="text-muted-foreground">
           بعداً برای مقالات جدید {categoryName.toLowerCase()} مراجعه کنید
         </p>
