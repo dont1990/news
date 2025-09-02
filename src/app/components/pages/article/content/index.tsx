@@ -10,7 +10,6 @@ import Container from "@/app/components/shared/container";
 import { AnimatedLink } from "@/app/components/shared/animated-link";
 import { ArrowLeft } from "lucide-react";
 import { mockArticles } from "@/app/data/mock-article";
-import { formatDate } from "@/app/utils/date";
 
 interface ArticlePageProps {
   article: Article;

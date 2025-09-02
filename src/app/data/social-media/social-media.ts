@@ -1,5 +1,5 @@
 import type { FC, SVGProps } from "react";
-import { Github, Linkedin, Twitter, Instagram, Mail, Send } from "lucide-react"; // Lucide icons
+import { Github, Linkedin, Twitter, Instagram, Mail } from "lucide-react"; // Lucide icons
 
 export interface SocialLink {
   href: string;

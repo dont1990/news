@@ -1,8 +1,7 @@
 "use client";
-import { Badge } from "@/app/components/ui/badge";
+
 import { Button } from "@/app/components/ui/button";
 import { Clock, User, Calendar, Share2, Bookmark } from "lucide-react";
-import Link from "next/link";
 import { Article } from "@/app/types/types";
 import DateText from "@/app/components/shared/date-text";
 import TimeAgo from "@/app/components/shared/time-ago";

@@ -4,8 +4,6 @@ import { use } from "react";
 import { useCategoryArticles } from "./hooks/useCategoryArticles";
 import { CategoryHeader } from "./category-header";
 import { CategoryContent } from "./content";
-import { CategoryHeaderSkeleton } from "./category-header/skeleton";
-import { ArticleCardSkeleton } from "../../shared/article-card/skeleton";
 import CategorySkeleton from "./skeleton";
 import Container from "../../shared/container";
 

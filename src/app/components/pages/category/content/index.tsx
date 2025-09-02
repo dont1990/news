@@ -1,7 +1,6 @@
 "use client";
 
 import { ArticleCard } from "@/app/components/shared/article-card";
-import { TrendingUp } from "lucide-react";
 import { getCategoryColors } from "@/app/lib/category-colors";
 import { Article } from "@/app/types/types";
 import { EmptyCategory } from "./empty";
