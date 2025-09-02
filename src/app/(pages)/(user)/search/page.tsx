@@ -1,7 +1,12 @@
 import SearchPage from "@/app/components/pages/search";
+import { Suspense } from "react";
 
 const page = () => {
-  return <SearchPage />;
+  return (
+    <Suspense fallback="loading ...">
+      <SearchPage />
+    </Suspense>
+  );
 };
 
 export default page;
