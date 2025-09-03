@@ -15,7 +15,7 @@ interface ArticleCardProps {
   type?: "default" | "overlay" | "bottomOverlay" | "horizontal";
 }
 
-export function ArticleCard({ article, type = "default" }: ArticleCardProps) {
+export function   ArticleCard({ article, type = "default" }: ArticleCardProps) {
   if (type === "horizontal") {
     return (
       <div className="relative overflow-hidden rounded-xl bg-card border border-white/10 hover:border-purple-500/30 transition-all duration-300 flex min-h-[140px] sm:min-h-[160px] md:min-h-[180px] lg:min-h-[170px] xl:min-h-[180px]">
