@@ -42,7 +42,7 @@ export function CategoryContentWrapper({
           categoryName={categoryName}
           query={query}
         />
-        {/* <div ref={infiniteScrollRef} /> */}
+        <div ref={infiniteScrollRef} />
       </div>
     </div>
   );
