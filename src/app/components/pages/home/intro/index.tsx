@@ -3,7 +3,7 @@ import React from "react";
 
 const HomePageIntro = () => {
   return (
-    <section className="bg-gradient-to-br from-primary/5 to-secondary/5 border-b border-border">
+    <section className="bg-gradient-to-br from-primary/5 to-primary/5 border-b border-border">
       <Container>
         <div className="text-center mb-8">
           <p className="text-4xl md:text-5xl text-foreground mb-4">

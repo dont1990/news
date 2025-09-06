@@ -3,7 +3,7 @@ import Link from "next/link";
 
 interface ArticleCardTitleProps {
   id: string | number;
-  title: string;
+  title: string | React.ReactNode;
   className?: string;
 }
 

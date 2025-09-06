@@ -6,6 +6,7 @@
 
 /* ---------- Light Theme ---------- */
 :root {
+  --body: #fcfcfc;
   --background: #fbfefb;
   --foreground: #4b5563;
   --card: #f9fafb;
@@ -14,16 +15,16 @@
   --muted-foreground: #374151;
 
   /* Primary Shades (Teal) */
-  --primary-50: #f0fdfa;
-  --primary-100: #ccfbf1;
-  --primary-200: #99f6e4;
-  --primary-300: #5eead4;
-  --primary-400: #2dd4bf;
-  --primary-500: #14b8a6;
-  --primary-600: #0d9488;
-  --primary-700: #0f766e;
-  --primary-800: #115e59;
-  --primary-900: #134e4a;
+  --primary-50: #fff7ed;
+  --primary-100: #ffedd5;
+  --primary-200: #fed7aa;
+  --primary-300: #fdba74;
+  --primary-400: #fb923c;
+  --primary-500: #f97316;
+  --primary-600: #ea580c;
+  --primary-700: #c2410c;
+  --primary-800: #9a3412;
+  --primary-900: #7c2d12;
 
   /* Secondary Shades (Orange) */
   --secondary-50: #fff7ed;
@@ -36,6 +37,30 @@
   --secondary-700: #c2410c;
   --secondary-800: #9a3412;
   --secondary-900: #7c2d12;
+
+  /* Primary Shades (Teal) */
+  /* --primary-50: #f0fdfa;
+  --primary-100: #ccfbf1;
+  --primary-200: #99f6e4;
+  --primary-300: #5eead4;
+  --primary-400: #2dd4bf;
+  --primary-500: #14b8a6;
+  --primary-600: #0d9488;
+  --primary-700: #0f766e;
+  --primary-800: #115e59;
+  --primary-900: #134e4a; */
+
+  /* Secondary Shades (Orange) */
+  /* --secondary-50: #fff7ed;
+  --secondary-100: #ffedd5;
+  --secondary-200: #fed7aa;
+  --secondary-300: #fdba74;
+  --secondary-400: #fb923c;
+  --secondary-500: #f97316;
+  --secondary-600: #ea580c;
+  --secondary-700: #c2410c;
+  --secondary-800: #9a3412;
+  --secondary-900: #7c2d12; */
 
   /* Gray Shades */
   --gray-50: #f9fafb;
@@ -56,60 +81,9 @@
   --secondary-foreground: #ffffff;
 }
 
-/* ---------- Dark Theme ---------- */
-.dark {
-  --background: #1f2937;
-  --foreground: #f9fafb;
-  --card: #374151;
-  --card-foreground: #f9fafb;
-  --muted: #374151;
-  --muted-foreground: #9ca3af;
-
-  /* Primary Shades (Teal – brighter in dark mode) */
-  --primary-50: #042f2e;
-  --primary-100: #064e3b;
-  --primary-200: #0d9488;
-  --primary-300: #14b8a6;
-  --primary-400: #2dd4bf;
-  --primary-500: #06b6d4;
-  --primary-600: #22d3ee;
-  --primary-700: #67e8f9;
-  --primary-800: #a5f3fc;
-  --primary-900: #ecfeff;
-
-  /* Secondary Shades (Orange – brighter in dark mode) */
-  --secondary-50: #431407;
-  --secondary-100: #7c2d12;
-  --secondary-200: #9a3412;
-  --secondary-300: #ea580c;
-  --secondary-400: #f97316;
-  --secondary-500: #fb923c;
-  --secondary-600: #fdba74;
-  --secondary-700: #fed7aa;
-  --secondary-800: #ffedd5;
-  --secondary-900: #fff7ed;
-
-  /* Gray Shades (reversed for dark mode) */
-  --gray-50: #111827;
-  --gray-100: #1f2937;
-  --gray-200: #374151;
-  --gray-300: #4b5563;
-  --gray-400: #6b7280;
-  --gray-500: #9ca3af;
-  --gray-600: #d1d5db;
-  --gray-700: #e5e7eb;
-  --gray-800: #f3f4f6;
-  --gray-900: #f9fafb;
-
-  /* Defaults */
-  --primary: var(--primary-500);
-  --primary-foreground: #1f2937;
-  --secondary: var(--secondary-500);
-  --secondary-foreground: #1f2937;
-}
-
 /* ---------- Tailwind Theme Tokens ---------- */
 @theme inline {
+  --color-body: var(--body);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -167,7 +141,7 @@ html[dir="rtl"] {
 }
 
 body {
-  background-color: var(--background);
+  background-color: var(--body);
   color: var(--foreground);
   text-align: right;
 }
@@ -182,81 +156,24 @@ textarea {
 }
 
 .gradient-primary {
-  background: linear-gradient(
-    135deg,
-    var(--primary-400) 0%,
-    var(--primary-600) 100%
+  background: #fb923c;
+  background: -webkit-linear-gradient(
+    90deg,
+    rgba(251, 146, 60, 1) 0%,
+    rgba(249, 115, 22, 1) 50%,
+    rgba(234, 88, 12, 1) 100%
   );
-}
-
-.gradient-primary-light {
-  background: linear-gradient(
-    135deg,
-    var(--primary-200) 0%,
-    var(--primary-400) 100%
+  background: -moz-linear-gradient(
+    90deg,
+    rgba(251, 146, 60, 1) 0%,
+    rgba(249, 115, 22, 1) 50%,
+    rgba(234, 88, 12, 1) 100%
   );
-}
-
-.gradient-primary-dark {
   background: linear-gradient(
-    135deg,
-    var(--primary-600) 0%,
-    var(--primary-800) 100%
+    90deg,
+    rgba(251, 146, 60, 1) 0%,
+    rgba(249, 115, 22, 1) 50%,
+    rgba(234, 88, 12, 1) 100%
   );
-}
-
-.gradient-secondary {
-  background: linear-gradient(
-    135deg,
-    var(--secondary-400) 0%,
-    var(--secondary-600) 100%
-  );
-}
-
-.gradient-secondary-light {
-  background: linear-gradient(
-    135deg,
-    var(--secondary-200) 0%,
-    var(--secondary-400) 100%
-  );
-}
-
-.gradient-secondary-warm {
-  background: linear-gradient(
-    135deg,
-    var(--secondary-300) 0%,
-    var(--secondary-500) 100%
-  );
-}
-
-.gradient-muted {
-  background: linear-gradient(135deg, var(--muted) 0%, var(--gray-100) 100%);
-}
-
-.gradient-muted-subtle {
-  background: linear-gradient(135deg, var(--gray-50) 0%, var(--muted) 100%);
-}
-
-.gradient-teal-orange {
-  background: linear-gradient(
-    135deg,
-    var(--primary-400) 0%,
-    var(--secondary-400) 100%
-  );
-}
-
-.gradient-orange-teal {
-  background: linear-gradient(
-    135deg,
-    var(--secondary-400) 0%,
-    var(--primary-400) 100%
-  );
-}
-
-.gradient-background-subtle {
-  background: linear-gradient(135deg, var(--background) 0%, var(--muted) 100%);
-}
-
-.gradient-card-subtle {
-  background: linear-gradient(135deg, var(--card) 0%, var(--gray-50) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#FB923C", endColorstr="#EA580C", GradientType=1);
 }

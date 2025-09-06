@@ -80,7 +80,7 @@ export default function ArticleHeader({ article }: ArticleHeaderProps) {
         <Button
           variant="outline"
           size="sm"
-          className="gap-2 hover:bg-secondary hover:text-secondary-foreground transition-colors bg-transparent"
+          className="gap-2 hover:bg-primary hover:text-primary-foreground transition-colors bg-transparent"
         >
           <Bookmark className="h-4 w-4" />
           ذخیره برای بعد
