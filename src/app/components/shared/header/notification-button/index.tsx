@@ -13,7 +13,7 @@ export default function NotificationsButton() {
       >
         <Bell className="h-5 w-5" />
       </motion.div>
-      <span className="absolute -top-2 -right-2 w-3 h-3 bg-secondary rounded-full"></span>
+      <span className="absolute -top-2 -right-2 w-3 h-3 bg-primary rounded-full"></span>
     </div>
   );
 }

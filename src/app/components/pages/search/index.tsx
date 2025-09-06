@@ -49,9 +49,8 @@ export default function SearchPage() {
             </p>
             {query && (
               <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                {filteredArticles.length} مقاله یافت شد
-                {filteredArticles.length !== 1 ? "" : ""} که با جستجوی شما
-                مطابقت دارد
+                {filteredArticles.length} مقاله یافت شد که با جستجوی شما مطابقت
+                دارد
               </p>
             )}
           </div>
@@ -88,7 +87,11 @@ export default function SearchPage() {
         {filteredArticles.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
             {filteredArticles.map((article) => (
-              <ArticleCard key={article.id} article={article} />
+              <ArticleCard
+                key={article.id}
+                article={article}
+                highlightQuery={query} // new prop
+              />
             ))}
           </div>
         ) : query ? (
