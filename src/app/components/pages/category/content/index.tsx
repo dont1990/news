@@ -9,16 +9,18 @@ interface CategoryContentProps {
   articles: Article[];
   slug: string;
   categoryName: string;
+  query: string;
 }
 
 export function CategoryContent({
   articles,
   slug,
   categoryName,
+  query,
 }: CategoryContentProps) {
   const categoryColors = getCategoryColors(slug);
 
-  if (articles.length === 0) {
+  if (!articles || articles.length === 0) {
     return (
       <EmptyCategory
         categoryName={categoryName}
@@ -30,7 +32,11 @@ export function CategoryContent({
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
       {articles.map((article) => (
-        <ArticleCard key={article.id} article={article} />
+        <ArticleCard
+          key={article.id}
+          article={article}
+          highlightQuery={query}
+        />
       ))}
     </div>
   );

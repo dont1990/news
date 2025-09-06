@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import "./styles/globals.css";
-import { Header } from "@/app/components/shared/header";
-import { Footer } from "@/app/components/shared/footer";
-
+import MainProvider from "./providers/MainProvider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,9 +15,7 @@ export default function RootLayout({
   return (
     <html lang="fa" dir="rtl">
       <body className={`antialiased min-h-screen bg-background`}>
-        <Header />
-        <main>{children}</main>
-        <Footer />
+        <MainProvider>{children}</MainProvider>
       </body>
     </html>
   );

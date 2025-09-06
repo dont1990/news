@@ -1,5 +1,5 @@
 import React from "react";
-import { CategoryHeaderSkeleton } from "./category-header/skeleton";
+import { CategoryHeaderSkeleton } from "./banner/skeleton";
 import { ArticleCardSkeleton } from "../../shared/article-card/skeleton";
 import Container from "../../shared/container";
 

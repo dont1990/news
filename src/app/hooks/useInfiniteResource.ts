@@ -1,0 +1,31 @@
+// src/hooks/useInfiniteResource.ts
+import { useInfiniteQuery, QueryFunctionContext } from "@tanstack/react-query";
+import { apiClient } from "@/app/lib/api/api-client";
+
+type Params = Record<string, string | number | boolean | undefined>;
+
+type PaginatedResponse<T> = {
+  data: T[];
+  page: number;
+  hasMore: boolean;
+  total: number;
+};
+
+export function useInfiniteResource<T>(
+  endpoint: string,
+  params?: Params,
+  limit: number = 10
+) {
+  return useInfiniteQuery<PaginatedResponse<T>, Error>({
+    queryKey: [endpoint, params],
+    queryFn: ({ pageParam }: QueryFunctionContext) =>
+      apiClient<PaginatedResponse<T>>(endpoint, {
+        ...params,
+        page: typeof pageParam === "number" ? pageParam : 1, // <-- safe cast
+        limit,
+      }),
+    getNextPageParam: (lastPage) =>
+      lastPage.hasMore ? lastPage.page + 1 : undefined,
+    initialPageParam: 1,
+  });
+}

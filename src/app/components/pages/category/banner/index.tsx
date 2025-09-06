@@ -9,19 +9,19 @@ import {
 import Container from "@/app/components/shared/container";
 import { categories } from "@/app/data/categories/categories";
 
-interface CategoryHeaderProps {
+interface CategoryBannerProps {
   name: string;
   description?: string;
   slug: string;
   articlesCount: number;
 }
 
-export function CategoryHeader({
+export function CategoryBanner({
   name,
   description,
   slug,
   articlesCount,
-}: CategoryHeaderProps) {
+}: CategoryBannerProps) {
   const categoryColors = getCategoryColors(slug);
 
   const categoryName =

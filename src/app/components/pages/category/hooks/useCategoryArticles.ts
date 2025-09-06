@@ -1,37 +1,31 @@
-"use client";
 
-import { useState, useEffect } from "react";
-import { mockArticles } from "@/app/data/mock-article";
+import { useInfiniteResource } from "@/app/hooks/useInfiniteResource";
+import { useInfiniteScroll } from "@/app/hooks/useInfiniteScroll";
 import { Article } from "@/app/types/types";
 
-export function useCategoryArticles(slug: string) {
-  const [articles, setArticles] = useState<Article[]>([]);
-  const [loading, setLoading] = useState(true);
+export function useCategoryArticles(
+  categorySlug: string,
+  filters?: { search?: string; dateFilter?: string; sort?: string }
+) {
+  const { search = "", dateFilter = "all", sort = "latest" } = filters || {};
 
-  useEffect(() => {
-    setLoading(true);
+  const {
+    data,
+    fetchNextPage,
+    hasNextPage,
+    isLoading,
+    isFetching,
+  } = useInfiniteResource<Article>("news", {
+    category: categorySlug === "all" ? undefined : categorySlug,
+    search,
+    sort,
+    dateFilter,
+  });
 
-    async function fetchData() {
-      // ✅ Currently uses mock data
-      let data: Article[] = [];
+  const { ref } = useInfiniteScroll({ hasNextPage, fetchNextPage });
 
-      if (slug.toLowerCase() === "all") {
-        data = mockArticles;
-      } else {
-        data = mockArticles.filter(
-          (a) => a.category.toLowerCase() === slug.toLowerCase()
-        );
-      }
+  // Flatten pages into a single array
+  const articles: Article[] = data?.pages.flatMap((p) => p.data) || [];
 
-      // ✅ Simulate async delay (like fetching from backend)
-      await new Promise((res) => setTimeout(res, 500));
-
-      setArticles(data);
-      setLoading(false);
-    }
-
-    fetchData();
-  }, [slug]);
-
-  return { articles, loading };
+  return { articles, loading: isLoading || isFetching, ref, fetchNextPage, hasNextPage };
 }
