@@ -1,7 +1,8 @@
-// src/lib/api-client.ts
+import { Params } from "@/app/types/types";
+
 export async function apiClient<T>(
   endpoint: string,
-  params?: Record<string, string | number | boolean | undefined>
+  params?: Params
 ): Promise<T> {
   const url = new URL(`${process.env.NEXT_PUBLIC_API_URL}/${endpoint}`);
 

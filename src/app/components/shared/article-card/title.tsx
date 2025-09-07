@@ -16,7 +16,7 @@ export default function ArticleCardTitle({
     <Link
       href={`/article/${id}`}
       className={cn(
-        "hover:text-primary transition-colors line-clamp-2 font-semibold",
+        "text-base md:text-lg text-card-foreground hover:text-primary transition-colors line-clamp-2 font-semibold",
         className
       )}
     >

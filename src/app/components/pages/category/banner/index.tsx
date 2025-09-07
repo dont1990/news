@@ -8,12 +8,14 @@ import {
 } from "@/app/lib/category-colors";
 import Container from "@/app/components/shared/container";
 import { categories } from "@/app/data/categories/categories";
+import { InfiniteLoader } from "@/app/components/shared/infinite-loader";
 
 interface CategoryBannerProps {
   name: string;
   description?: string;
   slug: string;
   articlesCount: number;
+  loading: boolean;
 }
 
 export function CategoryBanner({
@@ -21,6 +23,7 @@ export function CategoryBanner({
   description,
   slug,
   articlesCount,
+  loading,
 }: CategoryBannerProps) {
   const categoryColors = getCategoryColors(slug);
 
@@ -57,7 +60,7 @@ export function CategoryBanner({
             variant="secondary"
             className={`px-4 py-2 ${getCategoryBadgeClasses(slug)}`}
           >
-            {articlesCount} مقاله موجود
+            {loading ? <InfiniteLoader iconSize={3}/> : articlesCount} مقاله موجود
           </Badge>
         </div>
       </Container>

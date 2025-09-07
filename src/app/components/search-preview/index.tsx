@@ -25,8 +25,8 @@ export function SearchPreview({ className }: SearchPreviewProps) {
   } = useSearch();
 
   const [isInputVisible, setIsInputVisible] = useState(false);
-  const isMobileOrTablet = useMediaQuery("(max-width: 1023px)");
-  const isLargeUp = useMediaQuery("(min-width: 1024px)");
+  const isMobileOrTablet = useMediaQuery("(max-width: 767px)");
+  const isLargeUp = useMediaQuery("(min-width: 768px)");
 
   // input visible by default on large screens
   useEffect(() => {
@@ -47,6 +47,7 @@ export function SearchPreview({ className }: SearchPreviewProps) {
               initial={{ width: 0, opacity: 0 }}
               animate={{ width: "auto", opacity: 1 }}
               exit={{ width: 0, opacity: 0 }}
+              className="flex-1"
             >
               <SearchInput
                 value={searchQuery}

@@ -17,7 +17,7 @@ const SearchBar = ({ isMobileSearchOpen }: Props) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="mt-4 lg:hidden w-full"
+            className="mt-4 md:hidden w-full"
           >
             <SearchPreview className="w-full relative" />
           </motion.div>

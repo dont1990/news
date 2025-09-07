@@ -24,7 +24,7 @@ export function BreakingNews() {
 
   return (
     <div
-      className="relative bg-gradient-to-r from-red-600 via-red-500 to-orange-500 py-3 sm:py-4 overflow-hidden rounded-xl p-4"
+      className="relative bg-gradient-to-r from-red-600 via-red-500 to-orange-500 py-3 sm:py-4 overflow-hidden rounded-lg p-4"
       dir="rtl"
     >
       {/* overlay gradient effects */}

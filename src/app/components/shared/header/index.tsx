@@ -39,7 +39,7 @@ export function Header() {
       variants={containerVariants}
     >
       {/* Top Header */}
-      <Container paddingY="py-4" className="flex flex-col gap-4" maxWidth="2xl">
+      <Container paddingY="py-4" className="flex flex-col gap-4" maxWidth="xl">
         <motion.div className="flex items-center justify-between" variants={itemVariants}>
           <motion.div className="flex gap-4 items-center" variants={itemVariants}>
             <Hamburger
@@ -50,8 +50,8 @@ export function Header() {
           </motion.div>
 
           <motion.div className="flex items-center gap-x-4" variants={itemVariants}>
-            <SearchPreview className="hidden lg:block" />
-            <div className="lg:hidden">
+            <SearchPreview className="hidden md:block" />
+            <div className="md:hidden">
               <SearchToggle
                 isOpen={isMobileSearchOpen}
                 onToggle={() => setIsMobileSearchOpen(!isMobileSearchOpen)}

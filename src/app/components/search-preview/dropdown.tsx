@@ -8,8 +8,6 @@ import { Article } from "@/app/types/types";
 import { SearchResultItem } from "./item";
 import { SearchEmptyState } from "./empty";
 
-
-
 interface SearchDropdownProps {
   isOpen: boolean;
   results: Article[];
@@ -17,7 +15,12 @@ interface SearchDropdownProps {
   onSeeAll: () => void;
 }
 
-export function SearchDropdown({ isOpen, results, onClose, onSeeAll }: SearchDropdownProps) {
+export function SearchDropdown({
+  isOpen,
+  results,
+  onClose,
+  onSeeAll,
+}: SearchDropdownProps) {
   return (
     <AnimatePresence>
       {isOpen && (
@@ -28,7 +31,7 @@ export function SearchDropdown({ isOpen, results, onClose, onSeeAll }: SearchDro
           transition={{ duration: 0.25, ease: "easeInOut" }}
           className="absolute top-full left-0 right-0 mt-2 z-50"
         >
-          <Card className="shadow-2xl border-2 border-border/50 rounded-xl overflow-hidden p-0">
+          <Card className="shadow-2xl border-2 border-border/50 rounded-lg overflow-hidden p-0">
             <CardContent className="p-0">
               {results.length > 0 ? (
                 <>
@@ -52,7 +55,10 @@ export function SearchDropdown({ isOpen, results, onClose, onSeeAll }: SearchDro
                   </div>
 
                   <div className="p-4 bg-gradient-to-r from-muted/30 to-muted/10 border-t border-border">
-                    <Button onClick={onSeeAll} className="w-full flex items-center justify-center gap-2">
+                    <Button
+                      onClick={onSeeAll}
+                      className="w-full flex items-center justify-center gap-2"
+                    >
                       مشاهده تمام {results.length} نتیجه
                       <ArrowLeft className="h-4 w-4" />
                     </Button>

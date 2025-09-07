@@ -8,6 +8,7 @@ import { Badge } from "@/app/components/ui/badge";
 import { TrendingUp, Clock } from "lucide-react";
 import { Newsletter } from "@/app/components/pages/home/sidebar/newsletter";
 import CategoryBadge from "@/app/components/shared/category-badge";
+import { NAVBAR_HEIGHT } from "@/app/constants/constant";
 
 const trendingTopics = [
   { topic: "نشست اقلیمی", count: 1247 },
@@ -47,7 +48,7 @@ const recentUpdates = [
 export function HomePageSidebar() {
   return (
     <div className="xl:col-span-1">
-      <div className="sticky top-48">
+      <div className={`sticky`} style={{ top: NAVBAR_HEIGHT }}>
         <div className="space-y-6" dir="rtl">
           {/* موضوعات داغ */}
           <Card>

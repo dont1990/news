@@ -14,7 +14,6 @@ const ArticleSourceLink = ({ source, sourceLink }: Props) => {
       target="_blank"
       rel="noopener noreferrer"
       onClick={(e) => e.stopPropagation()}
-      className="flex items-center gap-1"
       icon={Link}
     >
       <span>{source ? source : "منبع"}</span>

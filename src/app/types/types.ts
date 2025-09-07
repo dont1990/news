@@ -11,3 +11,5 @@ export interface Article {
   source?: string;
   sourceLink?: string;
 }
+
+export type Params = Record<string, string | number | boolean | undefined>;

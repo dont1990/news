@@ -10,6 +10,7 @@ import Container from "@/app/components/shared/container";
 import { AnimatedLink } from "@/app/components/shared/animated-link";
 import { ArrowLeft } from "lucide-react";
 import { mockArticles } from "@/app/data/mock-article";
+import { NAVBAR_HEIGHT } from "@/app/constants/constant";
 
 interface ArticlePageProps {
   article: Article;
@@ -21,11 +22,10 @@ export default function ArticlePage({ article }: ArticlePageProps) {
       .filter((a) => a.id !== article.id && a.category === article.category)
       .slice(0, 3) || [];
 
-
   return (
     <Container>
       <div className="mb-8">
-        <AnimatedLink href="/" className="flex gap-2 items-center">
+        <AnimatedLink href="/">
           بازگشت به اخبار
           <ArrowLeft className="h-4 w-4" />
         </AnimatedLink>
@@ -39,7 +39,7 @@ export default function ArticlePage({ article }: ArticlePageProps) {
           <ArticleAuthor article={article} />
         </article>
 
-        <aside className="xl:col-span-1 sticky top-48">
+        <aside className="xl:col-span-1 sticky" style={{ top: NAVBAR_HEIGHT }}>
           <ArticleRelated
             relatedArticles={relatedArticles}
             currentArticle={article}

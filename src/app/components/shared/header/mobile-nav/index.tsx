@@ -39,7 +39,9 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
           {/* Categories */}
           <div className="grid grid-cols-2 gap-3">
             {categories.map((category, i) => {
-              const isActive = pathName.startsWith(`/category/${category.english}`);
+              const isActive = pathName.startsWith(
+                `/category/${category.english}`
+              );
 
               return (
                 <motion.div
@@ -51,7 +53,7 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
                   <Link
                     href={`/category/${category.english}`}
                     onClick={onClose}
-                    className={`group/nav flex flex-col items-center justify-center gap-1 px-4 py-3 text-sm font-medium rounded-xl bg-muted/50 hover:bg-primary/10 hover:text-primary transition-all duration-200 shadow-sm hover:shadow-md ${
+                    className={`group/nav flex flex-col items-center justify-center gap-1 px-4 py-3 text-sm font-medium rounded-lg bg-muted/50 hover:bg-primary/10 hover:text-primary transition-all duration-200 shadow-sm hover:shadow-md ${
                       isActive ? "text-gray-900 bg-primary/10" : "text-gray-500"
                     }`}
                   >

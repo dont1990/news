@@ -11,12 +11,17 @@ interface SearchInputProps {
   onFocus: () => void;
 }
 
-export function SearchInput({ value, onChange, onClear, onFocus }: SearchInputProps) {
+export function SearchInput({
+  value,
+  onChange,
+  onClear,
+  onFocus,
+}: SearchInputProps) {
   return (
-    <div className="relative flex-1 lg:ml-2">
+    <div className="relative flex-1 md:me-2">
       <Input
         placeholder="جستجوی اخبار، مقالات و موضوعات ..."
-        className="px-8 pe-12 h-12 bg-background/95 backdrop-blur-sm border-2 border-border hover:border-primary/30 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-200 rounded-xl shadow-sm w-full lg:min-w-[400px]"
+        className="px-8 pe-12 h-10 bg-background/95 backdrop-blur-sm border-2 border-border hover:border-primary/30 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-200 rounded-lg shadow-sm w-full md:min-w-[400px]"
         value={value}
         onChange={(e) => onChange(e.target.value)}
         onFocus={onFocus}

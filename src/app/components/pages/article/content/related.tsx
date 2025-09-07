@@ -13,7 +13,7 @@ export default function ArticleRelated({
   relatedArticles,
 }: ArticleRelatedProps) {
   return (
-    <div className="bg-card border border-border rounded-xl p-6">
+    <div className="bg-card border border-border rounded-lg p-6">
       <p className="text-xl mb-6 text-foreground">مقالات مرتبط</p>
       <div className="space-y-6">
         {relatedArticles.map((relatedArticle) => (

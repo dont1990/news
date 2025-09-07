@@ -6,8 +6,9 @@ import Container from "../../shared/container";
 import { CategoryControls } from "./content/category-controls";
 import { TrendingSidebar } from "./content/trending-sidebar";
 import { useCategoryArticles } from "./hooks/useCategoryArticles";
-import { CategoryContentWrapper } from "./content/wrapper";
-import { useDebounce } from "@/app/hooks/useDebounce";
+import CategorySkeleton from "./skeleton";
+import { CategoryContent } from "./content"; // merged wrapper + content
+import { NAVBAR_HEIGHT } from "@/app/constants/constant";
 
 export const categoryDescriptions = {
   world:
@@ -40,31 +41,26 @@ export function CategoryPage({
 
   const slug = resolvedParams.slug.toLowerCase();
 
+  // 👇 manual search states
+  const [searchInput, setSearchInput] = useState("");
   const [search, setSearch] = useState("");
+
   const [dateFilter, setDateFilter] = useState<
     "all" | "today" | "week" | "month"
   >("all");
   const [sort, setSort] = useState("latest");
 
-  const debouncedSearch = useDebounce(search, 1000);
+  const queryParams = useMemo(
+    () => ({ search, dateFilter, sort }),
+    [search, dateFilter, sort]
+  );
 
-  const { articles, loading, ref } = useCategoryArticles(slug, {
-    search: debouncedSearch,
-    dateFilter,
-    sort,
-  });
+  const { articles, loading, ref, isFetchingNextPage, total } =
+    useCategoryArticles(slug, queryParams);
 
-  const categoryName =
-    slug === "all"
-      ? "همه مقالات"
-      : resolvedParams.slug.charAt(0).toUpperCase() +
-        resolvedParams.slug.slice(1);
+  const categoryName = slug === "all" ? "همه مقالات" : resolvedParams.slug;
   const categoryDescription =
     categoryDescriptions[slug as keyof typeof categoryDescriptions];
-
-  const stableArticles = useMemo(() => articles, [articles]);
-
-  if (loading) return <div>Loading...</div>; // or <CategorySkeleton />
 
   return (
     <>
@@ -72,29 +68,37 @@ export function CategoryPage({
         name={categoryName}
         description={categoryDescription}
         slug={slug}
-        articlesCount={articles.length}
+        articlesCount={total}
+        loading={loading}
       />
       <Container>
         <CategoryControls
-          search={search}
-          setSearch={setSearch}
+          searchInput={searchInput}
+          setSearchInput={setSearchInput}
+          onSearch={() => setSearch(searchInput)} // 🔍 trigger manual search
           dateFilter={dateFilter}
           setDateFilter={setDateFilter}
           sort={sort}
           setSort={setSort}
         />
+        {loading ? (
+          <CategorySkeleton />
+        ) : (
+          <>
+            <div className="flex gap-4 flex-col lg:flex-row">
+              <CategoryContent
+                articles={articles}
+                slug={slug}
+                categoryName={categoryName}
+                query={search}
+                infiniteScrollRef={ref}
+                isFetchingNextPage={isFetchingNextPage}
+              />
 
-        <CategoryContentWrapper
-          articles={stableArticles}
-          slug={slug}
-          categoryName={categoryName}
-          infiniteScrollRef={ref}
-          query={search}
-        />
-
-        <aside className="w-full lg:w-80 mt-8 lg:mt-0">
-          <TrendingSidebar articles={articles} />
-        </aside>
+              <TrendingSidebar articles={articles} />
+            </div>
+          </>
+        )}
       </Container>
     </>
   );

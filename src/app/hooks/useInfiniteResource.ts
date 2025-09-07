@@ -1,8 +1,6 @@
-// src/hooks/useInfiniteResource.ts
 import { useInfiniteQuery, QueryFunctionContext } from "@tanstack/react-query";
 import { apiClient } from "@/app/lib/api/api-client";
-
-type Params = Record<string, string | number | boolean | undefined>;
+import { Params } from "../types/types";
 
 type PaginatedResponse<T> = {
   data: T[];
@@ -27,5 +25,6 @@ export function useInfiniteResource<T>(
     getNextPageParam: (lastPage) =>
       lastPage.hasMore ? lastPage.page + 1 : undefined,
     initialPageParam: 1,
+    placeholderData: (prev) => prev,
   });
 }
