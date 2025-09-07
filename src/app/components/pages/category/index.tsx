@@ -8,7 +8,6 @@ import { TrendingSidebar } from "./content/trending-sidebar";
 import { useCategoryArticles } from "./hooks/useCategoryArticles";
 import CategorySkeleton from "./skeleton";
 import { CategoryContent } from "./content"; // merged wrapper + content
-import { NAVBAR_HEIGHT } from "@/app/constants/constant";
 
 export const categoryDescriptions = {
   world:
