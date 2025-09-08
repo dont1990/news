@@ -8,7 +8,7 @@ export async function apiClient<T>(
 
   if (params) {
     for (const [key, value] of Object.entries(params)) {
-      if (value !== undefined) {
+      if (value !== undefined && value !== null) {
         url.searchParams.append(key, String(value));
       }
     }

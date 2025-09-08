@@ -25,6 +25,5 @@ export function useInfiniteResource<T>(
     getNextPageParam: (lastPage) =>
       lastPage.hasMore ? lastPage.page + 1 : undefined,
     initialPageParam: 1,
-    placeholderData: (prev) => prev,
   });
 }
