@@ -1,6 +1,5 @@
 "use client";
 
-import { Input } from "@/app/components/ui/input";
 import { Button } from "@/app/components/ui/button";
 import {
   Select,
@@ -9,7 +8,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/app/components/ui/select";
-import { SearchIcon, X } from "lucide-react";
 import { categories } from "@/app/data/categories/categories";
 import { SearchInput } from "@/app/components/shared/search-input";
 
