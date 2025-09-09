@@ -44,12 +44,6 @@ export function NewsListFilter({
     { label: "این ماه", value: "month" },
   ];
 
-  // ✅ Clear search input and remove URL param
-  const onClear = () => {
-    setSearchInput("");
-    onSearch(""); // explicitly pass empty string to remove query param
-  };
-
   return (
     <div className="flex justify-between gap-4 mb-8 flex-wrap flex-col bml:flex-row">
       {/* 🔍 Search + Button */}
