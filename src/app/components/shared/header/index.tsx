@@ -1,13 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { SearchPreview } from "@/app/components/search-preview";
+import { SearchPreview } from "@/app/components/shared/header/search-preview";
 import SearchToggle from "./search-toggle";
 import Logo from "./logo";
 import NotificationsButton from "./notification-button";
 import DesktopNav from "./desktop-nav";
 import MobileNav from "./mobile-nav";
-import SearchBar from "./search-bar";
 import Hamburger from "./hamburger";
 import { motion, Variants } from "framer-motion";
 import Container from "@/app/components/shared/container"; // ✅ import our custom Container
@@ -40,8 +39,14 @@ export function Header() {
     >
       {/* Top Header */}
       <Container paddingY="py-4" className="flex flex-col gap-4" maxWidth="xl">
-        <motion.div className="flex items-center justify-between" variants={itemVariants}>
-          <motion.div className="flex gap-4 items-center" variants={itemVariants}>
+        <motion.div
+          className="flex items-center justify-between"
+          variants={itemVariants}
+        >
+          <motion.div
+            className="flex gap-4 items-center"
+            variants={itemVariants}
+          >
             <Hamburger
               isOpen={isMobileMenuOpen}
               toggle={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -49,7 +54,10 @@ export function Header() {
             <Logo />
           </motion.div>
 
-          <motion.div className="flex items-center gap-x-4" variants={itemVariants}>
+          <motion.div
+            className="flex items-center gap-x-4"
+            variants={itemVariants}
+          >
             <SearchPreview className="hidden md:block" />
             <div className="md:hidden">
               <SearchToggle
@@ -60,8 +68,6 @@ export function Header() {
             <NotificationsButton />
           </motion.div>
         </motion.div>
-
-        <SearchBar isMobileSearchOpen={isMobileSearchOpen} />
       </Container>
 
       {/* Navigation */}
@@ -77,4 +83,3 @@ export function Header() {
     </motion.header>
   );
 }
-  

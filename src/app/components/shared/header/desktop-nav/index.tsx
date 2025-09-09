@@ -10,6 +10,7 @@ import {
 } from "@/app/components/ui/navigation-menu";
 import { categories } from "@/app/data/categories/categories";
 import { usePathname } from "next/navigation";
+import { routes } from "@/app/routes/routes";
 
 const listVariants: Variants = {
   hidden: {},
@@ -59,7 +60,9 @@ export default function DesktopNav() {
                       isActive ? "text-gray-900 bg-primary/10" : "text-gray-500"
                     }`}
                   >
-                    <Link href={`/category/${category.english}`}>
+                    <Link
+                      href={routes.news.getHref({ category: category.english })}
+                    >
                       <Icon className="w-5 h-5 group-hover/nav:text-primary transition-colors" />
                       <span>{category.persian}</span>
                       <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-200 group-hover/nav:w-full"></span>

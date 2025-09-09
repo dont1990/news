@@ -13,7 +13,7 @@ import { InfiniteLoader } from "@/app/components/shared/infinite-loader";
 interface CategoryBannerProps {
   name: string;
   description?: string;
-  slug: string;
+  category: string;
   articlesCount: number;
   loading: boolean;
 }
@@ -21,11 +21,11 @@ interface CategoryBannerProps {
 export function CategoryBanner({
   name,
   description,
-  slug,
+  category,
   articlesCount,
   loading,
 }: CategoryBannerProps) {
-  const categoryColors = getCategoryColors(slug);
+  const categoryColors = getCategoryColors(category);
 
   const categoryName =
     categories.find((cat) => cat.english === name.toLocaleLowerCase())
@@ -58,9 +58,10 @@ export function CategoryBanner({
         <div className="flex items-center justify-center gap-4">
           <Badge
             variant="secondary"
-            className={`px-4 py-2 ${getCategoryBadgeClasses(slug)}`}
+            className={`px-4 py-2 ${getCategoryBadgeClasses(category)}`}
           >
-            {loading ? <InfiniteLoader iconSize={3}/> : articlesCount} مقاله موجود
+            {loading ? <InfiniteLoader iconSize={3} /> : articlesCount} مقاله
+            موجود
           </Badge>
         </div>
       </Container>

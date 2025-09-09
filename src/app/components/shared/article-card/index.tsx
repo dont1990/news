@@ -11,6 +11,7 @@ import ArticleCardTitle from "./title";
 import ArticleImage from "./image";
 import ArticleDescription from "./description";
 import { highlightText } from "@/app/lib/highlight";
+import { routes } from "@/app/routes/routes";
 
 interface ArticleCardProps {
   article: Article;
@@ -57,7 +58,10 @@ export function ArticleCard({
           </div>
 
           {/* Image */}
-          <Link href={`/article/${id}`} className="w-1/3 relative group/img">
+          <Link
+            href={routes.news.detail.getHref(id)}
+            className="w-1/3 relative group/img"
+          >
             <ArticleImage
               article={article}
               className="w-full h-full object-cover transition-transform duration-500 group-hover/img:scale-105"
@@ -108,7 +112,7 @@ export function ArticleCard({
       <Card className="news-card group relative cursor-pointer hover:shadow-2xs p-0">
         {/* Image */}
         <Link
-          href={`/article/${id}`}
+          href={routes.news.detail.getHref(id)}
           className="relative w-full aspect-video overflow-hidden rounded-lg"
         >
           <ArticleImage
@@ -144,7 +148,7 @@ export function ArticleCard({
   return (
     <Card className="news-card group h-full xl:col-span-1 p-0 hover:shadow-2xs flex flex-col gap-0">
       <div className="relative aspect-video overflow-hidden rounded-t-lg">
-        <Link href={`/article/${id}`}>
+        <Link href={routes.news.detail.getHref(id)}>
           <ArticleImage
             article={article}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
@@ -177,7 +181,7 @@ export function ArticleCard({
 
         <div className="flex items-center justify-between text-xs text-muted-foreground pt-4 border-t border-border mt-auto">
           <AnimatedLink
-            href={sourceLink ?? "/"}
+            href={sourceLink ?? routes.home.getHref()}
             target="_blank"
             rel="noopener noreferrer"
             onClick={(e) => e.stopPropagation()}

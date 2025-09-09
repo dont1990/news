@@ -3,6 +3,7 @@ import { Button } from "@/app/components/ui/button";
 import { Article } from "@/app/types/types";
 import Link from "next/link";
 import Image from "next/image";
+import { routes } from "@/app/routes/routes";
 
 const FeaturedStory = ({ article }: { article: Article }) => {
   return (
@@ -21,7 +22,7 @@ const FeaturedStory = ({ article }: { article: Article }) => {
         <CategoryBadge title={article.category} className="mb-4" />
 
         <Link
-          href={`/article/${article.id}`}
+          href={routes.news.detail.getHref(article.id)}
           className="text-xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 leading-tight text-white text-balance hover:text-primary transition-colors w-fit"
         >
           {article.title}
@@ -31,7 +32,7 @@ const FeaturedStory = ({ article }: { article: Article }) => {
           {article.description}
         </p>
 
-        <Link href={`/article/${article.id}`}>
+        <Link href={routes.news.detail.getHref(article.id)}>
           <Button
             size="default"
             className="bg-white text-black hover:bg-gray-100 font-semibold px-6 sm:px-8 py-2 sm:py-3 w-fit"

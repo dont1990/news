@@ -8,6 +8,7 @@ import {
 import { categories } from "@/app/data/categories/categories";
 import Link from "next/link";
 import { cn } from "@/app/lib/utils";
+import { routes } from "@/app/routes/routes";
 
 type Props = {
   title: string;
@@ -19,7 +20,7 @@ const CategoryBadge = ({ title, className = "" }: Props) => {
     categories.find((cat) => cat.english === title.toLocaleLowerCase())
       ?.persian || title;
 
-  const href = `/category/${encodeURIComponent(title)}`;
+  const href = routes.news.getHref({ category: encodeURIComponent(title) });
 
   return (
     <Link

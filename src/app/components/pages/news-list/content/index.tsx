@@ -9,22 +9,22 @@ import { InfiniteLoader } from "@/app/components/shared/infinite-loader";
 
 interface Props {
   articles: Article[];
-  slug: string;
+  category: string;
   categoryName: string;
   query: string;
   infiniteScrollRef?: React.Ref<HTMLDivElement>;
   isFetchingNextPage: boolean;
 }
 
-export function CategoryContent({
+export function NewsListContent({
   articles,
-  slug,
+  category,
   categoryName,
   query,
   infiniteScrollRef,
   isFetchingNextPage,
 }: Props) {
-  const categoryColors = getCategoryColors(slug);
+  const categoryColors = getCategoryColors(category);
 
   if (!articles || articles.length === 0) {
     return (

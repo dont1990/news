@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/app/components/ui/card";
 import Link from "next/link";
 import Image from "next/image";
 import { Article } from "@/app/types/types";
+import { routes } from "@/app/routes/routes";
 
 interface ArticleRelatedProps {
   currentArticle: Article;
@@ -17,7 +18,10 @@ export default function ArticleRelated({
       <p className="text-xl mb-6 text-foreground">مقالات مرتبط</p>
       <div className="space-y-6">
         {relatedArticles.map((relatedArticle) => (
-          <Link key={relatedArticle.id} href={`/article/${relatedArticle.id}`}>
+          <Link
+            key={relatedArticle.id}
+            href={routes.news.detail.getHref(relatedArticle.id)}
+          >
             <Card className="news-card-hover border-0 shadow-sm">
               <CardContent className="p-4">
                 <div className="aspect-video relative overflow-hidden rounded-lg mb-3">

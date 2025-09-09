@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Clock } from "lucide-react";
-import CategoryBadge from "../shared/category-badge";
+import CategoryBadge from "../../category-badge";
 import { useRouter } from "next/navigation";
 import { Article } from "@/app/types/types";
 

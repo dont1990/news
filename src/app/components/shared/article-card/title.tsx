@@ -1,4 +1,5 @@
 import { cn } from "@/app/lib/utils";
+import { routes } from "@/app/routes/routes";
 import Link from "next/link";
 
 interface ArticleCardTitleProps {
@@ -14,7 +15,7 @@ export default function ArticleCardTitle({
 }: ArticleCardTitleProps) {
   return (
     <Link
-      href={`/article/${id}`}
+      href={routes.news.detail.getHref(id)}
       className={cn(
         "text-base md:text-lg text-card-foreground hover:text-primary transition-colors line-clamp-2 font-semibold",
         className

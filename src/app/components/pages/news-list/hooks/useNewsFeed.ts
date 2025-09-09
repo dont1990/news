@@ -4,7 +4,7 @@ import { Article } from "@/app/types/types";
 import { useMemo } from "react";
 
 type NewsFilters = {
-  category?: string;      // optional now
+  category?: string; 
   search?: string;
   dateFilter?: string;
   sort?: string;

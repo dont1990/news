@@ -64,7 +64,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function Page({
+export default async function ArticlePage({
   params,
 }: {
   params: Promise<{ id: string }> | { id: string };

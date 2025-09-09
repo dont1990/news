@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useMediaQuery } from "@/app/hooks/useMediaQuery";
 import { useSearch } from "./hooks/useSearch";
-import { SearchInput } from "./search-input";
 import { SearchDropdown } from "./dropdown";
 import { useClickOutside } from "@/app/hooks/useClickOutside";
+import { SearchInput } from "../../search-input";
 
 interface SearchPreviewProps {
   className?: string;
@@ -52,8 +52,9 @@ export function SearchPreview({ className }: SearchPreviewProps) {
               <SearchInput
                 value={searchQuery}
                 onChange={setSearchQuery}
-                onClear={() => clearAll(!isLargeUp)}
+                onClear={() => clearAll()}
                 onFocus={() => searchQuery.trim() && setIsOpen(true)}
+                className="min-w-[400px]"
               />
             </motion.div>
           )}

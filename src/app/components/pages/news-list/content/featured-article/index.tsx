@@ -5,6 +5,7 @@ import { getCategoryColors } from "@/app/lib/category-colors";
 import Link from "next/link";
 import { AnimatedLink } from "@/app/components/shared/animated-link";
 import { ArrowLeft } from "lucide-react";
+import { routes } from "@/app/routes/routes";
 
 export function FeaturedArticle({ article }: { article: Article }) {
   const colors = getCategoryColors(article.category);
@@ -16,9 +17,11 @@ export function FeaturedArticle({ article }: { article: Article }) {
       <div className="p-6">
         <p className={`text-lg font-medium mb-2 ${colors.primaryText}`}>ویژه</p>
         <p className="text-xl font-bold mb-4">{article.title}</p>
-        <p className="text-muted-foreground mb-4 line-clamp-2">{article.description}</p>
+        <p className="text-muted-foreground mb-4 line-clamp-2">
+          {article.description}
+        </p>
         <Link
-          href={`/articles/${article.id}`}
+          href={routes.news.detail.getHref(article.id)}
           className={`text-sm font-medium underline ${colors.primaryText}`}
         ></Link>
         <AnimatedLink href={`/articles/${article.id}`}>

@@ -1,23 +1,24 @@
 "use client";
 
+import { routes } from "@/app/routes/routes";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Logo() {
   return (
-    <Link href="/" className="group">
+    <Link href={routes.home.getHref()} className="group">
       <div className="relative w-24 h-10">
-       <Image
-       alt="logo"
-       src={'/images/logo.png'}
-       fill
-       style={{
-        objectFit:'contain'
-       }}
-       />
+        <Image
+          alt="logo"
+          src={"/images/logo.png"}
+          fill
+          style={{
+            objectFit: "contain",
+          }}
+        />
       </div>
     </Link>
-    // <Link href="/" className="group">
+    // <Link href={routes.home.getHref()} className="group">
     //   <div className="flex items-center gap-3">
     //     {/* آیکون لوگو */}
     //     <div className="w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">

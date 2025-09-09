@@ -5,7 +5,7 @@ import Container from "../../shared/container";
 import { NAVBAR_HEIGHT } from "@/app/constants/constant";
 import { ArticleCardSkeleton } from "../../shared/article-card/skeleton";
 
-const CategorySkeleton = () => {
+const NewsListSkeleton = () => {
   return (
     <>
       <Container className="!p-0">
@@ -63,4 +63,4 @@ const CategorySkeleton = () => {
   );
 };
 
-export default CategorySkeleton;
+export default NewsListSkeleton;

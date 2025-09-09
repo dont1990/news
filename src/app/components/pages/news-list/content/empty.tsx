@@ -8,7 +8,7 @@ export function EmptyCategory({
   categoryColors: { bg: string; text: string };
 }) {
   return (
-    <div className="text-center py-16">
+    <div className="text-center py-16 mx-auto">
       <div className="max-w-md mx-auto">
         <div
           className={`w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6 ${categoryColors.bg}`}

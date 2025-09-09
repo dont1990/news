@@ -200,6 +200,7 @@
 
   /* breakpoints */
   --breakpoint-xs: 460px;
+  --breakpoint-bml: 900px;
 }
 
 /* ---------- Base Styles ---------- */
@@ -244,4 +245,14 @@ textarea {
     rgba(234, 88, 12, 1) 100%
   );
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#FB923C", endColorstr="#EA580C", GradientType=1);
+}
+
+
+/* styles/globals.css or tailwind.css */
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE 10+ */
+  scrollbar-width: none; /* Firefox */
 }

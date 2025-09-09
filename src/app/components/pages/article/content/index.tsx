@@ -11,12 +11,15 @@ import { AnimatedLink } from "@/app/components/shared/animated-link";
 import { ArrowLeft } from "lucide-react";
 import { mockArticles } from "@/app/data/mock-article";
 import { NAVBAR_HEIGHT } from "@/app/constants/constant";
+import { routes } from "@/app/routes/routes";
 
-interface ArticlePageProps {
+interface ArticlePageContentProps {
   article: Article;
 }
 
-export default function ArticlePage({ article }: ArticlePageProps) {
+export default function ArticlePageContent({
+  article,
+}: ArticlePageContentProps) {
   const relatedArticles =
     mockArticles
       .filter((a) => a.id !== article.id && a.category === article.category)
@@ -25,7 +28,7 @@ export default function ArticlePage({ article }: ArticlePageProps) {
   return (
     <Container>
       <div className="mb-8">
-        <AnimatedLink href="/">
+        <AnimatedLink href={routes.home.getHref()}>
           بازگشت به اخبار
           <ArrowLeft className="h-4 w-4" />
         </AnimatedLink>

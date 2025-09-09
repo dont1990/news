@@ -1,34 +1,22 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
+import { useMemo } from "react";
 import { Badge } from "@/app/components/ui/badge";
 import { Button } from "@/app/components/ui/button";
 import { Search, Filter, SortAsc } from "lucide-react";
 import Link from "next/link";
 import { ArticleCard } from "@/app/components/shared/article-card";
-import { mockArticles } from "@/app/data/mock-article";
 import Container from "../../shared/container";
+import { routes } from "@/app/routes/routes";
+import { useQueryParams } from "@/app/hooks/useQueryParams";
+import { useNewsFeed } from "../news-list/hooks/useNewsFeed";
 
 export default function SearchPage() {
-  const searchParams = useSearchParams();
-  const query = searchParams.get("q") || "";
-  const [filteredArticles, setFilteredArticles] = useState(mockArticles);
+  const { getParam } = useQueryParams();
+  const query = getParam("query") || "";
 
-  useEffect(() => {
-    if (query) {
-      const filtered = mockArticles.filter(
-        (article) =>
-          article.title.toLowerCase().includes(query.toLowerCase()) ||
-          article.description.toLowerCase().includes(query.toLowerCase()) ||
-          article.category.toLowerCase().includes(query.toLowerCase()) ||
-          article.author.toLowerCase().includes(query.toLowerCase())
-      );
-      setFilteredArticles(filtered);
-    } else {
-      setFilteredArticles(mockArticles);
-    }
-  }, [query]);
+  const filters = useMemo(() => ({ search: query }), [query]);
+  const { articles: filteredArticles, total } = useNewsFeed(filters);
 
   return (
     <>
@@ -49,8 +37,7 @@ export default function SearchPage() {
             </p>
             {query && (
               <p className="text-xl text-muted-foreground leading-relaxed mb-6">
-                {filteredArticles.length} مقاله یافت شد که با جستجوی شما مطابقت
-                دارد
+                {total} مقاله یافت شد که با جستجوی شما مطابقت دارد
               </p>
             )}
           </div>
@@ -79,7 +66,7 @@ export default function SearchPage() {
               </Button>
             </div>
             <p className="text-sm text-muted-foreground">
-              {filteredArticles.length} از {mockArticles.length} مقاله
+              {filteredArticles.length} از {total} مقاله
             </p>
           </div>
         )}
@@ -90,7 +77,7 @@ export default function SearchPage() {
               <ArticleCard
                 key={article.id}
                 article={article}
-                highlightQuery={query} // new prop
+                highlightQuery={query}
               />
             ))}
           </div>
@@ -105,7 +92,7 @@ export default function SearchPage() {
                 هیچ مقاله‌ای مطابق با &quot;{query}&quot; پیدا نشد. از
                 کلیدواژه‌های متفاوت استفاده کنید یا دسته‌بندی‌ها را مرور کنید.
               </p>
-              <Link href="/">
+              <Link href={routes.home.getHref()}>
                 <Button className="bg-primary hover:bg-primary/90">
                   مشاهده تمام اخبار
                 </Button>

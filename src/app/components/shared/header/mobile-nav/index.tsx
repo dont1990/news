@@ -2,9 +2,10 @@
 
 import { categories } from "@/app/data/categories/categories";
 import { socialLinks } from "@/app/data/social-media/social-media";
+import { routes } from "@/app/routes/routes";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 
 interface MobileNavProps {
   isOpen: boolean;
@@ -12,7 +13,11 @@ interface MobileNavProps {
 }
 
 export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
-  const pathName = usePathname();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  const currentCategory = searchParams.get("category") || "all";
+
   if (!isOpen) return null;
 
   return (
@@ -39,10 +44,9 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
           {/* Categories */}
           <div className="grid grid-cols-2 gap-3">
             {categories.map((category, i) => {
-              const isActive = pathName.startsWith(
-                `/category/${category.english}`
-              );
-
+              const isActive =
+                pathname === "/news" && currentCategory === category.english;
+                
               return (
                 <motion.div
                   key={category.english}
@@ -51,7 +55,7 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
                   transition={{ delay: i * 0.05 }}
                 >
                   <Link
-                    href={`/category/${category.english}`}
+                    href={routes.news.getHref({ category: category.english })}
                     onClick={onClose}
                     className={`group/nav flex flex-col items-center justify-center gap-1 px-4 py-3 text-sm font-medium rounded-lg bg-muted/50 hover:bg-primary/10 hover:text-primary transition-all duration-200 shadow-sm hover:shadow-md ${
                       isActive ? "text-gray-900 bg-primary/10" : "text-gray-500"
