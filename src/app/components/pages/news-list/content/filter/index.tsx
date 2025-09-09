@@ -34,6 +34,7 @@ export function NewsListFilter({
   sort,
   setSort,
 }: Props) {
+  
   const filters: {
     label: string;
     value: "all" | "today" | "week" | "month";
