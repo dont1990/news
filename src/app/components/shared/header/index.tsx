@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useState } from "react";
+import { useState } from "react";
 import { SearchPreview } from "@/app/components/shared/header/search-preview";
 import SearchToggle from "./search-toggle";
 import Logo from "./logo";
@@ -74,12 +74,10 @@ export function Header() {
       <div className="bg-muted/30 border-t border-border">
         <Container paddingY="py-0" maxWidth="2xl">
           <DesktopNav />
-          <Suspense fallback={null}>
-            <MobileNav
-              isOpen={isMobileMenuOpen}
-              onClose={() => setIsMobileMenuOpen(false)}
-            />
-          </Suspense>
+          <MobileNav
+            isOpen={isMobileMenuOpen}
+            onClose={() => setIsMobileMenuOpen(false)}
+          />
         </Container>
       </div>
     </motion.header>
