@@ -1,10 +1,10 @@
 "use client";
 
-import { Button } from "@/app/components/ui/button";
-import Link from "next/link";
+// import { Button } from "@/app/components/ui/button";
+// import Link from "next/link";
 import { SearchX } from "lucide-react";
 import { motion } from "framer-motion";
-import { routes } from "@/app/routes/routes";
+// import { routes } from "@/app/routes/routes";
 
 export default function NotFound() {
   return (
@@ -34,7 +34,7 @@ export default function NotFound() {
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Link href={routes.home.getHref()}>
+          {/* <Link href={routes.home.getHref()}>
             <Button className="bg-primary hover:bg-primary/90 w-full sm:w-auto">
               بازگشت به صفحه اصلی
             </Button>
@@ -46,7 +46,7 @@ export default function NotFound() {
             >
               مرور مقالات
             </Button>
-          </Link>
+          </Link> */}
         </div>
       </motion.div>
     </div>
