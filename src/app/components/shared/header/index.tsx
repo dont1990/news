@@ -74,10 +74,10 @@ export function Header() {
       <div className="bg-muted/30 border-t border-border">
         <Container paddingY="py-0" maxWidth="2xl">
           <DesktopNav />
-          {/* <MobileNav
+          <MobileNav
             isOpen={isMobileMenuOpen}
             onClose={() => setIsMobileMenuOpen(false)}
-          /> */}
+          />
         </Container>
       </div>
     </motion.header>
