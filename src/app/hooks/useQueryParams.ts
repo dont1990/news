@@ -1,16 +1,15 @@
 "use client";
 
-import { useSearchParams, useRouter } from "next/navigation";
+import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import { useCallback } from "react";
 
 export function useQueryParams() {
   const searchParams = useSearchParams();
+  const pathname = usePathname();
   const router = useRouter();
 
   const getParam = useCallback(
-    (key: string): string | null => {
-      return searchParams.get(key);
-    },
+    (key: string): string | null => searchParams.get(key),
     [searchParams]
   );
 
@@ -18,14 +17,14 @@ export function useQueryParams() {
     (key: string, value: string | null) => {
       const params = new URLSearchParams(searchParams.toString());
       if (!value || value.trim() === "") {
-        params.delete(key); // ✅ remove param if empty
+        params.delete(key);
       } else {
         params.set(key, value);
       }
       const queryString = params.toString();
-      router.push(`${window.location.pathname}${queryString ? `?${queryString}` : ""}`);
+      router.push(`${pathname}${queryString ? `?${queryString}` : ""}`);
     },
-    [searchParams, router]
+    [searchParams, router, pathname]
   );
 
   const removeParam = useCallback(
@@ -33,14 +32,14 @@ export function useQueryParams() {
       const params = new URLSearchParams(searchParams.toString());
       params.delete(key);
       const queryString = params.toString();
-      router.push(`${window.location.pathname}${queryString ? `?${queryString}` : ""}`);
+      router.push(`${pathname}${queryString ? `?${queryString}` : ""}`);
     },
-    [searchParams, router]
+    [searchParams, router, pathname]
   );
 
   const clearParams = useCallback(() => {
-    router.push(window.location.pathname);
-  }, [router]);
+    router.push(pathname);
+  }, [router, pathname]);
 
   return { getParam, setParam, removeParam, clearParams };
 }
