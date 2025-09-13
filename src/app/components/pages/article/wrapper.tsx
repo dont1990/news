@@ -1,13 +1,22 @@
-import { mockArticles } from "@/app/data/mock-article";
-import ArticlePage from "./content/index";
+"use client";
+
+import ArticlePageContent from "./content/index";
+import { useNewsById } from "./hooks/useNewsById";
 import NotFound from "./not-found";
+import ArticleDetailSkeleton from "./skeleton";
 
-export default async function ArticlePageWrapper({ id }: { id: string }) {
-  const article = mockArticles.find((a) => a.id === id);
+export default function ArticlePageWrapper({ id }: { id: string }) {
+  const { data: article, isLoading, error } = useNewsById(id);
 
-  if (!article) {
+  if (isLoading) {
+    return <ArticleDetailSkeleton />;
+  }
+
+  if (error) return <div>مشکلی رخ داده است.</div>;
+
+  if (error || !article) {
     return <NotFound />;
   }
 
-  return <ArticlePage article={article} />;
+  return <ArticlePageContent article={article} />;
 }

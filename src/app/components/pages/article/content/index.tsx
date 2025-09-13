@@ -9,7 +9,6 @@ import { Article } from "@/app/types/types";
 import Container from "@/app/components/shared/container";
 import { AnimatedLink } from "@/app/components/shared/animated-link";
 import { ArrowLeft } from "lucide-react";
-import { mockArticles } from "@/app/data/mock-article";
 import { NAVBAR_HEIGHT } from "@/app/constants/constant";
 import { routes } from "@/app/routes/routes";
 
@@ -17,13 +16,9 @@ interface ArticlePageContentProps {
   article: Article;
 }
 
-export default function ArticlePageContent({
-  article,
-}: ArticlePageContentProps) {
-  const relatedArticles =
-    mockArticles
-      .filter((a) => a.id !== article.id && a.category === article.category)
-      .slice(0, 3) || [];
+export default function ArticlePageContent({ article }: ArticlePageContentProps) {
+  // TODO: Replace with API fetch for related articles
+  const relatedArticles: Article[] = [];
 
   return (
     <Container>
