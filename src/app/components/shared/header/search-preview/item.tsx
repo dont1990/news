@@ -5,6 +5,7 @@ import { Clock } from "lucide-react";
 import CategoryBadge from "../../category-badge";
 import { useRouter } from "next/navigation";
 import { Article } from "@/app/types/types";
+import TimeAgo from "../../time-ago";
 
 interface SearchResultItemProps {
   article: Article;
@@ -12,12 +13,23 @@ interface SearchResultItemProps {
 }
 
 export function SearchResultItem({ article, onClick }: SearchResultItemProps) {
+  const {
+    id,
+    imageUrl,
+    title,
+    category,
+    description,
+    publishedAt,
+    readTime,
+    source,
+  } = article;
+
   const router = useRouter();
 
   return (
     <div
       onClick={() => {
-        router.push(`/article/${article.id}`);
+        router.push(`/article/${id}`);
         onClick();
       }}
       className="hover:bg-gradient-to-r hover:from-primary/5 hover:to-secondary/5 transition-all duration-200 cursor-pointer border-b border-border/50 last:border-b-0 group"
@@ -25,8 +37,8 @@ export function SearchResultItem({ article, onClick }: SearchResultItemProps) {
       <div className="p-5 flex gap-4">
         <div className="relative overflow-hidden rounded-lg flex-shrink-0 w-20 h-16">
           <Image
-            src={article.imageUrl || "/placeholder.svg"}
-            alt={article.title}
+            src={imageUrl || "/placeholder.svg"}
+            alt={title}
             className="object-cover group-hover:scale-105 transition-transform duration-300"
             fill
           />
@@ -40,29 +52,29 @@ export function SearchResultItem({ article, onClick }: SearchResultItemProps) {
                 e.stopPropagation();
               }}
             >
-              <CategoryBadge title={article.category} />
+              <CategoryBadge title={category} />
             </div>
             <div className="flex items-center gap-1 text-xs text-muted-foreground">
               <Clock className="h-3 w-3" />
               <span>
-                {new Date(article.publishedAt).toLocaleDateString("fa-IR", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })}
+               <TimeAgo date={publishedAt}/>
               </span>
             </div>
           </div>
 
           <p className="font-semibold text-sm line-clamp-2 mb-2 leading-tight group-hover:text-primary transition-colors">
-            {article.title}
+            {title}
           </p>
           <p className="text-xs text-muted-foreground line-clamp-2 leading-relaxed">
-            {article.description}
+            {description}
           </p>
 
-          <div className="mt-2 text-xs text-muted-foreground font-medium">
-            {article.source} • {article.readTime}
+          <div className="mt-2 text-xs text-muted-foreground font-medium flex gap-1">
+            <span>{source}</span>•
+            <span className="flex gap-1">
+              <span>{readTime}</span>
+              دقیقه زمان مطالعه
+            </span>
           </div>
         </div>
       </div>

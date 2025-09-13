@@ -2,24 +2,36 @@
 
 import { useMemo } from "react";
 import { Badge } from "@/app/components/ui/badge";
-import { Button } from "@/app/components/ui/button";
-import { Search, Filter, SortAsc } from "lucide-react";
+import { Search } from "lucide-react";
 import Link from "next/link";
 import { ArticleCard } from "@/app/components/shared/article-card";
 import Container from "../../shared/container";
 import { routes } from "@/app/routes/routes";
 import { useQueryParams } from "@/app/hooks/useQueryParams";
 import { useNewsFeed } from "../news-list/hooks/useNewsFeed";
+import { SearchPageFilter } from "./filter";
+import { Button } from "../../ui/button";
 
 export default function SearchPageContent() {
-  const { getParam } = useQueryParams();
+  const { getParam, setParam } = useQueryParams();
   const query = getParam("query") || "";
 
-  const filters = useMemo(() => ({ search: query }), [query]);
+  // --- Filters from query params ---
+  const category = getParam("category") || "all";
+  const dateFilter =
+    (getParam("date") as "all" | "today" | "week" | "month") || "all";
+  const sort = getParam("sort") || "latest";
+
+  const filters = useMemo(
+    () => ({ search: query, category, dateFilter, sort }),
+    [query, category, dateFilter, sort]
+  );
+
   const { articles: filteredArticles, total } = useNewsFeed(filters);
 
   return (
     <>
+      {/* Header / Banner */}
       <section className="bg-gradient-to-br from-primary/10 via-primary/5 to-secondary/10 border-b border-border">
         <Container>
           <div className="text-center max-w-4xl mx-auto">
@@ -44,33 +56,22 @@ export default function SearchPageContent() {
         </Container>
       </section>
 
-      <Container>
-        {query && (
-          <div className="flex items-center justify-between mb-8 pb-6 border-b border-border">
-            <div className="flex items-center gap-4">
-              <Button
-                variant="outline"
-                size="sm"
-                className="gap-2 bg-transparent"
-              >
-                <Filter className="h-4 w-4" />
-                فیلتر
-              </Button>
-              <Button
-                variant="outline"
-                size="sm"
-                className="gap-2 bg-transparent"
-              >
-                <SortAsc className="h-4 w-4" />
-                مرتب‌سازی بر اساس تاریخ
-              </Button>
-            </div>
-            <p className="text-sm text-muted-foreground">
-              {filteredArticles.length} از {total} مقاله
-            </p>
-          </div>
-        )}
+      {/* Filters */}
+      {query && (
+        <Container>
+          <SearchPageFilter
+            category={category}
+            setCategory={(val) => setParam("category", val)}
+            dateFilter={dateFilter}
+            setDateFilter={(val) => setParam("date", val)}
+            sort={sort}
+            setSort={(val) => setParam("sort", val)}
+          />
+        </Container>
+      )}
 
+      {/* Results */}
+      <Container>
         {filteredArticles.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
             {filteredArticles.map((article) => (

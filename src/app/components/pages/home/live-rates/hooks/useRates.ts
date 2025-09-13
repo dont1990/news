@@ -5,7 +5,7 @@ import { apiClient } from "@/app/lib/api/api-client";
 
 export interface RatesData {
   dollar: { value: string; change: string };
-  pound: { value: string; change: string };
+  tsetmc: { value: string; change: string };
   gold: { value: string; change: string };
   coin: { value: string; change: string };
   updatedAt: string;

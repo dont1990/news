@@ -63,7 +63,7 @@ export default function ArticleHeader({ article }: ArticleHeaderProps) {
         </div>
         <div className="flex items-center gap-2">
           <Clock className="h-4 w-4 text-primary" />
-          <span>مدت زمان مطالعه: {article.readTime}</span>
+          <span>مدت زمان مطالعه: {article.readTime} دقیقه</span>
         </div>
       </div>
 

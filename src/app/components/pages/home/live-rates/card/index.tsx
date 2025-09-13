@@ -6,7 +6,7 @@ import {
   TrendingUp,
   TrendingDown,
   DollarSign,
-  PoundSterling,
+  BarChart2,
   Coins,
   Zap,
 } from "lucide-react";
@@ -25,7 +25,7 @@ const iconMap: Record<
   React.ComponentType<{ className?: string }>
 > = {
   usd: DollarSign,
-  gbp: PoundSterling,
+  gbp: BarChart2,
   coin: Coins,
   gold: Zap,
 };

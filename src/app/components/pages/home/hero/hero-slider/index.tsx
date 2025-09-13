@@ -48,7 +48,7 @@ export function HeroSlider() {
             <span className="px-3 py-1 bg-purple-600 text-white text-sm font-semibold rounded-full">
               {story.category}
             </span>
-            <span className="text-gray-300 text-sm">{story.readTime}</span>
+            <span className="text-gray-300 text-sm">{story.readTime} دقیقه</span>
           </div>
 
           <p className="text-4xl md:text-6xl font-bold mb-6 leading-tight animate-in slide-in-from-left duration-1000">

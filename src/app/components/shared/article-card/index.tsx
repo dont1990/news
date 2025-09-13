@@ -12,6 +12,7 @@ import ArticleImage from "./image";
 import ArticleDescription from "./description";
 import { highlightText } from "@/app/lib/highlight";
 import { routes } from "@/app/routes/routes";
+import TimeAgo from "../time-ago";
 
 interface ArticleCardProps {
   article: Article;
@@ -24,7 +25,7 @@ export function ArticleCard({
   type = "default",
   highlightQuery,
 }: ArticleCardProps) {
-  const { title, description, category, id, readTime, source, sourceLink } =
+  const { title, description, category, id,publishedAt, source, sourceLink } =
     article;
 
   if (type === "horizontal") {
@@ -37,7 +38,7 @@ export function ArticleCard({
               <CategoryBadge title={category} />
               <div className="flex sm:hidden lg:flex xl:hidden items-center gap-1">
                 <Clock className="w-3 h-3 sm:w-4 sm:h-4 text-primary" />
-                <span>{readTime}</span>
+                <span>{<TimeAgo date={publishedAt}/>}</span>
               </div>
             </div>
 
@@ -52,7 +53,7 @@ export function ArticleCard({
               <ArticleSourceLink source={source} sourceLink={sourceLink} />
               <div className="hidden sm:flex lg:hidden xl:flex items-center gap-1">
                 <Clock className="w-3 h-3 sm:w-4 sm:h-4 text-primary" />
-                <span>{readTime}</span>
+                <span>{<TimeAgo date={publishedAt}/>}</span>
               </div>
             </div>
           </div>
@@ -191,7 +192,7 @@ export function ArticleCard({
           </AnimatedLink>
           <div className="flex items-center gap-1">
             <Clock className="h-4 w-4 text-primary" />
-            <span className="mt-0.5">{readTime}</span>
+            <span className="mt-0.5">{<TimeAgo date={publishedAt}/>}</span>
           </div>
         </div>
       </CardContent>

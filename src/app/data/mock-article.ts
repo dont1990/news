@@ -27,7 +27,7 @@ export const mockArticles = [
     imageUrl: "/climate-summit-leaders.png",
     source: "Global News Network",
     sourceLink: "https://globalnews.com",
-    readTime: "۵ دقیقه",
+    readTime: "۵",
   },
   {
     id: "2",
@@ -58,7 +58,7 @@ export const mockArticles = [
     imageUrl: "/ai-technology-safety-meeting.png",
     source: "Tech Today",
     sourceLink: "https://techtoday.com",
-    readTime: "۳ دقیقه",
+    readTime: "۳",
   },
   {
     id: "3",
@@ -88,7 +88,7 @@ export const mockArticles = [
     imageUrl: "/stock-market-trading-floor.png",
     source: "Financial Times",
     sourceLink: "https://ft.com",
-    readTime: "۴ دقیقه",
+    readTime: "۴",
   },
   {
     id: "4",
@@ -117,7 +117,7 @@ export const mockArticles = [
     category: "Health",
     imageUrl: "/medical-research-lab.png",
     source: "Medical Journal",
-    readTime: "۶ دقیقه",
+    readTime: "۶",
   },
   {
     id: "5",
@@ -147,7 +147,7 @@ export const mockArticles = [
     imageUrl: "/mars-rover-space-exploration.png",
     source: "Space News",
     sourceLink: "https://spacenews.com",
-    readTime: "۴ دقیقه",
+    readTime: "۴",
   },
   {
     id: "6",
@@ -177,6 +177,6 @@ export const mockArticles = [
     imageUrl: "/sports-championship-stadium-crowd.png",
     source: "Sports Central",
     sourceLink: "https://sportscentral.com",
-    readTime: "۲ دقیقه",
+    readTime: "۲",
   },
 ];

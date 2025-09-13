@@ -16,19 +16,19 @@ export function LiveRates() {
     ? [
         {
           id: 1,
+          title: "بورس",
+          value: data.tsetmc.value,
+          change: data.tsetmc.change || "0",
+          trend: Number(data.tsetmc.change) >= 0 ? "up" : "down",
+          type: "gbp",
+        },
+        {
+          id: 2,
           title: "دلار آمریکا",
           value: data.dollar.value,
           change: data.dollar.change || "0",
           trend: Number(data.dollar.change) >= 0 ? "up" : "down",
           type: "usd",
-        },
-        {
-          id: 2,
-          title: "پوند انگلیس",
-          value: data.pound.value,
-          change: data.pound.change || "0",
-          trend: Number(data.pound.change) >= 0 ? "up" : "down",
-          type: "gbp",
         },
         {
           id: 3,
