@@ -1,12 +1,12 @@
-import SearchPage from "@/app/components/pages/search";
+import SearchPageContent from "@/app/components/pages/search";
 import { Suspense } from "react";
 
-const page = () => {
+const SearchPage = () => {
   return (
     <Suspense fallback="loading ...">
-      <SearchPage />
+      <SearchPageContent />
     </Suspense>
   );
 };
 
-export default page;
+export default SearchPage;

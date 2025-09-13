@@ -11,17 +11,7 @@ import {
   Zap,
 } from "lucide-react";
 import { cn } from "@/app/lib/utils";
-
-type Trend = "up" | "down";
-
-interface LiveStat {
-  id: number;
-  title: string;
-  value: string;
-  change: string;
-  trend: Trend;
-  type: "usd" | "gbp" | "coin" | "gold";
-}
+import { LiveStat } from "../types/liveStat";
 
 const gradientMap: Record<LiveStat["type"], string> = {
   usd: "from-blue-100 to-blue-200 dark:from-blue-950/50 dark:to-blue-900/40",

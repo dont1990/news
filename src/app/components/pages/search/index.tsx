@@ -11,7 +11,7 @@ import { routes } from "@/app/routes/routes";
 import { useQueryParams } from "@/app/hooks/useQueryParams";
 import { useNewsFeed } from "../news-list/hooks/useNewsFeed";
 
-export default function SearchPage() {
+export default function SearchPageContent() {
   const { getParam } = useQueryParams();
   const query = getParam("query") || "";
 

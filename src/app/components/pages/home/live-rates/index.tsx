@@ -2,18 +2,63 @@
 
 import SectionTitle from "../../../shared/section-title";
 import LiveStatCard from "./card";
-import { liveStats } from "./data/liveStatsData";
-
+import LiveStatCardSkeleton from "./card/skeleton";
+import { useRates } from "./hooks/useRates";
+import { LiveStat } from "./types/liveStat";
 
 export function LiveRates() {
+  const { data, isLoading, isError } = useRates();
+
+  if (isError)
+    return <p className="text-center py-8">قیمت‌ها قابل دریافت نیست.</p>;
+
+  const liveStats: LiveStat[] = data
+    ? [
+        {
+          id: 1,
+          title: "دلار آمریکا",
+          value: data.dollar.value,
+          change: data.dollar.change || "0",
+          trend: Number(data.dollar.change) >= 0 ? "up" : "down",
+          type: "usd",
+        },
+        {
+          id: 2,
+          title: "پوند انگلیس",
+          value: data.pound.value,
+          change: data.pound.change || "0",
+          trend: Number(data.pound.change) >= 0 ? "up" : "down",
+          type: "gbp",
+        },
+        {
+          id: 3,
+          title: "سکه",
+          value: data.coin.value,
+          change: data.coin.change || "0",
+          trend: Number(data.coin.change) >= 0 ? "up" : "down",
+          type: "coin",
+        },
+        {
+          id: 4,
+          title: "طلا",
+          value: data.gold.value,
+          change: data.gold.change || "0",
+          trend: Number(data.gold.change) >= 0 ? "up" : "down",
+          type: "gold",
+        },
+      ]
+    : [];
+
   return (
     <section className="py-12 px-4 max-w-7xl mx-auto" dir="rtl">
       <SectionTitle title="آخرین قیمت‌ها" />
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-8">
-        {liveStats.map((stat) => (
-          <LiveStatCard key={stat.id} stat={stat} />
-        ))}
+        {isLoading
+          ? Array.from({ length: 4 }).map((_, i) => (
+              <LiveStatCardSkeleton key={i} />
+            ))
+          : liveStats.map((stat) => <LiveStatCard key={stat.id} stat={stat} />)}
       </div>
     </section>
   );

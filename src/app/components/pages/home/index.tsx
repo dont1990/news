@@ -8,7 +8,7 @@ import { BreakingNews } from "./breaking-news";
 import { LiveRates } from "./live-rates";
 import SportNews from "./sport-news";
 
-export default function HomePage() {
+export default function HomePageContent() {
   return (
     <>
       <Hero />
