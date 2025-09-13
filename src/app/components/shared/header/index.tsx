@@ -73,8 +73,8 @@ export function Header() {
       {/* Navigation */}
       <div className="bg-muted/30 border-t border-border">
         <Container paddingY="py-0" maxWidth="2xl">
-          <DesktopNav />
           <Suspense fallback={"loading ..."}>
+            <DesktopNav />
             <MobileNav
               isOpen={isMobileMenuOpen}
               onClose={() => setIsMobileMenuOpen(false)}
