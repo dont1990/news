@@ -10,7 +10,7 @@ type Props = {
 const MainProvider = ({ children }: Props) => {
   return (
     <ReactQueryProvider>
-      <Header />
+      {/* <Header /> */}
       <main>{children}</main>
       <Footer />
     </ReactQueryProvider>

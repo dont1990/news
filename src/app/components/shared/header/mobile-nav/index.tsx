@@ -5,7 +5,7 @@ import { socialLinks } from "@/app/data/social-media/social-media";
 import { routes } from "@/app/routes/routes";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 
 interface MobileNavProps {
   isOpen: boolean;
@@ -14,10 +14,9 @@ interface MobileNavProps {
 
 export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
   const pathname = usePathname();
-  // const searchParams = useSearchParams();
+  const searchParams = useSearchParams();
 
-  // const currentCategory = searchParams.get("category") || "all";
-  const currentCategory = "all";
+  const currentCategory = searchParams.get("category") || "all";
 
   if (!isOpen) return null;
 
