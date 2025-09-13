@@ -1,27 +1,36 @@
 "use client";
 
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
-import { useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 export function useQueryParams() {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
 
+  // Local copy so we don't suspend during SSR
+  const [params, setParams] = useState<URLSearchParams | null>(null);
+
+  useEffect(() => {
+    setParams(new URLSearchParams(searchParams.toString()));
+  }, [searchParams]);
+
   const getParam = useCallback(
-    (key: string): string | null => searchParams.get(key),
-    [searchParams]
+    (key: string): string | null => {
+      return params ? params.get(key) : null;
+    },
+    [params]
   );
 
   const setParam = useCallback(
     (key: string, value: string | null) => {
-      const params = new URLSearchParams(searchParams.toString());
+      const newParams = new URLSearchParams(searchParams.toString());
       if (!value || value.trim() === "") {
-        params.delete(key);
+        newParams.delete(key);
       } else {
-        params.set(key, value);
+        newParams.set(key, value);
       }
-      const queryString = params.toString();
+      const queryString = newParams.toString();
       router.push(`${pathname}${queryString ? `?${queryString}` : ""}`);
     },
     [searchParams, router, pathname]
@@ -29,9 +38,9 @@ export function useQueryParams() {
 
   const removeParam = useCallback(
     (key: string) => {
-      const params = new URLSearchParams(searchParams.toString());
-      params.delete(key);
-      const queryString = params.toString();
+      const newParams = new URLSearchParams(searchParams.toString());
+      newParams.delete(key);
+      const queryString = newParams.toString();
       router.push(`${pathname}${queryString ? `?${queryString}` : ""}`);
     },
     [searchParams, router, pathname]
