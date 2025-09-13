@@ -6,19 +6,17 @@ import { routes } from "@/app/routes/routes";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
 interface MobileNavProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
+function MobileNavContent({ onClose }: { onClose: () => void }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
-
   const currentCategory = searchParams.get("category") || "all";
-
-  if (!isOpen) return null;
 
   return (
     <>
@@ -46,7 +44,7 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
             {categories.map((category, i) => {
               const isActive =
                 pathname === "/news" && currentCategory === category.english;
-                
+
               return (
                 <motion.div
                   key={category.english}
@@ -58,7 +56,9 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
                     href={routes.news.getHref({ category: category.english })}
                     onClick={onClose}
                     className={`group/nav flex flex-col items-center justify-center gap-1 px-4 py-3 text-sm font-medium rounded-lg bg-muted/50 hover:bg-primary/10 hover:text-primary transition-all duration-200 shadow-sm hover:shadow-md ${
-                      isActive ? "text-gray-900 bg-primary/10" : "text-gray-500"
+                      isActive
+                        ? "text-gray-900 bg-primary/10"
+                        : "text-gray-500"
                     }`}
                   >
                     <category.icon className="w-6 h-6 group-hover/nav:text-primary transition-colors" />
@@ -99,5 +99,15 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
         </div>
       </motion.div>
     </>
+  );
+}
+
+export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
+  if (!isOpen) return null;
+
+  return (
+    <Suspense fallback={null}>
+      <MobileNavContent onClose={onClose} />
+    </Suspense>
   );
 }
