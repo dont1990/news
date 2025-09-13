@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { SearchPreview } from "@/app/components/shared/header/search-preview";
 import SearchToggle from "./search-toggle";
 import Logo from "./logo";
@@ -58,13 +58,15 @@ export function Header() {
             className="flex items-center gap-x-4"
             variants={itemVariants}
           >
-            <SearchPreview className="hidden md:block" />
-            <div className="md:hidden">
-              <SearchToggle
-                isOpen={isMobileSearchOpen}
-                onToggle={() => setIsMobileSearchOpen(!isMobileSearchOpen)}
-              />
-            </div>
+            <Suspense fallback={"loading"}>
+              <SearchPreview className="hidden md:block" />
+              <div className="md:hidden">
+                <SearchToggle
+                  isOpen={isMobileSearchOpen}
+                  onToggle={() => setIsMobileSearchOpen(!isMobileSearchOpen)}
+                />
+              </div>
+            </Suspense>
             <NotificationsButton />
           </motion.div>
         </motion.div>
@@ -73,11 +75,13 @@ export function Header() {
       {/* Navigation */}
       <div className="bg-muted/30 border-t border-border">
         <Container paddingY="py-0" maxWidth="2xl">
-          <DesktopNav />
-          <MobileNav
-            isOpen={isMobileMenuOpen}
-            onClose={() => setIsMobileMenuOpen(false)}
-          />
+          <Suspense fallback={"loading"}>
+            <DesktopNav />
+            <MobileNav
+              isOpen={isMobileMenuOpen}
+              onClose={() => setIsMobileMenuOpen(false)}
+            />
+          </Suspense>
         </Container>
       </div>
     </motion.header>
