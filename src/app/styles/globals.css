@@ -103,6 +103,8 @@
   --primary-foreground: #ffffff;
   --secondary: var(--secondary-500);
   --secondary-foreground: #ffffff;
+  --skeleton-bg: #e5e7eb; /* light gray for light mode */
+  --skeleton-fg: #f3f4f6;
 }
 
 /* ---------- Tailwind Theme Tokens ---------- */
@@ -197,6 +199,8 @@
   --color-gray-800: var(--gray-800);
   --color-gray-900: var(--gray-900);
 
+  --color-skeleton-bg: var(--skeleton-bg);
+  --color-skeleton-fg: var(--skeleton-fg);
 
   /* breakpoints */
   --breakpoint-xs: 460px;
@@ -246,7 +250,6 @@ textarea {
   );
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#FB923C", endColorstr="#EA580C", GradientType=1);
 }
-
 
 /* styles/globals.css or tailwind.css */
 .no-scrollbar::-webkit-scrollbar {
