@@ -15,7 +15,7 @@ type Props = {
   className?: string;
 };
 
-const CategoryBadge = ({ title, className = "" }: Props) => {
+const CategoryBadge = ({ title = "all", className = "" }: Props) => {
   const categoryName =
     categories.find((cat) => cat.english === title.toLocaleLowerCase())
       ?.persian || title;

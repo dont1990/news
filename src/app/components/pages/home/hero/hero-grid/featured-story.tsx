@@ -20,7 +20,6 @@ const FeaturedStory = ({ article }: { article: Article }) => {
 
       <div className="relative z-10 p-6 sm:p-8 lg:p-12 h-full flex flex-col justify-end text-right">
         <CategoryBadge title={article.category} className="mb-4" />
-
         <Link
           href={routes.news.detail.getHref(article.id)}
           className="text-xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 leading-tight text-white text-balance hover:text-primary transition-colors w-fit"

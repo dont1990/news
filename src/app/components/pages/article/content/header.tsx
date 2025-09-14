@@ -6,6 +6,7 @@ import { Article } from "@/app/types/types";
 import DateText from "@/app/components/shared/date-text";
 import TimeAgo from "@/app/components/shared/time-ago";
 import CategoryBadge from "@/app/components/shared/category-badge";
+import { routes } from "@/app/routes/routes";
 
 interface ArticleHeaderProps {
   article: Article;
@@ -15,7 +16,7 @@ export default function ArticleHeader({ article }: ArticleHeaderProps) {
   return (
     <header className="mb-8">
       <div className="flex items-center gap-3 mb-6">
-        <CategoryBadge title={article.category} />
+        <CategoryBadge title={article.category ?? routes.home.getHref()} />
         {article.sourceLink ? (
           <a
             href={article.sourceLink}
@@ -43,7 +44,7 @@ export default function ArticleHeader({ article }: ArticleHeaderProps) {
       <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground mb-8 pb-6 border-b border-border">
         <div className="flex items-center gap-2">
           <User className="h-4 w-4 text-primary" />
-          <span className="font-medium">نویسنده: {article.author}</span>
+          <span className="font-medium">نویسنده: نام نویسنده</span>
         </div>
         <div className="flex items-center gap-2">
           <Calendar className="h-4 w-4 text-primary" />

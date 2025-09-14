@@ -14,10 +14,9 @@ export default function ArticleAuthor({ article }: ArticleAuthorProps) {
           <User className="h-8 w-8 text-primary" />
         </div>
         <div>
-          <p className="text-xl mb-2">درباره {article.author}</p>
           <p className="text-muted-foreground leading-relaxed">
-            {article.author} خبرنگار ارشد {article.source} است و بیش از ۱۰ سال
-            تجربه در پوشش خبری حوزه {article.category.toLowerCase()} دارد.
+            خبرنگار ارشد {article.source} است و بیش از ۱۰ سال تجربه در پوشش خبری
+            حوزه {article.category.toLowerCase()} دارد.
           </p>
         </div>
       </div>

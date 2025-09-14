@@ -37,7 +37,7 @@ export default function ArticleRelated({
                   {relatedArticle.title}
                 </p>
                 <div className="flex items-center justify-between text-xs text-muted-foreground">
-                  <span className="font-medium">{relatedArticle.author}</span>
+                  <span className="font-medium">نام نویسنده</span>
                   <span>{relatedArticle.readTime} دقیقه</span>
                 </div>
               </CardContent>
