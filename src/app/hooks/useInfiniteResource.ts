@@ -1,6 +1,7 @@
 import { useInfiniteQuery, QueryFunctionContext } from "@tanstack/react-query";
 import { apiClient } from "@/app/lib/api/api-client";
 import { Params } from "../types/types";
+import { PAGE_LIMIT } from "../constants/constant";
 
 type PaginatedResponse<T> = {
   data: T[];
@@ -12,7 +13,7 @@ type PaginatedResponse<T> = {
 export function useInfiniteResource<T>(
   endpoint: string,
   params?: Params,
-  limit: number = 10
+  limit: number = PAGE_LIMIT
 ) {
   return useInfiniteQuery<PaginatedResponse<T>, Error>({
     queryKey: [endpoint, params],

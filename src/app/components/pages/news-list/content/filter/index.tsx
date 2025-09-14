@@ -8,15 +8,15 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/app/components/ui/select";
-import { categories } from "@/app/data/categories/categories";
 import { SearchInput } from "@/app/components/shared/search-input";
+import { useInfiniteCategories } from "../../hooks/useCategories";
 
 interface Props {
   category: string;
   setCategory: (v: string) => void;
   searchInput: string;
   setSearchInput: (v: string) => void;
-  onSearch: (value?: string) => void; // updated to accept optional value
+  onSearch: (value?: string) => void;
   dateFilter: "all" | "today" | "week" | "month";
   setDateFilter: (v: "all" | "today" | "week" | "month") => void;
   sort: string;
@@ -43,6 +43,13 @@ export function NewsListFilter({
     { label: "این هفته", value: "week" },
     { label: "این ماه", value: "month" },
   ];
+
+  // ✅ Fetch categories (merged static + API)
+  const {
+    categories,
+    loading: isLoading,
+    ref: categoriesRef,
+  } = useInfiniteCategories();
 
   return (
     <div className="flex justify-between gap-4 mb-8 flex-wrap flex-col bml:flex-row">
@@ -78,11 +85,20 @@ export function NewsListFilter({
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="همه">همه</SelectItem>
-              {categories.map((c) => (
-                <SelectItem key={c.title} value={c.title}>
-                  {c.title}
+
+              {isLoading ? (
+                <SelectItem disabled value="loading">
+                  در حال بارگذاری...
                 </SelectItem>
-              ))}
+              ) : (
+                categories?.map((c) => (
+                  <SelectItem key={c.title} value={c.title}>
+                    {c.title}
+                  </SelectItem>
+                ))
+              )}
+                <div ref={categoriesRef}></div>
+
             </SelectContent>
           </Select>
 
