@@ -17,7 +17,7 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
   const pathname = usePathname();
   const { getParam } = useQueryParams();
 
-  const currentCategory = getParam("category") || "all";
+  const currentCategory = getParam("category") || "همه";
 
   if (!isOpen) return null;
 
@@ -46,24 +46,24 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
           <div className="grid grid-cols-2 gap-3">
             {categories.map((category, i) => {
               const isActive =
-                pathname === "/news" && currentCategory === category.english;
-                
+                pathname === "/news" && currentCategory === category.title;
+
               return (
                 <motion.div
-                  key={category.english}
+                  key={category.title}
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: i * 0.05 }}
                 >
                   <Link
-                    href={routes.news.getHref({ category: category.english })}
+                    href={routes.news.getHref({ category: category.title })}
                     onClick={onClose}
                     className={`group/nav flex flex-col items-center justify-center gap-1 px-4 py-3 text-sm font-medium rounded-lg bg-muted/50 hover:bg-primary/10 hover:text-primary transition-all duration-200 shadow-sm hover:shadow-md ${
                       isActive ? "text-gray-900 bg-primary/10" : "text-gray-500"
                     }`}
                   >
                     <category.icon className="w-6 h-6 group-hover/nav:text-primary transition-colors" />
-                    <span>{category.persian}</span>
+                    <span>{category.title}</span>
                   </Link>
                 </motion.div>
               );

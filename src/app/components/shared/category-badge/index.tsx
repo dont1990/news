@@ -15,12 +15,15 @@ type Props = {
   className?: string;
 };
 
-const CategoryBadge = ({ title = "all", className = "" }: Props) => {
-  const categoryName =
-    categories.find((cat) => cat.english === title.toLocaleLowerCase())
-      ?.persian || title;
+const CategoryBadge = ({ title, className = "" }: Props) => {
+  // Take only the first part before '>'
+  const firstPart = String(title).split(">")[0].trim();
 
-  const href = routes.news.getHref({ category: encodeURIComponent(title) });
+  // Find category in your categories array (optional, for colors)
+  const categoryName =
+  categories.find((cat) => cat.title === firstPart)?.title || "همه";
+
+  const href = routes.news.getHref({ category: firstPart });
 
   return (
     <Link
@@ -28,15 +31,15 @@ const CategoryBadge = ({ title = "all", className = "" }: Props) => {
       onClick={(e) => e.stopPropagation()}
       className={cn(
         "flex gap-1.5 items-center group w-fit",
-        getCategoryTextHover(title),
+        getCategoryTextHover(categoryName),
         className
-      )} // ✅ add 'group'
+      )}
     >
       {/* Circle */}
       <div
         className={cn(
           "size-4 rounded-full transition-colors duration-300",
-          getCategoryPrimaryColor(title)
+          getCategoryPrimaryColor(categoryName)
         )}
       ></div>
 

@@ -9,65 +9,64 @@ import EntertainmentIcon from "./assets/icons/entertainment";
 import EnvironmentIcon from "./assets/icons/environment";
 
 export interface Category {
-  persian: string;
-  english: string;
+  title: string;
   icon: React.ElementType;
   description: string;
 }
 
 export const categories: Category[] = [
   {
-    persian: "جهان",
-    english: "world",
+    title: "جهان",
     icon: WorldIcon,
-    description: "با آخرین اخبار جهانی، رویدادهای بین‌المللی و تغییرات جهان به‌روز بمانید.",
+    description:
+      "با آخرین اخبار جهانی، رویدادهای بین‌المللی و تغییرات جهان به‌روز بمانید.",
   },
   {
-    persian: "سیاست",
-    english: "politics",
+    title: "سیاست",
     icon: PoliticsIcon,
-    description: "تحولات سیاسی، انتخابات، تغییرات سیاست‌ها و امور دولت‌ها در سراسر جهان را دنبال کنید.",
+    description:
+      "تحولات سیاسی، انتخابات، تغییرات سیاست‌ها و امور دولت‌ها در سراسر جهان را دنبال کنید.",
   },
   {
-    persian: "تجارت",
-    english: "business",
+    title: "تجارت",
     icon: BusinessIcon,
-    description: "با روندهای بازار، اخبار شرکت‌ها، شاخص‌های اقتصادی و تحولات مالی آشنا شوید.",
+    description:
+      "با روندهای بازار، اخبار شرکت‌ها، شاخص‌های اقتصادی و تحولات مالی آشنا شوید.",
   },
   {
-    persian: "فناوری",
-    english: "technology",
+    title: "فناوری",
     icon: TechnologyIcon,
-    description: "آخرین نوآوری‌ها در فناوری، تحول دیجیتال و تکنولوژی‌های نوظهور را کشف کنید.",
+    description:
+      "آخرین نوآوری‌ها در فناوری، تحول دیجیتال و تکنولوژی‌های نوظهور را کشف کنید.",
   },
   {
-    persian: "علم",
-    english: "science",
+    title: "علم",
     icon: ScienceIcon,
-    description: "با دستاوردهای علمی، یافته‌های پژوهشی و اکتشافاتی که دانش بشر را پیش می‌برند آشنا شوید.",
+    description:
+      "با دستاوردهای علمی، یافته‌های پژوهشی و اکتشافاتی که دانش بشر را پیش می‌برند آشنا شوید.",
   },
   {
-    persian: "سلامت",
-    english: "health",
+    title: "سلامت",
     icon: HealthIcon,
-    description: "با پیشرفت‌های پزشکی، روندهای سلامت و اطلاعات رفاه و بهداشت به‌روز بمانید.",
+    description:
+      "با پیشرفت‌های پزشکی، روندهای سلامت و اطلاعات رفاه و بهداشت به‌روز بمانید.",
   },
   {
-    persian: "ورزش",
-    english: "sports",
+    title: "ورزش",
     icon: SportIcon,
-    description: "تیم‌ها، ورزشکاران و رویدادهای ورزشی مورد علاقه خود را دنبال کنید.",
+    description:
+      "تیم‌ها، ورزشکاران و رویدادهای ورزشی مورد علاقه خود را دنبال کنید.",
   },
   {
-    persian: "سرگرمی",
-    english: "entertainment",
+    title: "سرگرمی",
     icon: EntertainmentIcon,
-    description: "آخرین اخبار فیلم، موسیقی، سلبریتی‌ها و صنعت سرگرمی را دریافت کنید.",
+    description:
+      "آخرین اخبار فیلم، موسیقی، سلبریتی‌ها و صنعت سرگرمی را دریافت کنید.",
   },
   {
-    persian: "محیط زیست",
-    english: "environment",
+    title: "محیط زیست",
     icon: EnvironmentIcon,
-    description: "تحولات محیط زیست، تغییرات اقلیمی و مسائل پایداری را دنبال کنید.",
+    description:
+      "تحولات محیط زیست، تغییرات اقلیمی و مسائل پایداری را دنبال کنید.",
   },
 ];

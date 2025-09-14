@@ -27,7 +27,6 @@ export function SearchPageFilter({
   sort,
   setSort,
 }: Props) {
-    
   const filters: {
     label: string;
     value: "all" | "today" | "week" | "month";
@@ -62,10 +61,10 @@ export function SearchPageFilter({
             <SelectValue placeholder="دسته‌بندی" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="all">همه</SelectItem>
+            <SelectItem value="همه">همه</SelectItem>
             {categories.map((c) => (
-              <SelectItem key={c.english} value={c.english}>
-                {c.persian}
+              <SelectItem key={c.title} value={c.title}>
+                {c.title}
               </SelectItem>
             ))}
           </SelectContent>

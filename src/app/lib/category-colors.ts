@@ -1,14 +1,14 @@
 export const categoryColors = {
-  world: {
+  جهان: {
     bg: "bg-blue-100",
     text: "text-blue-800",
     border: "border-blue-200",
     hover: "hover:bg-blue-200",
     primary: "bg-blue-600",
     primaryText: "text-blue-600",
-    textHover: "hover:text-blue-600", // ✅ add this
+    textHover: "hover:text-blue-600",
   },
-  politics: {
+  سیاست: {
     bg: "bg-red-100",
     text: "text-red-800",
     border: "border-red-200",
@@ -17,7 +17,7 @@ export const categoryColors = {
     primaryText: "text-red-600",
     textHover: "hover:text-red-600",
   },
-  business: {
+  تجارت: {
     bg: "bg-green-100",
     text: "text-green-800",
     border: "border-green-200",
@@ -26,7 +26,7 @@ export const categoryColors = {
     primaryText: "text-green-600",
     textHover: "hover:text-green-600",
   },
-  technology: {
+  فناوری: {
     bg: "bg-purple-100",
     text: "text-purple-800",
     border: "border-purple-200",
@@ -35,7 +35,7 @@ export const categoryColors = {
     primaryText: "text-purple-600",
     textHover: "hover:text-purple-600",
   },
-  science: {
+  علم: {
     bg: "bg-cyan-100",
     text: "text-cyan-800",
     border: "border-cyan-200",
@@ -44,7 +44,7 @@ export const categoryColors = {
     primaryText: "text-cyan-600",
     textHover: "hover:text-cyan-600",
   },
-  health: {
+  سلامت: {
     bg: "bg-pink-100",
     text: "text-pink-800",
     border: "border-pink-200",
@@ -53,7 +53,7 @@ export const categoryColors = {
     primaryText: "text-pink-600",
     textHover: "hover:text-pink-600",
   },
-  sports: {
+  ورزش: {
     bg: "bg-orange-100",
     text: "text-orange-800",
     border: "border-orange-200",
@@ -62,7 +62,7 @@ export const categoryColors = {
     primaryText: "text-orange-600",
     textHover: "hover:text-orange-600",
   },
-  entertainment: {
+  سرگرمی: {
     bg: "bg-violet-100",
     text: "text-violet-800",
     border: "border-violet-200",
@@ -71,7 +71,16 @@ export const categoryColors = {
     primaryText: "text-violet-600",
     textHover: "hover:text-violet-600",
   },
-  all: {
+  "محیط زیست": {
+    bg: "bg-teal-100",
+    text: "text-teal-800",
+    border: "border-teal-200",
+    hover: "hover:bg-teal-200",
+    primary: "bg-teal-600",
+    primaryText: "text-teal-600",
+    textHover: "hover:text-teal-600",
+  },
+  همه: {
     bg: "bg-gray-100",
     text: "text-gray-800",
     border: "border-gray-200",
@@ -82,14 +91,12 @@ export const categoryColors = {
   },
 } as const;
 
-
-export type CategorySlug = keyof typeof categoryColors;
+export type CategoryTitle = keyof typeof categoryColors;
 
 export function getCategoryColors(
   category: string
-): (typeof categoryColors)[CategorySlug] {
-  const normalizedCategory = category.toLowerCase() as CategorySlug;
-  return categoryColors[normalizedCategory] || categoryColors.world;
+): (typeof categoryColors)[CategoryTitle] {
+  return categoryColors[category as CategoryTitle] || categoryColors["همه"];
 }
 
 export function getCategoryBadgeClasses(category: string): string {
@@ -98,16 +105,13 @@ export function getCategoryBadgeClasses(category: string): string {
 }
 
 export function getCategoryPrimaryColor(category: string): string {
-  const colors = getCategoryColors(category);
-  return colors.primary;
+  return getCategoryColors(category).primary;
 }
 
 export function getCategoryTextColor(category: string): string {
-  const colors = getCategoryColors(category);
-  return colors.primaryText;
+  return getCategoryColors(category).primaryText;
 }
 
 export function getCategoryTextHover(category: string): string {
-  const colors = getCategoryColors(category);
-  return colors.textHover;
+  return getCategoryColors(category).textHover;
 }

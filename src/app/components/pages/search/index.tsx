@@ -17,7 +17,7 @@ export default function SearchPageContent() {
   const query = getParam("query") || "";
 
   // --- Filters from query params ---
-  const category = getParam("category") || "all";
+  const category = getParam("category") || "همه";
   const dateFilter =
     (getParam("date") as "all" | "today" | "week" | "month") || "all";
   const sort = getParam("sort") || "latest";

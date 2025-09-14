@@ -47,12 +47,10 @@ export default function DesktopNav() {
         <NavigationMenuList className="flex items-center gap-x-1 py-3">
           {categories.map((category) => {
             const Icon = category.icon;
-            const isActive = pathName.startsWith(
-              `/category/${category.english}`
-            );
+            const isActive = pathName.startsWith(`/category/${category.title}`);
 
             return (
-              <motion.div key={category.english} variants={itemVariants}>
+              <motion.div key={category.title} variants={itemVariants}>
                 <NavigationMenuItem>
                   <NavigationMenuLink
                     asChild
@@ -61,10 +59,10 @@ export default function DesktopNav() {
                     }`}
                   >
                     <Link
-                      href={routes.news.getHref({ category: category.english })}
+                      href={routes.news.getHref({ category: category.title })}
                     >
                       <Icon className="w-5 h-5 group-hover/nav:text-primary transition-colors" />
-                      <span>{category.persian}</span>
+                      <span>{category.title}</span>
                       <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-200 group-hover/nav:w-full"></span>
                     </Link>
                   </NavigationMenuLink>

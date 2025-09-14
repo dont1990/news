@@ -39,7 +39,7 @@ export default function NotFound() {
               بازگشت به صفحه اصلی
             </Button>
           </Link>
-          <Link href={routes.news.getHref({ category: "all" })}>
+          <Link href={routes.news.getHref({ category: "همه" })}>
             <Button
               variant="outline"
               className="border-border text-foreground hover:bg-muted w-full sm:w-auto"

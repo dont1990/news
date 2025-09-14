@@ -16,7 +16,7 @@ export function NewsListPage() {
   const { getParam, setParam } = useQueryParams();
 
   // --- Query-param-driven state ---
-  const category = getParam("category") || "all";
+  const category = getParam("category") || "همه";
   const search = getParam("search") || "";
   const dateFilter =
     (getParam("date") as "all" | "today" | "week" | "month") || "all";
@@ -39,17 +39,17 @@ export function NewsListPage() {
   const { data: globalTrending } = useTrendingNews(5);
 
   // --- Category info ---
-  const categoryObj = categories.find((c) => c.english === category);
+  const categoryObj = categories.find((c) => c.title === category);
   const categoryName =
-    category === "all" ? "همه مقالات" : categoryObj?.persian || category;
+    category === "همه" ? "همه" : categoryObj?.title || category;
   const categoryDescription =
-    category === "all"
+    category === "همه"
       ? "مروری بر همه مقالات موجود در سایت، بدون محدودیت دسته‌بندی."
       : categoryObj?.description;
 
   // --- Hybrid trending logic ---
   const trendingArticles =
-    category === "all" ? globalTrending || [] : articles.slice(0, 5);
+    category === "همه" ? globalTrending || [] : articles.slice(0, 5);
 
   return (
     <>

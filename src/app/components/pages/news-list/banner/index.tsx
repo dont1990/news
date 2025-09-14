@@ -28,8 +28,8 @@ export function CategoryBanner({
   const categoryColors = getCategoryColors(category);
 
   const categoryName =
-    categories.find((cat) => cat.english === name.toLocaleLowerCase())
-      ?.persian || name;
+    categories.find((cat) => cat.title === name.toLocaleLowerCase())?.title ||
+    name;
 
   return (
     <section

@@ -12,7 +12,7 @@ type NewsFilters = {
 
 export function useNewsFeed(filters?: NewsFilters) {
   const {
-    category = "all",
+    category = "همه",
     search = "",
     dateFilter = "all",
     sort = "latest",
@@ -20,7 +20,7 @@ export function useNewsFeed(filters?: NewsFilters) {
 
   const queryParams = useMemo(
     () => ({
-      category: category === "all" ? undefined : category,
+      category: category === "همه" ? undefined : category,
       search,
       sort,
       dateFilter,
