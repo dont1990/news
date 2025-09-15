@@ -37,9 +37,9 @@ export default function ArticleHeader({ article }: ArticleHeaderProps) {
         {article.title}
       </h1>
 
-      <p className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed">
+      {/* <p className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed">
         {article.description}
-      </p>
+      </p> */}
 
       <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground mb-8 pb-6 border-b border-border">
         <div className="flex items-center gap-2">

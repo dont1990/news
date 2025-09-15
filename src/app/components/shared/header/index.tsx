@@ -38,7 +38,7 @@ export function Header() {
       variants={containerVariants}
     >
       {/* Top Header */}
-      <Container paddingY="py-4" className="flex flex-col gap-4" maxWidth="xl">
+      <Container paddingY="py-4" className="flex flex-col gap-4">
         <motion.div
           className="flex items-center justify-between"
           variants={itemVariants}
@@ -74,7 +74,7 @@ export function Header() {
 
       {/* Navigation */}
       <div className="bg-muted/30 border-t border-border">
-        <Container paddingY="py-0" maxWidth="2xl">
+        <Container paddingY="py-0">
           <Suspense fallback={"loading"}>
             <DesktopNav />
             <MobileNav
