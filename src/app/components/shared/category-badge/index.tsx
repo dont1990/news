@@ -5,7 +5,7 @@ import {
   getCategoryPrimaryColor,
   getCategoryTextHover,
 } from "@/app/lib/category-colors";
-import { categories } from "@/app/data/categories/categories";
+// import { categories } from "@/app/data/categories/categories";
 import Link from "next/link";
 import { cn } from "@/app/lib/utils";
 import { routes } from "@/app/routes/routes";
@@ -17,13 +17,13 @@ type Props = {
 
 const CategoryBadge = ({ title, className = "" }: Props) => {
   // Take only the first part before '>'
-  const firstPart = String(title).split(">")[0].trim();
+  const categoryName = String(title).split(">")[0].trim()|| "همه";
 
   // Find category in your categories array (optional, for colors)
-  const categoryName =
-  categories.find((cat) => cat.title === firstPart)?.title || "همه";
+  // const categoryName =
+  // categories.find((cat) => cat.title === firstPart)?.title || "همه";
 
-  const href = routes.news.getHref({ category: firstPart });
+  const href = routes.news.getHref({ category: categoryName });
 
   return (
     <Link
