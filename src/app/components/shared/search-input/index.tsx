@@ -3,6 +3,7 @@
 import { Input } from "@/app/components/ui/input";
 import { Button } from "@/app/components/ui/button";
 import { SearchIcon, X } from "lucide-react";
+import { motion } from "framer-motion";
 
 interface SearchInputProps {
   value: string;
@@ -49,16 +50,26 @@ export function SearchInput({
         onClick={() => onSearch?.()} // optional call
         className="absolute left-0 rounded-lg rounded-r-none h-full"
       >
-        <SearchIcon />
+          <motion.div
+          whileHover={{ scale: 1.2, x: [0, 2, -2, 0] }}
+          transition={{ duration: 0.4 }}
+        >
+          <SearchIcon />
+        </motion.div>
       </Button>
       {value && (
         <Button
           variant="ghost"
           type="button"
           onClick={handleClear}
-          className="absolute left-10 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors p-1 rounded-full"
+          className="absolute left-12 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors p-1 rounded-full size-8"
         >
-          <X className="h-4 w-4" />
+          <motion.div
+            whileHover={{ rotate: [0, -20, 20, -15, 15, 0] }}
+            transition={{ duration: 0.4 }}
+          >
+            <X className="h-4 w-4" />
+          </motion.div>
         </Button>
       )}
     </div>

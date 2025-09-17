@@ -7,11 +7,8 @@ interface ArticleContentProps {
 
 export default function ArticleContent({ article }: ArticleContentProps) {
   return (
-    <section
-      className=""
-      >
-
-        <p>{article.description}</p>
-      </section>
+    <section className="">
+      <p>{article.description}</p>
+    </section>
   );
 }

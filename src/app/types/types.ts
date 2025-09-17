@@ -9,6 +9,7 @@ export interface Article {
   imageUrl?: string;
   source: string;
   sourceLink?: string;
+  tags?: string[];
 }
 
 export type Params = Record<string, string | number | boolean | undefined>;

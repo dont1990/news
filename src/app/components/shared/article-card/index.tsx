@@ -13,7 +13,8 @@ import ArticleDescription from "./description";
 import { highlightText } from "@/app/lib/highlight";
 import { routes } from "@/app/routes/routes";
 import TimeAgo from "../time-ago";
-import ArticleCardTags from "./tags";
+import ArticleCardTags from "../hash-tags";
+import ArticleHashTags from "../hash-tags";
 
 interface ArticleCardProps {
   article: Article;
@@ -26,8 +27,16 @@ export function ArticleCard({
   type = "default",
   highlightQuery,
 }: ArticleCardProps) {
-  const { title, description, category, id, publishedAt, source, sourceLink } =
-    article;
+  const {
+    title,
+    description,
+    category,
+    id,
+    publishedAt,
+    source,
+    sourceLink,
+    tags,
+  } = article;
 
   if (type === "horizontal") {
     return (
@@ -179,9 +188,9 @@ export function ArticleCard({
             }
             className="mb-4 text-muted-foreground"
           />
-          
+
           {/* change flag */}
-          {/* <ArticleCardTags titles={[category]} /> */}
+          <ArticleHashTags tags={tags || []} />
         </div>
 
         <div className="flex items-center justify-between text-xs text-muted-foreground pt-4 border-t border-border mt-auto">
