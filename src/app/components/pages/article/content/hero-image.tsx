@@ -7,12 +7,14 @@ interface ArticleHeroImageProps {
 }
 
 export default function ArticleHeroImage({ article }: ArticleHeroImageProps) {
+  const { imageUrl, title } = article;
+
   return (
     <div className="mb-10">
       <div className="relative overflow-hidden rounded-lg shadow-lg h-96 md:h-[500px]">
         <Image
-          src={article.imageUrl || "/placeholder.svg"}
-          alt={article.title}
+          src={imageUrl || "/placeholder.svg"}
+          alt={title}
           className="w-full object-cover"
           fill
           priority

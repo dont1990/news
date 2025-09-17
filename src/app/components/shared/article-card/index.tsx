@@ -13,7 +13,6 @@ import ArticleDescription from "./description";
 import { highlightText } from "@/app/lib/highlight";
 import { routes } from "@/app/routes/routes";
 import TimeAgo from "../time-ago";
-import ArticleCardTags from "../hash-tags";
 import ArticleHashTags from "../hash-tags";
 
 interface ArticleCardProps {
@@ -169,7 +168,7 @@ export function ArticleCard({
       </div>
 
       <CardContent className="p-6 flex flex-col flex-1 justify-between">
-        <div>
+        <div className="flex flex-col grow">
           <div className="flex items-center gap-3 mb-3">
             <CategoryBadge title={category} />
           </div>
@@ -190,7 +189,9 @@ export function ArticleCard({
           />
 
           {/* change flag */}
+          <div className="mt-auto">
           <ArticleHashTags tags={tags || []} />
+          </div>
         </div>
 
         <div className="flex items-center justify-between text-xs text-muted-foreground pt-4 border-t border-border mt-auto">

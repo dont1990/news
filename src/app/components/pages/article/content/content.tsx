@@ -6,9 +6,11 @@ interface ArticleContentProps {
 }
 
 export default function ArticleContent({ article }: ArticleContentProps) {
+  const { description } = article;
+
   return (
     <section className="">
-      <p>{article.description}</p>
+      <p>{description}</p>
     </section>
   );
 }

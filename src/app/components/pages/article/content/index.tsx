@@ -35,7 +35,9 @@ export default function ArticlePageContent({
           <ArticleHeader article={article} />
           <ArticleHeroImage article={article} />
           <ArticleContent article={article} />
-          <ArticleHashTags tags={article.tags || []} />
+          <div className="my-5">
+            <ArticleHashTags tags={article.tags || []} />
+          </div>
           <ArticleAuthor article={article} />
         </article>
 

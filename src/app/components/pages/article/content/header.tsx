@@ -13,58 +13,55 @@ interface ArticleHeaderProps {
 }
 
 export default function ArticleHeader({ article }: ArticleHeaderProps) {
+  const { category, source, sourceLink, title, publishedAt, readTime } =
+    article;
+
   return (
     <header className="mb-8">
       <div className="flex items-center gap-3 mb-6">
-        <CategoryBadge title={article.category ?? routes.home.getHref()} />
-        {article.sourceLink ? (
+        <CategoryBadge title={category ?? routes.home.getHref()} />
+        {sourceLink ? (
           <a
-            href={article.sourceLink}
+            href={sourceLink}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1 text-sm text-muted-foreground hover:text-primary transition-colors"
           >
-            {article.source}
+            {source}
           </a>
         ) : (
-          <span className="text-sm text-muted-foreground">
-            {article.source}
-          </span>
+          <span className="text-sm text-muted-foreground">{source}</span>
         )}
       </div>
 
       <h1 className="text-4xl md:text-5xl mb-6 leading-tight text-foreground">
-        {article.title}
+        {title}
       </h1>
 
       {/* <p className="text-xl md:text-2xl text-muted-foreground mb-8 leading-relaxed">
-        {article.description}
+        {description}
       </p> */}
 
       <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground mb-8 pb-6 border-b border-border">
         <div className="flex items-center gap-2">
           <User className="h-4 w-4 text-primary" />
-          <span className="font-medium">نویسنده: نام نویسنده</span>
+          <span className="font-medium">نام منبع : {source}</span>
         </div>
         <div className="flex items-center gap-2">
           <Calendar className="h-4 w-4 text-primary" />
           <span>
             تاریخ انتشار:{" "}
             <DateText
-              date={article.publishedAt}
+              date={publishedAt}
               className="text-muted-foreground me-0.5"
             />
             (
-            <TimeAgo
-              date={article.publishedAt}
-              className="text-muted-foreground"
-            />
-            )
+            <TimeAgo date={publishedAt} className="text-muted-foreground" />)
           </span>
         </div>
         <div className="flex items-center gap-2">
           <Clock className="h-4 w-4 text-primary" />
-          <span>مدت زمان مطالعه: {article.readTime} دقیقه</span>
+          <span>مدت زمان مطالعه: {readTime} دقیقه</span>
         </div>
       </div>
 
@@ -73,7 +70,7 @@ export default function ArticleHeader({ article }: ArticleHeaderProps) {
           variant="outline"
           size="sm"
           className="gap-2 hover:bg-primary hover:text-primary-foreground transition-colors bg-transparent"
-          aria-label={`اشتراک‌گذاری مقاله ${article.title}`}
+          aria-label={`اشتراک‌گذاری مقاله ${title}`}
         >
           <Share2 className="h-4 w-4" />
           اشتراک‌گذاری
