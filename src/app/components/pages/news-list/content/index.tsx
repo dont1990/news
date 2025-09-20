@@ -39,25 +39,23 @@ export function NewsListContent({
   const restArticles = articles.length > 1 ? articles.slice(1) : articles;
 
   return (
-    <div className="flex flex-col lg:flex-row gap-3 flex-1">
-      <div className="flex-1">
-        {featuredArticle && <FeaturedArticle article={featuredArticle} />}
+    <div className="flex-1">
+      {featuredArticle && <FeaturedArticle article={featuredArticle} />}
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-          {restArticles.map((article) => (
-            <ArticleCard
-              key={article.id}
-              article={article}
-              highlightQuery={query}
-            />
-          ))}
-        </div>
-
-        <div ref={infiniteScrollRef} aria-hidden="true" />
-        {isFetchingNextPage && (
-          <InfiniteLoader className="my-6" message="در حال بارگذاری ..." />
-        )}
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+        {restArticles.map((article) => (
+          <ArticleCard
+            key={article.id}
+            article={article}
+            highlightQuery={query}
+          />
+        ))}
       </div>
+
+      <div ref={infiniteScrollRef} aria-hidden="true" />
+      {isFetchingNextPage && (
+        <InfiniteLoader className="my-6" message="در حال بارگذاری ..." />
+      )}
     </div>
   );
 }

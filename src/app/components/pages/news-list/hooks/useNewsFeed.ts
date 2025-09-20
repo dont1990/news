@@ -4,10 +4,11 @@ import { Article } from "@/app/types/types";
 import { useMemo } from "react";
 
 type NewsFilters = {
-  category?: string; 
+  category?: string;
   search?: string;
   dateFilter?: string;
   sort?: string;
+  tags?: string[];
 };
 
 export function useNewsFeed(filters?: NewsFilters) {
@@ -16,6 +17,7 @@ export function useNewsFeed(filters?: NewsFilters) {
     search = "",
     dateFilter = "all",
     sort = "latest",
+    tags = [],
   } = filters || {};
 
   const queryParams = useMemo(
@@ -24,8 +26,9 @@ export function useNewsFeed(filters?: NewsFilters) {
       search,
       sort,
       dateFilter,
+      tags: tags.length ? tags.join(",") : undefined,
     }),
-    [category, search, sort, dateFilter]
+    [category, search, sort, dateFilter, tags]
   );
 
   const {

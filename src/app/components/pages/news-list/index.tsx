@@ -21,14 +21,15 @@ export function NewsListPage() {
   const dateFilter =
     (getParam("date") as "all" | "today" | "week" | "month") || "all";
   const sort = getParam("sort") || "latest";
+  const tags = (getParam("tags")?.split(",") || []).filter(Boolean);
 
   // For controlled search input (not yet applied to URL)
   const [searchInput, setSearchInput] = useState(search);
 
   // --- Filters object for fetching ---
   const filters = useMemo(
-    () => ({ category, search, dateFilter, sort }),
-    [category, search, dateFilter, sort]
+    () => ({ category, search, dateFilter, sort, tags }),
+    [category, search, dateFilter, sort, tags]
   );
 
   // --- Fetch news ---
@@ -73,6 +74,11 @@ export function NewsListPage() {
           setDateFilter={(val) => setParam("date", val)}
           sort={sort}
           setSort={(val) => setParam("sort", val)}
+          tags={tags} // ✅ pass tags array
+          setTags={
+            (newTags) =>
+              setParam("tags", newTags.length ? newTags.join(",") : null) // ✅ use null instead of undefined
+          }
         />
 
         {loading ? (

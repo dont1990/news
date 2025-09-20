@@ -37,7 +37,7 @@ export function SearchPageFilter({
     { label: "این ماه", value: "month" },
   ];
   return (
-    <div className="flex flex-wrap justify-between gap-4 mb-8 pb-6 border-b border-border">
+    <div className="flex flex-wrap justify-between gap-4 mb-6">
       {/* Date Filters */}
       <div className="flex gap-2 flex-wrap">
         {filters.map((f) => (

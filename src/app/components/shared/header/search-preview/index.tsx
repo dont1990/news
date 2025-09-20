@@ -62,10 +62,13 @@ export function SearchPreview({ className }: SearchPreviewProps) {
       </form>
 
       <SearchDropdown
-        isOpen={isOpen && (results.length > 0 || searchQuery.trim().length > 0)}
+        isOpen={isOpen}
         results={results}
         onClose={() => setIsOpen(false)}
-        onSeeAll={() => handleSearch()}
+        onSeeAll={() => {
+          handleSearch();
+          setIsOpen(false);
+        }}
       />
     </div>
   );

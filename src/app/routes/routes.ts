@@ -40,10 +40,8 @@ export const routes = {
     getHref: (params?: { query?: string; sort?: string; page?: number }) => {
       const url = new URL("/search", "http://dummy"); // base dummy URL
 
-      if (params?.query)
-        url.searchParams.append("query", encodeURIComponent(params.query));
-      if (params?.sort)
-        url.searchParams.append("sort", encodeURIComponent(params.sort));
+      if (params?.query) url.searchParams.append("query", params.query);
+      if (params?.sort) url.searchParams.append("sort", params.sort);
       if (params?.page) url.searchParams.append("page", String(params.page));
 
       return url.pathname + url.search;

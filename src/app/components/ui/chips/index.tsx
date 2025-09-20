@@ -5,9 +5,9 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 
 type ChipsProps = {
-  text: string;
-  icon?: React.ReactNode;
-  iconPosition?: "left" | "right";
+  text: React.ReactNode;
+  leftIcon?: React.ReactNode;
+  rightIcon?: React.ReactNode;
   onClick?: () => void;
   asLink?: string; // Next.js Link href
   className?: string;
@@ -15,25 +15,25 @@ type ChipsProps = {
 
 const Chips: React.FC<ChipsProps> = ({
   text,
-  icon,
-  iconPosition = "left",
+  leftIcon,
+  rightIcon,
   onClick,
   asLink,
   className,
 }) => {
   const content = (
     <>
-      {icon && iconPosition === "left" && <span className="flex">{icon}</span>}
+      {leftIcon && <span className="flex">{leftIcon}</span>}
       <span>{text}</span>
-      {icon && iconPosition === "right" && <span className="flex">{icon}</span>}
+      {rightIcon && <span className="flex">{rightIcon}</span>}
     </>
   );
 
   const baseClasses = `
-    inline-flex items-center gap-1.5
+    inline-flex items-center gap-1
     bg-gray-100 text-gray-700 text-sm font-medium
     rounded-full py-1 px-3 cursor-pointer select-none
-    shadow-sm hover:shadow-md
+    hover:shadow-sm
     transition-all duration-300
     ${onClick || asLink ? "hover:bg-gray-200 active:scale-95" : ""}
     ${className ?? ""}
@@ -41,10 +41,7 @@ const Chips: React.FC<ChipsProps> = ({
 
   if (asLink) {
     return (
-      <motion.div
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-      >
+      <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.95 }}>
         <Link href={asLink} className={baseClasses}>
           {content}
         </Link>
@@ -56,7 +53,7 @@ const Chips: React.FC<ChipsProps> = ({
     <motion.div
       onClick={onClick}
       className={baseClasses}
-      whileHover={onClick ? { scale: 1.05 } : {}}
+      whileHover={onClick ? { scale: 1.02 } : {}}
       whileTap={onClick ? { scale: 0.95 } : {}}
     >
       {content}

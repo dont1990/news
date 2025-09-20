@@ -10,11 +10,11 @@ import { routes } from "@/app/routes/routes";
 export function TrendingSidebar({ articles }: { articles: Article[] }) {
   return (
     <aside
-      className="p-3 border border-border rounded-lg bg-muted/30 shadow-sm h-fit w-full lg:w-80 mt-8 lg:mt-0 sticky"
+      className="p-3 border border-border rounded-lg bg-muted/30 shadow-sm h-fit w-full lg:w-80 lg:mt-0 sticky"
       style={{ top: NAVBAR_HEIGHT }}
     >
       {/* 🔥 Header */}
-      <div className="flex items-center gap-2 mb-6">
+      <div className="flex items-center gap-2 mb-4 border-b pb-4">
         <Flame className="h-5 w-5 text-red-500" />
         <h3 className="font-semibold text-lg">مطالب داغ</h3>
       </div>

@@ -14,49 +14,53 @@ export function useSearch() {
   const router = useRouter();
   const { getParam, setParam, removeParam } = useQueryParams();
 
-  // initialize from query param on mount
+  // Only used to avoid reopening on page load
+  const initialized = useRef(false);
+
   useEffect(() => {
-    const initial = getParam("search") || "";
+    if (initialized.current) return;
+    const initial = getParam("query") || "";
     setSearchQuery(initial);
+    // Do NOT open preview automatically on mount
+    initialized.current = true;
   }, [getParam]);
 
-  // --- Fetch news based on current search query ---
+  // Fetch news based on current search query
   const { articles } = useNewsFeed(
     useMemo(() => (searchQuery.trim() ? { search: searchQuery.trim() } : {}), [searchQuery])
   );
 
-  // --- Preview results (take top 5) ---
+  // Take top 5 for preview
   const results: Article[] = articles.slice(0, 5);
 
-  // toggle open state when searchQuery changes
-  useEffect(() => {
-    setIsOpen(!!searchQuery.trim() && results.length > 0);
-  }, [searchQuery, results]);
+  // Open preview when typing
+  const handleInputChange = (value: string) => {
+    setSearchQuery(value);
+    setIsOpen(!!value.trim() && results.length > 0);
+  };
 
-  // clear search and remove query param
+  // Clear search and close preview
   const clearAll = () => {
     setSearchQuery("");
-    removeParam("search");
+    removeParam("query");
     setIsOpen(false);
   };
 
-  // handle submit: update query param & navigate
+  // Handle submit: update query param & navigate
   const handleSearch = (e?: React.FormEvent) => {
     e?.preventDefault();
     const trimmed = searchQuery.trim();
     if (trimmed) {
-      setParam("search", trimmed);
+      setParam("query", trimmed);
       router.push(routes.search.getHref({ query: trimmed }));
-      setIsOpen(false);
-    } else {
-      clearAll();
     }
+    setIsOpen(false); // ensure preview closes before navigation
   };
 
   return {
     searchRef,
     searchQuery,
-    setSearchQuery,
+    setSearchQuery: handleInputChange,
     results,
     isOpen,
     setIsOpen,
