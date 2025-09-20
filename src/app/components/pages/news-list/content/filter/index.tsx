@@ -83,7 +83,7 @@ export function NewsListFilter({
             <SelectTrigger className="w-full xs:w-32 flex-1">
               <SelectValue placeholder="دسته‌بندی" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="max-h-80">
               <SelectItem value="همه">همه</SelectItem>
 
               {isLoading ? (

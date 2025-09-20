@@ -190,7 +190,7 @@ export function ArticleCard({
 
           {/* change flag */}
           <div className="mt-auto">
-          <ArticleHashTags tags={tags || []} />
+            <ArticleHashTags tags={tags || []} />
           </div>
         </div>
 
