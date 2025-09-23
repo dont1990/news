@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { Suspense, useMemo } from "react";
 import { useQueryParams } from "@/app/hooks/useQueryParams";
 import { useNewsFeed } from "../news-list/hooks/useNewsFeed";
 import Container from "../../shared/container";
@@ -27,6 +27,8 @@ export default function SearchPageContent() {
 
   return (
     <>
+    <Suspense fallback={'loading'}>
+
       <SearchPageHeader query={query} total={total} />
       <Container>
         {query && (
@@ -46,6 +48,7 @@ export default function SearchPageContent() {
           <SearchPageEmpty query={query} />
         )}
       </Container>
+          </Suspense>
     </>
   );
 }
