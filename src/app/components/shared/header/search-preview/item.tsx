@@ -35,7 +35,7 @@ export function SearchResultItem({ article, onClick }: SearchResultItemProps) {
       className="hover:bg-gradient-to-r hover:from-primary/5 hover:to-secondary/5 transition-all duration-200 cursor-pointer border-b border-border/50 last:border-b-0 group"
     >
       <div className="p-5 flex gap-4">
-        <div className="relative overflow-hidden rounded-lg flex-shrink-0 w-20 h-16">
+        <div className="relative overflow-hidden rounded-2xl flex-shrink-0 w-20 h-16">
           <Image
             src={imageUrl || "/placeholder.svg"}
             alt={title}
@@ -57,7 +57,7 @@ export function SearchResultItem({ article, onClick }: SearchResultItemProps) {
             <div className="flex items-center gap-1 text-xs text-muted-foreground">
               <Clock className="h-3 w-3" />
               <span>
-               <TimeAgo date={publishedAt}/>
+                <TimeAgo date={publishedAt} />
               </span>
             </div>
           </div>

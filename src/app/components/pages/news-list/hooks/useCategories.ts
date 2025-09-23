@@ -1,9 +1,12 @@
 import { useMemo } from "react";
 import { useInfiniteResource } from "@/app/hooks/useInfiniteResource";
 import { useInfiniteScroll } from "@/app/hooks/useInfiniteScroll";
-import { categories as staticCategories, Category } from "@/app/data/categories/categories";
+import {
+  categories as staticCategories,
+  Category,
+} from "@/app/data/categories/categories";
 import { Tag } from "lucide-react";
-import { PAGE_LIMIT } from "@/app/constants/constant";
+import { PAGE_LIMIT } from "@/app/constants/global";
 
 function mergeCategories(apiCats: string[]): Category[] {
   const mappedApiCats: Category[] = apiCats.map((title) => {
@@ -19,7 +22,9 @@ function mergeCategories(apiCats: string[]): Category[] {
 
   // Deduplicate by title
   const unique = new Map<string, Category>();
-  [...staticCategories, ...mappedApiCats].forEach((cat) => unique.set(cat.title, cat));
+  [...staticCategories, ...mappedApiCats].forEach((cat) =>
+    unique.set(cat.title, cat)
+  );
 
   return Array.from(unique.values());
 }
@@ -29,7 +34,10 @@ type CategoryFilters = {
   sort?: string;
 };
 
-export function useInfiniteCategories(filters?: CategoryFilters, limit: number = PAGE_LIMIT) {
+export function useInfiniteCategories(
+  filters?: CategoryFilters,
+  limit: number = PAGE_LIMIT
+) {
   const { data, fetchNextPage, hasNextPage, isLoading, isFetchingNextPage } =
     useInfiniteResource<string>("categories", filters, limit); // Change generic type to string
 
@@ -37,7 +45,7 @@ export function useInfiniteCategories(filters?: CategoryFilters, limit: number =
 
   const categoriesList: Category[] = useMemo(() => {
     // Now access p.data instead of p.categories
-    const apiCats = data?.pages.flatMap(p => p.data ?? []) || [];
+    const apiCats = data?.pages.flatMap((p) => p.data ?? []) || [];
     return mergeCategories(apiCats);
   }, [data?.pages]);
 

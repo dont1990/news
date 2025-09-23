@@ -14,7 +14,7 @@ export default function ArticleRelated({
   relatedArticles,
 }: ArticleRelatedProps) {
   return (
-    <div className="bg-card border border-border rounded-lg p-6">
+    <div className="bg-card border border-border rounded-2xl p-6">
       <p className="text-xl mb-6 text-foreground">مقالات مرتبط</p>
       <div className="space-y-6">
         {relatedArticles.map((relatedArticle) => (
@@ -24,7 +24,7 @@ export default function ArticleRelated({
           >
             <Card className="news-card-hover border-0 shadow-sm">
               <CardContent className="p-4">
-                <div className="aspect-video relative overflow-hidden rounded-lg mb-3">
+                <div className="aspect-video relative overflow-hidden rounded-2xl mb-3">
                   <Image
                     src={relatedArticle.imageUrl || "/placeholder.svg"}
                     alt={relatedArticle.title}

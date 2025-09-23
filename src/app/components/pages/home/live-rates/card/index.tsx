@@ -43,7 +43,7 @@ export default function LiveStatCard({ stat }: { stat: LiveStat }) {
     >
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
-        <div className="p-3 rounded-lg bg-background/60">
+        <div className="p-3 rounded-2xl bg-background/60">
           <IconComponent className="w-6 h-6 text-foreground" />
         </div>
 

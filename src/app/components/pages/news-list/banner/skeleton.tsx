@@ -14,10 +14,10 @@ export function CategoryHeaderSkeleton() {
         </div>
 
         {/* Category name */}
-        <Skeleton className="mx-auto h-12 md:h-16 w-48 md:w-64 mb-6 rounded-lg" />
+        <Skeleton className="mx-auto h-12 md:h-16 w-48 md:w-64 mb-6 rounded-2xl" />
 
         {/* Description */}
-        <Skeleton className="mx-auto h-6 w-80 md:w-96 mb-6 rounded-lg" />
+        <Skeleton className="mx-auto h-6 w-80 md:w-96 mb-6 rounded-2xl" />
 
         {/* Articles count badge */}
         <div className="flex items-center justify-center gap-4">

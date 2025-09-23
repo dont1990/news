@@ -4,13 +4,13 @@ import { Article } from "@/app/types/types";
 import Link from "next/link";
 import { Flame } from "lucide-react";
 import Image from "next/image";
-import { NAVBAR_HEIGHT } from "@/app/constants/constant";
+import { NAVBAR_HEIGHT } from "@/app/constants/global";
 import { routes } from "@/app/routes/routes";
 
 export function TrendingSidebar({ articles }: { articles: Article[] }) {
   return (
     <aside
-      className="p-3 border border-border rounded-lg bg-muted/30 shadow-sm h-fit w-full lg:w-80 lg:mt-0 sticky"
+      className="p-3 border border-border rounded-2xl bg-muted/30 shadow-sm h-fit w-full lg:w-80 lg:mt-0 sticky"
       style={{ top: NAVBAR_HEIGHT }}
     >
       {/* 🔥 Header */}
@@ -29,13 +29,13 @@ export function TrendingSidebar({ articles }: { articles: Article[] }) {
             >
               <Link
                 href={routes.news.detail.getHref(article.id)}
-                className="group flex items-center gap-2 rounded-lg hover:bg-accent transition-all duration-300 p-2"
+                className="group flex items-center gap-2 rounded-2xl hover:bg-accent transition-all duration-300 p-2"
               >
                 <span className="flex-shrink-0 text-sm font-bold text-muted-foreground w-5">
                   #{index + 1}
                 </span>
                 {article.imageUrl && (
-                  <div className="relative w-16 h-16 flex-shrink-0 overflow-hidden rounded-lg border border-border group-hover:scale-105 transition-all duration-300">
+                  <div className="relative w-16 h-16 flex-shrink-0 overflow-hidden rounded-2xl border border-border group-hover:scale-105 transition-all duration-300">
                     <Image
                       src={article.imageUrl}
                       alt={article.title}

@@ -31,7 +31,7 @@ export function SearchDropdown({
           transition={{ duration: 0.25, ease: "easeInOut" }}
           className="absolute top-full left-0 right-0 mt-2 z-50"
         >
-          <Card className="shadow-2xl border-2 border-border/50 rounded-lg overflow-hidden p-0">
+          <Card className="shadow-2xl border-2 border-border/50 rounded-2xl overflow-hidden p-0">
             <CardContent className="p-0">
               {results.length > 0 ? (
                 <>

@@ -259,3 +259,15 @@ textarea {
   -ms-overflow-style: none; /* IE 10+ */
   scrollbar-width: none; /* Firefox */
 }
+
+
+.swiper-pagination-bullet {
+  width: 12px!important;  
+  height: 12px!important;  
+}
+.swiper-button-next-custom.swiper-button-disabled,
+.swiper-button-prev-custom.swiper-button-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: var(--primary)!important; /* or use Tailwind color equivalent */
+}

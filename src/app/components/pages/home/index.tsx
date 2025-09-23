@@ -7,10 +7,12 @@ import TechNews from "./tech-news";
 import { BreakingNews } from "./breaking-news";
 import { LiveRates } from "./live-rates";
 import SportNews from "./sport-news";
+import NewspapersGrid from "./newspaper";
 
 export default function HomePageContent() {
   return (
     <>
+      <NewspapersGrid />
       <Hero />
       <HomePageIntro />
 

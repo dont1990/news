@@ -8,7 +8,7 @@ interface ArticleAuthorProps {
 
 export default function ArticleAuthor({ article }: ArticleAuthorProps) {
   return (
-    <div className="bg-gradient-to-r from-muted/50 to-muted/30 p-8 rounded-lg border border-border mt-10">
+    <div className="bg-gradient-to-r from-muted/50 to-muted/30 p-8 rounded-2xl border border-border mt-10">
       <div className="flex items-start gap-4">
         <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center">
           <User className="h-8 w-8 text-primary" />

@@ -9,7 +9,7 @@ import { Article } from "@/app/types/types";
 import Container from "@/app/components/shared/container";
 import { AnimatedLink } from "@/app/components/shared/animated-link";
 import { ArrowLeft } from "lucide-react";
-import { NAVBAR_HEIGHT } from "@/app/constants/constant";
+import { NAVBAR_HEIGHT } from "@/app/constants/global";
 import { routes } from "@/app/routes/routes";
 import ArticleHashTags from "@/app/components/shared/hash-tags";
 
@@ -36,9 +36,7 @@ export default function ArticlePageContent({
           <ArticleHeroImage article={article} />
           <ArticleContent article={article} />
           <div className="my-5">
-            <ArticleHashTags
-              tags={article.tags || []}
-            />
+            <ArticleHashTags tags={article.tags || []} />
           </div>
           <ArticleAuthor article={article} />
         </article>

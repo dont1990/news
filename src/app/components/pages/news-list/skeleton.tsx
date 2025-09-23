@@ -2,7 +2,7 @@
 
 import { Skeleton } from "@/app/components/ui/skeleton";
 import Container from "../../shared/container";
-import { NAVBAR_HEIGHT } from "@/app/constants/constant";
+import { NAVBAR_HEIGHT } from "@/app/constants/global";
 import { ArticleCardSkeleton } from "../../shared/article-card/skeleton";
 
 const NewsListSkeleton = () => {
@@ -13,20 +13,20 @@ const NewsListSkeleton = () => {
         <div className="flex-1">
           {/* Featured Article */}
           <div className="mb-6">
-            <div className="rounded-lg overflow-hidden shadow-md border border-border mb-6 bg-gradient-to-br from-background to-muted p-6">
+            <div className="rounded-2xl overflow-hidden shadow-md border border-border mb-6 bg-gradient-to-br from-background to-muted p-6">
               {/* "ویژه" label */}
-              <Skeleton className="h-6 w-16 rounded-lg mb-3" />
+              <Skeleton className="h-6 w-16 rounded-2xl mb-3" />
 
               {/* Title */}
-              <Skeleton className="h-8 w-3/4 rounded-lg mb-3" />
+              <Skeleton className="h-8 w-3/4 rounded-2xl mb-3" />
 
               {/* Description */}
-              <Skeleton className="h-4 w-full mb-2 rounded-lg" />
-              <Skeleton className="h-4 w-5/6 mb-2 rounded-lg" />
-              <Skeleton className="h-4 w-2/3 mb-4 rounded-lg" />
+              <Skeleton className="h-4 w-full mb-2 rounded-2xl" />
+              <Skeleton className="h-4 w-5/6 mb-2 rounded-2xl" />
+              <Skeleton className="h-4 w-2/3 mb-4 rounded-2xl" />
 
               {/* Continue link */}
-              <Skeleton className="h-6 w-32 rounded-lg mt-2" />
+              <Skeleton className="h-6 w-32 rounded-2xl mt-2" />
             </div>
           </div>
 
@@ -40,18 +40,18 @@ const NewsListSkeleton = () => {
 
         {/* Sidebar Skeleton */}
         <aside
-          className="p-3 border border-border rounded-lg bg-muted/30 shadow-sm h-fit w-full lg:w-80 mt-8 lg:mt-0 sticky"
+          className="p-3 border border-border rounded-2xl bg-muted/30 shadow-sm h-fit w-full lg:w-80 mt-8 lg:mt-0 sticky"
           style={{ top: NAVBAR_HEIGHT }}
         >
           <div className="flex items-center gap-2 mb-6">
             <Skeleton className="h-5 w-5 rounded-full" />
-            <Skeleton className="h-5 w-20 rounded-lg" />
+            <Skeleton className="h-5 w-20 rounded-2xl" />
           </div>
           <ul className="flex flex-col gap-4">
             {Array.from({ length: 5 }).map((_, i) => (
               <li key={i} className="flex items-center gap-3">
-                <Skeleton className="h-12 w-12 rounded-lg" />
-                <Skeleton className="h-5 w-40 rounded-lg" />
+                <Skeleton className="h-12 w-12 rounded-2xl" />
+                <Skeleton className="h-5 w-40 rounded-2xl" />
               </li>
             ))}
           </ul>

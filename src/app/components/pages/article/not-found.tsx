@@ -16,7 +16,7 @@ export default function NotFound() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="bg-card shadow-lg border border-border rounded-lg p-10 max-w-md w-full text-center"
+        className="bg-card shadow-lg border border-border rounded-2xl p-10 max-w-md w-full text-center"
       >
         <div className="flex justify-center mb-6">
           <div className="w-20 h-20 flex items-center justify-center rounded-full bg-primary/10">

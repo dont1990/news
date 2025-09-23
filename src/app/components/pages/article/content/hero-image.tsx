@@ -11,7 +11,7 @@ export default function ArticleHeroImage({ article }: ArticleHeroImageProps) {
 
   return (
     <div className="mb-10">
-      <div className="relative overflow-hidden rounded-lg shadow-lg h-96 md:h-[500px]">
+      <div className="relative overflow-hidden rounded-2xl shadow-lg h-96 md:h-[500px]">
         <Image
           src={imageUrl || "/placeholder.svg"}
           alt={title}

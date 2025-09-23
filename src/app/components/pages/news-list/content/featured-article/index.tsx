@@ -12,7 +12,7 @@ export function FeaturedArticle({ article }: { article: Article }) {
 
   return (
     <div
-      className={`rounded-lg overflow-hidden shadow-md border border-border mb-4 bg-gradient-to-br from-background to-muted`}
+      className={`rounded-2xl overflow-hidden shadow-md border border-border mb-4 bg-gradient-to-br from-background to-muted`}
     >
       <div className="p-4">
         <p className={`text-lg font-medium mb-2 ${colors.primaryText}`}>ویژه</p>

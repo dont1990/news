@@ -33,7 +33,7 @@ export default function ArticleDetailSkeleton() {
         </div>
 
         {/* Hero Image */}
-        <Skeleton className="h-96 w-full rounded-lg" />
+        <Skeleton className="h-96 w-full rounded-2xl" />
 
         {/* Content */}
         <div className="space-y-4">

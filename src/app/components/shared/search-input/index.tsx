@@ -44,13 +44,13 @@ export function SearchInput({
           onKeyDown?.(e);
         }}
         onFocus={onFocus}
-        className="rounded-lg h-10 w-full"
+        className="rounded-2xl h-10 w-full"
       />
       <Button
         onClick={() => onSearch?.()} // optional call
-        className="absolute left-0 rounded-lg rounded-r-none h-full"
+        className="absolute left-0 rounded-2xl rounded-r-none h-full"
       >
-          <motion.div
+        <motion.div
           whileHover={{ scale: 1.2, x: [0, 2, -2, 0] }}
           transition={{ duration: 0.4 }}
         >

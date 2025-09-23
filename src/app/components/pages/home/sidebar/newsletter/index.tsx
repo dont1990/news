@@ -16,7 +16,7 @@ export function Newsletter() {
   };
 
   return (
-    <section className="py-6 relative overflow-hidden rounded-lg" dir="rtl">
+    <section className="py-6 relative overflow-hidden rounded-2xl" dir="rtl">
       <div className="absolute inset-0 bg-primary/5"></div>
 
       <Container className="relative z-10">
@@ -41,7 +41,7 @@ export function Newsletter() {
           {/* Newsletter form */}
           <div className="max-w-md mx-auto">
             {isSubscribed ? (
-              <div className="bg-primary-600/20 backdrop-blur-sm border border-primary-500/40 rounded-lg p-6 animate-in zoom-in duration-500">
+              <div className="bg-primary-600/20 backdrop-blur-sm border border-primary-500/40 rounded-2xl p-6 animate-in zoom-in duration-500">
                 <CheckCircle className="w-12 h-12 text-primary-400 mx-auto mb-4" />
                 <p className="text-xl font-semibold text-white mb-2">
                   خوش آمدید!
@@ -62,7 +62,7 @@ export function Newsletter() {
                     placeholder="ایمیل خود را وارد کنید"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="ps-10 pr-4 py-4 text-lg bg-transparent border border-primary text-gray-700 ring ring-primary placeholder:text-gray-500 rounded-lg focus:!ring-primary"
+                    className="ps-10 pr-4 py-4 text-lg bg-transparent border border-primary text-gray-700 ring ring-primary placeholder:text-gray-500 rounded-2xl focus:!ring-primary"
                     required
                   />
                 </div>
@@ -73,7 +73,7 @@ export function Newsletter() {
                   type="submit"
                   size="lg"
                   disabled={loading}
-                  className="w-full py-4 text-lg font-semibold hover:from-primary-600 hover:to-primary-600 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/25"
+                  className="w-full py-4 text-lg font-semibold hover:from-primary-600 hover:to-primary-600 rounded-2xl transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/25"
                 >
                   {loading ? "در حال ثبت..." : "ثبت‌نام در خبرنامه"}
                 </Button>

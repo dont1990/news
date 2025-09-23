@@ -59,10 +59,10 @@ export function NewsListFilter({
 
   return (
     <>
-      <section className="mb-6">
+      <section>
         <div className="flex justify-between gap-4 flex-wrap flex-col bml:flex-row">
           {/* 🔍 Search + Button */}
-          <div className="flex gap-2 bml:max-w-md w-full relative rounded-lg h-10 ring ring-primary flex-1">
+          <div className="flex gap-2 bml:max-w-md w-full relative rounded-2xl h-10 ring ring-primary flex-1">
             <SearchInput
               value={searchInput}
               onChange={setSearchInput}

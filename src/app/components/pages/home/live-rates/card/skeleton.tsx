@@ -8,14 +8,14 @@ export default function LiveStatCardSkeleton() {
     <Card className="relative p-4 pb-8 border border-border/40 bg-gradient-to-br from-background to-muted animate-pulse">
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
-        <Skeleton className="w-6 h-6 rounded-lg" />
-        <Skeleton className="h-4 w-12 rounded-lg" />
+        <Skeleton className="w-6 h-6 rounded-2xl" />
+        <Skeleton className="h-4 w-12 rounded-2xl" />
       </div>
 
       {/* Content */}
       <div className="space-y-2">
-        <Skeleton className="h-4 w-2/3 rounded-lg" />
-        <Skeleton className="h-6 w-1/2 rounded-lg" />
+        <Skeleton className="h-4 w-2/3 rounded-2xl" />
+        <Skeleton className="h-6 w-1/2 rounded-2xl" />
       </div>
 
       {/* Badge */}

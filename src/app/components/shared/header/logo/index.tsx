@@ -21,7 +21,7 @@ export default function Logo() {
     // <Link href={routes.home.getHref()} className="group">
     //   <div className="flex items-center gap-3">
     //     {/* آیکون لوگو */}
-    //     <div className="w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
+    //     <div className="w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-2xl flex items-center justify-center">
     //       <span className="text-white font-bold text-lg">ن</span>
     //     </div>
     //     <p className="text-3xl font-bold bg-gradient-to-r from-secondary-400 via-primary-200 to-primary-500 bg-clip-text text-transparent">

@@ -12,7 +12,7 @@ export function ArticleCardSkeleton({
 }: ArticleCardSkeletonProps) {
   if (type === "horizontal") {
     return (
-      <Card className="flex min-h-[140px] sm:min-h-[160px] md:min-h-[180px] lg:min-h-[170px] xl:min-h-[180px] overflow-hidden rounded-lg border border-white/10 animate-pulse p-0">
+      <Card className="flex min-h-[140px] sm:min-h-[160px] md:min-h-[180px] lg:min-h-[170px] xl:min-h-[180px] overflow-hidden rounded-2xl border border-white/10 animate-pulse p-0">
         <div className="flex w-full h-full">
           {/* Content */}
           <div className="w-2/3 p-3 sm:p-4 flex flex-col justify-between">
@@ -22,7 +22,7 @@ export function ArticleCardSkeleton({
           </div>
 
           {/* Image */}
-          <Skeleton className="w-1/3 rounded-lg" />
+          <Skeleton className="w-1/3 rounded-2xl" />
         </div>
       </Card>
     );
@@ -30,7 +30,7 @@ export function ArticleCardSkeleton({
 
   if (type === "overlay") {
     return (
-      <Card className="relative h-80 overflow-hidden rounded-lg animate-pulse">
+      <Card className="relative h-80 overflow-hidden rounded-2xl animate-pulse">
         <Skeleton className="absolute inset-0 w-full h-full" />
         <CardContent className="relative z-10 flex flex-col justify-end p-4 h-full">
           <Skeleton className="h-4 w-1/4 mb-2 rounded" />
@@ -43,9 +43,9 @@ export function ArticleCardSkeleton({
 
   if (type === "bottomOverlay") {
     return (
-      <Card className="relative h-80 rounded-lg animate-pulse p-0">
-        <Skeleton className="w-full h-full rounded-lg" />
-        <CardContent className="absolute -bottom-[20%] left-1/2 -translate-x-1/2 w-[85%] p-4 rounded-lg flex flex-col gap-2 text-center min-h-36">
+      <Card className="relative h-80 rounded-2xl animate-pulse p-0">
+        <Skeleton className="w-full h-full rounded-2xl" />
+        <CardContent className="absolute -bottom-[20%] left-1/2 -translate-x-1/2 w-[85%] p-4 rounded-2xl flex flex-col gap-2 text-center min-h-36">
           <Skeleton className="h-4 w-1/4 mx-auto rounded" />
           <Skeleton className="h-5 w-3/4 mx-auto rounded" />
           <Skeleton className="h-4 w-full mx-auto rounded" />

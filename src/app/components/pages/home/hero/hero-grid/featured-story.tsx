@@ -7,7 +7,7 @@ import { routes } from "@/app/routes/routes";
 
 const FeaturedStory = ({ article }: { article: Article }) => {
   return (
-    <div className="lg:col-span-2 relative group cursor-pointer overflow-hidden rounded-lg bg-gradient-to-br from-purple-900/20 to-pink-900/20 backdrop-blur-sm border border-white/10 min-h-[400px] md:min-h-[500px] xl:min-h-[600px]">
+    <div className="lg:col-span-2 relative group cursor-pointer overflow-hidden rounded-2xl bg-gradient-to-br from-purple-900/20 to-pink-900/20 backdrop-blur-sm border border-white/10 min-h-[400px] md:min-h-[500px] xl:min-h-[600px]">
       <div className="absolute inset-0">
         <Image
           src={article.imageUrl || "/placeholder.svg"}

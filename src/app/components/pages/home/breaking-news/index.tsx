@@ -24,7 +24,7 @@ export function BreakingNews() {
 
   return (
     <div
-      className="relative bg-gradient-to-r from-red-600 via-red-500 to-orange-500 py-3 sm:py-4 overflow-hidden rounded-lg p-4"
+      className="relative bg-gradient-to-r from-red-600 via-red-500 to-orange-500 py-3 sm:py-4 overflow-hidden rounded-2xl p-4"
       dir="rtl"
     >
       {/* overlay gradient effects */}
@@ -39,7 +39,7 @@ export function BreakingNews() {
           <div className="flex items-center gap-2 sm:gap-3 flex-1 min-w-0">
             {/* badge */}
             <div className="relative shrink-0">
-              <span className="bg-white text-red-600 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg text-xs sm:text-sm font-bold flex items-center gap-1 shadow-lg">
+              <span className="bg-white text-red-600 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-2xl text-xs sm:text-sm font-bold flex items-center gap-1 shadow-lg">
                 <Zap className="w-3 h-3 sm:w-4 sm:h-4 animate-pulse" />
                 <span>فوری</span>
               </span>

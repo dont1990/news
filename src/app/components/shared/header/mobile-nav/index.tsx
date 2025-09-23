@@ -58,7 +58,7 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
                   <Link
                     href={routes.news.getHref({ category: category.title })}
                     onClick={onClose}
-                    className={`group/nav flex flex-col items-center justify-center gap-1 px-4 py-3 text-sm font-medium rounded-lg bg-muted/50 hover:bg-primary/10 hover:text-primary transition-all duration-200 shadow-sm hover:shadow-md ${
+                    className={`group/nav flex flex-col items-center justify-center gap-1 px-4 py-3 text-sm font-medium rounded-2xl bg-muted/50 hover:bg-primary/10 hover:text-primary transition-all duration-200 shadow-sm hover:shadow-md ${
                       isActive ? "text-gray-900 bg-primary/10" : "text-gray-500"
                     }`}
                   >
@@ -90,7 +90,7 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                   transition={{ type: "spring", stiffness: 300 }}
-                  className="size-10 rounded-lg bg-primary/15 flex justify-center items-center shadow-sm text-gray-500 hover:text-primary transition-colors"
+                  className="size-10 rounded-2xl bg-primary/15 flex justify-center items-center shadow-sm text-gray-500 hover:text-primary transition-colors"
                 >
                   <Icon className="w-5 h-5" />
                 </motion.div>

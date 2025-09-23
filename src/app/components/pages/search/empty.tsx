@@ -38,7 +38,7 @@ export function SearchPageEmpty({ query }: Props) {
           هیچ مقاله‌ای مطابق با &quot;{query}&quot; پیدا نشد. از کلیدواژه‌های
           متفاوت استفاده کنید یا دسته‌بندی‌ها را مرور کنید.
         </p>
-        <Link href={routes.home.getHref()}>
+        <Link href={routes.news.getHref()}>
           <Button className="bg-primary hover:bg-primary/90">
             مشاهده تمام اخبار
           </Button>

@@ -8,7 +8,8 @@ import { Badge } from "@/app/components/ui/badge";
 import { TrendingUp, Clock } from "lucide-react";
 import { Newsletter } from "@/app/components/pages/home/sidebar/newsletter";
 import CategoryBadge from "@/app/components/shared/category-badge";
-import { NAVBAR_HEIGHT } from "@/app/constants/constant";
+import { NAVBAR_HEIGHT } from "@/app/constants/global";
+import IranWeatherTicker from "./weather/slider";
 
 const trendingTopics = [
   { topic: "نشست اقلیمی", count: 1247 },
@@ -74,7 +75,6 @@ export function HomePageSidebar() {
               ))}
             </CardContent>
           </Card>
-
           {/* به‌روزرسانی‌های اخیر */}
           <Card>
             <CardHeader>
@@ -103,6 +103,7 @@ export function HomePageSidebar() {
             </CardContent>
           </Card>
           <Newsletter />
+         <IranWeatherTicker />
         </div>
       </div>
     </div>
