@@ -12,24 +12,24 @@ import NewspapersGrid from "./newspaper";
 export default function HomePageContent() {
   return (
     <>
-      <NewspapersGrid />
       <Hero />
       <HomePageIntro />
 
       <Container>
-        <div className="grid grid-cols-1 xl:grid-cols-4 gap-12 mb-40">
-          <div className="xl:col-span-3 space-y-12">
+        <div className="grid grid-cols-1 xl:grid-cols-4 gap-6 mb-40">
+          <div className="xl:col-span-3 space-y-20">
             {/* <FeaturedNews /> */}
+            <BreakingNews />
             <SportNews />
             <LiveRates />
             <LatestNews />
-            <BreakingNews />
             <TechNews />
           </div>
 
           <HomePageSidebar />
         </div>
       </Container>
+      <NewspapersGrid />
     </>
   );
 }

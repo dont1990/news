@@ -3,8 +3,8 @@
 import { ArticleCard } from "@/app/components/shared/article-card";
 import { getCategoryColors } from "@/app/lib/category-colors";
 import { Article } from "@/app/types/types";
-import { EmptyCategory } from "./empty";
-import { FeaturedArticle } from "./featured-article";
+import { EmptyCategory } from "../empty";
+import { FeaturedArticle } from "../featured-article";
 import { InfiniteLoader } from "@/app/components/shared/infinite-loader";
 
 interface Props {
@@ -16,7 +16,7 @@ interface Props {
   isFetchingNextPage: boolean;
 }
 
-export function NewsListContent({
+export function NewsListArticles({
   articles,
   category,
   categoryName,

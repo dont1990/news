@@ -3,9 +3,9 @@
 import { useMemo, useState } from "react";
 import { CategoryBanner } from "./banner";
 import Container from "../../shared/container";
-import { TrendingSidebar } from "./content/trending-sidebar";
-import { NewsListContent } from "./content";
-import { NewsListFilter } from "./content/filter";
+import { TrendingSidebar } from "./trending-sidebar";
+import { NewsListArticles } from "./articles";
+import { NewsListFilter } from "./filter";
 import { useNewsFeed } from "./hooks/useNewsFeed";
 import NewsListSkeleton from "./skeleton";
 import { categories } from "@/app/data/categories/categories";
@@ -85,7 +85,7 @@ export function NewsListPage() {
           <NewsListSkeleton />
         ) : (
           <div className="flex gap-4 flex-col lg:flex-row">
-            <NewsListContent
+            <NewsListArticles
               articles={articles}
               category={category}
               categoryName={categoryName}

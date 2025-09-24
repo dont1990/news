@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useMemo } from "react";
+import { useMemo } from "react";
 import { useQueryParams } from "@/app/hooks/useQueryParams";
 import { useNewsFeed } from "../news-list/hooks/useNewsFeed";
 import Container from "../../shared/container";
@@ -18,17 +18,18 @@ export default function SearchPageContent() {
     (getParam("date") as "all" | "today" | "week" | "month") || "all";
   const sort = getParam("sort") || "latest";
 
+  // ✅ parse tags from query param
+  const tags = (getParam("tags")?.split(",") || []).filter(Boolean);
+
   const filters = useMemo(
-    () => ({ search: query, category, dateFilter, sort }),
-    [query, category, dateFilter, sort]
+    () => ({ search: query, category, dateFilter, sort, tags }),
+    [query, category, dateFilter, sort, tags]
   );
 
   const { articles, total } = useNewsFeed(filters);
 
   return (
     <>
-    <Suspense fallback={'loading'}>
-
       <SearchPageHeader query={query} total={total} />
       <Container>
         {query && (
@@ -39,6 +40,10 @@ export default function SearchPageContent() {
             setDateFilter={(val) => setParam("date", val)}
             sort={sort}
             setSort={(val) => setParam("sort", val)}
+            tags={tags}
+            setTags={(newTags) =>
+              setParam("tags", newTags.length ? newTags.join(",") : null)
+            }
           />
         )}
 
@@ -48,7 +53,6 @@ export default function SearchPageContent() {
           <SearchPageEmpty query={query} />
         )}
       </Container>
-          </Suspense>
     </>
   );
 }

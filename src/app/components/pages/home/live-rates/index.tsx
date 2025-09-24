@@ -1,5 +1,6 @@
 "use client";
 
+import { TrendingUp } from "lucide-react";
 import SectionTitle from "../../../shared/section-title";
 import LiveStatCard from "./card";
 import LiveStatCardSkeleton from "./card/skeleton";
@@ -50,9 +51,11 @@ export function LiveRates() {
     : [];
 
   return (
-    <section className="py-12 px-4 max-w-7xl mx-auto" dir="rtl">
-      <SectionTitle title="آخرین قیمت‌ها" />
-
+    <section>
+      <SectionTitle
+        title="آخرین قیمت‌ها"
+        icon={<TrendingUp className="w-5 h-5" />}
+      />
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-8">
         {isLoading
           ? Array.from({ length: 4 }).map((_, i) => (

@@ -16,7 +16,7 @@ export function Newsletter() {
   };
 
   return (
-    <section className="py-6 relative overflow-hidden rounded-2xl" dir="rtl">
+    <section className="py-6 relative overflow-hidden rounded-2xl border border-border shadow" dir="rtl">
       <div className="absolute inset-0 bg-primary/5"></div>
 
       <Container className="relative z-10">

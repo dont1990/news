@@ -9,7 +9,7 @@ import {
   SelectValue,
 } from "@/app/components/ui/select";
 import { SearchInput } from "@/app/components/shared/search-input";
-import { useInfiniteCategories } from "../../hooks/useCategories";
+import { useInfiniteCategories } from "../hooks/useCategories";
 import Chips from "@/app/components/ui/chips";
 import { Hash, X } from "lucide-react";
 
@@ -59,7 +59,7 @@ export function NewsListFilter({
 
   return (
     <>
-      <section>
+      <section className="flex flex-col gap-6 mb-6">
         <div className="flex justify-between gap-4 flex-wrap flex-col bml:flex-row">
           {/* 🔍 Search + Button */}
           <div className="flex gap-2 bml:max-w-md w-full relative rounded-2xl h-10 ring ring-primary flex-1">
@@ -125,7 +125,7 @@ export function NewsListFilter({
 
         {/* ✅ Active Tags */}
         {tags.length > 0 && (
-          <div className="flex flex-wrap gap-2 my-5">
+          <div className="flex flex-wrap gap-2">
             {tags.map((tag) => (
               <Chips
                 key={tag}

@@ -20,7 +20,9 @@ const ArticleHashTags = ({ tags }: Props) => {
     ...tags.filter((t) => !currentTags.includes(t)),
   ];
 
-  const slicedTags = prioritizedTags.slice(0, 3);
+  const uniqueTags = Array.from(new Set(prioritizedTags));
+
+  const slicedTags = uniqueTags.slice(0, 3);
 
   return (
     <div className="flex gap-1 flex-wrap my-1">

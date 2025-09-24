@@ -2,10 +2,10 @@
 
 import React from "react";
 import {
+  getCategoryBg,
   getCategoryPrimaryColor,
   getCategoryTextHover,
 } from "@/app/lib/category-colors";
-// import { categories } from "@/app/data/categories/categories";
 import Link from "next/link";
 import { cn } from "@/app/lib/utils";
 import { routes } from "@/app/routes/routes";
@@ -16,13 +16,7 @@ type Props = {
 };
 
 const CategoryBadge = ({ title, className = "" }: Props) => {
-  // Take only the first part before '>'
-  const categoryName = String(title).split(">")[0].trim()|| "همه";
-
-  // Find category in your categories array (optional, for colors)
-  // const categoryName =
-  // categories.find((cat) => cat.title === firstPart)?.title || "همه";
-
+  const categoryName = String(title).split(">")[0].trim() || "همه";
   const href = routes.news.getHref({ category: categoryName });
 
   return (
@@ -48,6 +42,18 @@ const CategoryBadge = ({ title, className = "" }: Props) => {
         {categoryName}
       </span>
     </Link>
+
+    // <Link
+    //   href={href}
+    //   onClick={(e) => e.stopPropagation()}
+    //   className={cn(
+    //     "px-3 py-1.5 rounded-full text-sm font-medium transition-colors duration-300 w-fit",
+    //     getCategoryBadgeClasses(categoryName), // ✅ uses bg + text + border + hover
+    //     className
+    //   )}
+    // >
+    //   {categoryName}
+    // </Link>
   );
 };
 

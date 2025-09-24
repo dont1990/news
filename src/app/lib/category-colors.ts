@@ -115,3 +115,7 @@ export function getCategoryTextColor(category: string): string {
 export function getCategoryTextHover(category: string): string {
   return getCategoryColors(category).textHover;
 }
+
+export function getCategoryBg(category: string): string {
+  return getCategoryColors(category).bg;
+}
