@@ -10,6 +10,7 @@ export interface Article {
   source: string;
   sourceLink?: string;
   tags?: string[];
+  views?: number;
 }
 
 export type Params = Record<string, string | number | boolean | undefined>;

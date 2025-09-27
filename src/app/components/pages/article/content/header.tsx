@@ -63,6 +63,9 @@ export default function ArticleHeader({ article }: ArticleHeaderProps) {
           <Clock className="h-4 w-4 text-primary" />
           <span>مدت زمان مطالعه: {readTime} دقیقه</span>
         </div>
+        <div className="flex items-center gap-3 text-sm text-muted-foreground">
+          <span>{article.views?.toLocaleString("fa-IR") ?? 0} بازدید</span>
+        </div>
       </div>
 
       <div className="flex items-center gap-3 mb-8">

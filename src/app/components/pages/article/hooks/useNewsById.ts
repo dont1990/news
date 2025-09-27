@@ -7,6 +7,5 @@ export function useNewsById(id?: string) {
     queryKey: ["news", id],
     queryFn: () => apiClient<Article>(`news/${id}`),
     enabled: !!id, // don’t run until id is available
-    staleTime: 60_000, // fresh for 1 min
   });
 }

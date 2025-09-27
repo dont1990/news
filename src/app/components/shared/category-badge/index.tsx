@@ -2,7 +2,6 @@
 
 import React from "react";
 import {
-  getCategoryBg,
   getCategoryPrimaryColor,
   getCategoryTextHover,
 } from "@/app/lib/category-colors";

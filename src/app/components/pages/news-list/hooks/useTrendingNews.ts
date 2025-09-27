@@ -6,6 +6,5 @@ export function useTrendingNews(limit: number = 5) {
   return useQuery({
     queryKey: ["trendingNews", limit],
     queryFn: () => apiClient<Article[]>("news/trending", { limit }),
-    staleTime: 60_000, // fresh for 1 min
   });
 }

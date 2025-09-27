@@ -7,7 +7,7 @@ import WeatherWidget from "./item";
 
 export default function IranWeatherTicker() {
   return (
-    <div className="w-full h-36 overflow-hidden">
+    <div className="w-full h-35 overflow-hidden">
       <Swiper
         direction="vertical"
         slidesPerView={1} // show 1 item at a time

@@ -13,6 +13,8 @@ const nextConfig: NextConfig = {
       "cdn.mashreghnews.ir",
       "openweathermap.org",
       "static.jaaar.com",
+      "static.shahrekhabar.com",
+      "media.khabaronline.ir",
     ],
   },
 };
