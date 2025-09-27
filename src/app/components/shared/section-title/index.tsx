@@ -1,7 +1,6 @@
 import { TrendingDown } from "lucide-react";
 import Link from "next/link";
 import React from "react";
-import { cn } from "@/app/lib/utils";
 
 type Props = {
   title: string;

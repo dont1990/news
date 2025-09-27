@@ -7,7 +7,6 @@ import {
   CardTitle,
 } from "@/app/components/ui/card";
 import { Clock } from "lucide-react";
-import CategoryBadge from "@/app/components/shared/category-badge";
 import TimeAgo from "@/app/components/shared/time-ago";
 import { Article } from "@/app/types/types";
 import Link from "next/link";
