@@ -6,7 +6,6 @@ import { useWeather } from "./hooks/useWeather";
 export default function WeatherWidget({ city }: { city: string }) {
   const { data, isLoading, error } = useWeather(city);
 
-  console.log(data,error)
   if (isLoading)
     return (
       <div className="text-center text-sm">در حال بارگذاری آب و هوا...</div>

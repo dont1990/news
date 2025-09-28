@@ -14,7 +14,7 @@ const capitals = [
 
 export default function WorldClockTicker() {
   return (
-    <div className="w-full h-26 overflow-hidden">
+    <div className="w-full h-35 overflow-hidden">
       <Swiper
         direction="vertical"
         slidesPerView={1}

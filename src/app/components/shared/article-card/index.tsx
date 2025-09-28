@@ -96,7 +96,7 @@ export function ArticleCard({
         </div>
 
         <CardContent className="relative z-10 p-4 flex flex-col justify-end text-right h-full">
-          <CategoryBadge title={category} className="mb-3 text-white" />
+          <CategoryBadge title={category} className="mb-3" />
           <ArticleCardTitle
             id={id}
             title={

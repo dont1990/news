@@ -1,10 +1,9 @@
 "use client";
 
-import React from "react";
-import Chips from "../../ui/chips";
-import { useQueryParams } from "@/app/hooks/useQueryParams";
 import { Hash } from "lucide-react";
 import { cn } from "@/app/lib/utils";
+import Chips from "../../ui/chips";
+import { useTagNavigation } from "./hooks/useTagNavigation";
 
 type Props = {
   tag: string;
@@ -12,17 +11,18 @@ type Props = {
 };
 
 const HashTag = ({ tag, highlighted = false }: Props) => {
-  const { getParam, setParam } = useQueryParams();
-
-  const tagsQuery = getParam("tags") || "";
-  const currentTags = tagsQuery.split(",").filter(Boolean);
+  const { currentTags, toggleTag, navigateWithTags, useRecordTagClick } = useTagNavigation();
 
   const isSelected = currentTags.includes(tag);
-  const newTags = isSelected
-    ? currentTags.filter((t) => t !== tag)
-    : [...currentTags, tag];
-
   const isActive = isSelected || highlighted;
+
+  const { mutate: recordClick } = useRecordTagClick(tag);
+
+  const handleClick = () => {
+    const newTags = toggleTag(tag);
+    recordClick(); // record click
+    navigateWithTags(newTags); // navigate
+  };
 
   return (
     <Chips
@@ -32,9 +32,9 @@ const HashTag = ({ tag, highlighted = false }: Props) => {
           className={cn("size-3", isActive ? "text-secondary-500" : "text-gray-500")}
         />
       }
-      onClick={() => setParam("tags", newTags.length ? newTags.join(",") : null)}
+      onClick={handleClick}
       className={cn(
-        "py-0.5 px-2 mb-2 text-sm bg-gray-100",
+        "py-0.5 px-2 text-sm bg-gray-100",
         isActive ? "text-secondary-500" : "text-gray-500"
       )}
     />

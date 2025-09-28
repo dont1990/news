@@ -24,28 +24,28 @@ export default function RecentUpdatesCard({
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-lg">
           <Clock className="h-5 w-5 text-primary" />
-          <span>به‌روزرسانی‌های اخیر</span>
+          <span className="text-foreground font-medium">
+            به‌روزرسانی‌های اخیر
+          </span>
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
         {articles.map((article) => (
-          <div
+          <Link
+            href={routes.news.detail.getHref(article.id)}
             key={article.id}
-            className="space-y-2 pb-3 border-b border-border last:border-b-0"
+            className="space-y-2 pb-3 border-b border-border last:border-b-0 block hover:text-primary"
           >
-            <Link
-              href={routes.news.detail.getHref(article.id)}
-              className="newspaper-body text-sm font-medium leading-tight line-clamp-1"
-            >
+            <div className="newspaper-body text-sm font-medium leading-tight line-clamp-1">
               {article.title}
-            </Link>
+            </div>
             <div>
               <TimeAgo
                 date={article.publishedAt}
                 className="text-xs text-muted-foreground"
               />
             </div>
-          </div>
+          </Link>
         ))}
       </CardContent>
     </Card>

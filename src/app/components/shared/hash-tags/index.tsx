@@ -2,17 +2,14 @@
 
 import React from "react";
 import HashTag from "./hash-tag";
-import { useQueryParams } from "@/app/hooks/useQueryParams";
+import { useTagNavigation } from "./hooks/useTagNavigation";
 
 type Props = {
   tags: string[];
 };
 
 const ArticleHashTags = ({ tags }: Props) => {
-  const { getParam } = useQueryParams();
-
-  const tagsQuery = getParam("tags") || "";
-  const currentTags = tagsQuery.split(",").filter(Boolean);
+  const { currentTags } = useTagNavigation();
 
   // Prioritize selected tags
   const prioritizedTags = [
@@ -25,7 +22,7 @@ const ArticleHashTags = ({ tags }: Props) => {
   const slicedTags = uniqueTags.slice(0, 3);
 
   return (
-    <div className="flex gap-1 flex-wrap my-1">
+    <div className="flex gap-1 flex-wrap my-1 mb-2">
       {slicedTags.map((tag) => (
         <HashTag key={tag} tag={tag} highlighted={currentTags.includes(tag)} />
       ))}

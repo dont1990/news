@@ -26,7 +26,7 @@ export function HomePageSidebar() {
     <div className="xl:col-span-1">
       <div className={`sticky`} style={{ top: NAVBAR_HEIGHT }}>
         <div className="space-y-6" dir="rtl">
-          <TrendingTopicsCard topics={trendingTopics} />
+          <TrendingTopicsCard />
           <RecentUpdatesCard articles={recentUpdates} />
           <Newsletter />
           <IranWeatherTicker />

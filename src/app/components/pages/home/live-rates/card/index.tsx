@@ -13,13 +13,6 @@ import {
 import { cn } from "@/app/lib/utils";
 import { LiveStat } from "../types/liveStat";
 
-const gradientMap: Record<LiveStat["type"], string> = {
-  usd: "from-blue-100 to-blue-200 dark:from-blue-950/50 dark:to-blue-900/40",
-  gbp: "from-emerald-100 to-emerald-200 dark:from-emerald-950/50 dark:to-emerald-900/40",
-  coin: "from-amber-100 to-amber-200 dark:from-amber-950/50 dark:to-amber-900/40",
-  gold: "from-pink-100 to-pink-200 dark:from-pink-950/50 dark:to-pink-900/40",
-};
-
 const iconMap: Record<
   LiveStat["type"],
   React.ComponentType<{ className?: string }>
@@ -36,20 +29,24 @@ export default function LiveStatCard({ stat }: { stat: LiveStat }) {
   return (
     <Card
       className={cn(
-        "relative p-4 pb-8 border border-gray-200/40 dark:border-gray-700/40",
-        "bg-gradient-to-br backdrop-blur-xl transition-all duration-300 hover:shadow-lg",
-        gradientMap[stat.type]
+        "relative p-4 pb-8 transition-all duration-300 shadow bg-primary/5 hover:shadow-lg border-0 !border-e-8 !border-primary"
       )}
     >
       {/* Header */}
-      <div className="flex items-center justify-between mb-4">
+      <div className="flex items-center mb-1">
         <div className="p-3 rounded-2xl bg-background/60">
           <IconComponent className="w-6 h-6 text-foreground" />
         </div>
+        <p className="text-base font-medium text-muted-foreground ms-2">
+          {stat.title}
+        </p>
+      </div>
 
+      {/* Content */}
+      <div className="space-y-2">
         <span
           className={cn(
-            "text-sm font-medium flex items-center gap-1",
+            "text-sm font-medium flex items-center gap-1 justify-end",
             stat.trend === "up" ? "text-green-500" : "text-red-500"
           )}
         >
@@ -60,13 +57,6 @@ export default function LiveStatCard({ stat }: { stat: LiveStat }) {
           )}
           {stat.change}
         </span>
-      </div>
-
-      {/* Content */}
-      <div className="space-y-2">
-        <p className="text-sm font-medium text-muted-foreground">
-          {stat.title}
-        </p>
         <span className="text-xl xl:text-2xl font-bold text-foreground">
           {stat.value}
         </span>

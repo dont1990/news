@@ -24,11 +24,11 @@ export function BreakingNewsTicker({ breakingNews }: Props) {
 
   return (
     <div
-      className="relative bg-gradient-to-r from-red-600 via-red-500 to-orange-500 py-3 sm:py-4 overflow-hidden rounded-2xl p-4"
+      className="relative gradient-primary py-3 sm:py-4 overflow-hidden rounded-2xl p-4"
       dir="rtl"
     >
       {/* overlay gradient */}
-      <div className="absolute inset-0 bg-black/20"></div>
+      <div className="absolute inset-0 "></div>
       <div className="absolute inset-0">
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent animate-pulse"></div>
       </div>

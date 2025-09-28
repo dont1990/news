@@ -5,7 +5,7 @@ import React from "react";
 type Props = {
   title: string;
   link?: string;
-  icon?: React.ReactNode; // ✅ optional icon
+  icon?: React.ReactNode;
 };
 
 const SectionTitle = ({ title, link, icon }: Props) => {
