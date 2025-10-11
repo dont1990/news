@@ -6,15 +6,7 @@ import IranWeatherTicker from "./weather/slider";
 import { useLimitedNews } from "../hooks/useLimitedNews";
 import RecentUpdatesCard from "./recent-updates";
 import TrendingTopicsCard from "./trending-topics";
-import WorldClockTicker from "./oclock/slider";
-
-const trendingTopics = [
-  { topic: "نشست اقلیمی", count: 1247 },
-  { topic: "ایمنی هوش مصنوعی", count: 892 },
-  { topic: "بهبود بازار", count: 756 },
-  { topic: "اکتشاف فضا", count: 634 },
-  { topic: "پیشرفت پزشکی", count: 521 },
-];
+import WorldClockTicker from "./world-clock/slider";
 
 export function HomePageSidebar() {
   const { data: recentUpdates = [] } = useLimitedNews({

@@ -2,7 +2,7 @@
 
 import { Button } from "@/app/components/ui/button";
 import Link from "next/link";
-import { SearchX } from "lucide-react";
+import SearchX from "./assets/search-x";
 import { motion } from "framer-motion";
 import { routes } from "@/app/routes/routes";
 

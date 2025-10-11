@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Loader2 } from "lucide-react";
+import LoaderIcon from "./assets/loader-icon";
 
 interface InfiniteLoaderProps {
   message?: string | null; // can be undefined or null
@@ -28,7 +28,7 @@ export function InfiniteLoader({
           animate={{ rotate: 360 }}
           transition={{ repeat: Infinity, duration: 1.2, ease: "linear" }}
         >
-          <Loader2 className={`h-${iconSize} w-${iconSize} ${iconColor}`} />
+          <LoaderIcon className={`h-${iconSize} w-${iconSize} ${iconColor}`} />
         </motion.div>
 
         {message && (

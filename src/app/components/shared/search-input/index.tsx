@@ -2,8 +2,9 @@
 
 import { Input } from "@/app/components/ui/input";
 import { Button } from "@/app/components/ui/button";
-import { SearchIcon, X } from "lucide-react";
 import { motion } from "framer-motion";
+import CloseIcon from "@/app/assets/shared-icons/close";
+import SearchIcon from "@/app/assets/shared-icons/search";
 
 interface SearchInputProps {
   value: string;
@@ -68,7 +69,7 @@ export function SearchInput({
             whileHover={{ rotate: [0, -20, 20, -15, 15, 0] }}
             transition={{ duration: 0.4 }}
           >
-            <X className="h-4 w-4" />
+            <CloseIcon className="h-4 w-4" />
           </motion.div>
         </Button>
       )}

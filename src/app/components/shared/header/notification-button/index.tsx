@@ -1,7 +1,7 @@
 "use client";
 
-import { Bell } from "lucide-react";
 import { motion } from "framer-motion";
+import Bell from "./bell";
 
 export default function NotificationsButton() {
   return (

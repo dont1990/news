@@ -2,25 +2,23 @@
 
 import { Card } from "@/app/components/ui/card";
 import { Badge } from "@/app/components/ui/badge";
-import {
-  TrendingUp,
-  TrendingDown,
-  DollarSign,
-  BarChart2,
-  Coins,
-  Zap,
-} from "lucide-react";
 import { cn } from "@/app/lib/utils";
 import { LiveStat } from "../types/liveStat";
+import TrendingUpIcon from "@/app/assets/shared-icons/trending-up";
+import TrendingDownIcon from "@/app/assets/shared-icons/trending-down";
+import CoinIcon from "../assets/coin";
+import FlashIcon from "../assets/flash";
+import DollarIcon from "../assets/dollar";
+import ChartIcon from "../assets/chart";
 
 const iconMap: Record<
   LiveStat["type"],
   React.ComponentType<{ className?: string }>
 > = {
-  usd: DollarSign,
-  gbp: BarChart2,
-  coin: Coins,
-  gold: Zap,
+  usd: DollarIcon,
+  gbp: ChartIcon,
+  coin: CoinIcon,
+  gold: FlashIcon,
 };
 
 export default function LiveStatCard({ stat }: { stat: LiveStat }) {
@@ -35,7 +33,7 @@ export default function LiveStatCard({ stat }: { stat: LiveStat }) {
       {/* Header */}
       <div className="flex items-center mb-1">
         <div className="p-3 rounded-2xl bg-background/60">
-          <IconComponent className="w-6 h-6 text-foreground" />
+          <IconComponent className="w-6 h-6 text-primary" />
         </div>
         <p className="text-base font-medium text-muted-foreground ms-2">
           {stat.title}
@@ -51,9 +49,9 @@ export default function LiveStatCard({ stat }: { stat: LiveStat }) {
           )}
         >
           {stat.trend === "up" ? (
-            <TrendingUp className="w-3 h-3" />
+            <TrendingUpIcon className="w-3 h-3" />
           ) : (
-            <TrendingDown className="w-3 h-3" />
+            <TrendingDownIcon className="w-3 h-3" />
           )}
           {stat.change}
         </span>

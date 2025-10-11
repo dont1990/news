@@ -1,7 +1,7 @@
 "use client";
 
 import { Card, CardContent } from "@/app/components/ui/card";
-import { Clock, Link as LinkIcon } from "lucide-react";
+import { Link as LinkIcon } from "lucide-react";
 import Link from "next/link";
 import CategoryBadge from "../category-badge";
 import { Article } from "@/app/types/types";
@@ -14,6 +14,7 @@ import { highlightText } from "@/app/lib/highlight";
 import { routes } from "@/app/routes/routes";
 import TimeAgo from "../time-ago";
 import ArticleHashTags from "../hash-tags";
+import ClockIcon from "@/app/assets/shared-icons/clock";
 
 interface ArticleCardProps {
   article: Article;
@@ -46,7 +47,7 @@ export function ArticleCard({
             <div className="flex justify-between">
               <CategoryBadge title={category} />
               <div className="flex sm:hidden lg:flex xl:hidden items-center gap-1">
-                <Clock className="w-3 h-3 sm:w-4 sm:h-4 text-primary" />
+                <ClockIcon className="w-3 h-3 sm:w-4 sm:h-4 text-primary" />
                 <span>{<TimeAgo date={publishedAt} />}</span>
               </div>
             </div>
@@ -61,7 +62,7 @@ export function ArticleCard({
             <div className="flex items-center justify-between text-card-foreground text-xs sm:text-sm gap-3">
               <ArticleSourceLink source={source} sourceLink={sourceLink} />
               <div className="hidden sm:flex lg:hidden xl:flex items-center gap-1">
-                <Clock className="w-3 h-3 sm:w-4 sm:h-4 text-primary" />
+                <ClockIcon className="w-3 h-3 sm:w-4 sm:h-4 text-primary" />
                 <span>{<TimeAgo date={publishedAt} />}</span>
               </div>
             </div>
@@ -205,7 +206,7 @@ export function ArticleCard({
             <span>{source}</span>
           </AnimatedLink>
           <div className="flex items-center gap-1">
-            <Clock className="h-4 w-4 text-primary" />
+            <ClockIcon className="h-4 w-4 text-primary" />
             <span className="mt-0.5">{<TimeAgo date={publishedAt} />}</span>
           </div>
         </div>

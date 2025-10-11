@@ -1,4 +1,4 @@
-import { TrendingUp } from "lucide-react";
+import TrendingUpIcon from "@/app/assets/shared-icons/trending-up";
 
 export function EmptyCategory({
   categoryName,
@@ -13,7 +13,7 @@ export function EmptyCategory({
         <div
           className={`w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6 ${categoryColors.bg}`}
         >
-          <TrendingUp
+          <TrendingUpIcon
             className={`h-12 w-12 ${categoryColors.text} animate-bounce`}
           />
         </div>

@@ -14,7 +14,7 @@ export default function WeatherWidget({ city }: { city: string }) {
     return <div className="text-center text-sm">❌ خطا در دریافت آب و هوا</div>;
 
   return (
-    <div className="flex flex-col items-center justify-center gap-1 p-2 rounded-2xl border border-border shadow bg-primary/5 text-center">
+    <div className="flex flex-col items-center justify-center gap-1 p-2 rounded-2xl border shadow bg-primary/5 text-center">
       <Image
         src={`https://openweathermap.org/img/wn/${data.icon}@2x.png`}
         alt={data.description}

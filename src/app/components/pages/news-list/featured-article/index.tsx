@@ -4,8 +4,8 @@ import { Article } from "@/app/types/types";
 import { getCategoryColors } from "@/app/lib/category-colors";
 import Link from "next/link";
 import { AnimatedLink } from "@/app/components/shared/animated-link";
-import { ArrowLeft } from "lucide-react";
 import { routes } from "@/app/routes/routes";
+import ArrowLeft from "@/app/assets/shared-icons/arrow-left";
 
 export function FeaturedArticle({ article }: { article: Article }) {
   const colors = getCategoryColors(article.category);

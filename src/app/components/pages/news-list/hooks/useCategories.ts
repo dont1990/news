@@ -5,8 +5,8 @@ import {
   categories as staticCategories,
   Category,
 } from "@/app/data/categories/categories";
-import { Tag } from "lucide-react";
 import { PAGE_LIMIT } from "@/app/constants/global";
+import HashTagIcon from "@/app/assets/shared-icons/hash";
 
 function mergeCategories(apiCats: string[]): Category[] {
   const mappedApiCats: Category[] = apiCats.map((title) => {
@@ -14,7 +14,7 @@ function mergeCategories(apiCats: string[]): Category[] {
     return (
       found || {
         title,
-        icon: Tag,
+        icon: HashTagIcon,
         description: "",
       }
     );

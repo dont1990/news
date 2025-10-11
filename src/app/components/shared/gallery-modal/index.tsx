@@ -3,7 +3,7 @@
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 import Image from "next/image";
-import { X } from "lucide-react";
+import CloseIcon from "@/app/assets/shared-icons/close";
 
 type GalleryImage = {
   src: string;
@@ -39,7 +39,7 @@ export default function GalleryModal({
         className="absolute top-4 right-4 text-white p-3 rounded-full bg-black/50 hover:bg-gray-700 transition z-50 "
         onClick={onClose}
       >
-        <X className="w-8 h-8" />{" "}
+        <CloseIcon className="w-8 h-8" />{" "}
       </button>
 
       <div className="w-full max-w-6xl h-[80vh] flex flex-col">

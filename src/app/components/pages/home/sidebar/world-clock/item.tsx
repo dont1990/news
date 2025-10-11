@@ -27,9 +27,9 @@ export default function WorldClockWidget({
     );
 
   return (
-    <div className="gradient-primary text-white p-4 rounded-2xl shadow-lg flex flex-col items-center justify-center text-center w-full h-full">
-      <span className="text-lg font-bold">{data.city}</span>
-      <span className="text-2xl font-extrabold mt-2">{data.time}</span>
+    <div className="bg-primary/5 text-foreground p-4 rounded-2xl flex flex-col items-center justify-center text-center w-full h-full border shadow">
+      <span className="text-lg">{data.city}</span>
+      <span className="text-2xl font-medium mt-2">{data.time}</span>
     </div>
   );
 }

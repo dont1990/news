@@ -1,7 +1,7 @@
 "use client";
 
-import { Search, X } from "lucide-react";
-import { motion } from "framer-motion";
+import SearchIcon from "@/app/assets/shared-icons/search";import { motion } from "framer-motion";
+import CloseIcon from "@/app/assets/shared-icons/close";
 
 interface SearchToggleProps {
   isOpen: boolean;
@@ -18,7 +18,7 @@ export default function SearchToggle({ isOpen, onToggle }: SearchToggleProps) {
           whileHover={{ rotate: [0, -15, 15, -10, 10, 0] }}
           transition={{ duration: 0.5 }}
         >
-          <X className="h-5 w-5" />
+          <CloseIcon className="h-5 w-5" />
         </motion.div>
       ) : (
         <motion.div
@@ -28,7 +28,7 @@ export default function SearchToggle({ isOpen, onToggle }: SearchToggleProps) {
           whileTap={{ scale: 0.95, rotate: 0 }}
           transition={{ type: "spring", stiffness: 300, damping: 15 }}
         >
-          <Search className="h-5 w-5" />
+          <SearchIcon className="h-5 w-5" />
         </motion.div>
       )}
     </>

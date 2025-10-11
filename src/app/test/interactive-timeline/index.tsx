@@ -1,9 +1,11 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Card } from "@/app/components/ui/card"
-import { Badge } from "@/app/components/ui/badge"
-import { Clock, Calendar, TrendingUp } from "lucide-react"
+import { useState } from "react";
+import { Card } from "@/app/components/ui/card";
+import { Badge } from "@/app/components/ui/badge";
+import Clock from "@/app/assets/shared-icons/clock";
+import CalendarIcon from "@/app/assets/shared-icons/calendar";
+import TrendingUpIcon from "@/app/assets/shared-icons/trending-up";
 
 const timelineEvents = [
   {
@@ -12,7 +14,8 @@ const timelineEvents = [
     title: "Breaking: Global Climate Summit Reaches Historic Agreement",
     category: "Environment",
     impact: "High",
-    description: "World leaders unite on ambitious carbon reduction targets for 2030.",
+    description:
+      "World leaders unite on ambitious carbon reduction targets for 2030.",
   },
   {
     id: 2,
@@ -20,7 +23,8 @@ const timelineEvents = [
     title: "Tech Giant Announces Revolutionary AI Breakthrough",
     category: "Technology",
     impact: "Medium",
-    description: "New quantum-AI hybrid system promises to solve complex problems.",
+    description:
+      "New quantum-AI hybrid system promises to solve complex problems.",
   },
   {
     id: 3,
@@ -36,18 +40,23 @@ const timelineEvents = [
     title: "Space Mission Discovers Potentially Habitable Exoplanet",
     category: "Science",
     impact: "Medium",
-    description: "NASA's latest findings could reshape our understanding of life.",
+    description:
+      "NASA's latest findings could reshape our understanding of life.",
   },
-]
+];
 
 export function InteractiveTimeline() {
-  const [selectedEvent, setSelectedEvent] = useState(timelineEvents[0])
+  const [selectedEvent, setSelectedEvent] = useState(timelineEvents[0]);
 
   return (
     <section className="py-20 px-4 max-w-7xl mx-auto">
       <div className="text-center mb-16">
-        <p className="text-4xl font-bold text-white mb-4 text-balance">Live News Timeline</p>
-        <p className="text-xl text-gray-300 text-balance">Follow breaking stories as they unfold in real-time</p>
+        <p className="text-4xl font-bold text-white mb-4 text-balance">
+          Live News Timeline
+        </p>
+        <p className="text-xl text-gray-300 text-balance">
+          Follow breaking stories as they unfold in real-time
+        </p>
       </div>
 
       <div className="grid lg:grid-cols-2 gap-12 items-start">
@@ -76,19 +85,33 @@ export function InteractiveTimeline() {
                 <div className="flex items-start gap-4">
                   <div
                     className={`w-3 h-3 rounded-full mt-2 ${
-                      selectedEvent.id === event.id ? "bg-purple-400" : "bg-gray-400"
+                      selectedEvent.id === event.id
+                        ? "bg-purple-400"
+                        : "bg-gray-400"
                     }`}
                   ></div>
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-2">
                       <Clock className="w-4 h-4 text-gray-400" />
-                      <span className="text-sm text-gray-400">{event.time}</span>
-                      <Badge variant={event.impact === "High" ? "destructive" : "secondary"} className="text-xs">
+                      <span className="text-sm text-gray-400">
+                        {event.time}
+                      </span>
+                      <Badge
+                        variant={
+                          event.impact === "High" ? "destructive" : "primary"
+                        }
+                        className="text-xs"
+                      >
                         {event.impact} Impact
                       </Badge>
                     </div>
-                    <p className="text-white font-semibold mb-1 text-balance">{event.title}</p>
-                    <Badge variant="outline" className="text-xs text-purple-300 border-purple-300/30">
+                    <p className="text-white font-semibold mb-1 text-balance">
+                      {event.title}
+                    </p>
+                    <Badge
+                      variant="outline"
+                      className="text-xs text-purple-300 border-purple-300/30"
+                    >
                       {event.category}
                     </Badge>
                   </div>
@@ -102,20 +125,30 @@ export function InteractiveTimeline() {
         <div className="sticky top-8">
           <Card className="p-8 bg-gradient-to-br from-purple-500/20 to-blue-500/20 backdrop-blur-xl border-purple-400/30 shadow-2xl">
             <div className="flex items-center gap-3 mb-6">
-              <Calendar className="w-6 h-6 text-purple-400" />
-              <span className="text-purple-300 font-medium">{selectedEvent.time}</span>
+              <CalendarIcon className="w-6 h-6 text-purple-400" />
+              <span className="text-purple-300 font-medium">
+                {selectedEvent.time}
+              </span>
             </div>
 
-            <p className="text-2xl font-bold text-white mb-4 text-balance">{selectedEvent.title}</p>
+            <p className="text-2xl font-bold text-white mb-4 text-balance">
+              {selectedEvent.title}
+            </p>
 
-            <p className="text-gray-300 text-lg leading-relaxed mb-6">{selectedEvent.description}</p>
+            <p className="text-gray-300 text-lg leading-relaxed mb-6">
+              {selectedEvent.description}
+            </p>
 
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <TrendingUp className="w-5 h-5 text-green-400" />
+                <TrendingUpIcon className="w-5 h-5 text-green-400" />
                 <span className="text-green-400 font-medium">Trending Now</span>
               </div>
-              <Badge variant={selectedEvent.impact === "High" ? "destructive" : "secondary"}>
+              <Badge
+                variant={
+                  selectedEvent.impact === "High" ? "destructive" : "primary"
+                }
+              >
                 {selectedEvent.impact} Impact Story
               </Badge>
             </div>
@@ -123,5 +156,5 @@ export function InteractiveTimeline() {
         </div>
       </div>
     </section>
-  )
+  );
 }

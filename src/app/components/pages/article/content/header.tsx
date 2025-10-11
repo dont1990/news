@@ -1,7 +1,11 @@
 "use client";
 
 import { Button } from "@/app/components/ui/button";
-import { Clock, User, Calendar, Share2, Bookmark } from "lucide-react";
+import Clock from "../../../../assets/shared-icons/clock";
+import UserIcon from "../assets/user";
+import CalendarIcon from "../../../../assets/shared-icons/calendar";
+import Share from "../assets/share";
+import Bookmark from "../assets/bookmark";
 import { Article } from "@/app/types/types";
 import DateText from "@/app/components/shared/date-text";
 import TimeAgo from "@/app/components/shared/time-ago";
@@ -44,11 +48,11 @@ export default function ArticleHeader({ article }: ArticleHeaderProps) {
 
       <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground mb-8 pb-6 border-b border-border">
         <div className="flex items-center gap-2">
-          <User className="h-4 w-4 text-primary" />
+          <UserIcon className="h-4 w-4 text-primary" />
           <span className="font-medium">نام منبع : {source}</span>
         </div>
         <div className="flex items-center gap-2">
-          <Calendar className="h-4 w-4 text-primary" />
+          <CalendarIcon className="h-4 w-4 text-primary" />
           <span>
             تاریخ انتشار:{" "}
             <DateText
@@ -75,7 +79,7 @@ export default function ArticleHeader({ article }: ArticleHeaderProps) {
           className="gap-2 hover:bg-primary hover:text-primary-foreground transition-colors bg-transparent"
           aria-label={`اشتراک‌گذاری مقاله ${title}`}
         >
-          <Share2 className="h-4 w-4" />
+          <Share className="h-4 w-4" />
           اشتراک‌گذاری
         </Button>
         <Button

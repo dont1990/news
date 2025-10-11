@@ -2,10 +2,10 @@
 
 import { Article } from "@/app/types/types";
 import Link from "next/link";
-import { Flame } from "lucide-react";
 import Image from "next/image";
 import { NAVBAR_HEIGHT } from "@/app/constants/global";
 import { routes } from "@/app/routes/routes";
+import FlameIcon from "./assets/flame";
 
 export function TrendingSidebar({ articles }: { articles: Article[] }) {
   return (
@@ -15,7 +15,7 @@ export function TrendingSidebar({ articles }: { articles: Article[] }) {
     >
       {/* 🔥 Header */}
       <div className="flex items-center gap-2 mb-4 border-b pb-4">
-        <Flame className="h-5 w-5 text-red-500" />
+        <FlameIcon className="h-5 w-5 text-red-500" />
         <h3 className="font-semibold text-lg">مطالب داغ</h3>
       </div>
 

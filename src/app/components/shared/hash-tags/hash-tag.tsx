@@ -1,9 +1,10 @@
 "use client";
 
-import { Hash } from "lucide-react";
 import { cn } from "@/app/lib/utils";
 import Chips from "../../ui/chips";
 import { useTagNavigation } from "./hooks/useTagNavigation";
+import { useCallback } from "react";
+import HashTagIcon from "@/app/assets/shared-icons/hash";
 
 type Props = {
   tag: string;
@@ -11,31 +12,34 @@ type Props = {
 };
 
 const HashTag = ({ tag, highlighted = false }: Props) => {
-  const { currentTags, toggleTag, navigateWithTags, useRecordTagClick } = useTagNavigation();
+  const { toggleTag, navigateWithTags, recordTagClick, getTagState } =
+    useTagNavigation();
+  const { isActive } = getTagState(tag, highlighted);
 
-  const isSelected = currentTags.includes(tag);
-  const isActive = isSelected || highlighted;
-
-  const { mutate: recordClick } = useRecordTagClick(tag);
-
-  const handleClick = () => {
+  const handleClick = useCallback(() => {
     const newTags = toggleTag(tag);
-    recordClick(); // record click
-    navigateWithTags(newTags); // navigate
-  };
+    recordTagClick.mutate(tag);
+    navigateWithTags(newTags);
+  }, [tag, toggleTag, recordTagClick, navigateWithTags]);
 
   return (
     <Chips
       text={tag}
+      onClick={handleClick}
       leftIcon={
-        <Hash
-          className={cn("size-3", isActive ? "text-secondary-500" : "text-gray-500")}
+        <HashTagIcon
+          className={cn(
+            "size-3 transition-colors",
+            isActive ? "text-primary-500" : "text-gray-500"
+          )}
         />
       }
-      onClick={handleClick}
+      aria-pressed={isActive}
       className={cn(
-        "py-0.5 px-2 text-sm bg-gray-100",
-        isActive ? "text-secondary-500" : "text-gray-500"
+        "py-0.5 px-2 text-sm bg-gray-100 transition-colors",
+        isActive
+          ? "text-primary-500 bg-primary-50"
+          : "text-gray-500 hover:text-primary-500"
       )}
     />
   );

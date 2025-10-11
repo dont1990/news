@@ -1,12 +1,13 @@
 "use client";
 
-import { Search } from "lucide-react";
+import SearchIcon from "@/app/assets/shared-icons/search";
+
 
 export function SearchEmptyState() {
   return (
     <div className="p-8 text-center">
       <div className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-2">
-        <Search className="h-8 w-8 text-muted-foreground" />
+        <SearchIcon className="h-8 w-8 text-muted-foreground" />
       </div>
       <p className="text-sm font-medium text-foreground mb-2">نتیجه ای یافت نشد</p>
       <p className="text-xs text-muted-foreground">

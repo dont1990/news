@@ -2,37 +2,42 @@
 
 import { useMutation } from "@tanstack/react-query";
 import { useQueryParams } from "@/app/hooks/useQueryParams";
-import { useRouter } from "next/navigation";
 
 export function useTagNavigation() {
-  const { getParam } = useQueryParams();
-  const router = useRouter();
+  const { getParam, updateParams } = useQueryParams();
 
-  const tagsQuery = getParam("tags") || "";
-  const currentTags = tagsQuery.split(",").filter(Boolean);
+  const currentTags = (getParam("tags") || "")
+    .split(",")
+    .filter(Boolean);
 
-  const toggleTag = (tag: string) => {
-    const isSelected = currentTags.includes(tag);
-    const newTags = isSelected
+  const toggleTag = (tag: string) =>
+    currentTags.includes(tag)
       ? currentTags.filter((t) => t !== tag)
       : [...currentTags, tag];
 
-    return newTags;
+  const getTagState = (tag: string, highlighted = false) => {
+    const isSelected = currentTags.includes(tag);
+    return { isSelected, isActive: isSelected || highlighted };
   };
 
   const navigateWithTags = (tags: string[]) => {
-    const query = tags.length ? `tags=${tags.join(",")}` : "";
-    router.push(`/news?${query}`);
+    updateParams({ tags: tags.length ? tags.join(",") : null }, { replace: true });
   };
 
-  const useRecordTagClick = (tag: string) =>
-    useMutation({
-      mutationFn: async () => {
-        await fetch(`${process.env.NEXT_PUBLIC_API_URL}/tags/${encodeURIComponent(tag)}/click`, {
-          method: "POST",
-        });
-      },
-    });
+  const recordTagClick = useMutation({
+    mutationFn: async (tag: string) => {
+      await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/tags/${encodeURIComponent(tag)}/click`,
+        { method: "POST" }
+      );
+    },
+  });
 
-  return { currentTags, toggleTag, navigateWithTags, useRecordTagClick };
+  return {
+    currentTags,
+    toggleTag,
+    navigateWithTags,
+    recordTagClick,
+    getTagState,
+  };
 }

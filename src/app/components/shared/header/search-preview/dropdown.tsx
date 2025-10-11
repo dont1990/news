@@ -3,10 +3,11 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Card, CardContent } from "@/app/components/ui/card";
 import { Button } from "@/app/components/ui/button";
-import { TrendingUp, ArrowLeft } from "lucide-react";
 import { Article } from "@/app/types/types";
 import { SearchResultItem } from "./item";
 import { SearchEmptyState } from "./empty";
+import ArrowLeft from "@/app/assets/shared-icons/arrow-left";
+import TrendingUpIcon from "@/app/assets/shared-icons/trending-up";
 
 interface SearchDropdownProps {
   isOpen: boolean;
@@ -35,9 +36,9 @@ export function SearchDropdown({
             <CardContent className="p-0">
               {results.length > 0 ? (
                 <>
-                  <div className="px-6 py-4 bg-gradient-to-r from-primary/5 to-secondary/5 border-b border-border">
+                  <div className="px-6 py-4 bg-gradient-to-r from-primary/5 to-primary/5 border-b border-border">
                     <div className="flex items-center gap-2">
-                      <TrendingUp className="h-4 w-4 text-primary" />
+                      <TrendingUpIcon className="h-4 w-4 text-primary" />
                       <span className="text-sm font-semibold text-foreground">
                         {results.length} نتیجه یافت شد
                       </span>

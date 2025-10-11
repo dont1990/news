@@ -1,11 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { Clock } from "lucide-react";
 import CategoryBadge from "../../category-badge";
 import { useRouter } from "next/navigation";
 import { Article } from "@/app/types/types";
 import TimeAgo from "../../time-ago";
+import ClockIcon from "@/app/assets/shared-icons/clock";
 
 interface SearchResultItemProps {
   article: Article;
@@ -32,7 +32,7 @@ export function SearchResultItem({ article, onClick }: SearchResultItemProps) {
         router.push(`/article/${id}`);
         onClick();
       }}
-      className="hover:bg-gradient-to-r hover:from-primary/5 hover:to-secondary/5 transition-all duration-200 cursor-pointer border-b border-border/50 last:border-b-0 group"
+      className="hover:bg-gradient-to-r hover:from-primary/5 hover:to-primary/5 transition-all duration-200 cursor-pointer border-b border-border/50 last:border-b-0 group"
     >
       <div className="p-5 flex gap-4">
         <div className="relative overflow-hidden rounded-2xl flex-shrink-0 w-20 h-16">
@@ -55,7 +55,7 @@ export function SearchResultItem({ article, onClick }: SearchResultItemProps) {
               <CategoryBadge title={category} />
             </div>
             <div className="flex items-center gap-1 text-xs text-muted-foreground">
-              <Clock className="h-3 w-3" />
+              <ClockIcon className="h-3 w-3" />
               <span>
                 <TimeAgo date={publishedAt} />
               </span>

@@ -11,7 +11,8 @@ import {
 import { SearchInput } from "@/app/components/shared/search-input";
 import { useInfiniteCategories } from "../hooks/useCategories";
 import Chips from "@/app/components/ui/chips";
-import { Hash, X } from "lucide-react";
+import CloseIcon from "@/app/assets/shared-icons/close";
+import HashTagIcon from "@/app/assets/shared-icons/hash";
 
 interface Props {
   category: string;
@@ -130,13 +131,13 @@ export function NewsListFilter({
               <Chips
                 key={tag}
                 text={tag}
-                rightIcon={<X className="size-3 text-secondary-500" />}
-                leftIcon={<Hash className="size-3 text-secondary-500" />}
+                rightIcon={<CloseIcon className="size-3 text-primary-500" />}
+                leftIcon={<HashTagIcon className="size-3 text-primary-500" />}
                 onClick={() => {
                   const newTags = tags.filter((t) => t !== tag);
                   setTags(newTags); // ✅ delegate back to parent
                 }}
-                className="bg-gray-100 text-secondary-500"
+                className="bg-gray-100 text-primary-500"
               />
             ))}
           </div>

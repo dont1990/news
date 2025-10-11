@@ -10,7 +10,8 @@ import {
 } from "@/app/components/ui/select";
 import { categories } from "@/app/data/categories/categories";
 import Chips from "@/app/components/ui/chips";
-import { Hash, X } from "lucide-react";
+import HashTagIcon from "@/app/assets/shared-icons/hash";
+import CloseIcon from "@/app/assets/shared-icons/close";
 
 interface Props {
   category: string;
@@ -33,26 +34,28 @@ export function SearchPageFilter({
   tags,
   setTags,
 }: Props) {
-  const filters: { label: string; value: "all" | "today" | "week" | "month" }[] =
-    [
-      { label: "همه", value: "all" },
-      { label: "امروز", value: "today" },
-      { label: "این هفته", value: "week" },
-      { label: "این ماه", value: "month" },
-    ];
+  const filters: {
+    label: string;
+    value: "all" | "today" | "week" | "month";
+  }[] = [
+    { label: "همه", value: "all" },
+    { label: "امروز", value: "today" },
+    { label: "این هفته", value: "week" },
+    { label: "این ماه", value: "month" },
+  ];
 
   return (
     <div className="flex flex-col gap-4 mb-6">
       <div className="flex flex-wrap justify-between gap-4">
         {/* Date Filters */}
-        <div className="flex gap-2 flex-wrap">
+        <div className="flex gap-2 flex-wrap grow md:grow-0">
           {filters.map((f) => (
             <Button
               key={f.value}
               size="sm"
               variant={dateFilter === f.value ? "default" : "outline"}
               onClick={() => setDateFilter(f.value)}
-              className="flex-1"
+              className="grow md:grow-0"
             >
               {f.label}
             </Button>
@@ -60,9 +63,9 @@ export function SearchPageFilter({
         </div>
 
         {/* Category & Sort */}
-        <div className="flex gap-2 flex-wrap">
+        <div className="flex gap-2 flex-wrap grow md:grow-0">
           <Select value={category} onValueChange={setCategory}>
-            <SelectTrigger className="w-40">
+            <SelectTrigger className="w-40 grow md:grow-0">
               <SelectValue placeholder="دسته‌بندی" />
             </SelectTrigger>
             <SelectContent>
@@ -76,7 +79,7 @@ export function SearchPageFilter({
           </Select>
 
           <Select value={sort} onValueChange={setSort}>
-            <SelectTrigger className="w-40">
+            <SelectTrigger className="w-40 grow md:grow-0">
               <SelectValue placeholder="مرتب‌سازی" />
             </SelectTrigger>
             <SelectContent>
@@ -95,13 +98,13 @@ export function SearchPageFilter({
             <Chips
               key={tag}
               text={tag}
-              rightIcon={<X className="size-3 text-secondary-500" />}
-              leftIcon={<Hash className="size-3 text-secondary-500" />}
+              rightIcon={<CloseIcon className="size-3 text-primary-500" />}
+              leftIcon={<HashTagIcon className="size-3 text-primary-500" />}
               onClick={() => {
                 const newTags = tags.filter((t) => t !== tag);
                 setTags(newTags);
               }}
-              className="bg-gray-100 text-secondary-500"
+              className="bg-gray-100 text-primary-500"
             />
           ))}
         </div>

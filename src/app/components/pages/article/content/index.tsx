@@ -3,12 +3,11 @@
 import ArticleHeader from "./header";
 import ArticleHeroImage from "./hero-image";
 import ArticleContent from "./content";
-import ArticleAuthor from "./author";
 import ArticleRelated from "./related";
 import { Article } from "@/app/types/types";
 import Container from "@/app/components/shared/container";
 import { AnimatedLink } from "@/app/components/shared/animated-link";
-import { ArrowLeft } from "lucide-react";
+import ArrowLeft from "../../../../assets/shared-icons/arrow-left";
 import { NAVBAR_HEIGHT } from "@/app/constants/global";
 import { routes } from "@/app/routes/routes";
 import ArticleHashTags from "@/app/components/shared/hash-tags";
@@ -27,7 +26,7 @@ export default function ArticlePageContent({
       <div className="mb-8">
         <AnimatedLink href={routes.home.getHref()}>
           بازگشت به اخبار
-          <ArrowLeft className="h-4 w-4" />
+          <ArrowLeft className="h-4 w-4 mt-0.5 ms-0.5" />
         </AnimatedLink>
       </div>
       <div className="grid grid-cols-1 xl:grid-cols-4 gap-12">
@@ -38,7 +37,6 @@ export default function ArticlePageContent({
           <div className="my-5">
             <ArticleHashTags tags={article.tags || []} />
           </div>
-          <ArticleAuthor article={article} />
         </article>
 
         <aside className="xl:col-span-1 sticky" style={{ top: NAVBAR_HEIGHT }}>

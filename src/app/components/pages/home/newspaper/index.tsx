@@ -9,9 +9,11 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import Image from "next/image";
 import Container from "@/app/components/shared/container";
-import { ArrowLeft, ArrowRight, Newspaper } from "lucide-react";
+import { Newspaper } from "lucide-react";
 import SectionTitle from "@/app/components/shared/section-title";
 import GalleryModal from "@/app/components/shared/gallery-modal";
+import ArrowLeft from "@/app/assets/shared-icons/arrow-left";
+import ArrowRight from "@/app/assets/shared-icons/arrow-right";
 
 export default function TopNewspapersSwiper() {
   const { data, isLoading, error } = useNewspapers();
@@ -31,6 +33,7 @@ export default function TopNewspapersSwiper() {
     <section className="w-full py-10 bg-gray-50 relative bg-gradient-to-t from-primary/10 via-primary/5 to-primary/5 ">
       <Container>
         <SectionTitle
+        link="/newspaper"
           title="روزنامه‌ها"
           icon={<Newspaper className="size-6 text-primary" />}
         />
@@ -66,7 +69,7 @@ export default function TopNewspapersSwiper() {
               <SwiperSlide key={paper.id}>
                 <div
                   onClick={() => openGallery(idx)}
-                  className="relative cursor-pointer overflow-hidden rounded-2xl shadow-lg transition-transform hover:scale-105 hover:shadow-2xl bg-white"
+                  className="relative cursor-pointer overflow-hidden rounded-2xl shadow-lg transition-transform hover:scale-102 hover:shadow-2xl bg-white"
                 >
                   <div className="relative w-full h-64 md:h-72 lg:h-80">
                     <Image

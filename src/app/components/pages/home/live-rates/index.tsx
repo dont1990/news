@@ -1,14 +1,13 @@
 "use client";
 
-import { TrendingUp } from "lucide-react";
 import SectionTitle from "../../../shared/section-title";
 import LiveStatCard from "./card";
 import LiveStatCardSkeleton from "./card/skeleton";
 import { useRates } from "./hooks/useRates";
 import { LiveStat } from "./types/liveStat";
 import IranWeatherTicker from "../sidebar/weather/slider";
-import WorldClockTicker from "../sidebar/oclock/slider";
-import { BreakingNews } from "../breaking-news";
+import WorldClockTicker from "../sidebar/world-clock/slider";
+import TrendingUpIcon from "@/app/assets/shared-icons/trending-up";
 
 export function LiveRates() {
   const { data, isLoading, isError } = useRates();
@@ -57,20 +56,19 @@ export function LiveRates() {
     <section>
       <SectionTitle
         title="آخرین قیمت‌ها"
-        icon={<TrendingUp className="w-5 h-5" />}
+        icon={<TrendingUpIcon className="w-5 h-5" />}
       />
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-8">
         {isLoading
           ? Array.from({ length: 4 }).map((_, i) => (
-            <LiveStatCardSkeleton key={i} />
-          ))
+              <LiveStatCardSkeleton key={i} />
+            ))
           : liveStats.map((stat) => <LiveStatCard key={stat.id} stat={stat} />)}
       </div>
       <div className="flex gap-4 my-10 justify-between items-stretch">
         <IranWeatherTicker />
         <WorldClockTicker />
       </div>
-          <BreakingNews />
     </section>
   );
 }

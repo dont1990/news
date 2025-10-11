@@ -4,10 +4,11 @@ import { useMemo } from "react";
 import { useQueryParams } from "@/app/hooks/useQueryParams";
 import { useNewsFeed } from "../news-list/hooks/useNewsFeed";
 import Container from "../../shared/container";
-import { SearchPageHeader } from "./header";
 import { SearchPageFilter } from "./filter";
 import { SearchPageResults } from "./results";
 import { SearchPageEmpty } from "./empty";
+import { PageHeader } from "../../shared/page-header";
+import SearchIcon from "@/app/assets/shared-icons/search";
 
 export default function SearchPageContent() {
   const { getParam, setParam } = useQueryParams();
@@ -30,22 +31,30 @@ export default function SearchPageContent() {
 
   return (
     <>
-      <SearchPageHeader query={query} total={total} />
+      <PageHeader
+        title={query ? `نتایج برای "${query}"` : "جستجوی اخبار"}
+        subtitle={
+          query
+            ? `${total} مقاله یافت شد که با جستجوی شما مطابقت دارد`
+            : undefined
+        }
+        icon={<SearchIcon className="h-6 w-6 text-primary" />}
+        badgeText="نتایج جستجو"
+        badgeCount={total}
+      />
       <Container>
-        {query && (
-          <SearchPageFilter
-            category={category}
-            setCategory={(val) => setParam("category", val)}
-            dateFilter={dateFilter}
-            setDateFilter={(val) => setParam("date", val)}
-            sort={sort}
-            setSort={(val) => setParam("sort", val)}
-            tags={tags}
-            setTags={(newTags) =>
-              setParam("tags", newTags.length ? newTags.join(",") : null)
-            }
-          />
-        )}
+        <SearchPageFilter
+          category={category}
+          setCategory={(val) => setParam("category", val)}
+          dateFilter={dateFilter}
+          setDateFilter={(val) => setParam("date", val)}
+          sort={sort}
+          setSort={(val) => setParam("sort", val)}
+          tags={tags}
+          setTags={(newTags) =>
+            setParam("tags", newTags.length ? newTags.join(",") : null)
+          }
+        />
 
         {articles.length > 0 ? (
           <SearchPageResults articles={articles} query={query} />

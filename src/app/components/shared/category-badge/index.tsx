@@ -3,8 +3,6 @@
 import React from "react";
 import {
   getCategoryBadgeClasses,
-  getCategoryPrimaryColor,
-  getCategoryTextHover,
 } from "@/app/lib/category-colors";
 import Link from "next/link";
 import { cn } from "@/app/lib/utils";

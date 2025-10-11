@@ -1,7 +1,6 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { CategoryBanner } from "./banner";
 import Container from "../../shared/container";
 import { TrendingSidebar } from "./trending-sidebar";
 import { NewsListArticles } from "./articles";
@@ -11,6 +10,8 @@ import NewsListSkeleton from "./skeleton";
 import { categories } from "@/app/data/categories/categories";
 import { useTrendingNews } from "./hooks/useTrendingNews";
 import { useQueryParams } from "@/app/hooks/useQueryParams";
+import { PageHeader } from "../../shared/page-header";
+import TrendingUpIcon from "@/app/assets/shared-icons/trending-up";
 
 export function NewsListPage() {
   const { getParam, setParam } = useQueryParams();
@@ -54,12 +55,14 @@ export function NewsListPage() {
 
   return (
     <>
-      <CategoryBanner
-        name={categoryName}
-        description={categoryDescription}
-        category={category}
-        articlesCount={total}
+      <PageHeader
+        title={categoryName}
+        subtitle={categoryDescription}
+        badgeText="مقاله موجود"
+        badgeCount={total}
         loading={loading}
+        category={category}
+        icon={<TrendingUpIcon />}
       />
       <Container>
         <NewsListFilter

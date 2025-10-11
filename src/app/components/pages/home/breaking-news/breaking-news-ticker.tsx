@@ -2,11 +2,11 @@
 
 import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Zap } from "lucide-react";
 import Container from "../../../shared/container";
 import { Article } from "@/app/types/types";
 import Link from "next/link";
 import { routes } from "@/app/routes/routes";
+import FlashIcon from "./assets/flash";
 
 interface Props {
   breakingNews: Article[];
@@ -39,7 +39,7 @@ export function BreakingNewsTicker({ breakingNews }: Props) {
             {/* badge */}
             <div className="relative shrink-0">
               <span className="bg-white text-red-600 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-2xl text-xs sm:text-sm font-bold flex items-center gap-1 shadow-lg">
-                <Zap className="w-3 h-3 sm:w-4 sm:h-4 animate-pulse" />
+                <FlashIcon className="w-3 h-3 sm:w-4 sm:h-4 animate-pulse" />
                 <span>فوری</span>
               </span>
               <div className="absolute -inset-1 bg-white/40 rounded-full blur-md"></div>

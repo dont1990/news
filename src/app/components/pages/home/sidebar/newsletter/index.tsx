@@ -1,10 +1,12 @@
 "use client";
 
-import { Mail, CheckCircle, Sparkles } from "lucide-react";
 import { Button } from "@/app/components/ui/button";
 import { Input } from "@/app/components/ui/input";
 import Container from "../../../../shared/container";
 import { useNewsletter } from "./hooks/useNewsletter";
+import MailIcon from "./assets/mail";
+import SparklesIcon from "./assets/sparkles";
+import CheckCircleIcon from "./assets/check-circle";
 
 export function Newsletter() {
   const { email, setEmail, isSubscribed, loading, error, subscribe } =
@@ -24,7 +26,7 @@ export function Newsletter() {
           {/* Header */}
           <div className="mb-8">
             <div className="inline-flex items-center space-x-2 bg-primary-500 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
-              <Sparkles className="w-5 h-5 text-white" />
+              <SparklesIcon className="w-5 h-5 text-white" />
               <span className="text-white font-medium">به‌روز بمانید</span>
             </div>
 
@@ -42,7 +44,7 @@ export function Newsletter() {
           <div className="max-w-md mx-auto">
             {isSubscribed ? (
               <div className="bg-primary-600/20 backdrop-blur-sm border border-primary-500/40 rounded-2xl p-6 animate-in zoom-in duration-500">
-                <CheckCircle className="w-12 h-12 text-primary-400 mx-auto mb-4" />
+                <CheckCircleIcon className="w-12 h-12 text-primary-400 mx-auto mb-4" />
                 <p className="text-xl font-semibold text-white mb-2">
                   خوش آمدید!
                 </p>
@@ -55,7 +57,7 @@ export function Newsletter() {
                 {/* Input with icon */}
                 <div className="relative">
                   <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-primary w-5 h-5 z-[1]">
-                    <Mail className="w-5 h-5" />
+                    <MailIcon className="w-5 h-5" />
                   </div>
                   <Input
                     type="email"

@@ -13,16 +13,39 @@ export function useQueryParams() {
     [searchParams]
   );
 
+  const getAllParams = useCallback(() => {
+    const entries = Array.from(searchParams.entries());
+    return Object.fromEntries(entries);
+  }, [searchParams]);
+
   const setParam = useCallback(
-    (key: string, value: string | null) => {
+    (key: string, value: string | null, options: { replace?: boolean } = {}) => {
       const params = new URLSearchParams(searchParams.toString());
-      if (!value || value.trim() === "") {
-        params.delete(key);
-      } else {
-        params.set(key, value);
-      }
+      if (!value || value.trim() === "") params.delete(key);
+      else params.set(key, value);
+
       const queryString = params.toString();
-      router.push(`${pathname}${queryString ? `?${queryString}` : ""}`);
+      const method = options.replace ? router.replace : router.push;
+      method(`${pathname}${queryString ? `?${queryString}` : ""}`, {
+        scroll: false,
+      });
+    },
+    [searchParams, router, pathname]
+  );
+
+  const updateParams = useCallback(
+    (updates: Record<string, string | null>, options: { replace?: boolean } = {}) => {
+      const params = new URLSearchParams(searchParams.toString());
+      Object.entries(updates).forEach(([key, value]) => {
+        if (!value || value.trim() === "") params.delete(key);
+        else params.set(key, value);
+      });
+
+      const queryString = params.toString();
+      const method = options.replace ? router.replace : router.push;
+      method(`${pathname}${queryString ? `?${queryString}` : ""}`, {
+        scroll: false,
+      });
     },
     [searchParams, router, pathname]
   );
@@ -31,15 +54,16 @@ export function useQueryParams() {
     (key: string) => {
       const params = new URLSearchParams(searchParams.toString());
       params.delete(key);
-      const queryString = params.toString();
-      router.push(`${pathname}${queryString ? `?${queryString}` : ""}`);
+      router.replace(`${pathname}${params.size ? `?${params}` : ""}`, {
+        scroll: false,
+      });
     },
     [searchParams, router, pathname]
   );
 
   const clearParams = useCallback(() => {
-    router.push(pathname);
+    router.replace(pathname, { scroll: false });
   }, [router, pathname]);
 
-  return { getParam, setParam, removeParam, clearParams };
+  return { getParam, getAllParams, setParam, updateParams, removeParam, clearParams };
 }

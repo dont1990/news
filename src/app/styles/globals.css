@@ -15,7 +15,6 @@
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
   --primary-foreground: oklch(0.985 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
   --accent: oklch(0.97 0 0);
@@ -50,17 +49,6 @@
   --primary-800: #9a3412;
   --primary-900: #7c2d12;
 
-  /* Secondary Shades (Orange) */
-  --secondary-50: #fff7ed;
-  --secondary-100: #ffedd5;
-  --secondary-200: #fed7aa;
-  --secondary-300: #fdba74;
-  --secondary-400: #fb923c;
-  --secondary-500: #f97316;
-  --secondary-600: #ea580c;
-  --secondary-700: #c2410c;
-  --secondary-800: #9a3412;
-  --secondary-900: #7c2d12;
 
   /* Primary Shades (Teal) */
   /* --primary-50: #f0fdfa;
@@ -101,8 +89,6 @@
   /* Defaults */
   --primary: var(--primary-500);
   --primary-foreground: #ffffff;
-  --secondary: var(--secondary-500);
-  --secondary-foreground: #ffffff;
   --skeleton-bg: #e5e7eb; /* light gray for light mode */
   --skeleton-fg: #f3f4f6;
 }
@@ -122,8 +108,6 @@
   --color-popover-foreground: var(--popover-foreground);
 
   --color-primary-foreground: var(--primary-foreground);
-
-  --color-secondary-foreground: var(--secondary-foreground);
 
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
@@ -158,8 +142,6 @@
   /* Defaults */
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
 
@@ -174,18 +156,6 @@
   --color-primary-700: var(--primary-700);
   --color-primary-800: var(--primary-800);
   --color-primary-900: var(--primary-900);
-
-  /* Secondary shades */
-  --color-secondary-50: var(--secondary-50);
-  --color-secondary-100: var(--secondary-100);
-  --color-secondary-200: var(--secondary-200);
-  --color-secondary-300: var(--secondary-300);
-  --color-secondary-400: var(--secondary-400);
-  --color-secondary-500: var(--secondary-500);
-  --color-secondary-600: var(--secondary-600);
-  --color-secondary-700: var(--secondary-700);
-  --color-secondary-800: var(--secondary-800);
-  --color-secondary-900: var(--secondary-900);
 
   /* Gray shades */
   --color-gray-50: var(--gray-50);

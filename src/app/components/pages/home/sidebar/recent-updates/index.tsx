@@ -6,11 +6,11 @@ import {
   CardHeader,
   CardTitle,
 } from "@/app/components/ui/card";
-import { Clock } from "lucide-react";
 import TimeAgo from "@/app/components/shared/time-ago";
 import { Article } from "@/app/types/types";
 import Link from "next/link";
 import { routes } from "@/app/routes/routes";
+import ClockIcon from "@/app/assets/shared-icons/clock";
 
 interface RecentUpdatesCardProps {
   articles: Article[];
@@ -23,7 +23,7 @@ export default function RecentUpdatesCard({
     <Card>
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-lg">
-          <Clock className="h-5 w-5 text-primary" />
+          <ClockIcon className="h-5 w-5 text-primary" />
           <span className="text-foreground font-medium">
             به‌روزرسانی‌های اخیر
           </span>
