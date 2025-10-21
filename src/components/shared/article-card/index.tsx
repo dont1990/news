@@ -41,14 +41,14 @@ export function ArticleCard({
   if (type === "horizontal") {
     return (
       <div className="relative overflow-hidden rounded-2xl bg-card border border-white/10 hover:border-purple-500/30 transition-all duration-300 flex min-h-[140px] sm:min-h-[160px] md:min-h-[180px] lg:min-h-[170px] xl:min-h-[180px]">
-        <div className="flex h-full w-full">
+        <div className="flex justify-between h-full w-full">
           {/* Content */}
-          <div className="w-2/3 p-3 flex flex-col justify-between">
+          <div className="p-3 flex flex-col justify-between">
             <div className="flex justify-between">
               <CategoryBadge title={category} />
               <div className="flex sm:hidden lg:flex xl:hidden items-center gap-1">
                 <ClockIcon className="w-3 h-3 sm:w-4 sm:h-4 text-primary" />
-                <span>{<TimeAgo date={publishedAt} />}</span>
+                <span>{<TimeAgo date={publishedAt} className="text-xs sm:text-sm" />}</span>
               </div>
             </div>
 
@@ -63,7 +63,7 @@ export function ArticleCard({
               <ArticleSourceLink source={source} sourceLink={sourceLink} />
               <div className="hidden sm:flex lg:hidden xl:flex items-center gap-1">
                 <ClockIcon className="w-3 h-3 sm:w-4 sm:h-4 text-primary" />
-                <span>{<TimeAgo date={publishedAt} />}</span>
+                <span>{<TimeAgo date={publishedAt} className="text-xs sm:text-sm" />}</span>
               </div>
             </div>
           </div>
@@ -71,7 +71,7 @@ export function ArticleCard({
           {/* Image */}
           <Link
             href={routes.news.detail.getHref(id)}
-            className="w-1/3 relative group/img"
+            className="relative group/img aspect-square"
           >
             <ArticleImage
               article={article}
@@ -207,7 +207,7 @@ export function ArticleCard({
           </AnimatedLink>
           <div className="flex items-center gap-1">
             <ClockIcon className="h-4 w-4 text-primary" />
-            <span className="mt-0.5">{<TimeAgo date={publishedAt} />}</span>
+            <span className="mt-0.5">{<TimeAgo date={publishedAt} className="text-xs sm:text-sm" />}</span>
           </div>
         </div>
       </CardContent>

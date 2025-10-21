@@ -7,7 +7,7 @@ import { routes } from "@/routes/routes";
 
 const FeaturedStory = ({ article }: { article: Article }) => {
   return (
-    <div className="lg:col-span-2 relative group cursor-pointer overflow-hidden rounded-2xl bg-gradient-to-br from-purple-900/20 to-pink-900/20 backdrop-blur-sm border border-white/10 min-h-[400px] md:min-h-[500px] xl:min-h-[600px]">
+    <div className="lg:col-span-7 relative group cursor-pointer overflow-hidden rounded-2xl bg-gradient-to-br from-purple-900/20 to-pink-900/20 backdrop-blur-sm border border-white/10 min-h-[400px] md:min-h-[500px] xl:min-h-[600px]">
       <div className="absolute inset-0">
         <Image
           src={article.imageUrl || "/placeholder.svg"}
@@ -18,11 +18,11 @@ const FeaturedStory = ({ article }: { article: Article }) => {
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
       </div>
 
-      <div className="relative z-10 p-6 sm:p-8 lg:p-12 h-full flex flex-col justify-end text-right">
+      <div className="relative z-10 p-4 lg:p-8 h-full flex flex-col justify-end text-right">
         <CategoryBadge title={article.category} className="mb-4" />
         <Link
           href={routes.news.detail.getHref(article.id)}
-          className="text-xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 leading-tight text-white text-balance hover:text-primary transition-colors w-fit"
+          className="text-xl sm:text-2xl xl:text-3xl font-bold mb-3 sm:mb-4 leading-tight text-white text-balance hover:text-primary transition-colors w-fit"
         >
           {article.title}
         </Link>

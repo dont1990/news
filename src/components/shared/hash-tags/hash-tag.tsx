@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils/cn";
 import Chips from "../../ui/chips";
 import { useTagNavigation } from "./hooks/useTagNavigation";
 import { useCallback } from "react";

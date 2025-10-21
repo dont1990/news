@@ -1,8 +1,8 @@
 "use client";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
-import WorldClockWidget from "./item";
+import "swiper/css";
+import ClockTile from "./item";
 
 const capitals = [
   { cityEn: "London", cityFa: "لندن", timezone: "Europe/London" },
@@ -12,28 +12,24 @@ const capitals = [
   { cityEn: "Beijing", cityFa: "پکن", timezone: "Asia/Shanghai" },
 ];
 
-export default function WorldClockTicker() {
+export default function WorldClockSlider() {
   return (
-    <div className="w-full h-35 overflow-hidden">
+    <div className="relative w-full">
       <Swiper
-        direction="vertical"
-        slidesPerView={1}
         loop={true}
-        modules={[Autoplay]}
-        autoplay={{
-          delay: 3000,
-          disableOnInteraction: false,
-          pauseOnMouseEnter: true,
-        }}
-        speed={1000}
-        className="h-full"
+        slidesPerView="auto"
+        spaceBetween={20}
+        centeredSlides={false}
+        grabCursor={true}
+        speed={600}
+        className="w-full"
       >
-        {capitals.map(({ cityFa, timezone }) => (
+        {capitals.concat(capitals).map((cap, i) => (
           <SwiperSlide
-            key={cityFa}
-            className="flex justify-center items-center h-full"
+            key={cap.cityEn + i}
+            className="!w-[180px] sm:!w-[200px] lg:!w-[220px]"
           >
-            <WorldClockWidget city={cityFa} timezone={timezone} />
+            <ClockTile city={cap.cityFa} timezone={cap.timezone} />
           </SwiperSlide>
         ))}
       </Swiper>

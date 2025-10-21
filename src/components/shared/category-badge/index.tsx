@@ -3,7 +3,7 @@
 import React from "react";
 import { getCategoryBadgeClasses } from "@/lib/category-colors";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils/cn";
 import { routes } from "@/routes/routes";
 
 type Props = {
@@ -43,7 +43,7 @@ const CategoryBadge = ({ title, className = "" }: Props) => {
       href={href}
       onClick={(e) => e.stopPropagation()}
       className={cn(
-        "px-3 py-1.5 rounded-full text-sm font-medium transition-colors duration-300 w-fit",
+        "px-2.5 py-1 rounded-full text-sm font-medium transition-colors duration-300 w-fit",
         getCategoryBadgeClasses(categoryName), // ✅ uses bg + text + border + hover
         className
       )}

@@ -1,5 +1,10 @@
-import { Article } from "@/types/types";
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
+import { cn } from "@/lib/utils/cn";
+import ImagePlaceholder from "../image-placeholder";
+import { Article } from "@/types/types";
 
 export default function ArticleImage({
   article,
@@ -8,12 +13,20 @@ export default function ArticleImage({
   article: Article;
   className?: string;
 }) {
+  const [hasError, setHasError] = useState(false);
+
+  // If the image is missing or failed to load, show placeholder
+  if (hasError || !article.imageUrl) {
+    return <ImagePlaceholder className={cn("w-full h-full", className)} />;
+  }
+
   return (
     <Image
-      src={article.imageUrl || "/placeholder.svg"}
+      src={article.imageUrl}
       alt={article.title}
       fill
-      className={className}
+      className={cn("object-cover", className)}
+      onError={() => setHasError(true)}
     />
   );
 }

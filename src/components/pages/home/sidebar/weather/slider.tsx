@@ -1,32 +1,28 @@
 "use client";
 
-import { iranCities } from "@/constants/iranCities";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
-import WeatherWidget from "./item";
+import "swiper/css";
+import { iranCities } from "@/constants/iranCities";
+import WeatherTile from "./item";
 
-export default function IranWeatherTicker() {
+export default function IranWeatherSlider() {
   return (
-    <div className="w-full h-35 overflow-hidden">
+    <div className="relative w-full">
       <Swiper
-        direction="vertical"
-        slidesPerView={1} // show 1 item at a time
-        loop={true} // infinite loop
-        modules={[Autoplay]}
-        autoplay={{
-          delay: 2000, // 2 seconds per city
-          disableOnInteraction: false,
-          pauseOnMouseEnter: true,
-        }}
-        speed={800} // animation speed
-        className="h-full"
+        loop={true}
+        slidesPerView="auto"
+        spaceBetween={20}
+        centeredSlides={false}
+        grabCursor={true}
+        speed={600}
+        className="w-full"
       >
-        {iranCities.map((city) => (
+        {iranCities.concat(iranCities).map((city, i) => (
           <SwiperSlide
-            key={city.en}
-            className="flex justify-center items-center h-full"
+            key={city.en + i}
+            className="!w-[180px] sm:!w-[200px] lg:!w-[220px]"
           >
-            <WeatherWidget city={city.en} />
+            <WeatherTile city={city.en} />
           </SwiperSlide>
         ))}
       </Swiper>

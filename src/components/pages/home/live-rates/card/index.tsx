@@ -1,8 +1,9 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils/cn";
 import { LiveStat } from "../types/liveStat";
 import TrendingUpIcon from "@/assets/shared-icons/trending-up";
 import TrendingDownIcon from "@/assets/shared-icons/trending-down";
@@ -23,56 +24,106 @@ const iconMap: Record<
 
 export default function LiveStatCard({ stat }: { stat: LiveStat }) {
   const IconComponent = iconMap[stat.type];
+  const isUp = stat.trend === "up";
 
   return (
-    <Card
-      className={cn(
-        "relative p-4 pb-8 transition-all duration-300 shadow bg-primary/5 hover:shadow-lg border-0 !border-e-8 !border-primary"
-      )}
+    <motion.div
+      whileHover={{ y: -4, scale: 1.02 }}
+      transition={{ duration: 0.25, ease: "easeOut" }}
     >
-      {/* Header */}
-      <div className="flex items-center mb-1">
-        <div className="p-3 rounded-2xl bg-background/60">
-          <IconComponent className="w-6 h-6 text-primary" />
-        </div>
-        <p className="text-base font-medium text-muted-foreground ms-2">
-          {stat.title}
-        </p>
-      </div>
-
-      {/* Content */}
-      <div className="space-y-2">
-        <span
+      <Card
+        className={cn(
+          "relative p-3 rounded-xl overflow-hidden border border-transparent",
+          "bg-gradient-to-br from-background via-background/80 to-background/50",
+          "transition-all duration-300 hover:border-primary/30 hover:shadow-[0_0_20px_-5px_var(--tw-shadow-color)]",
+          isUp ? "shadow-emerald-500/20" : "shadow-rose-500/20"
+        )}
+      >
+        {/* Soft accent ring */}
+        <div
           className={cn(
-            "text-sm font-medium flex items-center gap-1 justify-end",
-            stat.trend === "up" ? "text-green-500" : "text-red-500"
+            "absolute inset-0 rounded-xl opacity-10 blur-2xl transition-all duration-300",
+            isUp ? "bg-emerald-400" : "bg-rose-500"
           )}
-        >
-          {stat.trend === "up" ? (
-            <TrendingUpIcon className="w-3 h-3" />
-          ) : (
-            <TrendingDownIcon className="w-3 h-3" />
-          )}
-          {stat.change}
-        </span>
-        <span className="text-xl xl:text-2xl font-bold text-foreground">
-          {stat.value}
-        </span>
-      </div>
+        />
 
-      {/* Badge */}
-      <div className="absolute left-3 -bottom-6 bg-background p-1.5 rounded-full">
-        <Badge
-          variant="outline"
-          className="flex items-center gap-1.5 text-xs font-medium border-transparent bg-rose-500/10 text-rose-700 px-2.5 py-1 rounded-full"
-        >
-          <span className="relative flex size-2">
-            <span className="absolute inline-flex w-full h-full rounded-full bg-rose-500 opacity-75 animate-ping"></span>
-            <span className="relative inline-flex size-2 rounded-full bg-rose-500"></span>
-          </span>
-          لحظه‌ ای
-        </Badge>
-      </div>
-    </Card>
+        {/* Header */}
+        <div className="relative flex items-center justify-between mb-2">
+          <div className="flex items-center gap-3">
+            <div
+              className={cn(
+                "p-2.5 rounded-xl transition-all duration-300",
+                isUp
+                  ? "bg-emerald-500/10 text-emerald-500"
+                  : "bg-rose-500/10 text-rose-500"
+              )}
+            >
+              <IconComponent className="w-5 h-5 sm:w-6 sm:h-6" />
+            </div>
+            <p className="text-base font-medium text-foreground/80 tracking-tight">
+              {stat.title}
+            </p>
+          </div>
+
+          <Badge
+            variant="outline"
+            className={cn(
+              "text-xs font-semibold rounded-full border-0",
+              "px-2.5 py-1.5 flex items-center gap-1.5",
+              isUp
+                ? "bg-emerald-500/10 text-emerald-600"
+                : "bg-rose-500/10 text-rose-600"
+            )}
+          >
+            <span className="relative flex size-2">
+              <span
+                className={cn(
+                  "absolute inline-flex w-full h-full rounded-full opacity-75 animate-ping",
+                  isUp ? "bg-emerald-500" : "bg-rose-500"
+                )}
+              />
+              <span
+                className={cn(
+                  "relative inline-flex size-2 rounded-full",
+                  isUp ? "bg-emerald-500" : "bg-rose-500"
+                )}
+              />
+            </span>
+            لحظه‌ای
+          </Badge>
+        </div>
+
+        {/* Value + Change */}
+        <div className="relative mt-4 flex flex-col items-end">
+          <motion.span
+            key={stat.value}
+            initial={{ opacity: 0, y: 4 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.25 }}
+            className="text-2xl font-bold text-foreground tracking-tight"
+          >
+            {stat.value}
+          </motion.span>
+
+          <motion.span
+            key={stat.change + stat.trend}
+            initial={{ opacity: 0, y: 4 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.25, delay: 0.05 }}
+            className={cn(
+              "text-sm font-medium flex items-center gap-1 mt-1",
+              isUp ? "text-emerald-500" : "text-rose-500"
+            )}
+          >
+            {isUp ? (
+              <TrendingUpIcon className="w-4 h-4" />
+            ) : (
+              <TrendingDownIcon className="w-4 h-4" />
+            )}
+            {stat.change}
+          </motion.span>
+        </div>
+      </Card>
+    </motion.div>
   );
 }

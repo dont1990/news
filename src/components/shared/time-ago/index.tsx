@@ -1,4 +1,4 @@
-import { timeAgo } from "@/utils/timeAgo";
+import { timeAgo } from "@/lib/utils/timeAgo";
 
 interface TimeAgoProps {
   date: string | number | Date;

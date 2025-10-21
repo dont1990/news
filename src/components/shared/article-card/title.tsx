@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils/cn";
 import { routes } from "@/routes/routes";
 import Link from "next/link";
 
@@ -17,7 +17,7 @@ export default function ArticleCardTitle({
     <Link
       href={routes.news.detail.getHref(id)}
       className={cn(
-        "text-base md:text-lg text-card-foreground hover:text-primary transition-colors line-clamp-2 font-semibold",
+        "text-sm sm:text-base md:text-lg text-card-foreground hover:text-primary transition-colors line-clamp-2 font-semibold",
         className
       )}
     >

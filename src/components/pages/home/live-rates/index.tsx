@@ -5,9 +5,9 @@ import LiveStatCard from "./card";
 import LiveStatCardSkeleton from "./card/skeleton";
 import { useRates } from "./hooks/useRates";
 import { LiveStat } from "./types/liveStat";
-import IranWeatherTicker from "../sidebar/weather/slider";
-import WorldClockTicker from "../sidebar/world-clock/slider";
 import TrendingUpIcon from "@/assets/shared-icons/trending-up";
+import IranWeatherSlider from "../sidebar/weather/slider";
+import WorldClockSlider from "../sidebar/world-clock/slider";
 
 export function LiveRates() {
   const { data, isLoading, isError } = useRates();
@@ -27,7 +27,7 @@ export function LiveRates() {
         },
         {
           id: 2,
-          title: "دلار آمریکا",
+          title: "دلار",
           value: data.dollar.value,
           change: data.dollar.change || "0",
           trend: Number(data.dollar.change) >= 0 ? "up" : "down",
@@ -65,9 +65,20 @@ export function LiveRates() {
             ))
           : liveStats.map((stat) => <LiveStatCard key={stat.id} stat={stat} />)}
       </div>
-      <div className="flex gap-4 my-10 justify-between items-stretch">
-        <IranWeatherTicker />
-        <WorldClockTicker />
+      <div className="flex flex-col gap-10 my-10">
+        <div>
+          <h3 className="text-sm font-semibold text-muted-foreground mb-3">
+            وضعیت آب‌وهوا (ایران)
+          </h3>
+          <IranWeatherSlider />
+        </div>
+
+        <div>
+          <h3 className="text-sm font-semibold text-muted-foreground mb-3">
+            ساعت جهانی
+          </h3>
+          <WorldClockSlider />
+        </div>
       </div>
     </section>
   );

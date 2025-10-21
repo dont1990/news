@@ -18,12 +18,12 @@ export function HeroGrid() {
 
   return (
     <Container>
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 xl:gap-6 h-auto">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 xl:gap-6 h-auto">
         {/* Featured Story */}
         <FeaturedStory article={featuredStory} />
 
         {/* Other Stories Column */}
-        <div className="flex flex-col gap-4 xl:gap-6 h-full content-between">
+        <div className="flex flex-col gap-4 xl:gap-6 h-full content-between lg:col-span-5">
           {otherStories.map((story) => (
             <ArticleCard key={story.id} article={story} type="horizontal" />
           ))}
