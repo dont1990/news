@@ -1,14 +1,13 @@
 import { Metadata } from "next";
-import ArticlePageWrapper from "@/app/components/pages/article/wrapper";
-import { getArticleById } from "@/app/components/pages/article/api/getArticleById";
-
+import ArticlePageWrapper from "@/components/pages/article/wrapper";
+import { getArticleById } from "@/components/pages/article/api/getArticleById";
 
 export async function generateMetadata({
   params,
 }: {
   params: { id: string };
 }): Promise<Metadata> {
-  const { id } = params; 
+  const { id } = params;
   const article = await getArticleById(id);
 
   if (!article) {
@@ -36,6 +35,6 @@ export default async function ArticlePage({
 }: {
   params: { id: string };
 }) {
-  const { id } = params; 
+  const { id } = params;
   return <ArticlePageWrapper id={id} />;
 }

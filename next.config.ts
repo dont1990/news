@@ -1,11 +1,16 @@
+import withBundleAnalyzer from "@next/bundle-analyzer";
 import type { NextConfig } from "next";
+
+const bundleAnalyzer = withBundleAnalyzer({
+  enabled: process.env.ANALYZE === "true", // only runs when you set ANALYZE=true
+});
 
 const nextConfig: NextConfig = {
   images: {
     domains: [
-      "media.mehrnews.com", // ✅ allow images from Mehr News
-      "img9.irna.ir", // optional: add other hosts you use
-      "www.example.com", // add more as needed
+      "media.mehrnews.com",
+      "img9.irna.ir",
+      "www.example.com",
       "s3.castbox.fm",
       "www.irna.ir",
       "media.mashreghnews.ir",
@@ -19,4 +24,5 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+// ✅ Export the combined config
+export default bundleAnalyzer(nextConfig);

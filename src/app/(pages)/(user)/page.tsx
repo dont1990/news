@@ -1,4 +1,4 @@
-import HomePageContent from "@/app/components/pages/home";
+import HomePageContent from "@/components/pages/home";
 
 export default function HomePage() {
   return <HomePageContent />;

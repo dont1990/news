@@ -2,19 +2,19 @@
 
 import { useState, useMemo } from "react";
 import Image from "next/image";
-import Container from "@/app/components/shared/container";
+import Container from "@/components/shared/container";
 import { Search, Filter, Newspaper } from "lucide-react";
-import GalleryModal from "@/app/components/shared/gallery-modal";
-import { Input } from "@/app/components/ui/input";
+import GalleryModal from "@/components/shared/gallery-modal";
+import { Input } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/app/components/ui/select";
-import { useNewspapers } from "@/app/components/pages/home/newspaper/hooks/useNewspapers";
-import { PageHeader } from "@/app/components/shared/page-header";
+} from "@/components/ui/select";
+import { useNewspapers } from "@/components/pages/home/newspaper/hooks/useNewspapers";
+import { PageHeader } from "@/components/shared/page-header";
 
 export default function NewspaperPage() {
   const { data, isLoading, error } = useNewspapers();
@@ -51,16 +51,16 @@ export default function NewspaperPage() {
 
   return (
     <section className="w-full bg-gray-50 py-10 min-h-screen">
-        {/* Hero / Title */}
-        <PageHeader
-          title="روزنامه‌ها"
-          subtitle="مرور و مشاهده نسخه‌های مختلف روزنامه‌های برتر"
-          icon={<Newspaper className="h-6 w-6 text-primary" />}
-          badgeText="روزنامه"
-          badgeCount={data?.length ?? 0}
-          loading={isLoading}
-          category="news"
-        />
+      {/* Hero / Title */}
+      <PageHeader
+        title="روزنامه‌ها"
+        subtitle="مرور و مشاهده نسخه‌های مختلف روزنامه‌های برتر"
+        icon={<Newspaper className="h-6 w-6 text-primary" />}
+        badgeText="روزنامه"
+        badgeCount={data?.length ?? 0}
+        loading={isLoading}
+        category="news"
+      />
       <Container>
         {/* Filter / Search Bar */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-10 bg-white rounded-xl shadow-sm border border-gray-100 p-4">

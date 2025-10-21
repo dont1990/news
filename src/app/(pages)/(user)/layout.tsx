@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { Header } from "@/app/components/shared/header";
-import { Footer } from "@/app/components/shared/footer";
+import { Header } from "@/components/shared/header";
+import { Footer } from "@/components/shared/footer";
 
 export const metadata: Metadata = {
   title: "چشمک | اخبار و مقالات روز",
