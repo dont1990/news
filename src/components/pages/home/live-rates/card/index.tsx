@@ -58,7 +58,7 @@ export default function LiveStatCard({ stat }: { stat: LiveStat }) {
                   : "bg-rose-500/10 text-rose-500"
               )}
             >
-              <IconComponent className="w-5 h-5 sm:w-6 sm:h-6" />
+              <IconComponent className="size-5" />
             </div>
             <p className="text-base font-medium text-foreground/80 tracking-tight">
               {stat.title}

@@ -41,7 +41,7 @@ const FeaturedStory = ({ article }: { article: Article }) => {
           {article.title}
         </Link>
 
-        <p className="text-sm sm:text-base md:text-lg text-gray-200 mb-4 sm:mb-6 line-clamp-2 sm:line-clamp-3">
+        <p className="text-sm sm:text-base md:text-lg text-gray-200 mb-4 sm:mb-6 line-clamp-2">
           {article.description}
         </p>
 
