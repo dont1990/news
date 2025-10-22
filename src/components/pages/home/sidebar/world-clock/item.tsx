@@ -28,7 +28,7 @@ export default function ClockTile({ city, timezone }: ClockTileProps) {
     <div
       className={cn(
         "relative flex flex-col items-center justify-center text-center rounded-2xl border border-border shadow-sm h-44 p-4 overflow-hidden backdrop-blur-md cursor-grab",
-        "bg-gradient-to-br from-background via-background/80 to-background/50 transition-all duration-300 hover:scale-[1.02]"
+        "bg-primary/5 transition-all duration-300 hover:scale-[1.02]"
       )}
     >
       <div className={cn("absolute inset-0 blur-2xl opacity-20", gradient)} />

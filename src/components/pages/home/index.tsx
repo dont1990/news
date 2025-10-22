@@ -9,6 +9,8 @@ import NewspapersGrid from "./newspaper";
 import { Suspense } from "react";
 import { PageHeader } from "../../shared/page-header";
 import { BreakingNews } from "./breaking-news";
+import WorldClockSlider from "./sidebar/world-clock/slider";
+import IranWeatherSlider from "./sidebar/weather/slider";
 
 export default function HomePageContent() {
   return (
@@ -27,6 +29,8 @@ export default function HomePageContent() {
               <div className="flex flex-col gap-6">
                 <BreakingNews />
                 <LiveRates />
+                <IranWeatherSlider />
+                <WorldClockSlider />
               </div>
               <LatestNews />
               <SportNews />
