@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Container from "../../../shared/container";
-import { Article } from "@/types/types";
+import { Article } from "@/types/article";
 import Link from "next/link";
 import { routes } from "@/routes/routes";
 import FlashIcon from "./assets/flash";

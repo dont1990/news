@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Article } from "@/types/types";
+import { Article } from "@/types/article";
 import { apiClient } from "@/lib/api/api-client";
 
 interface UseLimitedNews {

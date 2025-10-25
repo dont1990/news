@@ -1,4 +1,4 @@
-import { Params } from "@/types/types";
+import { Params } from "@/types";
 import { ApiError } from "./types/api-error";
 
 export async function apiClient<T>(

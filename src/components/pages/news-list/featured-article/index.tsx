@@ -1,6 +1,6 @@
 "use client";
 
-import { Article } from "@/types/types";
+import { Article } from "@/types/article";
 import { getCategoryColors } from "@/lib/category-colors";
 import Link from "next/link";
 import { AnimatedLink } from "@/components/shared/animated-link";

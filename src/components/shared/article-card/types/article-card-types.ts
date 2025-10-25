@@ -1,4 +1,4 @@
-import { Article } from "@/types/types";
+import { Article } from "@/types/article";
 
 export interface ArticleCardProps {
   article: Article;

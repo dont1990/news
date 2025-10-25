@@ -2,7 +2,7 @@
 
 import { ArticleCard } from "@/components/shared/article-card";
 import { getCategoryColors } from "@/lib/category-colors";
-import { Article } from "@/types/types";
+import { Article } from "@/types/article";
 import { EmptyCategory } from "../empty";
 import { FeaturedArticle } from "../featured-article";
 import { InfiniteLoader } from "@/components/shared/infinite-loader";

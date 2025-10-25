@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Article } from "@/types/types";
+import { Article } from "@/types/article";
 import { SearchResultItem } from "./item";
 import { SearchEmptyState } from "./empty";
 import ArrowLeft from "@/assets/shared-icons/arrow-left";

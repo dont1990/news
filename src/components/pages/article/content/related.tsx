@@ -2,7 +2,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import Image from "next/image";
-import { Article } from "@/types/types";
+import { Article } from "@/types/article";
 import { routes } from "@/routes/routes";
 
 interface ArticleRelatedProps {

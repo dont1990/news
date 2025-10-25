@@ -1,6 +1,6 @@
 import { useInfiniteResource } from "@/hooks/useInfiniteResource";
 import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
-import { Article } from "@/types/types";
+import { Article } from "@/types/article";
 import { useMemo } from "react";
 
 type NewsFilters = {

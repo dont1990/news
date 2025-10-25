@@ -1,5 +1,5 @@
 "use client";
-import { Article } from "@/types/types";
+import { Article } from "@/types/article";
 
 interface ArticleContentProps {
   article: Article;

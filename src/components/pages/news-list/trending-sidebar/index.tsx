@@ -1,6 +1,6 @@
 "use client";
 
-import { Article } from "@/types/types";
+import { Article } from "@/types/article";
 import Link from "next/link";
 import Image from "next/image";
 import { NAVBAR_HEIGHT } from "@/constants/global";

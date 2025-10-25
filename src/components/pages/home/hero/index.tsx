@@ -1,14 +1,14 @@
 import React from "react";
-import { HeroGrid } from "@/components/pages/home/hero/hero-grid";
 import HeroTest from "./test";
+import HeroGrid from "./hero-grid";
 
 const Hero = () => {
   return (
     <>
       {/* <HeroSlider /> */}
 
-      {/* <HeroGrid /> */}
-      <HeroTest/>
+      <HeroGrid />
+      {/* <HeroTest/> */}
       {/* <InteractiveTimeline/> */}
       {/* <BreakingNews /> */}
     </>

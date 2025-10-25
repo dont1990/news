@@ -4,7 +4,7 @@ import ArticleHeader from "./header";
 import ArticleHeroImage from "./hero-image";
 import ArticleContent from "./content";
 import ArticleRelated from "./related";
-import { Article } from "@/types/types";
+import { Article } from "@/types/article";
 import Container from "@/components/shared/container";
 import { AnimatedLink } from "@/components/shared/animated-link";
 import ArrowLeft from "../../../../assets/shared-icons/arrow-left";

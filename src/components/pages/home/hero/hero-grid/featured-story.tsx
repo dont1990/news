@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import CategoryBadge from "@/components/shared/category-badge";
 import { Button } from "@/components/ui/button";
-import { Article } from "@/types/types";
+import { Article } from "@/types/article";
 import { routes } from "@/routes/routes";
 import ImagePlaceholder from "@/components/shared/image-placeholder";
 

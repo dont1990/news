@@ -1,6 +1,6 @@
 import { useInfiniteQuery, QueryFunctionContext } from "@tanstack/react-query";
 import { apiClient } from "@/lib/api/api-client";
-import { Params } from "../types/types";
+import { Params } from "../types";
 import { PAGE_LIMIT } from "../constants/global";
 
 type PaginatedResponse<T> = {

@@ -49,7 +49,6 @@
   --primary-800: #9a3412;
   --primary-900: #7c2d12;
 
-
   /* Primary Shades (Teal) */
   /* --primary-50: #f0fdfa;
   --primary-100: #ccfbf1;
@@ -180,7 +179,7 @@
 /* ---------- Base Styles ---------- */
 html[dir="rtl"] {
   direction: rtl; /* ensures layout flows right-to-left */
-  font-family: 'iran-sans', 'Roboto', Arial, sans-serif;
+  font-family: "iran-sans", "Roboto", Arial, sans-serif;
 }
 
 body {
@@ -221,6 +220,7 @@ textarea {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#FB923C", endColorstr="#EA580C", GradientType=1);
 }
 
+
 /* styles/globals.css or tailwind.css */
 .no-scrollbar::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
@@ -232,7 +232,12 @@ textarea {
 
 .swiper-pagination-bullet {
   width: 12px !important;
-  height: 12px !important;
+  height: 4px !important;
+  border-radius: 2px !important;
+}
+.swiper-pagination-bullet-active{
+  width: 28px !important;
+
 }
 .swiper-button-next-custom.swiper-button-disabled,
 .swiper-button-prev-custom.swiper-button-disabled {
@@ -242,7 +247,6 @@ textarea {
     --primary
   ) !important; /* or use Tailwind color equivalent */
 }
-
 
 nav.image-gallery-thumbnails-container button {
   width: auto;

@@ -1,4 +1,4 @@
-import { Article } from "@/types/types";
+import { Article } from "@/types/article";
 import { useInfiniteResource } from "@/hooks/useInfiniteResource";
 
 export function useSearchNews(query: string) {

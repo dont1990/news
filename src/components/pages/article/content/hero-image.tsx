@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { Article } from "@/types/types";
+import { Article } from "@/types/article";
 
 interface ArticleHeroImageProps {
   article: Article;

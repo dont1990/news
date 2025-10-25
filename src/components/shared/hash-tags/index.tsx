@@ -22,7 +22,7 @@ const ArticleHashTags = ({ tags }: Props) => {
   const slicedTags = uniqueTags.slice(0, 3);
 
   return (
-    <div className="flex gap-1 flex-wrap my-1 mb-2">
+    <div className="flex gap-1 flex-wrap my-1 mb-2 mt-auto">
       {slicedTags.map((tag) => (
         <HashTag key={tag} tag={tag} highlighted={currentTags.includes(tag)} />
       ))}

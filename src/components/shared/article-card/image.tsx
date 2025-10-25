@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils/cn";
 import ImagePlaceholder from "../image-placeholder";
-import { Article } from "@/types/types";
+import { Article } from "@/types/article";
 
 export default function ArticleImage({
   article,
@@ -25,6 +25,8 @@ export default function ArticleImage({
       src={article.imageUrl}
       alt={article.title}
       fill
+      // placeholder="blur"
+      // blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8+vXrHgAGcwL/OnTq6gAAAABJRU5ErkJggg=="
       className={cn("object-cover", className)}
       onError={() => setHasError(true)}
     />

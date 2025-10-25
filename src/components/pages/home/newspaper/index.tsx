@@ -34,7 +34,10 @@ export default function TopNewspapersSwiper() {
     );
 
   return (
-    <section className="w-full py-10 bg-gray-50 relative bg-gradient-to-t from-primary/10 via-primary/5 to-primary/5 ">
+    <section className="w-full py-10 bg-gray-50 relative">
+      <div className="bg-primary/5 absolute inset-0 w-1/2 mr-auto">
+
+      </div>
       <Container>
         <SectionTitle
           link="/newspaper"
@@ -107,7 +110,7 @@ export default function TopNewspapersSwiper() {
             </div>
 
             {/* Pagination */}
-            <div className="swiper-pagination-custom mt-6 flex justify-center gap-2 z-30 relative"></div>
+            <div className="swiper-pagination-custom mt-6 flex justify-center gap-.5 z-30 relative"></div>
           </Swiper>
         </div>
       </Container>

@@ -1,5 +1,5 @@
 import { apiClient } from "@/lib/api/api-client";
-import { Article } from "@/types/types";
+import { Article } from "@/types/article";
 import { useQuery } from "@tanstack/react-query";
 
 export function useTrendingNews(limit: number = 5) {

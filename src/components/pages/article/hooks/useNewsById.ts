@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { apiClient } from "@/lib/api/api-client";
-import { Article } from "@/types/types";
+import { Article } from "@/types/article";
 
 export function useNewsById(id?: string) {
   return useQuery({

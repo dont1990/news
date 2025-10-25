@@ -1,7 +1,7 @@
 "use client";
 
 import { ArticleCard } from "@/components/shared/article-card";
-import { Article } from "@/types/types";
+import { Article } from "@/types/article";
 
 type Props = {
   articles: Article[];

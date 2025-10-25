@@ -4,7 +4,7 @@ import { useState, useRef, useEffect, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { useQueryParams } from "@/hooks/useQueryParams";
 import { routes } from "@/routes/routes";
-import { Article } from "@/types/types";
+import { Article } from "@/types/article";
 import { useNewsFeed } from "@/components/pages/news-list/hooks/useNewsFeed";
 
 export function useSearch() {

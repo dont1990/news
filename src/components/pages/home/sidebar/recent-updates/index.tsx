@@ -2,7 +2,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import TimeAgo from "@/components/shared/time-ago";
-import { Article } from "@/types/types";
+import { Article } from "@/types/article";
 import Link from "next/link";
 import { routes } from "@/routes/routes";
 import ClockIcon from "@/assets/shared-icons/clock";

@@ -6,7 +6,7 @@ import UserIcon from "../assets/user";
 import CalendarIcon from "../../../../assets/shared-icons/calendar";
 import Share from "../assets/share";
 import Bookmark from "../assets/bookmark";
-import { Article } from "@/types/types";
+import { Article } from "@/types/article";
 import DateText from "@/components/shared/date-text";
 import TimeAgo from "@/components/shared/time-ago";
 import CategoryBadge from "@/components/shared/category-badge";

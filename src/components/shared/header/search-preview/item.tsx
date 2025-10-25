@@ -3,7 +3,7 @@
 import Image from "next/image";
 import CategoryBadge from "../../category-badge";
 import { useRouter } from "next/navigation";
-import { Article } from "@/types/types";
+import { Article } from "@/types/article";
 import TimeAgo from "../../time-ago";
 import ClockIcon from "@/assets/shared-icons/clock";
 
