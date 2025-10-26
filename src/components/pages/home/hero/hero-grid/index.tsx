@@ -7,6 +7,13 @@ import Image from "next/image";
 import { useHeroNews } from "../hooks/useHeroNews"; // make sure path is correct
 import CategoryBadge from "@/components/shared/category-badge"; // import your component
 import { ShareButton } from "@/components/shared/share";
+import Link from "next/link";
+import { routes } from "@/routes/routes";
+import DateText from "@/components/shared/date-text";
+import Container from "@/components/shared/container";
+import TimeAgo from "@/components/shared/time-ago";
+import { IconActionButton } from "@/components/shared/icon-action-button";
+import { Separator } from "@/components/ui/separator";
 
 export default function HeroGrid() {
   const { data: articles, isLoading, error } = useHeroNews();
@@ -19,7 +26,7 @@ export default function HeroGrid() {
   const activeArticle = articles[active];
 
   return (
-    <section className="container mx-auto px-6 py-16 grid lg:grid-cols-12 gap-8 items-center">
+    <Container className="grid lg:grid-cols-12 gap-8 items-center">
       {/* Right: Slider Thumbnails */}
       <div className="lg:col-span-7 flex gap-3 h-[500px] overflow-hidden">
         {articles.map((article, index) => (
@@ -69,30 +76,27 @@ export default function HeroGrid() {
         </div>
 
         {/* Title */}
-        <h2 className="text-4xl md:text-5xl font-extrabold leading-tight text-foreground">
+        <h2 className="text-4xl font-extrabold leading-tight text-foreground line-clamp-4">
           {activeArticle.title}
         </h2>
 
         {/* Description */}
-        <p className="text-muted-foreground text-lg leading-relaxed border-s-4 border-red-600 ps-4 md:pl-6">
+        <p className="text-muted-foreground text-lg leading-relaxed border-s-4 border-primary ps-4 md:pl-6 line-clamp-3">
           {activeArticle.description}
         </p>
 
         {/* Action Buttons */}
-        <div className="flex flex-wrap justify-end gap-3">
-          <Button size="lg">
-            مطالعه کامل خبر
-          </Button>
-          <Button
-            variant="outline"
+        <div className="flex flex-wrap gap-3">
+          <Link href={routes.news.detail.getHref(activeArticle.id)}>
+            <Button size="lg">مطالعه کامل خبر</Button>
+          </Link>
+
+          <IconActionButton
+            icon={<Bookmark className="w-4 h-4" />}
+            tooltip="افزودن به نشان‌ها"
+            variant="ghost"
             size="lg"
-          >
-            <Play className="w-4 h-4" />
-            مشاهده ویدیو
-          </Button>
-          <Button variant="ghost" size="lg" className="gap-2">
-            <Bookmark className="w-4 h-4" />
-          </Button>
+          />
           <ShareButton
             url={activeArticle.sourceLink ?? window.location.href}
             title={activeArticle.title}
@@ -103,23 +107,35 @@ export default function HeroGrid() {
           />
         </div>
 
+        <Separator />
         {/* Meta Info */}
-        <div className="flex flex-wrap justify-end items-center gap-4 text-sm text-muted-foreground pt-2 border-t border-gray-200">
-          <span className="font-medium text-foreground">{activeArticle.source}</span>
+        <div className="flex flex-wrap justify-end items-center gap-4 text-sm text-muted-foreground">
+          <span className="font-medium text-foreground">
+            {activeArticle.source}
+          </span>
           <span>•</span>
-          <span>{activeArticle.publishedAt}</span>
+          <span>
+            {" "}
+            <DateText
+              date={activeArticle.publishedAt}
+              className="text-muted-foreground me-0.5"
+            />
+          </span>
+
           <span>•</span>
           <div className="flex items-center gap-1">
             <Clock className="w-4 h-4 text-muted-foreground" />
-            <span>{activeArticle.readTime ?? "۵ دقیقه خواندن"}</span>
+            <span>
+              <TimeAgo date={activeArticle.publishedAt} />
+            </span>
           </div>
           <span>•</span>
           <div className="flex items-center gap-1">
             <Eye className="w-4 h-4 text-muted-foreground" />
-            <span>{activeArticle.views ?? "۱.۲K بازدید"}</span>
+            <span>{activeArticle.views}</span>
           </div>
         </div>
       </div>
-    </section>
+    </Container>
   );
 }

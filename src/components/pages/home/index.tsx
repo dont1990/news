@@ -7,7 +7,6 @@ import { LiveRates } from "./live-rates";
 import SportNews from "./sport-news";
 import NewspapersGrid from "./newspaper";
 import { Suspense } from "react";
-import { PageHeader } from "../../shared/page-header";
 import { BreakingNews } from "./breaking-news";
 import WorldClockSlider from "./sidebar/world-clock/slider";
 import IranWeatherSlider from "./sidebar/weather/slider";
@@ -16,10 +15,10 @@ export default function HomePageContent() {
   return (
     <>
       <Hero />
-      <PageHeader
+      {/* <PageHeader
         title="با اخبار جهانی همراه باشید"
         subtitle="آخرین اخبار فوری، تحلیل‌های عمیق و داستان‌های پرطرفدار از سراسر جهان"
-      />
+      /> */}
 
       <Suspense fallback={"loading ..."}>
         <Container>
