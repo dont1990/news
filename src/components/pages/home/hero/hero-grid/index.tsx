@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Clock, Eye, Play, Bookmark } from "lucide-react";
 import Image from "next/image";
@@ -19,14 +19,20 @@ export default function HeroGrid() {
   const { data: articles, isLoading, error } = useHeroNews();
   const [active, setActive] = useState(0);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActive((prev) => (prev + 1) % (articles?.length ?? 0));
+    }, 8000);
+    return () => clearInterval(interval);
+  }, [articles?.length]);
+
   if (isLoading) return <p>در حال بارگذاری اخبار مهم...</p>;
   if (error) return <p>خطا در بارگذاری اخبار: {error.message}</p>;
   if (!articles || articles.length === 0) return <p>هیچ خبری موجود نیست.</p>;
-
   const activeArticle = articles[active];
 
   return (
-    <Container className="grid lg:grid-cols-12 gap-8 items-center">
+    <Container className="grid lg:grid-cols-12 gap-6 items-center max-md:grid-cols-1">
       {/* Right: Slider Thumbnails */}
       <div className="lg:col-span-7 flex gap-3 h-[500px] overflow-hidden">
         {articles.map((article, index) => (
@@ -71,17 +77,45 @@ export default function HeroGrid() {
       {/* Left: Active Story Info */}
       <div className="lg:col-span-5 flex flex-col justify-center gap-6 text-right">
         {/* Category */}
-        <div className="flex items-center justify-end">
+        <div className="flex items-center">
           <CategoryBadge title={activeArticle.category} />
         </div>
 
         {/* Title */}
-        <h2 className="text-4xl font-extrabold leading-tight text-foreground line-clamp-4">
+        <p
+          className="
+    text-2xl 
+    sm:text-3xl 
+    md:text-4xl 
+    font-extrabold 
+    leading-tight 
+    text-foreground 
+    line-clamp-3 
+    tracking-tight
+  "
+        >
           {activeArticle.title}
-        </h2>
+        </p>
 
         {/* Description */}
-        <p className="text-muted-foreground text-lg leading-relaxed border-s-4 border-primary ps-4 md:pl-6 line-clamp-3">
+        <p
+          className="
+    text-sm 
+    sm:text-base 
+    md:text-lg 
+    text-muted-foreground 
+    leading-relaxed 
+    border-s-2 
+    sm:border-s-4 
+    border-primary 
+    ps-3 
+    sm:ps-4 
+    md:ps-6 
+    line-clamp-2 
+    sm:line-clamp-3
+    text-justify
+  "
+        >
           {activeArticle.description}
         </p>
 
@@ -109,31 +143,41 @@ export default function HeroGrid() {
 
         <Separator />
         {/* Meta Info */}
-        <div className="flex flex-wrap justify-end items-center gap-4 text-sm text-muted-foreground">
-          <span className="font-medium text-foreground">
-            {activeArticle.source}
-          </span>
-          <span>•</span>
-          <span>
-            {" "}
-            <DateText
-              date={activeArticle.publishedAt}
-              className="text-muted-foreground me-0.5"
-            />
-          </span>
-
-          <span>•</span>
-          <div className="flex items-center gap-1">
-            <Clock className="w-4 h-4 text-muted-foreground" />
-            <span>
-              <TimeAgo date={activeArticle.publishedAt} />
+        <div className="flex flex-wrap justify-end items-center gap-3 lg:gap-4 text-sm text-muted-foreground">
+          {activeArticle.source && (
+            <span className="font-medium text-foreground">
+              {activeArticle.source}
             </span>
-          </div>
-          <span>•</span>
-          <div className="flex items-center gap-1">
-            <Eye className="w-4 h-4 text-muted-foreground" />
-            <span>{activeArticle.views}</span>
-          </div>
+          )}
+          {activeArticle.publishedAt && (
+            <>
+              <span>•</span>
+              <DateText
+                date={activeArticle.publishedAt}
+                className="text-muted-foreground me-0.5"
+              />
+            </>
+          )}
+          {activeArticle.publishedAt && (
+            <>
+              <span>•</span>
+              <div className="flex items-center gap-1">
+                <Clock className="w-4 h-4 text-muted-foreground" />
+                <span>
+                  <TimeAgo date={activeArticle.publishedAt} />
+                </span>
+              </div>
+            </>
+          )}
+          {activeArticle.views && (
+            <>
+              <span>•</span>
+              <div className="flex items-center gap-1">
+                <Eye className="w-4 h-4 text-muted-foreground" />
+                <span>{activeArticle.views}</span>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </Container>
