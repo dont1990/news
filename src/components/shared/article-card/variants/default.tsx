@@ -7,10 +7,8 @@ import ArticleCardTitle from "../title";
 import ArticleDescription from "../description";
 import ArticleImage from "../image";
 import ArticleHashTags from "../../hash-tags";
-import { AnimatedLink } from "../../animated-link";
 import ClockIcon from "@/assets/shared-icons/clock";
 import TimeAgo from "../../time-ago";
-import { Link as LinkIcon } from "lucide-react";
 import { highlightText } from "@/lib/highlight";
 import { ArticleCardProps } from "../types/article-card-types";
 import { routes } from "@/routes/routes";
@@ -23,7 +21,6 @@ export const DefaultCard = ({ article, highlightQuery }: ArticleCardProps) => {
     id,
     publishedAt,
     source,
-    sourceLink,
     tags,
   } = article;
 

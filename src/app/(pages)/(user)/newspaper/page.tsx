@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Container from "@/components/shared/container";
 import { Newspaper } from "lucide-react";
