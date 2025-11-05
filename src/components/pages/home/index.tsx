@@ -28,8 +28,8 @@ export default function HomePageContent() {
               <div className="flex flex-col gap-6">
                 <BreakingNews />
                 <LiveRates />
-                <IranWeatherSlider />
-                <WorldClockSlider />
+                {/* <IranWeatherSlider />
+                <WorldClockSlider /> */}
               </div>
               <LatestNews />
               <SportNews />

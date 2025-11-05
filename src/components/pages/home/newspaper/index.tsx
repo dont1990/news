@@ -90,7 +90,7 @@ export default function TopNewspapersSwiper() {
                     <p className="font-bold text-sm md:text-base line-clamp-2 text-gray-800 group-hover:text-primary transition-colors">
                       {paper.name}
                     </p>
-                    <p className="text-xs md:text-sm text-gray-600 mt-1 line-clamp-2">
+                    <p className="text-xs md:text-sm text-gray-600 line-clamp-2">
                       {paper.headline}
                     </p>
                     <p className="text-xs text-gray-400 mt-2">{paper.date}</p>

@@ -38,7 +38,7 @@ export function Header() {
       variants={containerVariants}
     >
       {/* Top Header */}
-      <Container paddingY="py-4" className="flex flex-col gap-4">
+      <Container className="flex flex-col gap-4 !p-4">
         <motion.div
           className="flex items-center justify-between"
           variants={itemVariants}

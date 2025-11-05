@@ -17,7 +17,7 @@ type Props = {
 
 export function HeroArticleInfo({ article }: Props) {
   return (
-    <div className="lg:col-span-5 flex flex-col justify-center gap-6 text-right">
+    <div className="lg:col-span-5 flex flex-col justify-center gap-6 xl:gap-10 text-right">
       <div className="flex items-center">
         <CategoryBadge title={article.category} />
       </div>
