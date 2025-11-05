@@ -1,7 +1,6 @@
-import { useInfiniteResource } from "@/hooks/useInfiniteResource";
-import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
-import { Article } from "@/types/article";
 import { useMemo } from "react";
+import { useInfinite } from "@/hooks/useInfinite";
+import { Article } from "@/types/article";
 
 type NewsFilters = {
   category?: string;
@@ -31,28 +30,26 @@ export function useNewsFeed(filters?: NewsFilters) {
     [category, search, sort, dateFilter, tags]
   );
 
+  // ✅ Use the new unified infinite hook
   const {
-    data,
-    fetchNextPage,
-    hasNextPage,
-    isLoading,
-    isFetching,
-    isFetchingNextPage,
-  } = useInfiniteResource<Article>("news", queryParams);
-
-  const { ref } = useInfiniteScroll({ hasNextPage, fetchNextPage });
-
-  const articles: Article[] = data?.pages.flatMap((p) => p.data) || [];
-  const total = data?.pages[0]?.total ?? 0;
-
-  return {
-    articles,
+    items: articles,
     total,
-    loading: isLoading,
-    fetching: isFetching,
     ref,
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
+    loading,
+    fetching,
+  } = useInfinite<Article>("news", queryParams);
+
+  return {
+    articles,
+    total,
+    ref,                   // attach this to bottom div for infinite scroll
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+    loading,
+    fetching,
   };
 }

@@ -3,94 +3,57 @@
 import { useState, useMemo } from "react";
 import Image from "next/image";
 import Container from "@/components/shared/container";
-import { Search, Filter, Newspaper } from "lucide-react";
+import { Newspaper } from "lucide-react";
 import GalleryModal from "@/components/shared/gallery-modal";
-import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { useNewspapers } from "@/components/pages/home/newspaper/hooks/useNewspapers";
 import { PageHeader } from "@/components/shared/page-header";
+import { useQueryParams } from "@/hooks/useQueryParams";
+import { NewspaperFilter } from "@/components/pages/newspaper/filter/newspaper-filter";
+import { InfiniteLoader } from "@/components/shared/infinite-loader";
+import { useNewspapers } from "@/components/pages/newspaper/filter/hooks/useNewspaper";
 
 export default function NewspaperPage() {
-  const { data, isLoading, error } = useNewspapers();
-  const [search, setSearch] = useState("");
-  const [sort, setSort] = useState("latest");
+  const { getParam, setParam } = useQueryParams();
+
+  const search = getParam("search") || "";
+  const sort = (getParam("sort") as "az" | "za") || "az";
+
+  const [searchInput, setSearchInput] = useState(search);
+
+  const { newspapers, total, loading, ref, isFetchingNextPage } =
+    useNewspapers({
+      search,
+      sort,
+    });
+
+  
+
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
-
-  const filtered = useMemo(() => {
-    if (!data) return [];
-    const filteredData = data.filter(
-      (n) =>
-        n.name.toLowerCase().includes(search.toLowerCase()) ||
-        n.headline.toLowerCase().includes(search.toLowerCase())
-    );
-    if (sort === "oldest") return filteredData.reverse();
-    return filteredData;
-  }, [data, search, sort]);
-
   const handleOpenGallery = (index: number) => setSelectedIndex(index);
   const handleCloseGallery = () => setSelectedIndex(null);
 
-  if (isLoading)
-    return (
-      <div className="min-h-[60vh] flex items-center justify-center text-gray-500">
-        در حال بارگذاری...
-      </div>
-    );
-  if (error)
-    return (
-      <div className="min-h-[60vh] flex items-center justify-center text-red-500">
-        خطا در دریافت اطلاعات
-      </div>
-    );
-
   return (
     <section className="w-full bg-gray-50 py-10 min-h-screen">
-      {/* Hero / Title */}
       <PageHeader
         title="روزنامه‌ها"
         subtitle="مرور و مشاهده نسخه‌های مختلف روزنامه‌های برتر"
         icon={<Newspaper className="h-6 w-6 text-primary" />}
         badgeText="روزنامه"
-        badgeCount={data?.length ?? 0}
-        loading={isLoading}
+        badgeCount={total}
+        loading={loading}
         category="news"
       />
       <Container>
-        {/* Filter / Search Bar */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-10 bg-white rounded-xl shadow-sm border border-gray-100 p-4">
-          <div className="flex items-center w-full md:w-1/2 gap-2">
-            <Search className="text-gray-400 w-5 h-5" />
-            <Input
-              placeholder="جستجو بین روزنامه‌ها..."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              className="w-full"
-            />
-          </div>
+        <NewspaperFilter
+          searchInput={searchInput}
+          setSearchInput={setSearchInput}
+          onSearch={(value) => setParam("search", value ?? searchInput)}
+          sort={sort}
+          setSort={(v) => setParam("sort", v)}
+        />
 
-          <div className="flex items-center gap-3">
-            <Filter className="text-gray-400 w-5 h-5" />
-            <Select value={sort} onValueChange={setSort}>
-              <SelectTrigger className="w-40">
-                <SelectValue placeholder="مرتب‌سازی" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="latest">جدیدترین</SelectItem>
-                <SelectItem value="oldest">قدیمی‌ترین</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-        </div>
-
-        {/* Grid */}
+        {/* 📰 Newspaper Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filtered.map((paper, idx) => (
+          {newspapers.map((paper, idx) => (
             <div
               key={paper.id}
               onClick={() => handleOpenGallery(idx)}
@@ -103,7 +66,7 @@ export default function NewspaperPage() {
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
                 />
-                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>
               <div className="p-4">
                 <h3 className="font-semibold text-gray-800 text-base line-clamp-2 group-hover:text-primary transition-colors">
@@ -118,15 +81,20 @@ export default function NewspaperPage() {
           ))}
         </div>
 
-        {filtered.length === 0 && (
+        {isFetchingNextPage && (
+          <InfiniteLoader className="my-6" message="در حال بارگذاری..." />
+        )}
+
+        {newspapers.length === 0 && !loading && (
           <p className="text-center text-gray-500 mt-10">موردی یافت نشد.</p>
         )}
+
+        <div ref={ref} aria-hidden="true" />
       </Container>
 
-      {/* Gallery Modal */}
-      {selectedIndex !== null && filtered && (
+      {selectedIndex !== null && newspapers && (
         <GalleryModal
-          images={filtered.map((p) => ({
+          images={newspapers.map((p) => ({
             src: p.imageUrl,
             alt: p.name,
             caption: `${p.name} — ${p.headline}`,

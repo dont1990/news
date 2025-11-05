@@ -1,31 +1,16 @@
 import { useMemo } from "react";
-import { useInfiniteResource } from "@/hooks/useInfiniteResource";
-import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
-import {
-  categories as staticCategories,
-  Category,
-} from "@/data/categories/categories";
-import { PAGE_LIMIT } from "@/constants/global";
+import { useInfinite } from "@/hooks/useInfinite";
+import { categories as staticCategories, Category } from "@/data/categories/categories";
 import HashTagIcon from "@/assets/shared-icons/hash";
 
 function mergeCategories(apiCats: string[]): Category[] {
   const mappedApiCats: Category[] = apiCats.map((title) => {
     const found = staticCategories.find((c) => c.title === title);
-    return (
-      found || {
-        title,
-        icon: HashTagIcon,
-        description: "",
-      }
-    );
+    return found || { title, icon: HashTagIcon, description: "" };
   });
 
-  // Deduplicate by title
   const unique = new Map<string, Category>();
-  [...staticCategories, ...mappedApiCats].forEach((cat) =>
-    unique.set(cat.title, cat)
-  );
-
+  [...staticCategories, ...mappedApiCats].forEach((cat) => unique.set(cat.title, cat));
   return Array.from(unique.values());
 }
 
@@ -34,27 +19,11 @@ type CategoryFilters = {
   sort?: string;
 };
 
-export function useInfiniteCategories(
-  filters?: CategoryFilters,
-  limit: number = PAGE_LIMIT
-) {
-  const { data, fetchNextPage, hasNextPage, isLoading, isFetchingNextPage } =
-    useInfiniteResource<string>("categories", filters, limit); // Change generic type to string
+export function useInfiniteCategories(filters?: CategoryFilters, limit: number = 10) {
+  const { items, ref, fetchNextPage, hasNextPage, isFetchingNextPage, loading } =
+    useInfinite<string>("categories", filters, limit);
 
-  const { ref } = useInfiniteScroll({ hasNextPage, fetchNextPage });
+  const categories = useMemo(() => mergeCategories(items), [items]);
 
-  const categoriesList: Category[] = useMemo(() => {
-    // Now access p.data instead of p.categories
-    const apiCats = data?.pages.flatMap((p) => p.data ?? []) || [];
-    return mergeCategories(apiCats);
-  }, [data?.pages]);
-
-  return {
-    categories: categoriesList,
-    ref,
-    fetchNextPage,
-    hasNextPage,
-    loading: isLoading,
-    isFetchingNextPage,
-  };
+  return { categories, ref, fetchNextPage, hasNextPage, isFetchingNextPage, loading };
 }

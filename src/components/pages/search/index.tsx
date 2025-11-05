@@ -27,7 +27,7 @@ export default function SearchPageContent() {
     [query, category, dateFilter, sort, tags]
   );
 
-  const { articles, total } = useNewsFeed(filters);
+  const { articles, total, ref, isFetchingNextPage } = useNewsFeed(filters);
 
   return (
     <>
@@ -57,7 +57,12 @@ export default function SearchPageContent() {
         />
 
         {articles.length > 0 ? (
-          <SearchPageResults articles={articles} query={query} />
+          <SearchPageResults
+            articles={articles}
+            query={query}
+            infiniteScrollRef={ref}
+            isFetchingNextPage={isFetchingNextPage}
+          />
         ) : (
           <SearchPageEmpty query={query} />
         )}

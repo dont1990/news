@@ -20,7 +20,7 @@ const SectionTitle = ({ title, link, icon }: Props) => {
       {/* Right: Link */}
       <Link
         href={link ? link : "/"}
-        className="flex gap-1 items-center group text-primary"
+        className="flex gap-1 items-center group text-primary cursor-pointer"
       >
         <span>مشاهده همه</span>
         <TrendingDown className="h-5 w-5 rotate-180 mt-0.5 group-hover:-translate-x-1 transition duration-300" />

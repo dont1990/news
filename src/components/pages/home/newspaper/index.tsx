@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useNewspapers } from "./hooks/useNewspapers";
+import {  useTopNewspapers } from "./hooks/useTopNewspapers";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -16,7 +16,7 @@ import ArrowLeft from "@/assets/shared-icons/arrow-left";
 import ArrowRight from "@/assets/shared-icons/arrow-right";
 
 export default function TopNewspapersSwiper() {
-  const { data, isLoading, error } = useNewspapers();
+  const { data, isLoading, error } = useTopNewspapers(10);
 
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -35,9 +35,7 @@ export default function TopNewspapersSwiper() {
 
   return (
     <section className="w-full py-10 bg-gray-50 relative">
-      <div className="bg-primary/5 absolute inset-0 w-1/2 mr-auto">
-
-      </div>
+      <div className="bg-primary/5 absolute inset-0 w-1/2 mr-auto"></div>
       <Container>
         <SectionTitle
           link="/newspaper"
@@ -72,7 +70,7 @@ export default function TopNewspapersSwiper() {
             }}
             className="relative"
           >
-            {data?.map((paper, idx) => (
+            {data?.data.map((paper, idx) => (
               <SwiperSlide key={paper.id}>
                 <div
                   onClick={() => openGallery(idx)}
@@ -118,7 +116,7 @@ export default function TopNewspapersSwiper() {
       {/* Gallery Modal */}
       {data && (
         <GalleryModal
-          images={data.map((p) => ({
+          images={data.data.map((p) => ({
             src: p.imageUrl,
             alt: p.name,
             caption: `${p.name} — ${p.headline}`,
