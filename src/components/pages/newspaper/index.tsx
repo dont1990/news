@@ -3,13 +3,13 @@
 import { useState } from "react";
 import Image from "next/image";
 import Container from "@/components/shared/container";
-import { Newspaper } from "lucide-react";
 import GalleryModal from "@/components/shared/gallery-modal";
 import { PageHeader } from "@/components/shared/page-header";
 import { useQueryParams } from "@/hooks/useQueryParams";
 import { NewspaperFilter } from "@/components/pages/newspaper/filter/newspaper-filter";
 import { InfiniteLoader } from "@/components/shared/infinite-loader";
 import { useNewspapers } from "@/components/pages/newspaper/hooks/useNewspaper";
+import Newspaper from "./assets/newspaper";
 
 export default function NewspaperPageContent() {
   const { getParam, setParam } = useQueryParams();
@@ -31,7 +31,7 @@ export default function NewspaperPageContent() {
   const handleCloseGallery = () => setSelectedIndex(null);
 
   return (
-    <section className="w-full bg-gray-50 py-10 min-h-screen">
+    <>
       <PageHeader
         title="روزنامه‌ها"
         subtitle="مرور و مشاهده نسخه‌های مختلف روزنامه‌های برتر"
@@ -103,6 +103,6 @@ export default function NewspaperPageContent() {
           onClose={handleCloseGallery}
         />
       )}
-    </section>
+    </>
   );
 }

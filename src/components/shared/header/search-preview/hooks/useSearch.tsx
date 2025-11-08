@@ -39,7 +39,7 @@ export function useSearch() {
   // Open preview when typing
   const handleInputChange = (value: string) => {
     setSearchQuery(value);
-    setIsOpen(!!value.trim() && results.length > 0);
+    setIsOpen(!!value.trim());
   };
 
   // Clear search and close preview

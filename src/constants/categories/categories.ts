@@ -7,12 +7,7 @@ import HealthIcon from "./assets/icons/health";
 import SportIcon from "./assets/icons/sport";
 import EntertainmentIcon from "./assets/icons/entertainment";
 import EnvironmentIcon from "./assets/icons/environment";
-
-export interface Category {
-  title: string;
-  icon: React.ElementType;
-  description: string;
-}
+import { Category } from "./types/category";
 
 export const categories: Category[] = [
   {

@@ -7,7 +7,7 @@ import { NewsListArticles } from "./articles";
 import { NewsListFilter } from "./filter";
 import { useNewsFeed } from "./hooks/useNewsFeed";
 import NewsListSkeleton from "./skeleton";
-import { categories } from "@/data/categories/categories";
+import { categories } from "@/constants/categories/categories";
 import { useTrendingNews } from "./hooks/useTrendingNews";
 import { useQueryParams } from "@/hooks/useQueryParams";
 import { PageHeader } from "../../shared/page-header";

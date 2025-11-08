@@ -3,7 +3,7 @@
 import SectionTitle from "@/components/shared/section-title";
 import React from "react";
 import SportNewsGrid from "./sport-news-grid";
-import { categories } from "@/data/categories/categories";
+import { categories } from "@/constants/categories/categories";
 import { useLimitedNews } from "../hooks/useLimitedNews";
 
 const SportNews = () => {

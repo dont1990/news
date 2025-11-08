@@ -1,25 +1,21 @@
 "use client";
 
-import { categories } from "@/data/categories/categories";
-import { socialLinks } from "@/data/social-media/social-media";
-import { useQueryParams } from "@/hooks/useQueryParams";
-import { routes } from "@/routes/routes";
+import { NavItem } from "@/constants/navigation/types/nav-items";
+import { socialLinks } from "@/constants/social-media/social-media";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 interface MobileNavProps {
-  isOpen: boolean;
   onClose: () => void;
+  navItems: NavItem[];
 }
 
-export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
-  const pathname = usePathname();
-  const { getParam } = useQueryParams();
-
-  const currentCategory = getParam("category") || "همه";
-
-  if (!isOpen) return null;
+export default function MobileNav({
+  onClose,
+  navItems,
+}: MobileNavProps) {
+  const pathName = usePathname();
 
   return (
     <>
@@ -44,26 +40,25 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
         <div className="py-6 px-4">
           {/* Categories */}
           <div className="grid grid-cols-2 gap-3">
-            {categories.map((category, i) => {
-              const isActive =
-                pathname === "/news" && currentCategory === category.title;
+            {navItems.map((navItem, i) => {
+              const isActive = Boolean(pathName === navItem.path);
 
               return (
                 <motion.div
-                  key={category.title}
+                  key={navItem.title}
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: i * 0.05 }}
                 >
                   <Link
-                    href={routes.news.getHref({ category: category.title })}
+                    href={navItem.path}
                     onClick={onClose}
                     className={`group/nav flex flex-col items-center justify-center gap-1 px-4 py-3 text-sm font-medium rounded-2xl bg-muted/50 hover:bg-primary/10 hover:text-primary transition-all duration-200 shadow-sm hover:shadow-md ${
                       isActive ? "text-gray-900 bg-primary/10" : "text-gray-500"
                     }`}
                   >
-                    <category.icon className="w-6 h-6 group-hover/nav:text-primary transition-colors" />
-                    <span>{category.title}</span>
+                    <navItem.icon className="w-6 h-6 group-hover/nav:text-primary transition-colors" />
+                    <span>{navItem.title}</span>
                   </Link>
                 </motion.div>
               );

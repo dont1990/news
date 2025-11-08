@@ -8,7 +8,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { categories } from "@/data/categories/categories";
+import { categories } from "@/constants/categories/categories";
 import Chips from "@/components/ui/chips";
 import HashTagIcon from "@/assets/shared-icons/hash";
 import CloseIcon from "@/assets/shared-icons/close";

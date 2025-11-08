@@ -47,4 +47,8 @@ export const routes = {
       return url.pathname + url.search;
     },
   },
+
+  newspaper: {
+    getHref: () => "/newspaper",
+  },
 };

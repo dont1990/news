@@ -1,5 +1,5 @@
 import { AnimatedLink } from "@/components/shared/animated-link";
-import { FooterLinkType } from "../types/types";
+import { FooterLinkType } from "@/constants/footer/types/footer-links";
 
 export default function FooterLink({
   href,

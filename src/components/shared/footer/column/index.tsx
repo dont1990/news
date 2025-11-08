@@ -1,4 +1,4 @@
-import { FooterLinkType } from "../types/types";
+import { FooterLinkType } from "@/constants/footer/types/footer-links";
 import FooterLink from "./link";
 
 type FooterColumnProps = {

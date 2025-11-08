@@ -1,5 +1,5 @@
 import { Separator } from "@/components/ui/separator";
-import { footerLinks } from "@/data/footer-links";
+import { footerLinks } from "@/constants/footer/footer-links";
 import Container from "../container";
 import FooterColumn from "./column";
 import FooterBranding from "./branding";

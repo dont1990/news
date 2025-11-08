@@ -38,6 +38,7 @@ export function SearchPreview({ className }: SearchPreviewProps) {
     setIsInputVisible(false);
   });
 
+  
   return (
     <div ref={searchRef} className={`relative ${className}`}>
       <form onSubmit={handleSearch} className="relative flex items-center">
@@ -60,16 +61,16 @@ export function SearchPreview({ className }: SearchPreviewProps) {
           )}
         </AnimatePresence>
       </form>
-
-      <SearchDropdown
-        isOpen={isOpen}
-        results={results}
-        onClose={() => setIsOpen(false)}
-        onSeeAll={() => {
-          handleSearch();
-          setIsOpen(false);
-        }}
-      />
+      {isOpen && (
+        <SearchDropdown
+          results={results}
+          onClose={() => setIsOpen(false)}
+          onSeeAll={() => {
+            handleSearch();
+            setIsOpen(false);
+          }}
+        />
+      )}
     </div>
   );
 }

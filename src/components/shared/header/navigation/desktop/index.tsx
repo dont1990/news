@@ -8,9 +8,8 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
-import { categories } from "@/data/categories/categories";
 import { usePathname } from "next/navigation";
-import { routes } from "@/routes/routes";
+import { NavItem } from "@/constants/navigation/types/nav-items";
 
 const listVariants: Variants = {
   hidden: {},
@@ -18,7 +17,7 @@ const listVariants: Variants = {
     transition: {
       staggerChildren: 0.1,
       delayChildren: 0.2,
-      staggerDirection: -1, // ✅ reverse the stagger
+      staggerDirection: -1,
     },
   },
 };
@@ -33,7 +32,11 @@ const itemVariants: Variants = {
   },
 };
 
-export default function DesktopNav() {
+type Props = {
+  navItems: NavItem[];
+};
+
+export default function DesktopNav({ navItems }: Props) {
   const pathName = usePathname();
 
   return (
@@ -45,12 +48,12 @@ export default function DesktopNav() {
         className="flex"
       >
         <NavigationMenuList className="flex items-center gap-x-1 py-3">
-          {categories.map((category) => {
-            const Icon = category.icon;
-            const isActive = pathName.startsWith(`/category/${category.title}`);
+          {navItems.map((navItem) => {
+            const Icon = navItem.icon;
+            const isActive = Boolean(pathName === navItem.path);
 
             return (
-              <motion.div key={category.title} variants={itemVariants}>
+              <motion.div key={navItem.title} variants={itemVariants}>
                 <NavigationMenuItem>
                   <NavigationMenuLink
                     asChild
@@ -58,11 +61,9 @@ export default function DesktopNav() {
                       isActive ? "text-gray-900 bg-primary/10" : "text-gray-500"
                     }`}
                   >
-                    <Link
-                      href={routes.news.getHref({ category: category.title })}
-                    >
+                    <Link href={navItem.path}>
                       <Icon className="w-5 h-5 group-hover/nav:text-primary transition-colors" />
-                      <span>{category.title}</span>
+                      <span>{navItem.title}</span>
                       <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-200 group-hover/nav:w-full"></span>
                     </Link>
                   </NavigationMenuLink>

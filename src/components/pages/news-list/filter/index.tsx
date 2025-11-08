@@ -80,7 +80,7 @@ export function NewsListFilter({
                   variant={dateFilter === f.value ? "default" : "outline"}
                   size="sm"
                   onClick={() => setDateFilter(f.value)}
-                  className="flex-1"
+                  className="flex-1 h-10"
                 >
                   {f.label}
                 </Button>

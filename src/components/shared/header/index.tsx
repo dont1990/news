@@ -5,11 +5,11 @@ import { SearchPreview } from "@/components/shared/header/search-preview";
 import SearchToggle from "./search-toggle";
 import Logo from "./logo";
 import NotificationsButton from "./notification-button";
-import DesktopNav from "./desktop-nav";
-import MobileNav from "./mobile-nav";
+
 import Hamburger from "./hamburger";
 import { motion, Variants } from "framer-motion";
 import Container from "@/components/shared/container"; // ✅ import our custom Container
+import Navigation from "./navigation";
 
 const containerVariants: Variants = {
   hidden: {},
@@ -27,8 +27,8 @@ const itemVariants: Variants = {
 };
 
 export function Header() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
+  const [isMobileSearchOpen, setIsMobileSearchOpen] = useState<boolean>(false);
 
   return (
     <motion.header
@@ -73,17 +73,7 @@ export function Header() {
       </Container>
 
       {/* Navigation */}
-      <div className="bg-muted/30 border-t border-border">
-        <Container paddingY="py-0">
-          <Suspense fallback={"loading"}>
-            <DesktopNav />
-            <MobileNav
-              isOpen={isMobileMenuOpen}
-              onClose={() => setIsMobileMenuOpen(false)}
-            />
-          </Suspense>
-        </Container>
-      </div>
+      <Navigation isMobileMenuOpen={isMobileMenuOpen} setIsMobileMenuOpen={setIsMobileMenuOpen}/>
     </motion.header>
   );
 }

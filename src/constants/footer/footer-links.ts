@@ -1,4 +1,4 @@
-import { FooterLinkType } from "../components/shared/footer/types/types";
+import { FooterLinkType } from "./types/footer-links";
 
 export const footerLinks: Record<string, FooterLinkType[]> = {
   درباره: [

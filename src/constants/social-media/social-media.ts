@@ -1,11 +1,5 @@
-import type { FC, SVGProps } from "react";
 import { Github, Linkedin, Twitter, Instagram, Mail } from "lucide-react"; // Lucide icons
-
-export interface SocialLink {
-  href: string;
-  icon: FC<SVGProps<SVGSVGElement>>; // React component for SVG
-  label: string;
-}
+import { SocialLink } from "./types/social-media";
 
 export const socialLinks: SocialLink[] = [
   {

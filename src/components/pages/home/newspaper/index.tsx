@@ -9,11 +9,11 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import Image from "next/image";
 import Container from "@/components/shared/container";
-import { Newspaper } from "lucide-react";
 import SectionTitle from "@/components/shared/section-title";
 import GalleryModal from "@/components/shared/gallery-modal";
 import ArrowLeft from "@/assets/shared-icons/arrow-left";
 import ArrowRight from "@/assets/shared-icons/arrow-right";
+import Newspaper from "./assets/newspaper";
 
 export default function TopNewspapersSwiper() {
   const { data, isLoading, error } = useTopNewspapers(10);
