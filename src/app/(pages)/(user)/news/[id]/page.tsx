@@ -1,6 +1,6 @@
 import { Metadata } from "next";
-import ArticlePageWrapper from "@/components/pages/article/wrapper";
-import { getArticleById } from "@/components/pages/article/api/getArticleById";
+import ArticlePageWrapper from "@/features/article/wrapper";
+import { getArticleById } from "@/features/article/services/getArticleById";
 
 export async function generateMetadata({
   params,

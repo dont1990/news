@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useQueryParams } from "@/hooks/useQueryParams";
 import { routes } from "@/routes/routes";
 import { IArticle } from "@/types/article";
-import { useNewsFeed } from "@/components/pages/news-list/hooks/useNewsFeed";
+import { useNewsFeed } from "@/features/news/hooks/useNewsFeed";
 
 export function useSearch() {
   const [searchQuery, setSearchQuery] = useState("");

@@ -26,7 +26,10 @@ export function SearchPreview({ className }: SearchPreviewProps) {
 
   return (
     <div ref={searchRef} className={`relative ${className || ""}`}>
-      <form onSubmit={handleSearch} className="relative flex items-center w-full">
+      <form
+        onSubmit={handleSearch}
+        className="relative flex items-center w-full"
+      >
         <SearchInput
           value={searchQuery}
           onChange={setSearchQuery}

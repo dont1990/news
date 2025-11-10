@@ -42,7 +42,7 @@ export function SearchDropdown({
                   </div>
                 </div>
 
-                <div className="max-h-96 overflow-y-auto text-start">
+                <div className="max-h-96 overflow-y-auto text-start overscroll-contain">
                   {results.map((article) => (
                     <SearchResultItem
                       key={article.id}

@@ -1,6 +1,6 @@
 "use client";
 
-import NewspaperPageContent from "@/components/pages/newspaper";
+import NewspaperPageContent from "@/features/newspaper";
 import { Suspense } from "react";
 
 export default function NewspaperPage() {

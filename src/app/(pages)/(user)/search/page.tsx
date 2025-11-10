@@ -1,4 +1,4 @@
-import SearchPageContent from "@/components/pages/search";
+import SearchPageContent from "@/features/search";
 import { Suspense } from "react";
 
 const SearchPage = () => {

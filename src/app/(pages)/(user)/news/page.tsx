@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { NewsListPage } from "@/components/pages/news-list";
+import { NewsListPage } from "@/features/news";
 
 const NewsPage = () => {
   return (
