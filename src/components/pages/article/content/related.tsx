@@ -2,12 +2,12 @@
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
 import Image from "next/image";
-import { Article } from "@/types/article";
+import { IArticle } from "@/types/article";
 import { routes } from "@/routes/routes";
 
 interface ArticleRelatedProps {
-  currentArticle: Article;
-  relatedArticles: Article[];
+  currentArticle: IArticle;
+  relatedArticles: IArticle[];
 }
 
 export default function ArticleRelated({

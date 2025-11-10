@@ -1,9 +1,9 @@
-export class ApiError extends Error {
+export class IApiError extends Error {
   status: number;
 
   constructor(message: string, status: number) {
     super(message);
     this.status = status;
-    Object.setPrototypeOf(this, ApiError.prototype);
+    Object.setPrototypeOf(this, IApiError.prototype);
   }
 }

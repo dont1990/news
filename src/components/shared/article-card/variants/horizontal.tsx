@@ -9,9 +9,12 @@ import ArticleSourceLink from "../../article-source-link";
 import TimeAgo from "../../time-ago";
 import ClockIcon from "@/assets/shared-icons/clock";
 import { routes } from "@/routes/routes";
-import { ArticleCardProps } from "../types/article-card-types";
+import { IArticleCardProps } from "../types/article-card";
 
-export const HorizontalCard = ({ article, highlightQuery }: ArticleCardProps) => {
+export const HorizontalCard = ({
+  article,
+  highlightQuery,
+}: IArticleCardProps) => {
   const { title, category, id, publishedAt, source, sourceLink } = article;
 
   return (
@@ -29,7 +32,9 @@ export const HorizontalCard = ({ article, highlightQuery }: ArticleCardProps) =>
 
           <ArticleCardTitle
             id={id}
-            title={highlightQuery ? highlightText(title, highlightQuery) : title}
+            title={
+              highlightQuery ? highlightText(title, highlightQuery) : title
+            }
           />
 
           <div className="flex items-center justify-between text-xs sm:text-sm gap-3">
@@ -38,7 +43,10 @@ export const HorizontalCard = ({ article, highlightQuery }: ArticleCardProps) =>
         </div>
 
         {/* left image */}
-        <Link href={routes.news.detail.getHref(id)} className="relative group/img aspect-square">
+        <Link
+          href={routes.news.detail.getHref(id)}
+          className="relative group/img aspect-square"
+        >
           <ArticleImage
             article={article}
             className="w-full h-full object-cover transition-transform duration-500 group-hover/img:scale-105"

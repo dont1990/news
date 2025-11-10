@@ -3,13 +3,13 @@
 import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Container from "../../../shared/container";
-import { Article } from "@/types/article";
+import { IArticle } from "@/types/article";
 import Link from "next/link";
 import { routes } from "@/routes/routes";
 import FlashIcon from "./assets/flash";
 
 interface Props {
-  breakingNews: Article[];
+  breakingNews: IArticle[];
 }
 
 export function BreakingNewsTicker({ breakingNews }: Props) {

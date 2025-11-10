@@ -1,8 +1,8 @@
-import { Article } from "@/types/article";
+import { IArticle } from "@/types/article";
 import { ArticleCard } from "../../../../shared/article-card";
 
 interface LatestNewsGridProps {
-  articles: Article[];
+  articles: IArticle[];
 }
 
 export function LatestNewsGrid({ articles }: LatestNewsGridProps) {

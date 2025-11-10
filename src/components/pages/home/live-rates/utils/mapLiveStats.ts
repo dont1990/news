@@ -1,4 +1,4 @@
-import { LiveStat } from "../types/liveStat";
+import { ILiveStat } from "../types/liveStat";
 
 interface RatesData {
   tsetmc: { value: string; change?: string };
@@ -7,7 +7,7 @@ interface RatesData {
   gold: { value: string; change?: string };
 }
 
-export function mapLiveStats(data: RatesData): LiveStat[] {
+export function mapLiveStats(data: RatesData): ILiveStat[] {
   if (!data) return [];
 
   return [

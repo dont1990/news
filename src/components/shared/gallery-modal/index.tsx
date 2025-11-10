@@ -4,26 +4,14 @@ import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
 import Image from "next/image";
 import CloseIcon from "@/assets/shared-icons/close";
-
-type GalleryImage = {
-  src: string;
-  alt?: string;
-  caption?: string;
-};
-
-interface GalleryModalProps {
-  images: GalleryImage[];
-  isOpen: boolean;
-  initialIndex?: number;
-  onClose: () => void;
-}
+import { IGalleryModalProps } from "./types/gallery";
 
 export default function GalleryModal({
   images,
   isOpen,
   initialIndex = 0,
   onClose,
-}: GalleryModalProps) {
+}: IGalleryModalProps) {
   if (!isOpen) return null;
 
   const galleryItems = images.map((img) => ({

@@ -3,10 +3,10 @@
 import { Clock, Eye } from "lucide-react";
 import DateText from "@/components/shared/date-text";
 import TimeAgo from "@/components/shared/time-ago";
-import { Article } from "@/types/article";
+import { IArticle } from "@/types/article";
 
 type Props = {
-  article: Article;
+  article: IArticle;
 };
 
 export function HeroMetaInfo({ article }: Props) {

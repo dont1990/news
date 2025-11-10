@@ -1,13 +1,13 @@
 "use client";
 
-import { Article } from "@/types/article";
+import { IArticle } from "@/types/article";
 import Link from "next/link";
 import Image from "next/image";
 import { NAVBAR_HEIGHT } from "@/constants/global";
 import { routes } from "@/routes/routes";
 import FlameIcon from "./assets/flame";
 
-export function TrendingSidebar({ articles }: { articles: Article[] }) {
+export function TrendingSidebar({ articles }: { articles: IArticle[] }) {
   return (
     <aside
       className="p-3 border border-border rounded-2xl bg-muted/30 shadow-sm h-fit w-full lg:w-80 lg:mt-0 sticky"

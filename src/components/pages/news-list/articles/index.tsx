@@ -2,13 +2,13 @@
 
 import { ArticleCard } from "@/components/shared/article-card";
 import { getCategoryColors } from "@/lib/category-colors";
-import { Article } from "@/types/article";
+import { IArticle } from "@/types/article";
 import { EmptyCategory } from "../empty";
 import { FeaturedArticle } from "../featured-article";
 import { InfiniteLoader } from "@/components/shared/infinite-loader";
 
 interface Props {
-  articles: Article[];
+  articles: IArticle[];
   category: string;
   categoryName: string;
   query: string;

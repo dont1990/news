@@ -4,7 +4,7 @@ import { useState, useRef, useEffect, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { useQueryParams } from "@/hooks/useQueryParams";
 import { routes } from "@/routes/routes";
-import { Article } from "@/types/article";
+import { IArticle } from "@/types/article";
 import { useNewsFeed } from "@/components/pages/news-list/hooks/useNewsFeed";
 
 export function useSearch() {
@@ -34,7 +34,7 @@ export function useSearch() {
   );
 
   // Take top 5 for preview
-  const results: Article[] = articles.slice(0, 5);
+  const results: IArticle[] = articles.slice(0, 5);
 
   // Open preview when typing
   const handleInputChange = (value: string) => {

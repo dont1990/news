@@ -9,10 +9,10 @@ import { routes } from "@/routes/routes";
 import { Separator } from "@/components/ui/separator";
 import CategoryBadge from "@/components/shared/category-badge";
 import { HeroMetaInfo } from "./hero-meta-info";
-import { Article } from "@/types/article";
+import { IArticle } from "@/types/article";
 
 type Props = {
-  article: Article;
+  article: IArticle;
 };
 
 export function HeroArticleInfo({ article }: Props) {

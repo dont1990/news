@@ -1,11 +1,11 @@
 import { routes } from "@/routes/routes";
-import { Category } from "../categories/types/category";
+import { ICategory } from "../categories/types/category";
 // import HomeIcon from "./assets/icons/home";
 import { categories } from "../categories/categories";
-import { NavItem } from "./types/nav-items";
+import { INavItem } from "./types/nav-items";
 import NewspaperIcon from "./assets/icons/newspaper";
 
-export const navItems: NavItem[] = [
+export const navItems: INavItem[] = [
   // {
   //   title: "خانه",
   //   icon: HomeIcon,
@@ -19,7 +19,7 @@ export const navItems: NavItem[] = [
     path: routes.newspaper.getHref(),
   },
 
-  ...categories.map((cat: Category) => ({
+  ...categories.map((cat: ICategory) => ({
     title: cat.title,
     icon: cat.icon,
     description: cat.description,

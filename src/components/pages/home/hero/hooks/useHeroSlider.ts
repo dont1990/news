@@ -1,8 +1,8 @@
 "use client";
-import { Article } from "@/types/article";
+import { IArticle } from "@/types/article";
 import { useEffect, useState } from "react";
 
-export function useHeroSlider(articles?: Article[]) {
+export function useHeroSlider(articles?: IArticle[]) {
   const [active, setActive] = useState(0);
 
   useEffect(() => {

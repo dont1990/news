@@ -7,10 +7,13 @@ import ArticleCardTitle from "../title";
 import ArticleDescription from "../description";
 import ArticleImage from "../image";
 import { highlightText } from "@/lib/highlight";
-import { ArticleCardProps } from "../types/article-card-types";
+import { IArticleCardProps } from "../types/article-card";
 import { routes } from "@/routes/routes";
 
-export const BottomOverlayCard = ({ article, highlightQuery }: ArticleCardProps) => {
+export const BottomOverlayCard = ({
+  article,
+  highlightQuery,
+}: IArticleCardProps) => {
   const { title, description, category, id } = article;
 
   return (

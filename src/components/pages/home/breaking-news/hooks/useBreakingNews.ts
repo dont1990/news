@@ -1,12 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
-import { Article } from "@/types/article";
+import { IArticle } from "@/types/article";
 import { apiClient } from "@/lib/api/api-client";
 
 export function useBreakingNews(limit: number = 10) {
-  return useQuery<Article[], Error>({
+  return useQuery<IArticle[], Error>({
     queryKey: ["breakingNews", limit],
     queryFn: () =>
-      apiClient<{ data: Article[] }>("news/breaking", { limit }).then(
+      apiClient<{ data: IArticle[] }>("news/breaking", { limit }).then(
         (res) => res.data
       ),
   });

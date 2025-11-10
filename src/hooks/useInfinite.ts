@@ -5,13 +5,12 @@ import { useInView } from "react-intersection-observer";
 import { PAGE_LIMIT } from "@/constants/global";
 import { Params } from "@/types";
 
-
-export type PaginatedResponse<T> = {
+export interface IPaginatedResponse<T> {
   data: T[];
   page: number;
   hasMore: boolean;
   total: number;
-};
+}
 
 export function useInfinite<T>(
   endpoint: string,
@@ -19,15 +18,16 @@ export function useInfinite<T>(
   limit: number = PAGE_LIMIT
 ) {
   // 1️⃣ Setup the infinite query
-  const query = useInfiniteQuery<PaginatedResponse<T>, Error>({
+  const query = useInfiniteQuery<IPaginatedResponse<T>, Error>({
     queryKey: [endpoint, params],
     queryFn: ({ pageParam }: QueryFunctionContext) =>
-      apiClient<PaginatedResponse<T>>(endpoint, {
+      apiClient<IPaginatedResponse<T>>(endpoint, {
         ...params,
         page: typeof pageParam === "number" ? pageParam : 1,
         limit,
       }),
-    getNextPageParam: (lastPage) => (lastPage.hasMore ? lastPage.page + 1 : undefined),
+    getNextPageParam: (lastPage) =>
+      lastPage.hasMore ? lastPage.page + 1 : undefined,
     initialPageParam: 1,
   });
 

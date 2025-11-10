@@ -1,7 +1,7 @@
 import { Github, Linkedin, Twitter, Instagram, Mail } from "lucide-react"; // Lucide icons
-import { SocialLink } from "./types/social-media";
+import { ISocialLink } from "./types/social-media";
 
-export const socialLinks: SocialLink[] = [
+export const socialLinks: ISocialLink[] = [
   {
     href: "https://github.com/yourusername",
     icon: Github,

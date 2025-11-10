@@ -1,6 +1,6 @@
 "use client";
 
-import { ArticleCardProps } from "./types/article-card-types";
+import { IArticleCardProps } from "./types/article-card";
 import { BottomOverlayCard } from "./variants/bottom-overlay";
 import { DefaultCard } from "./variants/default";
 import { HorizontalCard } from "./variants/horizontal";
@@ -10,7 +10,7 @@ export function ArticleCard({
   article,
   type = "default",
   highlightQuery,
-}: ArticleCardProps) {
+}: IArticleCardProps) {
   switch (type) {
     case "horizontal":
       return (

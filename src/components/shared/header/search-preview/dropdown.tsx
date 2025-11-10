@@ -3,14 +3,14 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Article } from "@/types/article";
+import { IArticle } from "@/types/article";
 import { SearchResultItem } from "./item";
 import { SearchEmptyState } from "./empty";
 import ArrowLeft from "@/assets/shared-icons/arrow-left";
 import TrendingUpIcon from "@/assets/shared-icons/trending-up";
 
 interface SearchDropdownProps {
-  results: Article[];
+  results: IArticle[];
   onClose: () => void;
   onSeeAll: () => void;
 }

@@ -1,6 +1,6 @@
-import { FooterLinkType } from "./types/footer-links";
+import { IFooterLinkType } from "./types/footer-links";
 
-export const footerLinks: Record<string, FooterLinkType[]> = {
+export const footerLinks: Record<string, IFooterLinkType[]> = {
   درباره: [
     { href: "/about", label: "درباره ما" },
     { href: "/team", label: "تیم ما" },

@@ -9,7 +9,7 @@ import {
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
 import { usePathname } from "next/navigation";
-import { NavItem } from "@/constants/navigation/types/nav-items";
+import { INavItem } from "@/constants/navigation/types/nav-items";
 
 const listVariants: Variants = {
   hidden: {},
@@ -33,7 +33,7 @@ const itemVariants: Variants = {
 };
 
 type Props = {
-  navItems: NavItem[];
+  navItems: INavItem[];
 };
 
 export default function DesktopNav({ navItems }: Props) {

@@ -1,18 +1,16 @@
 import { useMemo } from "react";
 import { useInfinite } from "@/hooks/useInfinite";
-import {
-  categories as staticCategories,
-} from "@/constants/categories/categories";
+import { categories as staticCategories } from "@/constants/categories/categories";
 import HashTagIcon from "@/assets/shared-icons/hash";
-import { Category } from "@/constants/categories/types/category";
+import { ICategory } from "@/constants/categories/types/category";
 
-function mergeCategories(apiCats: string[]): Category[] {
-  const mappedApiCats: Category[] = apiCats.map((title) => {
+function mergeCategories(apiCats: string[]): ICategory[] {
+  const mappedApiCats: ICategory[] = apiCats.map((title) => {
     const found = staticCategories.find((c) => c.title === title);
     return found || { title, icon: HashTagIcon, description: "" };
   });
 
-  const unique = new Map<string, Category>();
+  const unique = new Map<string, ICategory>();
   [...staticCategories, ...mappedApiCats].forEach((cat) =>
     unique.set(cat.title, cat)
   );

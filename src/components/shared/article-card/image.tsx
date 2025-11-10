@@ -4,13 +4,13 @@ import { useState } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils/cn";
 import ImagePlaceholder from "../image-placeholder";
-import { Article } from "@/types/article";
+import { IArticle } from "@/types/article";
 
 export default function ArticleImage({
   article,
   className,
 }: {
-  article: Article;
+  article: IArticle;
   className?: string;
 }) {
   const [hasError, setHasError] = useState(false);

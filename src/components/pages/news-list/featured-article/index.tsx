@@ -1,13 +1,13 @@
 "use client";
 
-import { Article } from "@/types/article";
+import { IArticle } from "@/types/article";
 import { getCategoryColors } from "@/lib/category-colors";
 import Link from "next/link";
 import { AnimatedLink } from "@/components/shared/animated-link";
 import { routes } from "@/routes/routes";
 import ArrowLeft from "@/assets/shared-icons/arrow-left";
 
-export function FeaturedArticle({ article }: { article: Article }) {
+export function FeaturedArticle({ article }: { article: IArticle }) {
   const colors = getCategoryColors(article.category);
 
   return (

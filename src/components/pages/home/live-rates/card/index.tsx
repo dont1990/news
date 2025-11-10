@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils/cn";
-import { LiveStat } from "../types/liveStat";
+import { ILiveStat } from "../types/liveStat";
 import TrendingUpIcon from "@/assets/shared-icons/trending-up";
 import TrendingDownIcon from "@/assets/shared-icons/trending-down";
 import CoinIcon from "../assets/coin";
@@ -13,7 +13,7 @@ import DollarIcon from "../assets/dollar";
 import ChartIcon from "../assets/chart";
 
 const iconMap: Record<
-  LiveStat["type"],
+  ILiveStat["type"],
   React.ComponentType<{ className?: string }>
 > = {
   usd: DollarIcon,
@@ -22,7 +22,7 @@ const iconMap: Record<
   gold: FlashIcon,
 };
 
-export default function LiveStatCard({ stat }: { stat: LiveStat }) {
+export default function LiveStatCard({ stat }: { stat: ILiveStat }) {
   const IconComponent = iconMap[stat.type];
   const isUp = stat.trend === "up";
 

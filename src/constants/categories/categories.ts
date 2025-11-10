@@ -7,9 +7,9 @@ import HealthIcon from "./assets/icons/health";
 import SportIcon from "./assets/icons/sport";
 import EntertainmentIcon from "./assets/icons/entertainment";
 import EnvironmentIcon from "./assets/icons/environment";
-import { Category } from "./types/category";
+import { ICategory } from "./types/category";
 
-export const categories: Category[] = [
+export const categories: ICategory[] = [
   {
     title: "جهان",
     icon: WorldIcon,

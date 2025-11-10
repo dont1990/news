@@ -1,5 +1,5 @@
 import { Params } from "@/types";
-import { ApiError } from "./types/api-error";
+import { IApiError } from "./types/api-error";
 
 export async function apiClient<T>(
   endpoint: string,
@@ -18,7 +18,7 @@ export async function apiClient<T>(
   const res = await fetch(url.toString());
 
   if (!res.ok) {
-    throw new ApiError(
+    throw new IApiError(
       `API Error: ${res.status} ${res.statusText}`,
       res.status
     );

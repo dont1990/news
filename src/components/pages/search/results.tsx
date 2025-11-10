@@ -2,10 +2,10 @@
 
 import { ArticleCard } from "@/components/shared/article-card";
 import { InfiniteLoader } from "@/components/shared/infinite-loader";
-import { Article } from "@/types/article";
+import { IArticle } from "@/types/article";
 
 type Props = {
-  articles: Article[];
+  articles: IArticle[];
   query: string;
   infiniteScrollRef?: React.Ref<HTMLDivElement>;
   isFetchingNextPage: boolean;

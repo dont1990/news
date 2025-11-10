@@ -1,8 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { apiClient } from "@/lib/api/api-client";
 import { INewspaper } from "@/components/pages/newspaper/types/newspaper";
+import { PAGE_LIMIT } from "@/constants/global";
 
-export function useTopNewspapers(limit = 10) {
+export function useTopNewspapers(limit = PAGE_LIMIT) {
   return useQuery<{
     data: INewspaper[];
   }>({

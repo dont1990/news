@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Article } from "@/types/article";
+import { IArticle } from "@/types/article";
 import { apiClient } from "@/lib/api/api-client";
 
 interface UseLimitedNews {
@@ -13,10 +13,10 @@ export function useLimitedNews({
   limit = 6,
   sort = "desc",
 }: UseLimitedNews) {
-  return useQuery<Article[], Error>({
+  return useQuery<IArticle[], Error>({
     queryKey: ["newsByCategory", category, limit, sort],
     queryFn: () =>
-      apiClient<{ data: Article[] }>("news", {
+      apiClient<{ data: IArticle[] }>("news", {
         category,
         limit,
         sort,

@@ -3,10 +3,10 @@
 import Image from "next/image";
 import CategoryBadge from "@/components/shared/category-badge";
 import ImagePlaceholder from "@/components/shared/image-placeholder"; 
-import { Article } from "@/types/article";
+import { IArticle } from "@/types/article";
 
 type HeroThumbnailsProps = {
-  articles: Article[];
+  articles: IArticle[];
   active: number;
   onSelect: (index: number) => void;
 };

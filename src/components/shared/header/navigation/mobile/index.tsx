@@ -1,6 +1,6 @@
 "use client";
 
-import { NavItem } from "@/constants/navigation/types/nav-items";
+import { INavItem } from "@/constants/navigation/types/nav-items";
 import { socialLinks } from "@/constants/social-media/social-media";
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -8,7 +8,7 @@ import { usePathname } from "next/navigation";
 
 interface MobileNavProps {
   onClose: () => void;
-  navItems: NavItem[];
+  navItems: INavItem[];
 }
 
 export default function MobileNav({

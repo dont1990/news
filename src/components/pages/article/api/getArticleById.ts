@@ -1,6 +1,6 @@
-import { Article } from "@/types/article";
+import { IArticle } from "@/types/article";
 
-export async function getArticleById(id: string): Promise<Article | null> {
+export async function getArticleById(id: string): Promise<IArticle | null> {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/news/${id}`, {
       cache: "no-store",
@@ -9,7 +9,7 @@ export async function getArticleById(id: string): Promise<Article | null> {
 
     if (!res.ok) throw new Error("Failed to fetch article");
 
-    return (await res.json()) as Article;
+    return (await res.json()) as IArticle;
   } catch (error) {
     console.error("Error fetching article:", error);
     return null;

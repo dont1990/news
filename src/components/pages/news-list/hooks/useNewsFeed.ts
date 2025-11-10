@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { useInfinite } from "@/hooks/useInfinite";
-import { Article } from "@/types/article";
+import { IArticle } from "@/types/article";
 
 type NewsFilters = {
   category?: string;
@@ -40,7 +40,7 @@ export function useNewsFeed(filters?: NewsFilters) {
     isFetchingNextPage,
     loading,
     fetching,
-  } = useInfinite<Article>("news", queryParams);
+  } = useInfinite<IArticle>("news", queryParams);
 
   return {
     articles,

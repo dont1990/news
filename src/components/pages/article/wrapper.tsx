@@ -6,7 +6,7 @@ import { useNewsById } from "./hooks/useNewsById";
 import { useIncrementArticleView } from "./hooks/useIncrementArticleView";
 import NotFound from "./not-found";
 import ArticleDetailSkeleton from "./skeleton";
-import { ApiError } from "@/lib/api/types/api-error";
+import { IApiError } from "@/lib/api/types/api-error";
 
 export default function ArticlePageWrapper({ id }: { id: string }) {
   const { data: article, isLoading, error } = useNewsById(id);
@@ -21,7 +21,7 @@ export default function ArticlePageWrapper({ id }: { id: string }) {
   }, [id, article, incrementView]);
 
   if (isLoading) return <ArticleDetailSkeleton />;
-  if ((error instanceof ApiError && error.status === 404) || !article) {
+  if ((error instanceof IApiError && error.status === 404) || !article) {
     return <NotFound />;
   }
   if (error) return <div>مشکلی رخ داده است.</div>;

@@ -3,12 +3,12 @@
 import Image from "next/image";
 import CategoryBadge from "../../category-badge";
 import { useRouter } from "next/navigation";
-import { Article } from "@/types/article";
+import { IArticle } from "@/types/article";
 import TimeAgo from "../../time-ago";
 import ClockIcon from "@/assets/shared-icons/clock";
 
 interface SearchResultItemProps {
-  article: Article;
+  article: IArticle;
   onClick: () => void;
 }
 

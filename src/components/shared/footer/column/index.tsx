@@ -1,9 +1,9 @@
-import { FooterLinkType } from "@/constants/footer/types/footer-links";
+import { IFooterLinkType } from "@/constants/footer/types/footer-links";
 import FooterLink from "./link";
 
 type FooterColumnProps = {
   title: string;
-  links: FooterLinkType[];
+  links: IFooterLinkType[];
 };
 
 export default function FooterColumn({ title, links }: FooterColumnProps) {

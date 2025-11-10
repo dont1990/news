@@ -1,8 +1,8 @@
 "use client";
-import { Article } from "@/types/article";
+import { IArticle } from "@/types/article";
 
 interface ArticleContentProps {
-  article: Article;
+  article: IArticle;
 }
 
 export default function ArticleContent({ article }: ArticleContentProps) {

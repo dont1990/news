@@ -10,19 +10,12 @@ import ArticleHashTags from "../../hash-tags";
 import ClockIcon from "@/assets/shared-icons/clock";
 import TimeAgo from "../../time-ago";
 import { highlightText } from "@/lib/highlight";
-import { ArticleCardProps } from "../types/article-card-types";
+import { IArticleCardProps } from "../types/article-card";
 import { routes } from "@/routes/routes";
 
-export const DefaultCard = ({ article, highlightQuery }: ArticleCardProps) => {
-  const {
-    title,
-    description,
-    category,
-    id,
-    publishedAt,
-    source,
-    tags,
-  } = article;
+export const DefaultCard = ({ article, highlightQuery }: IArticleCardProps) => {
+  const { title, description, category, id, publishedAt, source, tags } =
+    article;
 
   return (
     <Card className="news-card group h-full xl:col-span-1 p-0 hover:shadow-2xs flex flex-col gap-0">

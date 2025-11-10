@@ -1,9 +1,9 @@
 "use client";
 import Image from "next/image";
-import { Article } from "@/types/article";
+import { IArticle } from "@/types/article";
 
 interface ArticleHeroImageProps {
-  article: Article;
+  article: IArticle;
 }
 
 export default function ArticleHeroImage({ article }: ArticleHeroImageProps) {
