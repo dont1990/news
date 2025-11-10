@@ -25,7 +25,7 @@ export const BottomOverlayCard = ({ article, highlightQuery }: ArticleCardProps)
         />
       </Link>
 
-      <CardContent className="min-h-36 absolute -bottom-[40%] left-1/2 -translate-x-1/2 z-10 w-[85%] bg-card backdrop-blur-md p-4 rounded-2xl shadow-lg flex flex-col gap-2 text-center">
+      <CardContent className="min-h-36 absolute top-[85%] left-1/2 -translate-x-1/2 z-10 w-[85%] bg-card backdrop-blur-md p-4 rounded-2xl shadow-lg flex flex-col gap-2 text-center">
         <CategoryBadge title={category} className="mb-1 mx-auto" />
         <ArticleCardTitle
           id={id}

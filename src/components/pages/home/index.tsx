@@ -8,8 +8,6 @@ import SportNews from "./sport-news";
 import NewspapersGrid from "./newspaper";
 import { Suspense } from "react";
 import { BreakingNews } from "./breaking-news";
-import WorldClockSlider from "./sidebar/world-clock/slider";
-import IranWeatherSlider from "./sidebar/weather/slider";
 
 export default function HomePageContent() {
   return (

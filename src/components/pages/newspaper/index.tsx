@@ -1,15 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Container from "@/components/shared/container";
 import GalleryModal from "@/components/shared/gallery-modal";
 import { PageHeader } from "@/components/shared/page-header";
 import { useQueryParams } from "@/hooks/useQueryParams";
-import { NewspaperFilter } from "@/components/pages/newspaper/filter/newspaper-filter";
+import { NewspaperFilter } from "@/components/pages/newspaper/components/filter/newspaper-filter";
 import { InfiniteLoader } from "@/components/shared/infinite-loader";
 import { useNewspapers } from "@/components/pages/newspaper/hooks/useNewspaper";
 import Newspaper from "./assets/newspaper";
+import NewspaperCard from "./components/newspaper-card";
+import EmptyState from "@/components/shared/empty-state";
 
 export default function NewspaperPageContent() {
   const { getParam, setParam } = useQueryParams();
@@ -41,6 +42,7 @@ export default function NewspaperPageContent() {
         loading={loading}
         category="news"
       />
+
       <Container>
         <NewspaperFilter
           searchInput={searchInput}
@@ -51,41 +53,32 @@ export default function NewspaperPageContent() {
         />
 
         {/* 📰 Newspaper Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {newspapers.map((paper, idx) => (
-            <div
-              key={paper.id}
-              onClick={() => handleOpenGallery(idx)}
-              className="group cursor-pointer bg-white rounded-2xl shadow-md hover:shadow-xl transition-all overflow-hidden border border-gray-100"
-            >
-              <div className="relative w-full h-64">
-                <Image
-                  src={paper.imageUrl}
-                  alt={paper.name}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity" />
-              </div>
-              <div className="p-4">
-                <h3 className="font-semibold text-gray-800 text-base line-clamp-2 group-hover:text-primary transition-colors">
-                  {paper.name}
-                </h3>
-                <p className="text-sm text-gray-600 line-clamp-2 mt-1">
-                  {paper.headline}
-                </p>
-                <p className="text-xs text-gray-400 mt-2">{paper.date}</p>
-              </div>
-            </div>
-          ))}
-        </div>
+        {loading ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {Array.from({ length: 6 }).map((_, idx) => (
+              <NewspaperCard key={idx} loading />
+            ))}
+          </div>
+        ) : newspapers.length > 0 ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {newspapers.map((paper, idx) => (
+              <NewspaperCard
+                key={paper.id}
+                paper={paper}
+                onClick={() => handleOpenGallery(idx)}
+              />
+            ))}
+          </div>
+        ) : (
+          <EmptyState
+            title="هیچ روزنامه‌ای یافت نشد"
+            description="لطفاً معیار جستجو را تغییر دهید یا بعداً دوباره تلاش کنید."
+            icon={<Newspaper className="h-12 w-12 text-primary" />}
+          />
+        )}
 
         {isFetchingNextPage && (
           <InfiniteLoader className="my-6" message="در حال بارگذاری..." />
-        )}
-
-        {newspapers.length === 0 && !loading && (
-          <p className="text-center text-gray-500 mt-10">موردی یافت نشد.</p>
         )}
 
         <div ref={ref} aria-hidden="true" />

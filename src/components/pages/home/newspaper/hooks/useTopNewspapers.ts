@@ -1,14 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import { apiClient } from "@/lib/api/api-client";
-import { Newspaper } from "@/types/newspaper";
+import { INewspaper } from "@/components/pages/newspaper/types/newspaper";
 
 export function useTopNewspapers(limit = 10) {
   return useQuery<{
-    data: Newspaper[];
+    data: INewspaper[];
   }>({
     queryKey: ["top-newspapers", limit],
     queryFn: () =>
-      apiClient<{ data: Newspaper[] }>("newspapers", {
+      apiClient<{ data: INewspaper[] }>("newspapers", {
         limit,
         sort: "az",
         page: 1,

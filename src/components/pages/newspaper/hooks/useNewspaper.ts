@@ -1,5 +1,5 @@
 import { useInfinite } from "@/hooks/useInfinite";
-import { Newspaper } from "@/types/newspaper";
+import { INewspaper } from "@/components/pages/newspaper/types/newspaper";
 
 interface UseNewspapersParams {
   search?: string;
@@ -10,14 +10,21 @@ export function useNewspapers({
   search = "",
   sort = "az",
 }: UseNewspapersParams = {}) {
-  const { items, total, ref, loading, fetchNextPage, hasNextPage, isFetchingNextPage } =
-    useInfinite<Newspaper>("newspapers", { search, sort });
+  const {
+    items,
+    total,
+    ref,
+    loading,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+  } = useInfinite<INewspaper>("newspapers", { search, sort });
 
   return {
-    newspapers: items,          
+    newspapers: items,
     total,
     loading,
-    ref,                        
+    ref,
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,

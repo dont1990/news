@@ -1,8 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { useMediaQuery } from "@/hooks/useMediaQuery";
+import { AnimatePresence } from "framer-motion";
 import { useSearch } from "./hooks/useSearch";
 import { SearchDropdown } from "./dropdown";
 import { useClickOutside } from "@/hooks/useClickOutside";
@@ -24,53 +22,32 @@ export function SearchPreview({ className }: SearchPreviewProps) {
     handleSearch,
   } = useSearch();
 
-  const [isInputVisible, setIsInputVisible] = useState(false);
-  const isMobileOrTablet = useMediaQuery("(max-width: 767px)");
-  const isLargeUp = useMediaQuery("(min-width: 768px)");
+  useClickOutside(searchRef, () => setIsOpen(false));
 
-  // input visible by default on large screens
-  useEffect(() => {
-    if (isLargeUp) setIsInputVisible(true);
-  }, [isLargeUp]);
-
-  useClickOutside(searchRef, () => {
-    setIsOpen(false);
-    setIsInputVisible(false);
-  });
-
-  
   return (
-    <div ref={searchRef} className={`relative ${className}`}>
-      <form onSubmit={handleSearch} className="relative flex items-center">
-        <AnimatePresence>
-          {(isInputVisible || isMobileOrTablet || isLargeUp) && (
-            <motion.div
-              initial={{ width: 0, opacity: 0 }}
-              animate={{ width: "auto", opacity: 1 }}
-              exit={{ width: 0, opacity: 0 }}
-              className="flex-1"
-            >
-              <SearchInput
-                value={searchQuery}
-                onChange={setSearchQuery}
-                onClear={() => clearAll()}
-                onFocus={() => searchQuery.trim() && setIsOpen(true)}
-                className="min-w-[400px]"
-              />
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </form>
-      {isOpen && (
-        <SearchDropdown
-          results={results}
-          onClose={() => setIsOpen(false)}
-          onSeeAll={() => {
-            handleSearch();
-            setIsOpen(false);
-          }}
+    <div ref={searchRef} className={`relative ${className || ""}`}>
+      <form onSubmit={handleSearch} className="relative flex items-center w-full">
+        <SearchInput
+          value={searchQuery}
+          onChange={setSearchQuery}
+          onClear={clearAll}
+          onFocus={() => searchQuery.trim() && setIsOpen(true)}
+          className="w-full sm:min-w-[400px]"
         />
-      )}
+      </form>
+
+      <AnimatePresence>
+        {isOpen && (
+          <SearchDropdown
+            results={results}
+            onClose={() => setIsOpen(false)}
+            onSeeAll={() => {
+              handleSearch();
+              setIsOpen(false);
+            }}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 }

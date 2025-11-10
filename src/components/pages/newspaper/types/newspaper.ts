@@ -1,4 +1,4 @@
-export type Newspaper = {
+export interface INewspaper  {
   id: string;
   name: string;
   headline: string;

@@ -1,15 +1,15 @@
 "use client";
 
-import { Suspense, useState } from "react";
+import { Suspense } from "react";
 import { SearchPreview } from "@/components/shared/header/search-preview";
-import SearchToggle from "./search-toggle";
 import Logo from "./logo";
 import NotificationsButton from "./notification-button";
-
 import Hamburger from "./hamburger";
+import SearchToggle from "./search-toggle";
 import { motion, Variants } from "framer-motion";
-import Container from "@/components/shared/container"; // ✅ import our custom Container
+import Container from "@/components/shared/container";
 import Navigation from "./navigation";
+import { useHeader } from "./hook/useHeader";
 
 const containerVariants: Variants = {
   hidden: {},
@@ -27,8 +27,13 @@ const itemVariants: Variants = {
 };
 
 export function Header() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
-  const [isMobileSearchOpen, setIsMobileSearchOpen] = useState<boolean>(false);
+  const {
+    isMobileMenuOpen,
+    setIsMobileMenuOpen,
+    isMobileSearchOpen,
+    setIsMobileSearchOpen,
+    mobileSearchRef,
+  } = useHeader();
 
   return (
     <motion.header
@@ -37,8 +42,8 @@ export function Header() {
       animate="show"
       variants={containerVariants}
     >
-      {/* Top Header */}
       <Container className="flex flex-col gap-4 !p-4">
+        {/* --- Top Row --- */}
         <motion.div
           className="flex items-center justify-between"
           variants={itemVariants}
@@ -58,22 +63,46 @@ export function Header() {
             className="flex items-center gap-x-4"
             variants={itemVariants}
           >
+            {/* ✅ Desktop search */}
             <Suspense fallback={"loading"}>
-              <SearchPreview className="hidden md:block" />
-              <div className="md:hidden">
-                <SearchToggle
-                  isOpen={isMobileSearchOpen}
-                  onToggle={() => setIsMobileSearchOpen(!isMobileSearchOpen)}
-                />
-              </div>
+              <SearchPreview className="hidden sm:block" />
             </Suspense>
+
+            {/* ✅ Mobile search toggle */}
+            <div className="block sm:hidden">
+              <SearchToggle
+                isOpen={isMobileSearchOpen}
+                onToggle={() => setIsMobileSearchOpen(!isMobileSearchOpen)}
+              />
+            </div>
+
             <NotificationsButton />
           </motion.div>
         </motion.div>
+
+        {/* ✅ Mobile search input */}
+        {isMobileSearchOpen && (
+          <motion.div
+            ref={mobileSearchRef}
+            className="block sm:hidden w-full"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            variants={itemVariants}
+          >
+            <Suspense fallback={"loading"}>
+              <SearchPreview className="w-full" />
+            </Suspense>
+          </motion.div>
+        )}
       </Container>
 
       {/* Navigation */}
-      <Navigation isMobileMenuOpen={isMobileMenuOpen} setIsMobileMenuOpen={setIsMobileMenuOpen}/>
+      <Navigation
+        isMobileMenuOpen={isMobileMenuOpen}
+        setIsMobileMenuOpen={setIsMobileMenuOpen}
+      />
     </motion.header>
   );
 }
