@@ -4,13 +4,13 @@ import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils/cn";
-import { ILiveStat } from "../types/liveStat";
+import { ILiveStat } from "../../types/liveStat";
 import TrendingUpIcon from "@/assets/shared-icons/trending-up";
 import TrendingDownIcon from "@/assets/shared-icons/trending-down";
-import CoinIcon from "../assets/coin";
-import FlashIcon from "../assets/flash";
-import DollarIcon from "../assets/dollar";
-import ChartIcon from "../assets/chart";
+import CoinIcon from "../../assets/coin";
+import FlashIcon from "../../assets/flash";
+import DollarIcon from "../../assets/dollar";
+import ChartIcon from "../../assets/chart";
 
 const iconMap: Record<
   ILiveStat["type"],

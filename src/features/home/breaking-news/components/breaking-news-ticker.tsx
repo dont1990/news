@@ -2,11 +2,11 @@
 
 import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import Container from "../../../components/shared/container";
+import Container from "../../../../components/shared/container";
 import { IArticle } from "@/types/article";
 import Link from "next/link";
 import { routes } from "@/routes/routes";
-import FlashIcon from "./assets/flash";
+import FlashIcon from "../assets/flash";
 
 interface Props {
   breakingNews: IArticle[];

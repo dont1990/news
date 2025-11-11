@@ -2,7 +2,7 @@
 
 import SectionTitle from "@/components/shared/section-title";
 import React from "react";
-import SportNewsGrid from "./sport-news-grid";
+import SportNewsGrid from "./components/news-grid";
 import { categories } from "@/constants/categories/categories";
 import { useLimitedNews } from "../hooks/useLimitedNews";
 

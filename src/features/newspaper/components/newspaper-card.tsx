@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Skeleton } from "@/components/ui/skeleton";
-import { INewspaper } from "../../types/newspaper";
+import { INewspaper } from "../types/newspaper";
 
 interface NewspaperCardProps {
   paper?: INewspaper;

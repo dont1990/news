@@ -3,6 +3,7 @@ import DesktopNav from "./desktop";
 import MobileNav from "./mobile";
 import Container from "../../container";
 import { navItems } from "@/constants/navigation/nav-items";
+import { useBodyScrollLock } from "@/hooks/useBodyScrollLock";
 
 type Props = {
   isMobileMenuOpen: boolean;
@@ -10,6 +11,8 @@ type Props = {
 };
 
 const Navigation = ({ isMobileMenuOpen, setIsMobileMenuOpen }: Props) => {
+  useBodyScrollLock(isMobileMenuOpen);
+
   return (
     <div className="bg-muted/30 border-t border-border">
       <Container paddingY="py-0">

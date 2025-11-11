@@ -1,6 +1,6 @@
 "use client";
 
-import { LatestNewsGrid } from "@/features/home/latest-news/latest-news-grid";
+import { LatestNewsGrid } from "@/features/home/latest-news/components/news-grid";
 import SectionTitle from "@/components/shared/section-title";
 import React from "react";
 import { useLimitedNews } from "../hooks/useLimitedNews";

@@ -25,7 +25,7 @@ export default function MobileNav({
         animate={{ opacity: 0.5 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.2 }}
-        onClick={onClose}
+        onClick={onClose} 
         className="fixed inset-0 bg-black z-40 h-dvh top-64"
       />
 

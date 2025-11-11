@@ -3,9 +3,9 @@
 import { ArticleCard } from "@/components/shared/article-card";
 import { getCategoryColors } from "@/lib/category-colors";
 import { IArticle } from "@/types/article";
-import { EmptyCategory } from "../empty";
-import { FeaturedArticle } from "../featured-article";
 import { InfiniteLoader } from "@/components/shared/infinite-loader";
+import { FeaturedArticle } from "./featured-article";
+import { EmptyCategory } from "./empty";
 
 interface Props {
   articles: IArticle[];

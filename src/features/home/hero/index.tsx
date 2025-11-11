@@ -1,17 +1,17 @@
 "use client";
 
 import Container from "@/components/shared/container";
-import { HeroThumbnails } from "./hero-thumbnails";
-import { HeroArticleInfo } from "./hero-article-info";
+import { HeroThumbnails } from "./components/thumbnails";
+import { HeroArticleInfo } from "./components/article-info";
 import { useHeroSlider } from "./hooks/useHeroSlider";
 import { useHeroNews } from "./hooks/useHeroNews";
-
+import { HeroSkeleton } from "./skeleton";
 
 export default function HeroGrid() {
   const { data: articles, isLoading, error } = useHeroNews();
   const { active, setActive } = useHeroSlider(articles);
 
-  if (isLoading) return <p>در حال بارگذاری اخبار مهم...</p>;
+  if (isLoading) return <HeroSkeleton />;
   if (error) return <p>خطا در بارگذاری اخبار: {error.message}</p>;
   if (!articles || articles.length === 0) return <p>هیچ خبری موجود نیست.</p>;
 
