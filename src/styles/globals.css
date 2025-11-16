@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "./font.css";
+@import "./swiper.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -188,6 +189,10 @@ body {
   text-align: right;
 }
 
+main {
+  min-height: 100vh;
+}
+
 * {
   border-color: var(--gray-200);
 }
@@ -220,8 +225,6 @@ textarea {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#FB923C", endColorstr="#EA580C", GradientType=1);
 }
 
-
-/* styles/globals.css or tailwind.css */
 .no-scrollbar::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
 }
@@ -230,24 +233,3 @@ textarea {
   scrollbar-width: none; /* Firefox */
 }
 
-.swiper-pagination-bullet {
-  width: 12px !important;
-  height: 4px !important;
-  border-radius: 2px !important;
-}
-.swiper-pagination-bullet-active{
-  width: 28px !important;
-
-}
-.swiper-button-next-custom.swiper-button-disabled,
-.swiper-button-prev-custom.swiper-button-disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  background-color: var(
-    --primary
-  ) !important; /* or use Tailwind color equivalent */
-}
-
-nav.image-gallery-thumbnails-container button {
-  width: auto;
-}

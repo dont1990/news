@@ -1,6 +1,6 @@
 "use client";
 
-import { BreakingNewsTicker } from "./components/breaking-news-ticker";
+import { BreakingNewsTicker } from "./components/slider";
 import { useBreakingNews } from "./hooks/useBreakingNews";
 import { BreakingNewsSkeleton } from "./skeleton";
 

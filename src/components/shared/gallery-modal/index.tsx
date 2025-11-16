@@ -5,6 +5,7 @@ import "react-image-gallery/styles/css/image-gallery.css";
 import Image from "next/image";
 import CloseIcon from "@/assets/shared-icons/close";
 import { IGalleryModalProps } from "./types/gallery";
+import "./gallery.style.css";
 
 export default function GalleryModal({
   images,

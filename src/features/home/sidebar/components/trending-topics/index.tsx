@@ -2,7 +2,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { useTrendingTags } from "../hooks/useTrendingTags";
+import { useTrendingTags } from "../../hooks/useTrendingTags";
 import { useTagNavigation } from "@/components/shared/hash-tags/hooks/useTagNavigation";
 import TrendingUpIcon from "@/assets/shared-icons/trending-up";
 import HashTagIcon from "@/assets/shared-icons/hash";

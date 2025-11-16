@@ -1,5 +1,5 @@
 import { IArticle } from "@/types/article";
-import { ArticleCard } from "../../../../components/shared/article-card";
+import { ArticleCard } from "../../../../../components/shared/article-card";
 
 interface LatestNewsGridProps {
   articles: IArticle[];

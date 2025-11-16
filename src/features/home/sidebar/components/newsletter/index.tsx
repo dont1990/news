@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import Container from "../../../../components/shared/container";
+import Container from "../../../../../components/shared/container";
 import { useNewsletter } from "./hooks/useNewsletter";
 import MailIcon from "./assets/mail";
 import SparklesIcon from "./assets/sparkles";

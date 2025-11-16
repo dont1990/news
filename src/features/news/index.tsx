@@ -60,7 +60,6 @@ export function NewsListPage() {
         subtitle={categoryDescription}
         badgeText="مقاله موجود"
         badgeCount={total}
-        loading={loading}
         category={category}
         icon={<TrendingUpIcon />}
       />

@@ -1,5 +1,5 @@
 import { IArticle } from "@/types/article";
-import { ArticleCard } from "../../../../components/shared/article-card";
+import { ArticleCard } from "../../../../../components/shared/article-card";
 
 interface TechNewsGridProps {
   articles: IArticle[];
@@ -7,7 +7,7 @@ interface TechNewsGridProps {
 
 const TechNewsGrid = ({ articles }: TechNewsGridProps) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 gap-y-40">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 gap-y-44">
       {articles.map((article) => (
         <ArticleCard key={article.id} article={article} type="bottomOverlay" />
       ))}

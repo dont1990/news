@@ -6,7 +6,7 @@ import { useNewsFeed } from "../news/hooks/useNewsFeed";
 import Container from "../../components/shared/container";
 import { SearchPageFilter } from "./components/filter";
 import { SearchPageResults } from "./components/results";
-import { SearchPageEmpty } from "./components/empty";
+import { SearchPageEmpty } from "./components/results/empty";
 import { PageHeader } from "../../components/shared/page-header";
 import SearchIcon from "@/assets/shared-icons/search";
 

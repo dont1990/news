@@ -8,8 +8,8 @@ import { IconActionButton } from "@/components/shared/icon-action-button";
 import { routes } from "@/routes/routes";
 import { Separator } from "@/components/ui/separator";
 import CategoryBadge from "@/components/shared/category-badge";
-import { HeroMetaInfo } from "./meta-info";
 import { IArticle } from "@/types/article";
+import { HeroMetaInfo } from "./meta-info";
 
 type Props = {
   article: IArticle;

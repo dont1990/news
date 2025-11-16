@@ -2,7 +2,7 @@
 
 import Container from "@/components/shared/container";
 import { HeroThumbnails } from "./components/thumbnails";
-import { HeroArticleInfo } from "./components/article-info";
+import { HeroArticleInfo } from "./components/active-article/article-info";
 import { useHeroSlider } from "./hooks/useHeroSlider";
 import { useHeroNews } from "./hooks/useHeroNews";
 import { HeroSkeleton } from "./skeleton";

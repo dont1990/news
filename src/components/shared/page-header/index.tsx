@@ -3,11 +3,7 @@
 import React from "react";
 import Container from "@/components/shared/container";
 import { Badge } from "@/components/ui/badge";
-import { InfiniteLoader } from "@/components/shared/infinite-loader";
-import {
-  getCategoryColors,
-  getCategoryBadgeClasses,
-} from "@/lib/category-colors";
+import { getCategoryColors } from "@/lib/category-colors";
 
 interface PageHeaderProps {
   title: string;
@@ -15,7 +11,6 @@ interface PageHeaderProps {
   icon?: React.ReactNode;
   badgeText?: string;
   badgeCount?: number;
-  loading?: boolean;
   category?: string;
 }
 
@@ -25,33 +20,17 @@ export function PageHeader({
   icon,
   badgeText,
   badgeCount,
-  loading = false,
   category,
 }: PageHeaderProps) {
   const categoryColors = category
     ? getCategoryColors(category)
     : { bg: "bg-primary", primaryText: "text-primary" };
-  const badgeClasses = category ? getCategoryBadgeClasses(category) : "";
 
   return (
     <section
       className={`bg-gradient-to-br from-primary/10 via-primary/5 to-primary/10 border-b border-border ${categoryColors.bg}/20`}
     >
       <Container className="text-center flex flex-col gap-2">
-        {icon && (
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <div className={`${categoryColors.primaryText}`}>{icon}</div>
-            {badgeText && (
-              <Badge
-                variant="outline"
-                className={`bg-background/50 border-current ${categoryColors.primaryText}`}
-              >
-                {badgeText}
-              </Badge>
-            )}
-          </div>
-        )}
-
         <p
           className={`text-4xl md:text-5xl mb-4 font-medium ${categoryColors.primaryText}`}
         >
@@ -64,12 +43,17 @@ export function PageHeader({
           </p>
         )}
 
-        {badgeCount !== undefined && badgeText && (
-          <div className="flex items-center justify-center gap-4">
-            <Badge variant="primary" className={`px-4 py-2 ${badgeClasses}`}>
-              {loading ? <InfiniteLoader iconSize={3} /> : badgeCount}{" "}
-              {badgeText}
-            </Badge>
+        {icon && (
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <div className={`${categoryColors.primaryText}`}>{icon}</div>
+            {badgeText && (
+              <Badge
+                className={`bg-background/50 border-current text-sm ${categoryColors.primaryText}`}
+              >
+                {badgeCount}
+                <span>{badgeText}</span>
+              </Badge>
+            )}
           </div>
         )}
       </Container>

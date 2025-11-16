@@ -1,10 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { Skeleton } from "@/components/ui/skeleton";
-import { INewspaper } from "../types/newspaper";
+import { INewspaper } from "@/types/newspaper";
+import NewspaperCardSkeleton from "./skeleton";
 
-interface NewspaperCardProps {
+interface INewspaperCardProps {
   paper?: INewspaper;
   loading?: boolean;
   onClick?: () => void;
@@ -14,15 +14,8 @@ export default function NewspaperCard({
   paper,
   loading,
   onClick,
-}: NewspaperCardProps) {
-  if (loading) {
-    return (
-      <div className="animate-pulse rounded-2xl overflow-hidden border border-gray-100 bg-white h-64 w-full">
-        <Skeleton className="h-full w-full rounded-2xl" />
-      </div>
-    );
-  }
-
+}: INewspaperCardProps) {
+  if (loading) return <NewspaperCardSkeleton />;
   if (!paper) return null;
 
   return (
@@ -30,7 +23,7 @@ export default function NewspaperCard({
       onClick={onClick}
       className="group cursor-pointer bg-white rounded-2xl shadow-md hover:shadow-xl transition-all overflow-hidden border border-gray-100"
     >
-      <div className="relative w-full h-64">
+      <div className="relative w-full h-72">
         <Image
           src={paper.imageUrl}
           alt={paper.name}

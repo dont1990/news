@@ -1,0 +1,16 @@
+.swiper-pagination-bullet {
+  width: 12px !important;
+  height: 4px !important;
+  border-radius: 2px !important;
+}
+.swiper-pagination-bullet-active {
+  width: 28px !important;
+}
+.swiper-button-next-custom.swiper-button-disabled,
+.swiper-button-prev-custom.swiper-button-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: var(
+    --primary
+  ) !important; /* or use Tailwind color equivalent */
+}

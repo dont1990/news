@@ -20,8 +20,8 @@ export default function HomePageContent() {
 
       <Suspense fallback={"loading ..."}>
         <Container>
-          <div className="grid grid-cols-1 xl:grid-cols-4 gap-6 mb-0">
-            <div className="xl:col-span-3 space-y-20">
+          <div className="flex flex-col lg:flex-row gap-6 mb-0">
+            <div className="space-y-20 w-full lg:w-[calc(100%-336px)]">
               {/* <FeaturedNews /> */}
               <div className="flex flex-col gap-6">
                 <BreakingNews />
@@ -33,8 +33,9 @@ export default function HomePageContent() {
               <SportNews />
               <TechNews />
             </div>
-
-            <HomePageSidebar />
+            <div className="w-full lg:w-[320px]">
+              <HomePageSidebar />
+            </div>
           </div>
         </Container>
         <NewspapersGrid />

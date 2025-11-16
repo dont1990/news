@@ -1,5 +1,5 @@
 import { useInfinite } from "@/hooks/useInfinite";
-import { INewspaper } from "@/features/newspaper/types/newspaper";
+import { INewspaper } from "@/types/newspaper";
 
 interface UseNewspapersParams {
   search?: string;

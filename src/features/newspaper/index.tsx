@@ -5,11 +5,11 @@ import Container from "@/components/shared/container";
 import GalleryModal from "@/components/shared/gallery-modal";
 import { PageHeader } from "@/components/shared/page-header";
 import { useQueryParams } from "@/hooks/useQueryParams";
-import { NewspaperFilter } from "@/features/newspaper/components/filter/newspaper-filter";
+import { NewspaperFilter } from "@/features/newspaper/components/filter";
 import { InfiniteLoader } from "@/components/shared/infinite-loader";
 import { useNewspapers } from "@/features/newspaper/hooks/useNewspaper";
 import Newspaper from "./assets/newspaper";
-import NewspaperCard from "./components/newspaper-card";
+import NewspaperCard from "../../components/shared/newspaper-card";
 import EmptyState from "@/components/shared/empty-state";
 
 export default function NewspaperPageContent() {
@@ -39,7 +39,6 @@ export default function NewspaperPageContent() {
         icon={<Newspaper className="h-6 w-6 text-primary" />}
         badgeText="روزنامه"
         badgeCount={total}
-        loading={loading}
         category="news"
       />
 

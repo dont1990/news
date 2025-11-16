@@ -21,7 +21,7 @@ export function LiveRates() {
         title="آخرین قیمت‌ها"
         icon={<TrendingUpIcon className="w-5 h-5" />}
       />
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-6">
         {isLoading
           ? Array.from({ length: 4 }).map((_, i) => (
               <LiveStatCardSkeleton key={i} />
